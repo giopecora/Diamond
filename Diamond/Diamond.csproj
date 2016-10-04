@@ -1057,6 +1057,8 @@
     <Content Include="Scripts\sammy-0.7.4.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="SPA\App.js" />
+    <Content Include="SPA\Controllers\main.js" />
+    <Content Include="SPA\Views\Home.html" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -1098,8 +1100,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\app\" />
-    <Folder Include="SPA\Controllers\" />
-    <Folder Include="SPA\Views\" />
+    <Folder Include="SPA\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
