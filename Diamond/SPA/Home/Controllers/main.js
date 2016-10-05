@@ -10,7 +10,7 @@
 
     .controller('HomeController', HomeController);
 
-function HomeController() {
+function HomeController($scope) {
     $scope.models = {
         locations: [
             { id: '1', nome: 'primeiro elemento' }
