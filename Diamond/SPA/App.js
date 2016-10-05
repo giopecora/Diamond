@@ -1,21 +1,13 @@
-﻿var App = angular.module('Diamond', ['ngRoute', 'Home']);
+﻿var App = angular.module('Diamond', ['ngRoute']);
 
-
-App.config(['$routeProvider', '$locationProvider',  function($routeProvider, $locationProvider) {
-    $locationProvider.html5Mode(true);
+App.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
-           .when('/', {
-               templateUrl: '/SPA/Home/Views/Home.html',
-               controller: 'HomeController'
-           })
-        .otherwise({ redirectTo: '/' })
-
+        .when('/Home', {
+        templateUrl: 'SPA/Home/Views/index.html'
+        })
+        .when('/Produtos', {
+            templateUrl: 'SPA/Produtos/Views/produto.html',
+            controller: 'ProdutoController'
+        })
+    .otherwise({ redirectTo: '/Home' })
 }])
-
-
-App.controller('MainController', MainController);
-
-MainController.$inject = ['$scope'];
-function MainController($scope){
-
-};

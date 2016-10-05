@@ -27,7 +27,7 @@ namespace Diamond
 
             bundles.Add(new ScriptBundle("~/bundles/SPA").Include(
                 "~/SPA/App.js",
-                "~/SPA/Home/Controllers/main.js"));
+                "~/SPA/Produtos/Controller/mainProduto.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
