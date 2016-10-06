@@ -5,6 +5,9 @@
             templateUrl: 'SPA/Produtos/Views/produto.html',
             controller: 'ProdutoController'
         })
+        .when('/Produtos/primeiro', {
+            templateUrl: 'SPA/Produtos/Views/ProdutoDetalhe.html'
+        })
     }])
 
     .controller('ProdutoController', function($scope) {
