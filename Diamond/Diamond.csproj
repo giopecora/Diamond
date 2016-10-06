@@ -1065,8 +1065,8 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="SPA\App.js" />
     <Content Include="SPA\Home\Views\index.html" />
-    <Content Include="SPA\Produtos\Controller\mainProduto.js" />
-    <Content Include="SPA\Produtos\Controller\produtoDetalhe.js" />
+    <Content Include="SPA\Produtos\Controllers\mainProduto.js" />
+    <Content Include="SPA\Produtos\Controllers\produtoDetalhe.js" />
     <Content Include="SPA\Produtos\Views\produto.html" />
     <Content Include="SPA\Produtos\Views\produtoDetalhe.html" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -1111,6 +1111,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\app\" />
+    <Folder Include="SPA\Home\Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

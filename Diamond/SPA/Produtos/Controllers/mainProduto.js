@@ -1,4 +1,4 @@
-﻿angular.module('Diamond')
+﻿angular.module('Produto', [])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/Produtos', {
@@ -6,7 +6,7 @@
             controller: 'ProdutoController'
         })
         .when('/Produtos/primeiro', {
-            templateUrl: 'SPA/Produtos/Views/ProdutoDetalhe.html'
+            templateUrl: 'SPA/Produtos/Views/produtoDetalhe.html'
         })
     }])
 

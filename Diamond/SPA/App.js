@@ -1,4 +1,4 @@
-﻿var App = angular.module('Diamond', ['ngRoute']);
+﻿var App = angular.module('Diamond', ['ngRoute', 'Produto']);
 
 App.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
