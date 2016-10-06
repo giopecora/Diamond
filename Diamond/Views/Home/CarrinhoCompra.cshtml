@@ -31,7 +31,7 @@ TESTE
                     <div class="form-group">
                         <label class="control-label">Valor Unitário Total</label>
                         <input type="text" class="form-control valores" value="R$ @produto.ValorUnitarioTotal" disabled="disabled" style="width:120px;"/>
-                        <input type="hidden" value="@produto.ValorUnitario" />
+                        <input type="hidden" value="@produto.ValorUnitario" class="valorUnitario"/>
                     </div>
                 </div>
             </div>
@@ -50,10 +50,6 @@ TESTE
                     <button class="btn btn-success text-right">Finalizar</button>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            
         </div>
     </div>
 </div>
@@ -78,18 +74,21 @@ TESTE
             valorTotal = "R$ " + valorTotal;
 
             $("#valorTotal").val(valorTotal);
-            console.log(valorTotal);
         });
 
-        $(document).on("mouseover", ".valores", function () {
+        $(document).on("blur", ".quantidades", function () {
             var quantidade = $(this).val();
-            var valorUnitario = $(this).next().val();
+            var row = $(this).parent().parent().parent();
+            var valorUnitarioStr = $(row).find(".valores").val();
+            var valorUnitarioHidden = $(row).find(".valorUnitario").val();
 
-            var valorUnitarioTotal = quantidade * valorUnitario;
+            valorUnitarioHidden = valorUnitarioHidden.replace(",", ".");
+
+            var valorUnitarioTotal = quantidade * parseFloat(valorUnitarioHidden);
             valorUnitarioTotal = valorUnitarioTotal.toString().replace(".", ",");
 
-            $()
-            
+            $(row).find(".valores").val("R$ " + valorUnitarioTotal);
+            $("#valorTotal").val("R$ " + valorUnitarioTotal);            
         });
     </script>
 }
