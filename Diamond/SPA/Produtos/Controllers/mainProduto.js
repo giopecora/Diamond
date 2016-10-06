@@ -6,10 +6,11 @@
             controller: 'ProdutoController'
         })
         .when('/Produtos/primeiro', {
-            templateUrl: 'SPA/Produtos/Views/produtoDetalhe.html'
+            templateUrl: 'SPA/Produtos/Views/produtoDetalhe.html',
+            controller: 'ProdutoController'
         })
     }])
 
     .controller('ProdutoController', function($scope) {
-        $scope.mensagem = "eita";
+        $scope.mensagem = "FOI MALUCO";
     });

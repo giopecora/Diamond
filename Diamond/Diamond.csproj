@@ -237,6 +237,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\img\7WXNdnw.jpg" />
+    <Content Include="Content\img\8ooCUho.jpg" />
+    <Content Include="Content\img\9oZKicO.jpg" />
     <Content Include="Content\img\liquidificador.jpg" />
     <Content Include="Content\img\memoriaRAM.jpg" />
     <Content Include="Content\img\microondas.jpg" />
@@ -1072,6 +1075,7 @@
     <Content Include="Scripts\sammy-0.7.4.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="SPA\App.js" />
+    <Content Include="SPA\Home\Controllers\HomeController.js" />
     <Content Include="SPA\Home\Views\index.html" />
     <Content Include="SPA\Produtos\Controllers\mainProduto.js" />
     <Content Include="SPA\Produtos\Controllers\produtoDetalhe.js" />
@@ -1119,7 +1123,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\app\" />
-    <Folder Include="SPA\Home\Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
