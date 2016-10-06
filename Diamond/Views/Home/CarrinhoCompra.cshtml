@@ -1,0 +1,95 @@
+﻿@model List<Diamond.Models.CarrinhoCompra>
+
+@{
+    ViewBag.Title = "CarrinhoCompra";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var valorTotal = 0.0;
+}
+TESTE
+<br />
+<div class="row">
+    <div class="col-md-12">
+        @foreach (var produto in Model)
+        {
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="@produto.Imagem" width="250" height="250" style="border: 1px solid black;" data-zoom-image="@produto.Imagem"/>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">                        
+                        <label class="control-label">@produto.Nome</label>
+                        <label class="control-label">@produto.Descricao</label>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label class="control-label">Quantidade</label>
+                        <input type="number" class="form-control quantidades" style="width:80px;" value="@produto.Quantidade" />
+                    </div>                    
+                </div>
+                <div class="cold-md-2">
+                    <div class="form-group">
+                        <label class="control-label">Valor Unitário Total</label>
+                        <input type="text" class="form-control valores" value="R$ @produto.ValorUnitarioTotal" disabled="disabled" style="width:120px;"/>
+                        <input type="hidden" value="@produto.ValorUnitario" />
+                    </div>
+                </div>
+            </div>
+            <hr />
+        }
+
+        <div class="row">
+            <div class="col-md-offset-10 col-md-2">
+                <div class="form-group">
+                    <label class="control-label">Valor Total</label>
+                    <input type="text" id="valorTotal" class="form-control" value="R$ @valorTotal" />
+                </div>
+            </div>
+            <div class="col-md-offset-11 col-md-1">
+                <div class="row btn-group">
+                    <button class="btn btn-success text-right">Finalizar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("img").elevateZoom();
+
+            var valorTotal = 0;
+
+            $(".valores").each(function (i, j) {
+                var valor = $(j).val();
+
+                valor = valor.substring(3, valor.length);
+                valor = valor.replace(",", ".");
+
+                valorTotal += parseFloat(valor);
+            });
+
+            valorTotal = valorTotal.toString().replace(".", ",");
+            valorTotal = "R$ " + valorTotal;
+
+            $("#valorTotal").val(valorTotal);
+            console.log(valorTotal);
+        });
+
+        $(document).on("mouseover", ".valores", function () {
+            var quantidade = $(this).val();
+            var valorUnitario = $(this).next().val();
+
+            var valorUnitarioTotal = quantidade * valorUnitario;
+            valorUnitarioTotal = valorUnitarioTotal.toString().replace(".", ",");
+
+            $()
+            
+        });
+    </script>
+}
