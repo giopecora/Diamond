@@ -1066,7 +1066,9 @@
     <Content Include="SPA\App.js" />
     <Content Include="SPA\Home\Views\index.html" />
     <Content Include="SPA\Produtos\Controller\mainProduto.js" />
+    <Content Include="SPA\Produtos\Controller\produtoDetalhe.js" />
     <Content Include="SPA\Produtos\Views\produto.html" />
+    <Content Include="SPA\Produtos\Views\produtoDetalhe.html" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
