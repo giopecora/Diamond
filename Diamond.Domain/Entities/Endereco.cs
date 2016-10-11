@@ -11,35 +11,35 @@ namespace Diamond.Domain.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Endereco()
         {
-            Usuario = new HashSet<Usuario>();
+            Usuarios = new HashSet<Usuario>();
         }
 
         [Key]
-        public int id_Endereco { get; set; }
+        public int ID_Endereco { get; set; }
 
         [StringLength(20)]
-        public string nm_Logradouro { get; set; }
+        public string NM_Logradouro { get; set; }
 
         [StringLength(100)]
-        public string nm_Endereco { get; set; }
+        public string NM_Endereco { get; set; }
 
-        public int? nr_Endereco { get; set; }
+        public int? NR_Endereco { get; set; }
 
         [StringLength(50)]
-        public string ds_Complemento { get; set; }
+        public string DS_Complemento { get; set; }
 
         [StringLength(7)]
-        public string nr_CEP { get; set; }
+        public string NR_CEP { get; set; }
 
         [StringLength(40)]
-        public string nm_Cidade { get; set; }
+        public string NM_Cidade { get; set; }
 
         [StringLength(2)]
-        public string ds_Sigla { get; set; }
+        public string DS_Sigla { get; set; }
 
-        public int? nr_Tipo_Endereco { get; set; }
+        public int? NR_Tipo_Endereco { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Usuario> Usuario { get; set; }
+        public virtual ICollection<Usuario> Usuarios { get; set; }
     }
 }

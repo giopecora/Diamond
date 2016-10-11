@@ -1,37 +1,78 @@
-﻿using Diamond.Domain.Entities;
+﻿using Diamond.Domain.DTO.Result;
+using Diamond.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diamond.Repository.Repository
+namespace Diamond.Repository
 {
     public class ProdutoRepository
     {
         private DiamondContext _context = new DiamondContext();
 
-        public IEnumerable<Produto> GetAllProducts()
+        public IEnumerable<Produto> GetAll()
         {
-            return _context.Produto;
+            return _context.Produtos;
         }
 
-        public IEnumerable<Produto> GetAllProductsByCategoryId(int categoryId)
+        public IEnumerable<Produto> GetAllByCategoryId(int categoryId)
         {
-            return _context.Produto.Where(p => p.id_Categoria == categoryId);
+            return _context.Produtos.Where(p => p.ID_Categoria == categoryId);
         }
 
-        public Produto InsertProduct(Produto entity)
+        public Produto GetById(int id)
         {
-            _context.Produto.Add(entity);
+            return _context.Produtos.Find(id);
+        }
+
+        public Produto Insert(Produto entity)
+        {
+            _context.Produtos.Add(entity);
             _context.SaveChanges();
 
             return entity;
         }
 
-        public Produto GetProdutctById(int id)
+        public Result<bool> Update(int id, Produto entity)
         {
-            return _context.Produto.Find(id);
+            Result<bool> result = new Result<bool>();
+
+            _context.Entry(entity).State = EntityState.Modified;
+
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                if (!ProdutoExists(id))
+                {
+                    return result.SetError(ex);
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return result.SetData(true);
+        }
+
+        public bool Delete(int id)
+        {
+            Produto entity = GetById(id);
+
+            _context.Produtos.Remove(entity);
+            return _context.SaveChanges() > 0;
+        }
+
+        private bool ProdutoExists(int id)
+        {
+            return _context.Produtos.Count(e => e.ID_Produto == id) > 0;
         }
     }
 }

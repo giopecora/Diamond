@@ -214,6 +214,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\ProdutosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MeController.cs" />
@@ -1131,6 +1132,16 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Diamond.Business\Diamond.Business.csproj">
+      <Project>{e7e77834-13ce-42b3-a337-40446dae4e94}</Project>
+      <Name>Diamond.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Diamond.Domain\Diamond.Domain.csproj">
+      <Project>{47229a99-91db-47bc-b801-894a7a0cea59}</Project>
+      <Name>Diamond.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

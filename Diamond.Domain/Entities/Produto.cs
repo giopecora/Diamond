@@ -16,22 +16,22 @@ namespace Diamond.Domain.Entities
         }
 
         [Key]
-        public int id_Produto { get; set; }
+        public int ID_Produto { get; set; }
 
-        public int id_Categoria { get; set; }
-
-        [StringLength(120)]
-        public string nm_Produto { get; set; }
+        public int ID_Categoria { get; set; }
 
         [StringLength(120)]
-        public string ds_produto { get; set; }
+        public string NM_Produto { get; set; }
 
         [StringLength(120)]
-        public string ds_imagem { get; set; }
+        public string DS_produto { get; set; }
 
-        public double? vl_preco { get; set; }
+        [StringLength(120)]
+        public string DS_imagem { get; set; }
 
-        public int? nr_Quantidade_Estoque { get; set; }
+        public double? VL_preco { get; set; }
+
+        public int? NR_Quantidade_Estoque { get; set; }
 
         public virtual Categoria Categoria { get; set; }
 

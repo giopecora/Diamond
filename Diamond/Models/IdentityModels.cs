@@ -31,5 +31,9 @@ namespace Diamond.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Diamond.Domain.Entities.Produto> Produtoes { get; set; }
+
+        public System.Data.Entity.DbSet<Diamond.Domain.Entities.Categoria> Categorias { get; set; }
     }
 }

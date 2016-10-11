@@ -8,15 +8,15 @@ namespace Diamond.Domain.Entities
     public partial class Pedido_Item
     {
         [Key]
-        public int id_Pedido_Item { get; set; }
+        public int ID_Pedido_Item { get; set; }
 
-        public int id_Produto { get; set; }
+        public int ID_Produto { get; set; }
 
-        public int id_Pedido { get; set; }
+        public int ID_Pedido { get; set; }
 
-        public int? nr_quantidade { get; set; }
+        public int? NR_quantidade { get; set; }
 
-        public double? vl_unitario_total { get; set; }
+        public double? VL_unitario_total { get; set; }
 
         public virtual Pedido Pedido { get; set; }
 

@@ -15,13 +15,13 @@ namespace Diamond.Domain.Entities
         }
 
         [Key]
-        public int id_Pedido { get; set; }
+        public int ID_Pedido { get; set; }
 
-        public int id_Usuario { get; set; }
+        public int ID_Usuario { get; set; }
 
-        public DateTime? dt_pedido { get; set; }
+        public DateTime? DT_pedido { get; set; }
 
-        public double? vl_total { get; set; }
+        public double? VL_total { get; set; }
 
         public virtual Usuario Usuario { get; set; }
 

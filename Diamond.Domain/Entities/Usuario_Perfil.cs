@@ -9,13 +9,13 @@ namespace Diamond.Domain.Entities
     {
         [Key]
         [Column(Order = 0)]
-        public int id_Usuario { get; set; }
+        public int ID_Usuario { get; set; }
 
         [Key]
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int id_Perfil { get; set; }
+        public int ID_Perfil { get; set; }
 
-        public bool? fl_ativo { get; set; }
+        public bool? FL_ativo { get; set; }
     }
 }

@@ -40,7 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\ProdutoBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Diamond.Domain\Diamond.Domain.csproj">
+      <Project>{47229A99-91DB-47BC-B801-894A7A0CEA59}</Project>
+      <Name>Diamond.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Diamond.Repository\Diamond.Repository.csproj">
+      <Project>{58A30270-2DA9-4B47-894C-8B474AA9E52B}</Project>
+      <Name>Diamond.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

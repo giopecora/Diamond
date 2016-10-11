@@ -9,9 +9,9 @@ namespace Diamond.Domain.Entities
     public partial class Perfil
     {
         [Key]
-        public int id_Perfil { get; set; }
+        public int ID_Perfil { get; set; }
 
         [StringLength(30)]
-        public string nm_Perfil { get; set; }
+        public string NM_Perfil { get; set; }
     }
 }
