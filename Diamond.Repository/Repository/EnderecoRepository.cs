@@ -8,36 +8,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diamond.Repository
+namespace Diamond.Repository.Repository
 {
-    public class ProdutoRepository
+    public class EnderecoRepository
     {
         private DiamondContext _context = new DiamondContext();
 
-        public IEnumerable<Produto> GetAll()
+        public Endereco GetById(int id)
         {
-            return _context.Produtos;
+            return _context.Enderecos.Find(id);
         }
 
-        public IEnumerable<Produto> GetAllByCategoryId(int categoryId)
+        public Endereco Insert(Endereco entity)
         {
-            return _context.Produtos.Where(p => p.ID_Categoria == categoryId);
-        }
-
-        public Produto GetById(int id)
-        {
-            return _context.Produtos.Find(id);
-        }
-
-        public Produto Insert(Produto entity)
-        {
-            _context.Produtos.Add(entity);
+            _context.Enderecos.Add(entity);
             _context.SaveChanges();
 
             return entity;
         }
 
-        public Result<bool> Update(int id, Produto entity)
+        public Result<bool> Update(int id, Endereco entity)
         {
             Result<bool> result = new Result<bool>();
 
@@ -49,7 +39,7 @@ namespace Diamond.Repository
             }
             catch (DbUpdateConcurrencyException ex)
             {
-                if (!ProdutoExists(id))
+                if (!EnderecoExists(id))
                 {
                     return result.SetError(ex);
                 }
@@ -62,9 +52,17 @@ namespace Diamond.Repository
             return result.SetData(true);
         }
 
-        private bool ProdutoExists(int id)
+        public bool Delete(int id)
         {
-            return _context.Produtos.Count(e => e.ID_Produto == id) > 0;
+            Endereco entity = GetById(id);
+
+            _context.Enderecos.Remove(entity);
+            return _context.SaveChanges() > 0;
+        }
+
+        private bool EnderecoExists(int id)
+        {
+            return _context.Enderecos.Count(e => e.ID_Endereco == id) > 0;
         }
     }
 }

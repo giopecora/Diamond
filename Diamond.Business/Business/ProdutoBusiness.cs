@@ -17,60 +17,62 @@ namespace Diamond.Business
         public Result<List<ProdutoDTO>> GetAll()
         {
             Result<List<ProdutoDTO>> result = new Result<List<ProdutoDTO>>();
-            List<ProdutoDTO> produtos = new List<ProdutoDTO>();
+            List<ProdutoDTO> produtos = _repository.GetAll().ToDTO<Produto, ProdutoDTO>();
 
             return result.SetData(produtos);
         }
 
-        //public IEnumerable<Produto> GetAllByCategoryId(int categoryId)
-        //{
-        //    return _context.Produto.Where(p => p.id_Categoria == categoryId);
-        //}
+        public Result<List<ProdutoDTO>> GetAllByCategoryId(int categoryId)
+        {
+            Result<List<ProdutoDTO>> result = new Result<List<ProdutoDTO>>();
+            List<ProdutoDTO> produtos = _repository.GetAllByCategoryId(categoryId).ToDTO<Produto, ProdutoDTO>();
 
-        //public Produto GetById(int id)
-        //{
-        //    return _context.Produto.Find(id);
-        //}
+            return result.SetData(produtos);
+        }
 
-        //public Produto Insert(Produto entity)
-        //{
-        //    _context.Produto.Add(entity);
-        //    _context.SaveChanges();
+        public Result<ProdutoDTO> GetById(int id)
+        {
+            Result<ProdutoDTO> result = new Result<ProdutoDTO>();
+            Produto entity = _repository.GetById(id);
 
-        //    return entity;
-        //}
+            if (entity == null)
+                return result.SetFailure("Este Produto nao existe!");
 
-        //public Result<bool> Update(int id, Produto entity)
-        //{
-        //    Result<bool> result = new Result<bool>();
+            return result.SetData(new ProdutoDTO(entity));
+        }
 
-        //    _context.Entry(entity).State = EntityState.Modified;
+        public Result<ProdutoDTO> Insert(ProdutoDTO produto)
+        {
+            Result<ProdutoDTO> result = new Result<ProdutoDTO>();
+            Produto entity = _repository.Insert(produto.ToEntity());
 
-        //    try
-        //    {
-        //        _context.SaveChanges();
-        //    }
-        //    catch (DbUpdateConcurrencyException ex)
-        //    {
-        //        if (!ProdutoExists(id))
-        //        {
-        //            return result.SetError(ex);
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
+            produto.Id = entity.ID_Produto;
 
-        //    return result.SetData(true);
-        //}
+            return result.SetData(produto);
+        }
 
-        //public bool Delete(int id)
-        //{
-        //    Produto entity = GetById(id);
+        public Result<bool> Update(int id, ProdutoDTO produto)
+        {
+            Result<bool> result = new Result<bool>();
 
-        //    _context.Produto.Remove(entity);
-        //    return _context.SaveChanges() > 0;
-        //}
+            result = _repository.Update(id, produto.ToEntity());
+
+            if (!result.Success)
+                result.SetFailure("Nao foi possivel atualizar este Produto.");
+
+            return result;
+        }
+
+        public Result<bool> Delete(int id)
+        {
+            Result<bool> result = new Result<bool>();
+
+            //result.Success = _repository.Delete(id);
+
+            if (!result.Success)
+                result.SetFailure("Nao foi possivel excluir este produto");
+
+            return result;
+        }
     }
 }

@@ -8,36 +8,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diamond.Repository
+namespace Diamond.Repository.Repository
 {
-    public class ProdutoRepository
+    public class PedidoItemRepository
     {
         private DiamondContext _context = new DiamondContext();
 
-        public IEnumerable<Produto> GetAll()
+        public IEnumerable<Pedido_Item> GetAllByPedido(int pedidoId)
         {
-            return _context.Produtos;
+            return _context.Pedido_Item.Where(pi => pi.ID_Pedido == pedidoId);
         }
 
-        public IEnumerable<Produto> GetAllByCategoryId(int categoryId)
+        public Pedido_Item GetById(int id)
         {
-            return _context.Produtos.Where(p => p.ID_Categoria == categoryId);
+            return _context.Pedido_Item.Find(id);
         }
 
-        public Produto GetById(int id)
+        public Pedido_Item Insert(Pedido_Item entity)
         {
-            return _context.Produtos.Find(id);
-        }
-
-        public Produto Insert(Produto entity)
-        {
-            _context.Produtos.Add(entity);
+            _context.Pedido_Item.Add(entity);
             _context.SaveChanges();
 
             return entity;
         }
 
-        public Result<bool> Update(int id, Produto entity)
+        public Result<bool> Update(int id, Pedido_Item entity)
         {
             Result<bool> result = new Result<bool>();
 
@@ -49,7 +44,7 @@ namespace Diamond.Repository
             }
             catch (DbUpdateConcurrencyException ex)
             {
-                if (!ProdutoExists(id))
+                if (!PedidoItemExists(id))
                 {
                     return result.SetError(ex);
                 }
@@ -62,9 +57,17 @@ namespace Diamond.Repository
             return result.SetData(true);
         }
 
-        private bool ProdutoExists(int id)
+        public bool Delete(int id)
         {
-            return _context.Produtos.Count(e => e.ID_Produto == id) > 0;
+            Pedido_Item entity = GetById(id);
+
+            _context.Pedido_Item.Remove(entity);
+            return _context.SaveChanges() > 0;
+        }
+
+        private bool PedidoItemExists(int id)
+        {
+            return _context.Pedido_Item.Count(e => e.ID_Pedido_Item == id) > 0;
         }
     }
 }

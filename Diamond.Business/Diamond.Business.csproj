@@ -52,6 +52,10 @@
       <Project>{58A30270-2DA9-4B47-894C-8B474AA9E52B}</Project>
       <Name>Diamond.Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Diamond.Utils\Diamond.Utils.csproj">
+      <Project>{fd522a84-ef7f-4dc4-be24-6352166403b0}</Project>
+      <Name>Diamond.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

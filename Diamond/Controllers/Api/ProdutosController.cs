@@ -20,6 +20,7 @@ namespace Diamond.Controllers.Api
     {
         private ProdutoBusiness _business = new ProdutoBusiness();
 
+        [ResponseType(typeof(Result<List<ProdutoDTO>>))]
         // GET: api/Produtos
         public IHttpActionResult GetAll()
         {
@@ -37,15 +38,32 @@ namespace Diamond.Controllers.Api
             return Ok(result);
         }
 
-        // GET: api/Produtos/5
-        [ResponseType(typeof(Produto))]
-        public IHttpActionResult GetProduto(int id)
+        [ResponseType(typeof(Result<List<ProdutoDTO>>))]
+        public IHttpActionResult GetAllFromCategory(int categoryId)
         {
             Result<List<ProdutoDTO>> result = new Result<List<ProdutoDTO>>();
 
             try
             {
-                result = _business.GetAll();
+                result = _business.GetAllByCategoryId(categoryId);
+            }
+            catch (Exception ex)
+            {
+                result.SetError(ex);
+            }
+
+            return Ok(result);
+        }
+
+        // GET: api/Produtos/5
+        [ResponseType(typeof(Result<ProdutoDTO>))]
+        public IHttpActionResult Get(int id)
+        {
+            Result<ProdutoDTO> result = new Result<ProdutoDTO>();
+
+            try
+            {
+                result = _business.GetById(id);
             }
             catch (Exception ex)
             {
@@ -56,14 +74,14 @@ namespace Diamond.Controllers.Api
         }
 
         // PUT: api/Produtos/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutProduto(int id, Produto produto)
+        [ResponseType(typeof(Result<bool>))]
+        public IHttpActionResult PutProduto(int id, [FromBody]ProdutoDTO produto)
         {
-            Result<List<ProdutoDTO>> result = new Result<List<ProdutoDTO>>();
+            Result<bool> result = new Result<bool>();
 
             try
             {
-                result = _business.GetAll();
+                result = _business.Update(id, produto);
             }
             catch (Exception ex)
             {
@@ -74,14 +92,14 @@ namespace Diamond.Controllers.Api
         }
 
         // POST: api/Produtos
-        [ResponseType(typeof(Produto))]
-        public IHttpActionResult PostProduto(Produto produto)
+        [ResponseType(typeof(Result<ProdutoDTO>))]
+        public IHttpActionResult PostProduto([FromBody]ProdutoDTO produto)
         {
-            Result<List<ProdutoDTO>> result = new Result<List<ProdutoDTO>>();
+            Result<ProdutoDTO> result = new Result<ProdutoDTO>();
 
             try
             {
-                result = _business.GetAll();
+                result = _business.Insert(produto);
             }
             catch (Exception ex)
             {
@@ -92,14 +110,14 @@ namespace Diamond.Controllers.Api
         }
 
         // DELETE: api/Produtos/5
-        [ResponseType(typeof(Produto))]
+        [ResponseType(typeof(Result<bool>))]
         public IHttpActionResult DeleteProduto(int id)
         {
-            Result<List<ProdutoDTO>> result = new Result<List<ProdutoDTO>>();
+            Result<bool> result = new Result<bool>();
 
             try
             {
-                result = _business.GetAll();
+                result = _business.Delete(id);
             }
             catch (Exception ex)
             {

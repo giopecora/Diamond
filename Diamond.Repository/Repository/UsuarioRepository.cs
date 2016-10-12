@@ -8,36 +8,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diamond.Repository
+namespace Diamond.Repository.Repository
 {
-    public class ProdutoRepository
+    public class UsuarioRepository
     {
         private DiamondContext _context = new DiamondContext();
 
-        public IEnumerable<Produto> GetAll()
+        public IEnumerable<Usuario> GetAll()
         {
-            return _context.Produtos;
+            return _context.Usuarios;
         }
 
-        public IEnumerable<Produto> GetAllByCategoryId(int categoryId)
+        public Usuario GetById(int id)
         {
-            return _context.Produtos.Where(p => p.ID_Categoria == categoryId);
+            return _context.Usuarios.Find(id);
         }
 
-        public Produto GetById(int id)
+        public Usuario Insert(Usuario entity)
         {
-            return _context.Produtos.Find(id);
-        }
-
-        public Produto Insert(Produto entity)
-        {
-            _context.Produtos.Add(entity);
+            _context.Usuarios.Add(entity);
             _context.SaveChanges();
 
             return entity;
         }
 
-        public Result<bool> Update(int id, Produto entity)
+        public Result<bool> Update(int id, Usuario entity)
         {
             Result<bool> result = new Result<bool>();
 
@@ -49,7 +44,7 @@ namespace Diamond.Repository
             }
             catch (DbUpdateConcurrencyException ex)
             {
-                if (!ProdutoExists(id))
+                if (!UsuarioExists(id))
                 {
                     return result.SetError(ex);
                 }
@@ -62,9 +57,17 @@ namespace Diamond.Repository
             return result.SetData(true);
         }
 
-        private bool ProdutoExists(int id)
+        public bool Delete(int id)
         {
-            return _context.Produtos.Count(e => e.ID_Produto == id) > 0;
+            Usuario entity = GetById(id);
+
+            _context.Usuarios.Remove(entity);
+            return _context.SaveChanges() > 0;
+        }
+
+        private bool UsuarioExists(int id)
+        {
+            return _context.Usuarios.Count(e => e.ID_Usuario == id) > 0;
         }
     }
 }

@@ -41,8 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\EnderecoDTO.cs" />
+    <Compile Include="DTO\PedidoDTO.cs" />
+    <Compile Include="DTO\PedidoItemDTO.cs" />
     <Compile Include="DTO\ProdutoDTO.cs" />
     <Compile Include="DTO\Result\Result.cs" />
+    <Compile Include="DTO\UsuarioDTO.cs" />
     <Compile Include="Entities\Categoria.cs" />
     <Compile Include="Entities\Endereco.cs" />
     <Compile Include="Entities\Estoque_Entrada.cs" />
