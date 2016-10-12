@@ -27,6 +27,8 @@ namespace Diamond.Domain.Entities
         [StringLength(50)]
         public string DS_senha { get; set; }
 
+        public bool? FL_Ativo { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pedido> Pedidoes { get; set; }
 

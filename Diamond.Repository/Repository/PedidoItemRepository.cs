@@ -14,7 +14,7 @@ namespace Diamond.Repository.Repository
     {
         private DiamondContext _context = new DiamondContext();
 
-        public IEnumerable<Pedido_Item> GetAllByPedido(int pedidoId)
+        public IEnumerable<Pedido_Item> GetAllFromPedido(int pedidoId)
         {
             return _context.Pedido_Item.Where(pi => pi.ID_Pedido == pedidoId);
         }

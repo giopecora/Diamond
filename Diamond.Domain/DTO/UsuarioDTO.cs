@@ -20,6 +20,7 @@ namespace Diamond.Domain.DTO
             Nome = entity.NM_Usuario;
             Login = entity.NM_login;
             Senha = entity.DS_senha;
+            Ativo = entity.FL_Ativo ?? false;
         }
 
         public Usuario ToEntity()
@@ -29,7 +30,8 @@ namespace Diamond.Domain.DTO
                 ID_Usuario = Id,
                 NM_Usuario = Nome,
                 NM_login = Login,
-                DS_senha = Senha
+                DS_senha = Senha,
+                FL_Ativo = Ativo
             };
         }
 
@@ -37,5 +39,6 @@ namespace Diamond.Domain.DTO
         public string Nome { get; set; }
         public string Login { get; set; }
         public string Senha { get; set; }
+        public bool Ativo { get; set; }
     }
 }

@@ -67,7 +67,10 @@ namespace Diamond.Business
         {
             Result<bool> result = new Result<bool>();
 
-            //result.Success = _repository.Delete(id);
+            ProdutoDTO produto = GetById(id).Data;
+            produto.Ativo = false;
+
+            result = Update(id, produto);
 
             if (!result.Success)
                 result.SetFailure("Nao foi possivel excluir este produto");

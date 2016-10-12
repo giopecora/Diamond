@@ -33,6 +33,8 @@ namespace Diamond.Domain.Entities
 
         public int? NR_Quantidade_Estoque { get; set; }
 
+        public bool? FL_Ativo { get; set; }
+
         public virtual Categoria Categoria { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

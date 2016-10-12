@@ -23,6 +23,7 @@ namespace Diamond.Domain.DTO
             Imagem = entity.DS_imagem;
             Preco = entity.VL_preco;
             Quantidade = entity.NR_Quantidade_Estoque;
+            Ativo = entity.FL_Ativo ?? false;
         }
 
         public Produto ToEntity()
@@ -35,7 +36,8 @@ namespace Diamond.Domain.DTO
                 DS_produto = Descricao,
                 DS_imagem = Imagem,
                 VL_preco = Preco,
-                NR_Quantidade_Estoque = Quantidade
+                NR_Quantidade_Estoque = Quantidade,
+                FL_Ativo = Ativo
             };
         }
 
@@ -46,5 +48,6 @@ namespace Diamond.Domain.DTO
         public string Imagem { get; set; }
         public double? Preco { get; set; }
         public int? Quantidade { get; set; }
+        public bool Ativo { get; set; }
     }
 }
