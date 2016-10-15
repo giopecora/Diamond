@@ -1,0 +1,58 @@
+﻿<style>
+    .small-space{
+        margin-top: 15px;
+    }
+</style>
+
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="c">
+                <h3>Cadastro de Produtos</h3>
+            </div>
+        </div>
+    </div>
+
+<!--<div class="row">
+    <div class="col-xs-12">
+        (INCLUIR IMAGEM AQUI)
+    </div>
+</div>-->
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-inbox" aria-hidden="true"></i></span>
+                <input class="form-control" type="text" id="nomeProduto" placeholder="Nome Produto" />
+            </div> 
+        </div>
+    </div>
+    <div class="row small-space">
+        <div class="col-xs-12">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-usd"></i></span>
+                <input class="form-control" type="text" id="precoProduto" placeholder="Preço"/>
+            </div>
+        </div>
+    </div>
+    <div class="row small-space">
+        <div class="col-xs-12">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                <input class="form-control" type="text" placeholder="Descrição">
+            </div>
+        </div>
+    </div>
+    <div class="row small-space">
+        <div class="col-xs-12">
+            <label for="">Informações Tecnicas</label>
+            <textarea class="form-control" name="informações-tecnicas" 
+            id="informações-tecnicas" cols="30" rows="10"></textarea>
+        </div>
+    </div>
+    <hr>
+    <div class="btn-group pull-right">
+        <button class="btn btn-success" ng-click="salvar()"><i class="fa fa-floppy-o" aria-hidden="true"></i><span>&nbsp;&nbsp;Salvar</span></button>
+        <button class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i><span>&nbsp;&nbsp;Cancelar</span></button>
+    </div>
+</div>

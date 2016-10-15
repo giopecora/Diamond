@@ -1078,9 +1078,10 @@
     <Content Include="SPA\App.js" />
     <Content Include="SPA\Home\Controllers\HomeController.js" />
     <Content Include="SPA\Home\Views\index.html" />
-    <Content Include="SPA\Produtos\Controllers\mainProduto.js" />
+    <Content Include="SPA\Produtos\Controllers\produtoCadastro.js" />
+    <Content Include="SPA\Produtos\mainProduto.js" />
     <Content Include="SPA\Produtos\Controllers\produtoDetalhe.js" />
-    <Content Include="SPA\Produtos\Views\produto.html" />
+    <Content Include="SPA\Produtos\Views\produtoCadastro.html" />
     <Content Include="SPA\Produtos\Views\produtoDetalhe.html" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
