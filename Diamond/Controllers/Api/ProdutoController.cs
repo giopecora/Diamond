@@ -16,7 +16,7 @@ using Diamond.Domain.DTO.Result;
 
 namespace Diamond.Controllers.Api
 {
-    public class ProdutosController : ApiController
+    public class ProdutoController : ApiController
     {
         private ProdutoBusiness _business = new ProdutoBusiness();
 
