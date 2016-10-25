@@ -5,26 +5,27 @@ namespace Diamond.Domain.Entities
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    [Table("Pedido")]
-    public partial class Pedido
+    public partial class Sub_Categoria
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Pedido()
+        public Sub_Categoria()
         {
-            Pedido_Item = new HashSet<Pedido_Item>();
+            Produtoes = new HashSet<Produto>();
         }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
-        public int UsuarioId { get; set; }
+        [StringLength(50)]
+        public string Nome { get; set; }
 
-        public DateTime? DataPedido { get; set; }
+        public int? CategoriaId { get; set; }
 
-        public double? ValorTotal { get; set; }
+        public bool? Ativo { get; set; }
 
-        public virtual Usuario Usuario { get; set; }
+        public virtual Categoria Categoria { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pedido_Item> Pedido_Item { get; set; }
+        public virtual ICollection<Produto> Produtoes { get; set; }
     }
 }

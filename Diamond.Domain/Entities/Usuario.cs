@@ -12,25 +12,28 @@ namespace Diamond.Domain.Entities
         public Usuario()
         {
             Pedidoes = new HashSet<Pedido>();
+            Produto_Avaliacao = new HashSet<Produto_Avaliacao>();
             Enderecoes = new HashSet<Endereco>();
         }
 
-        [Key]
-        public int ID_Usuario { get; set; }
+        public int Id { get; set; }
 
         [StringLength(120)]
-        public string NM_Usuario { get; set; }
+        public string Nome { get; set; }
 
         [StringLength(50)]
-        public string NM_login { get; set; }
+        public string Login { get; set; }
 
         [StringLength(50)]
-        public string DS_senha { get; set; }
+        public string Senha { get; set; }
 
-        public bool? FL_Ativo { get; set; }
+        public bool? Ativo { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pedido> Pedidoes { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Produto_Avaliacao> Produto_Avaliacao { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Endereco> Enderecoes { get; set; }

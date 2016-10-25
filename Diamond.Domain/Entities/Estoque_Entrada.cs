@@ -7,14 +7,13 @@ namespace Diamond.Domain.Entities
 
     public partial class Estoque_Entrada
     {
-        [Key]
-        public int ID_Estoque_Entrada { get; set; }
+        public int Id { get; set; }
 
-        public int ID_Produto { get; set; }
+        public int ProdutoId { get; set; }
 
-        public int? NR_Quantidade { get; set; }
+        public int? Quantidade { get; set; }
 
-        public DateTime? DT_entrada { get; set; }
+        public DateTime? DataEntrada { get; set; }
 
         public virtual Produto Produto { get; set; }
     }

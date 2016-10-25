@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -41,6 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoMapper\EnderecoProfile.cs" />
+    <Compile Include="AutoMapper\PedidoItemProfile.cs" />
+    <Compile Include="AutoMapper\PedidoProfile.cs" />
+    <Compile Include="AutoMapper\ProdutoProfile.cs" />
+    <Compile Include="AutoMapper\UsuarioProfile.cs" />
     <Compile Include="DTO\EnderecoDTO.cs" />
     <Compile Include="DTO\PedidoDTO.cs" />
     <Compile Include="DTO\PedidoItemDTO.cs" />
@@ -50,15 +59,21 @@
     <Compile Include="Entities\Categoria.cs" />
     <Compile Include="Entities\Endereco.cs" />
     <Compile Include="Entities\Estoque_Entrada.cs" />
+    <Compile Include="Entities\Marca.cs" />
     <Compile Include="Entities\Pedido.cs" />
     <Compile Include="Entities\Pedido_Item.cs" />
     <Compile Include="Entities\Perfil.cs" />
     <Compile Include="Entities\Produto.cs" />
+    <Compile Include="Entities\Produto_Avaliacao.cs" />
+    <Compile Include="Entities\Produto_Imagens.cs" />
+    <Compile Include="Entities\Sub_Categoria.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Entities\Usuario_Perfil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

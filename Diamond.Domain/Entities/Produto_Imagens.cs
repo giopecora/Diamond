@@ -5,17 +5,18 @@ namespace Diamond.Domain.Entities
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public partial class Usuario_Perfil
+    public partial class Produto_Imagens
     {
         [Key]
         [Column(Order = 0)]
-        public int UsuarioId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int ProdutoId { get; set; }
 
         [Key]
         [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int PerfilId { get; set; }
+        [StringLength(100)]
+        public string Imagem { get; set; }
 
-        public bool? Ativo { get; set; }
+        public bool? Principal { get; set; }
     }
 }

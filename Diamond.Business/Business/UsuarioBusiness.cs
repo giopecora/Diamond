@@ -1,4 +1,5 @@
-﻿using Diamond.Domain.DTO;
+﻿using AutoMapper;
+using Diamond.Domain.DTO;
 using Diamond.Domain.DTO.Result;
 using Diamond.Domain.Entities;
 using Diamond.Repository.Repository;
@@ -30,15 +31,15 @@ namespace Diamond.Business.Business
             if (entity == null)
                 return result.SetFailure("Este Usuario nao existe!");
 
-            return result.SetData(new UsuarioDTO(entity));
+            return result.SetData(Mapper.Map<UsuarioDTO>(entity));
         }
 
         public Result<UsuarioDTO> Insert(UsuarioDTO usuario)
         {
             Result<UsuarioDTO> result = new Result<UsuarioDTO>();
-            Usuario entity = _repository.Insert(usuario.ToEntity());
+            Usuario entity = _repository.Insert(usuario);
 
-            usuario.Id = entity.ID_Usuario;
+            usuario = Mapper.Map<UsuarioDTO>(entity); ;
 
             return result.SetData(usuario);
         }
@@ -47,7 +48,7 @@ namespace Diamond.Business.Business
         {
             Result<bool> result = new Result<bool>();
 
-            result = _repository.Update(id, usuario.ToEntity());
+            result = _repository.Update(id, usuario);
 
             if (!result.Success)
                 result.SetFailure("Nao foi possivel atualizar este Usuario.");

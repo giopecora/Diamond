@@ -7,6 +7,7 @@ using Diamond.Repository;
 using Diamond.Domain.DTO.Result;
 using Diamond.Domain.Entities;
 using Diamond.Domain.DTO;
+using AutoMapper;
 
 namespace Diamond.Business
 {
@@ -38,15 +39,15 @@ namespace Diamond.Business
             if (entity == null)
                 return result.SetFailure("Este Produto nao existe!");
 
-            return result.SetData(new ProdutoDTO(entity));
+            return result.SetData(Mapper.Map<ProdutoDTO>(entity));
         }
 
         public Result<ProdutoDTO> Insert(ProdutoDTO produto)
         {
             Result<ProdutoDTO> result = new Result<ProdutoDTO>();
-            Produto entity = _repository.Insert(produto.ToEntity());
+            Produto entity = _repository.Insert(produto);
 
-            produto.Id = entity.ID_Produto;
+            produto = Mapper.Map<ProdutoDTO>(entity);
 
             return result.SetData(produto);
         }
@@ -55,7 +56,7 @@ namespace Diamond.Business
         {
             Result<bool> result = new Result<bool>();
 
-            result = _repository.Update(id, produto.ToEntity());
+            result = _repository.Update(id, produto);
 
             if (!result.Success)
                 result.SetFailure("Nao foi possivel atualizar este Produto.");

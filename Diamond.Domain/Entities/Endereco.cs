@@ -14,30 +14,29 @@ namespace Diamond.Domain.Entities
             Usuarios = new HashSet<Usuario>();
         }
 
-        [Key]
-        public int ID_Endereco { get; set; }
+        public int Id { get; set; }
 
         [StringLength(20)]
-        public string NM_Logradouro { get; set; }
+        public string Logradouro { get; set; }
 
         [StringLength(100)]
-        public string NM_Endereco { get; set; }
+        public string Nome { get; set; }
 
-        public int? NR_Endereco { get; set; }
+        public int? Numero { get; set; }
 
         [StringLength(50)]
-        public string DS_Complemento { get; set; }
+        public string Complemento { get; set; }
 
         [StringLength(7)]
-        public string NR_CEP { get; set; }
+        public string CEP { get; set; }
 
         [StringLength(40)]
-        public string NM_Cidade { get; set; }
+        public string Cidade { get; set; }
 
         [StringLength(2)]
-        public string DS_Sigla { get; set; }
+        public string Sigla { get; set; }
 
-        public int? NR_Tipo_Endereco { get; set; }
+        public int? TipoEndereco { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Usuario> Usuarios { get; set; }

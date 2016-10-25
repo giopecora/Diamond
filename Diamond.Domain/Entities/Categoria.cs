@@ -11,16 +11,16 @@ namespace Diamond.Domain.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Categoria()
         {
-            Produtoes = new HashSet<Produto>();
+            Sub_Categoria = new HashSet<Sub_Categoria>();
         }
 
-        [Key]
-        public int ID_Categoria { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int Id { get; set; }
 
         [StringLength(50)]
-        public string NM_Categoria { get; set; }
+        public string Nome { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Produto> Produtoes { get; set; }
+        public virtual ICollection<Sub_Categoria> Sub_Categoria { get; set; }
     }
 }

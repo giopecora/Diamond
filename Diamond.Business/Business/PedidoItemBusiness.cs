@@ -1,4 +1,5 @@
-﻿using Diamond.Domain.DTO;
+﻿using AutoMapper;
+using Diamond.Domain.DTO;
 using Diamond.Domain.DTO.Result;
 using Diamond.Domain.Entities;
 using Diamond.Repository.Repository;
@@ -30,15 +31,15 @@ namespace Diamond.Business.Business
             if (entity == null)
                 return result.SetFailure("Este Item de Pedido nao existe!");
 
-            return result.SetData(new PedidoItemDTO(entity));
+            return result.SetData(Mapper.Map<PedidoItemDTO>(entity));
         }
 
         public Result<PedidoItemDTO> Insert(PedidoItemDTO item)
         {
             Result<PedidoItemDTO> result = new Result<PedidoItemDTO>();
-            Pedido_Item entity = _repository.Insert(item.ToEntity());
+            Pedido_Item entity = _repository.Insert(item);
 
-            item.Id = entity.ID_Pedido_Item;
+            item = Mapper.Map<PedidoItemDTO>(entity);
 
             return result.SetData(item);
         }
@@ -47,7 +48,7 @@ namespace Diamond.Business.Business
         {
             Result<bool> result = new Result<bool>();
 
-            result = _repository.Update(id, item.ToEntity());
+            result = _repository.Update(id, item);
 
             if (!result.Success)
                 result.SetFailure("Nao foi possivel atualizar este Item.");

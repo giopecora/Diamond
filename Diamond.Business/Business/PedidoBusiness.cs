@@ -1,4 +1,5 @@
-﻿using Diamond.Domain.DTO;
+﻿using AutoMapper;
+using Diamond.Domain.DTO;
 using Diamond.Domain.DTO.Result;
 using Diamond.Domain.Entities;
 using Diamond.Repository.Repository;
@@ -30,15 +31,15 @@ namespace Diamond.Business.Business
             if (entity == null)
                 return result.SetFailure("Este Pedido nao existe!");
 
-            return result.SetData(new PedidoDTO(entity));
+            return result.SetData(Mapper.Map<PedidoDTO>(entity));
         }
 
         public Result<PedidoDTO> Insert(PedidoDTO pedido)
         {
             Result<PedidoDTO> result = new Result<PedidoDTO>();
-            Pedido entity = _repository.Insert(pedido.ToEntity());
+            Pedido entity = _repository.Insert(pedido);
 
-            pedido.Id = entity.ID_Pedido;
+            pedido = Mapper.Map<PedidoDTO>(entity);
 
             return result.SetData(pedido);
         }

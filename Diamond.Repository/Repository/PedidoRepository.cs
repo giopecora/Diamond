@@ -13,7 +13,7 @@ namespace Diamond.Repository.Repository
 
         public IEnumerable<Pedido> GetAllFromUser(int userId)
         {
-            return _context.Pedidos.Where(p => p.ID_Usuario == userId);
+            return _context.Pedidos.Where(p => p.Id == userId);
         }
 
         public Pedido GetById(int id)

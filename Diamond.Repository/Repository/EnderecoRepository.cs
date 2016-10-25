@@ -62,7 +62,7 @@ namespace Diamond.Repository.Repository
 
         private bool EnderecoExists(int id)
         {
-            return _context.Enderecos.Count(e => e.ID_Endereco == id) > 0;
+            return _context.Enderecos.Count(e => e.Id == id) > 0;
         }
     }
 }

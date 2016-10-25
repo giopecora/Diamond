@@ -21,7 +21,7 @@ namespace Diamond.Repository
 
         public IEnumerable<Produto> GetAllByCategoryId(int categoryId)
         {
-            return _context.Produtos.Where(p => p.ID_Categoria == categoryId);
+            return _context.Produtos.Where(p => p.Id == categoryId);
         }
 
         public Produto GetById(int id)
@@ -64,7 +64,7 @@ namespace Diamond.Repository
 
         private bool ProdutoExists(int id)
         {
-            return _context.Produtos.Count(e => e.ID_Produto == id) > 0;
+            return _context.Produtos.Count(e => e.Id == id) > 0;
         }
     }
 }

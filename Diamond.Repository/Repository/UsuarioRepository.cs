@@ -67,7 +67,7 @@ namespace Diamond.Repository.Repository
 
         private bool UsuarioExists(int id)
         {
-            return _context.Usuarios.Count(e => e.ID_Usuario == id) > 0;
+            return _context.Usuarios.Count(e => e.Id == id) > 0;
         }
     }
 }

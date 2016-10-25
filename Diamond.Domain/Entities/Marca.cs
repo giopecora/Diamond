@@ -5,12 +5,19 @@ namespace Diamond.Domain.Entities
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    [Table("Perfil")]
-    public partial class Perfil
+    [Table("Marca")]
+    public partial class Marca
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
-        [StringLength(30)]
+        [StringLength(50)]
         public string Nome { get; set; }
+
+        [StringLength(150)]
+        public string Descricao { get; set; }
+
+        [StringLength(150)]
+        public string Imagem { get; set; }
     }
 }

@@ -16,17 +16,17 @@ namespace Diamond.Repository.Repository
 
         public IEnumerable<Pedido_Item> GetAllFromPedido(int pedidoId)
         {
-            return _context.Pedido_Item.Where(pi => pi.ID_Pedido == pedidoId);
+            return _context.PedidosItens.Where(pi => pi.Id == pedidoId);
         }
 
         public Pedido_Item GetById(int id)
         {
-            return _context.Pedido_Item.Find(id);
+            return _context.PedidosItens.Find(id);
         }
 
         public Pedido_Item Insert(Pedido_Item entity)
         {
-            _context.Pedido_Item.Add(entity);
+            _context.PedidosItens.Add(entity);
             _context.SaveChanges();
 
             return entity;
@@ -61,13 +61,13 @@ namespace Diamond.Repository.Repository
         {
             Pedido_Item entity = GetById(id);
 
-            _context.Pedido_Item.Remove(entity);
+            _context.PedidosItens.Remove(entity);
             return _context.SaveChanges() > 0;
         }
 
         private bool PedidoItemExists(int id)
         {
-            return _context.Pedido_Item.Count(e => e.ID_Pedido_Item == id) > 0;
+            return _context.PedidosItens.Count(e => e.Id == id) > 0;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Diamond.Domain.DTO;
+﻿using AutoMapper;
+using Diamond.Domain.DTO;
 using Diamond.Domain.DTO.Result;
 using Diamond.Domain.Entities;
 using Diamond.Repository.Repository;
@@ -22,15 +23,15 @@ namespace Diamond.Business.Business
             if (entity == null)
                 result.SetFailure("Nao foi possivel encontrar este endereco");
 
-            return result.SetData(new EnderecoDTO(entity));
+            return result.SetData(Mapper.Map<EnderecoDTO>(entity));
         }
 
         public Result<EnderecoDTO> Insert(EnderecoDTO endereco)
         {
             Result<EnderecoDTO> result = new Result<EnderecoDTO>();
-            Endereco entity = _repository.Insert(endereco.ToEntity());
+            Endereco entity = _repository.Insert(endereco);
 
-            endereco.Id = entity.ID_Endereco;
+            endereco = Mapper.Map<EnderecoDTO>(entity);
 
             return result.SetData(endereco);
         }
@@ -39,7 +40,7 @@ namespace Diamond.Business.Business
         {
             Result<bool> result = new Result<bool>();
 
-            result = _repository.Update(id, endereco.ToEntity());
+            result = _repository.Update(id, endereco);
 
             if (!result.Success)
                 result.SetFailure("Nao foi possivel atualizar este Endereco.");
