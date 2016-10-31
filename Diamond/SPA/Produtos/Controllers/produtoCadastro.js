@@ -1,4 +1,4 @@
-﻿angular.module('Produto').controller('ProdutoCadastroCtrl', function ($scope) {
+﻿angular.module('Diamond').controller('ProdutoCadastroCtrl', function ($scope) {
   $scope.salvar = function(){
     
   }

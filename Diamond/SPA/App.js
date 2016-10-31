@@ -1,4 +1,4 @@
-﻿var App = angular.module('Diamond', ['ngRoute', 'Produto']);
+﻿var App = angular.module('Diamond', ['ngRoute']);
 
 App.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
@@ -10,6 +10,14 @@ App.config(['$routeProvider', function ($routeProvider) {
         .when('/Produtos', {
             templateUrl: 'SPA/Produtos/Views/produto.html',
             controller: 'ProdutoController'
+        })
+        .when('/Produtos/Cadastrar', {
+            templateUrl: 'SPA/Produtos/Views/produtoCadastro.html',
+            controller: 'ProdutoCadastroCtrl'
+        })
+        .when('/Produtos/primeiro', {
+            templateUrl: 'SPA/Produtos/Views/produtoDetalhe.html',
+            controller: 'ProdutoDetalheCtrl'
         })
     .otherwise({ redirectTo: '/Home' })
 }])

@@ -28,7 +28,6 @@ namespace Diamond
 
             bundles.Add(new ScriptBundle("~/bundles/SPA").Include(
                 "~/SPA/App.js",
-                "~/SPA/Produtos/mainProduto.js",
                 "~/SPA/Produtos/Controllers/produtoDetalhe.js",
                 "~/SPA/Produtos/Controllers/produtoCadastro.js",
                 "~/SPA/Home/Controllers/HomeController.js"));
