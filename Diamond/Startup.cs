@@ -18,8 +18,10 @@ namespace Diamond
         public void Configuration(IAppBuilder app)
         {
             ConfigureOAuth(app);
-            AutoMapperConfiguration.Configure();
 
+            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+
+            AutoMapperConfiguration.Configure();
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

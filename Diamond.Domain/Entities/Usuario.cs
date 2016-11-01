@@ -11,8 +11,8 @@ namespace Diamond.Domain.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Usuario()
         {
+            Cartaos = new HashSet<Cartao>();
             Pedidoes = new HashSet<Pedido>();
-            Produto_Avaliacao = new HashSet<Produto_Avaliacao>();
             Enderecoes = new HashSet<Endereco>();
         }
 
@@ -27,13 +27,16 @@ namespace Diamond.Domain.Entities
         [StringLength(50)]
         public string Senha { get; set; }
 
+        [StringLength(11)]
+        public string CPF { get; set; }
+
         public bool? Ativo { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pedido> Pedidoes { get; set; }
+        public virtual ICollection<Cartao> Cartaos { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Produto_Avaliacao> Produto_Avaliacao { get; set; }
+        public virtual ICollection<Pedido> Pedidoes { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Endereco> Enderecoes { get; set; }
