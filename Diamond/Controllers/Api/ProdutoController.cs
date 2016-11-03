@@ -39,6 +39,7 @@ namespace Diamond.Controllers.Api
         }
 
         [ResponseType(typeof(Result<List<ProdutoDTO>>))]
+        [Route("api/Produto/GetAllFromCategory/{categoryId:int}")]
         public IHttpActionResult GetAllFromCategory(int categoryId)
         {
             Result<List<ProdutoDTO>> result = new Result<List<ProdutoDTO>>();

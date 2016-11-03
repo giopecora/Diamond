@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ public static class IEnumerableExtension
 
         foreach (E item in from)
         {
-            lista.Add((D)Activator.CreateInstance(typeof(D), item));
+            lista.Add(Mapper.Map<D>(item));
         }
 
         return lista;
