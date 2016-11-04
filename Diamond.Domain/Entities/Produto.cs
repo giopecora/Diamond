@@ -12,6 +12,7 @@ namespace Diamond.Domain.Entities
         public Produto()
         {
             Estoque_Entrada = new HashSet<Estoque_Entrada>();
+            Estoque_Saida = new HashSet<Estoque_Saida>();
             Pedido_Item = new HashSet<Pedido_Item>();
         }
 
@@ -36,6 +37,9 @@ namespace Diamond.Domain.Entities
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Estoque_Entrada> Estoque_Entrada { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Estoque_Saida> Estoque_Saida { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pedido_Item> Pedido_Item { get; set; }

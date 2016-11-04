@@ -15,6 +15,24 @@ namespace Diamond.Business
     {
         private ProdutoRepository _repository = new ProdutoRepository();
 
+        public Result<List<ProdutoDestaqueDTO>> GetTop5()
+        {
+            return new Result<List<ProdutoDestaqueDTO>>().SetData(_repository.GetTop5());
+        }
+
+        public Result<List<ProdutoDestaqueDTO>> GetTop4OfAllCategories()
+        {
+            return new Result<List<ProdutoDestaqueDTO>>().SetData(_repository.GetTop4OfAllCategories());
+        }
+
+        public Result<List<ProdutoDTO>> GetTop3CheaperByCategory(int categoryId)
+        {
+            List<Produto> entities = _repository.GetTop3CheaperByCategory(categoryId);
+            List<ProdutoDTO> produtos = Mapper.Map<List<ProdutoDTO>>(entities);
+
+            return new Result<List<ProdutoDTO>>().SetData(produtos);
+        }
+
         public Result<List<ProdutoDTO>> GetAll()
         {
             Result<List<ProdutoDTO>> result = new Result<List<ProdutoDTO>>();

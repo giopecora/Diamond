@@ -14,6 +14,7 @@ namespace Diamond.Domain.AutoMapper
         public ProdutoProfile()
         {
             CreateMap<ProdutoDTO, Produto>().ReverseMap();
+            CreateMap<List<ProdutoDTO>, List<Produto>>().ReverseMap();
         }
     }
 }

@@ -53,6 +53,7 @@
     <Compile Include="DTO\EnderecoDTO.cs" />
     <Compile Include="DTO\PedidoDTO.cs" />
     <Compile Include="DTO\PedidoItemDTO.cs" />
+    <Compile Include="DTO\ProdutoDestaqueDTO.cs" />
     <Compile Include="DTO\ProdutoDTO.cs" />
     <Compile Include="DTO\Result\Result.cs" />
     <Compile Include="DTO\UsuarioDTO.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Entities\Categoria.cs" />
     <Compile Include="Entities\Endereco.cs" />
     <Compile Include="Entities\Estoque_Entrada.cs" />
+    <Compile Include="Entities\Estoque_Saida.cs" />
     <Compile Include="Entities\Marca.cs" />
     <Compile Include="Entities\Pedido.cs" />
     <Compile Include="Entities\Pedido_Item.cs" />

@@ -5,11 +5,13 @@ namespace Diamond.Domain.Entities
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public partial class Estoque_Entrada
+    public partial class Estoque_Saida
     {
         public int Id { get; set; }
 
         public int ProdutoId { get; set; }
+
+        public int? PedidoItemId { get; set; }
 
         public int? Quantidade { get; set; }
 
@@ -17,7 +19,9 @@ namespace Diamond.Domain.Entities
 
         public double? ValorTotal { get; set; }
 
-        public DateTime? DataEntrada { get; set; }
+        public DateTime? DataSaida { get; set; }
+
+        public virtual Pedido_Item Pedido_Item { get; set; }
 
         public virtual Produto Produto { get; set; }
     }

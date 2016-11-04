@@ -16,16 +16,17 @@ namespace Diamond.Repository
         }
 
         public virtual DbSet<Bandeira> Bandeiras { get; set; }
-        public virtual DbSet<Cartao> Cartaoes { get; set; }
+        public virtual DbSet<Cartao> Cartoes { get; set; }
         public virtual DbSet<Categoria> Categorias { get; set; }
         public virtual DbSet<Endereco> Enderecos { get; set; }
-        public virtual DbSet<Estoque_Entrada> EstoquesEntradas { get; set; }
+        public virtual DbSet<Estoque_Entrada> EstoqueEntradas { get; set; }
+        public virtual DbSet<Estoque_Saida> EstoqueSaidas { get; set; }
         public virtual DbSet<Marca> Marcas { get; set; }
         public virtual DbSet<Pedido> Pedidos { get; set; }
         public virtual DbSet<Pedido_Item> PedidosItens { get; set; }
         public virtual DbSet<Perfil> Perfis { get; set; }
         public virtual DbSet<Produto> Produtos { get; set; }
-        public virtual DbSet<Produto_Imagens> ProdutosImagens { get; set; }
+        public virtual DbSet<Produto_Imagens> ProdutoImagens { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
         public virtual DbSet<Usuario_Perfil> UsuariosPerfis { get; set; }
 
@@ -101,6 +102,11 @@ namespace Diamond.Repository
                 .WithRequired(e => e.Pedido)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<Pedido_Item>()
+                .HasMany(e => e.Estoque_Saida)
+                .WithOptional(e => e.Pedido_Item)
+                .HasForeignKey(e => e.PedidoItemId);
+
             modelBuilder.Entity<Perfil>()
                 .Property(e => e.Nome)
                 .IsUnicode(false);
@@ -115,6 +121,11 @@ namespace Diamond.Repository
 
             modelBuilder.Entity<Produto>()
                 .HasMany(e => e.Estoque_Entrada)
+                .WithRequired(e => e.Produto)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Produto>()
+                .HasMany(e => e.Estoque_Saida)
                 .WithRequired(e => e.Produto)
                 .WillCascadeOnDelete(false);
 
