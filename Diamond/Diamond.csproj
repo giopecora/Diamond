@@ -1091,6 +1091,7 @@
     <Content Include="SPA\Produtos\Controllers\produtoDetalhe.js" />
     <Content Include="SPA\Produtos\Views\produtoCadastro.html" />
     <Content Include="SPA\Produtos\Views\produtoDetalhe.html" />
+    <Content Include="SPA\Services\Util.js" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />

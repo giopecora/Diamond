@@ -5,7 +5,6 @@ App.config(['$routeProvider', function ($routeProvider) {
         .when('/Home', {
             templateUrl: 'SPA/Home/Views/index.html',
             controller: 'HomeController'
-            
         })
         .when('/Produtos', {
             templateUrl: 'SPA/Produtos/Views/produto.html',
