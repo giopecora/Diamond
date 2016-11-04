@@ -15,22 +15,43 @@ namespace Diamond.Repository
             Configuration.AutoDetectChangesEnabled = false;
         }
 
+        public virtual DbSet<Bandeira> Bandeiras { get; set; }
+        public virtual DbSet<Cartao> Cartoes { get; set; }
         public virtual DbSet<Categoria> Categorias { get; set; }
         public virtual DbSet<Endereco> Enderecos { get; set; }
-        public virtual DbSet<Estoque_Entrada> EstoqueEntrada { get; set; }
+        public virtual DbSet<Estoque_Entrada> EstoqueEntradas { get; set; }
+        public virtual DbSet<Estoque_Saida> EstoqueSaidas { get; set; }
         public virtual DbSet<Marca> Marcas { get; set; }
         public virtual DbSet<Pedido> Pedidos { get; set; }
         public virtual DbSet<Pedido_Item> PedidosItens { get; set; }
         public virtual DbSet<Perfil> Perfis { get; set; }
         public virtual DbSet<Produto> Produtos { get; set; }
-        public virtual DbSet<Produto_Avaliacao> ProdutosAvaliacoes { get; set; }
-        public virtual DbSet<Produto_Imagens> ProdutosImagens { get; set; }
-        public virtual DbSet<Sub_Categoria> SubCategorias { get; set; }
+        public virtual DbSet<Produto_Imagens> ProdutoImagens { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
         public virtual DbSet<Usuario_Perfil> UsuariosPerfis { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Bandeira>()
+                .Property(e => e.Nome)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Cartao>()
+                .Property(e => e.Numero)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Cartao>()
+                .Property(e => e.Nome)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Cartao>()
+                .Property(e => e.Vencimento)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Cartao>()
+                .Property(e => e.CCR)
+                .IsUnicode(false);
+
             modelBuilder.Entity<Categoria>()
                 .Property(e => e.Nome)
                 .IsUnicode(false);
@@ -81,6 +102,11 @@ namespace Diamond.Repository
                 .WithRequired(e => e.Pedido)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<Pedido_Item>()
+                .HasMany(e => e.Estoque_Saida)
+                .WithOptional(e => e.Pedido_Item)
+                .HasForeignKey(e => e.PedidoItemId);
+
             modelBuilder.Entity<Perfil>()
                 .Property(e => e.Nome)
                 .IsUnicode(false);
@@ -99,26 +125,17 @@ namespace Diamond.Repository
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Produto>()
+                .HasMany(e => e.Estoque_Saida)
+                .WithRequired(e => e.Produto)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Produto>()
                 .HasMany(e => e.Pedido_Item)
                 .WithRequired(e => e.Produto)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Produto>()
-                .HasMany(e => e.Produto_Avaliacao)
-                .WithRequired(e => e.Produto)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Produto>()
-                .HasMany(e => e.Sub_Categoria)
-                .WithMany(e => e.Produtoes)
-                .Map(m => m.ToTable("Produto_Sub_Categorias").MapLeftKey("ProdutoId").MapRightKey("SubCategoriaId"));
-
             modelBuilder.Entity<Produto_Imagens>()
                 .Property(e => e.Imagem)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Sub_Categoria>()
-                .Property(e => e.Nome)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Usuario>()
@@ -134,12 +151,11 @@ namespace Diamond.Repository
                 .IsUnicode(false);
 
             modelBuilder.Entity<Usuario>()
-                .HasMany(e => e.Pedidoes)
-                .WithRequired(e => e.Usuario)
-                .WillCascadeOnDelete(false);
+                .Property(e => e.CPF)
+                .IsUnicode(false);
 
             modelBuilder.Entity<Usuario>()
-                .HasMany(e => e.Produto_Avaliacao)
+                .HasMany(e => e.Pedidoes)
                 .WithRequired(e => e.Usuario)
                 .WillCascadeOnDelete(false);
         }

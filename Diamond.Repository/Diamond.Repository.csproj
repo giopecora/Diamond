@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="DiamondContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AuthenticationRepository.cs" />
     <Compile Include="Repository\EnderecoRepository.cs" />
     <Compile Include="Repository\PedidoItemRepository.cs" />
     <Compile Include="Repository\PedidoRepository.cs" />

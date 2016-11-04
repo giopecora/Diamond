@@ -20,6 +20,60 @@ namespace Diamond.Controllers.Api
     {
         private ProdutoBusiness _business = new ProdutoBusiness();
 
+        [ResponseType(typeof(Result<List<ProdutoDestaqueDTO>>))]
+        [Route("api/Produto/GetTop5")]
+        public IHttpActionResult GetTop5()
+        {
+            Result<List<ProdutoDestaqueDTO>> result = new Result<List<ProdutoDestaqueDTO>>();
+
+            try
+            {
+                result = _business.GetTop5();
+            }
+            catch(Exception ex)
+            {
+                result.SetError(ex);
+            }
+
+            return Ok(result);
+        }
+
+        [ResponseType(typeof(Result<List<ProdutoDestaqueDTO>>))]
+        [Route("api/Produto/GetTop4OfAllCategories")]
+        public IHttpActionResult GetTop4OfAllCategories()
+        {
+            Result<List<ProdutoDestaqueDTO>> result = new Result<List<ProdutoDestaqueDTO>>();
+
+            try
+            {
+                result = _business.GetTop4OfAllCategories();
+            }
+            catch (Exception ex)
+            {
+                result.SetError(ex);
+            }
+
+            return Ok(result);
+        }
+
+        [ResponseType(typeof(Result<List<ProdutoDTO>>))]
+        [Route("api/Produto/GetTop3CheaperByCategory/{categoryId:int}")]
+        public IHttpActionResult GetTop3CheaperByCategory(int categoryId)
+        {
+            Result<List<ProdutoDTO>> result = new Result<List<ProdutoDTO>>();
+
+            try
+            {
+                result = _business.GetTop3CheaperByCategory(categoryId);
+            }
+            catch (Exception ex)
+            {
+                result.SetError(ex);
+            }
+
+            return Ok(result);
+        }
+
         [ResponseType(typeof(Result<List<ProdutoDTO>>))]
         // GET: api/Produtos
         public IHttpActionResult GetAll()
@@ -39,6 +93,7 @@ namespace Diamond.Controllers.Api
         }
 
         [ResponseType(typeof(Result<List<ProdutoDTO>>))]
+        [Route("api/Produto/GetAllFromCategory/{categoryId:int}")]
         public IHttpActionResult GetAllFromCategory(int categoryId)
         {
             Result<List<ProdutoDTO>> result = new Result<List<ProdutoDTO>>();
