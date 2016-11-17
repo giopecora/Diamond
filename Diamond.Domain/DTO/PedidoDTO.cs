@@ -8,9 +8,12 @@ using System.Threading.Tasks;
 
 namespace Diamond.Domain.DTO
 {
-    [NotMapped]
-    public class PedidoDTO : Pedido
+    public class PedidoDTO
     {
-        
+        public int Id { get; set; }
+        public int UsuarioId { get; set; }
+        public DateTime? DataPedido { get; set; }
+        public double? ValorTotal { get; set; }
+        public List<PedidoItemDTO> Itens { get; set; }
     }
 }

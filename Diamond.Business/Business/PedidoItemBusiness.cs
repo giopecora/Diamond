@@ -37,9 +37,9 @@ namespace Diamond.Business.Business
         public Result<PedidoItemDTO> Insert(PedidoItemDTO item)
         {
             Result<PedidoItemDTO> result = new Result<PedidoItemDTO>();
-            Pedido_Item entity = _repository.Insert(item);
+            Pedido_Item entity = _repository.Insert(Mapper.Map<Pedido_Item>(item));
 
-            item = Mapper.Map<PedidoItemDTO>(entity);
+            item.Id = entity.Id;
 
             return result.SetData(item);
         }
@@ -48,7 +48,7 @@ namespace Diamond.Business.Business
         {
             Result<bool> result = new Result<bool>();
 
-            result = _repository.Update(id, item);
+            result = _repository.Update(id, Mapper.Map<Pedido_Item>(item));
 
             if (!result.Success)
                 result.SetFailure("Nao foi possivel atualizar este Item.");
