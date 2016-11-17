@@ -26,12 +26,6 @@ namespace Diamond
                 "~/Scripts/angular.min.js",
                 "~/Scripts/angular-route.min.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/SPA").Include(
-                "~/SPA/App.js",
-                "~/SPA/Produtos/Controllers/produtoDetalhe.js",
-                "~/SPA/Produtos/Controllers/produtoCadastro.js",
-                "~/SPA/Home/Controllers/HomeController.js"));
-
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
@@ -39,7 +33,15 @@ namespace Diamond
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/bootstrap.js",
-                "~/Scripts/respond.js"));
+                "~/Scripts/respond.js",
+                "~/Scripts/ui-bootstrap-2.2.0.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/SPA").Include(
+                "~/SPA/App.js",
+                "~/SPA/Produtos/Controllers/produtoDetalhe.js",
+                "~/SPA/Produtos/Controllers/produtoCadastro.js",
+                "~/SPA/Home/Controllers/HomeController.js",
+                "~/SPA/Carrinho/Controllers/mainCarrinho.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                  "~/Content/bootstrap.css",
