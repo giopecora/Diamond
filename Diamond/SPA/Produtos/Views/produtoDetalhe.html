@@ -13,16 +13,14 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <img src="http://i.mlcdn.com.br/1500x1500/notebook-dell-inspiron-14-i14-5458-b08p-intel-corei3-4gb-1tb-led-14-34-windows-10-135233800.jpg"
-                 id="ImagemProduto"/>
+            <img src="{{prooduto.imagem}}" id="ImagemProduto" alt="Imagem Produto"/>
         </div>
         <div class="col-md-offset-1 col-md-8">
             <div class="row">
-                <div class="col-md-12"><h1>Notebook Dell</h1></div>
-                <div class="col-md-12"><p id="descricao">Notebook Dell Inspiron 15 I15-5558-A50 Intel Core <br /> - i7 8GB 1TB LED 15,6" Placa de Vídeo 4GB Windows 10</p></div>
+                <div class="col-md-12"><h1>{{produto.nome}}</h1></div>
             </div>
             <div class="row">
-                <div class="col-md-12 col-sm-12"><p id="preco">R$2600,00</p></div>
+                <div class="col-md-12 col-sm-12"><p id="preco">{{produto.preco | currency}}</p></div>
                 <div class="col-md-12 col-sm-12"><button class="btn btn-success btn-fixed" id="comprar">Adicionar ao carrinho</button></div>
             </div>
         </div>
