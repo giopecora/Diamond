@@ -37,9 +37,16 @@ namespace Diamond.Business.Business
         public Result<PedidoDTO> Insert(PedidoDTO pedido)
         {
             Result<PedidoDTO> result = new Result<PedidoDTO>();
-            Pedido entity = _repository.Insert(pedido);
+            Pedido entity = Mapper.Map<Pedido>(pedido);
 
-            pedido = Mapper.Map<PedidoDTO>(entity);
+            foreach(PedidoItemDTO item in pedido.Itens)
+            {
+                entity.Pedido_Item.Add(Mapper.Map<Pedido_Item>(item));
+            }
+
+            entity = _repository.Insert(entity);
+
+            pedido.Id = entity.Id;
 
             return result.SetData(pedido);
         }
