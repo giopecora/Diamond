@@ -63,9 +63,9 @@ namespace Diamond.Business
         public Result<ProdutoDTO> Insert(ProdutoDTO produto)
         {
             Result<ProdutoDTO> result = new Result<ProdutoDTO>();
-            Produto entity = _repository.Insert(produto);
+            Produto entity = _repository.Insert(Mapper.Map<Produto>(produto));
 
-            produto = Mapper.Map<ProdutoDTO>(entity);
+            produto.Id = entity.Id;
 
             return result.SetData(produto);
         }
@@ -74,7 +74,7 @@ namespace Diamond.Business
         {
             Result<bool> result = new Result<bool>();
 
-            result = _repository.Update(id, produto);
+            result = _repository.Update(id, Mapper.Map<Produto>(produto));
 
             if (!result.Success)
                 result.SetFailure("Nao foi possivel atualizar este Produto.");
