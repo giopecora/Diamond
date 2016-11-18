@@ -2,15 +2,15 @@
     .item img{
         height: 500px;
         width: 500px
-    }
-    .card {
+}
+    .main-card {
     /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
 }
 
 /* On mouse-over, add a deeper shadow */
-.card:hover {
+.main-card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
@@ -18,6 +18,10 @@
 .conteudo {
     padding: 2px 16px;
     background: gray;
+}
+
+.conteudo p{
+    font-size: 15px;
 }
 
 .cards{
@@ -32,7 +36,6 @@ button{
 }
 </style>
 <div class="container">
-
     <div class="row">
         <div class="col-md-12">
             <div uib-carousel active="$index" interval="5000">
@@ -42,19 +45,31 @@ button{
             </div>
         </div>
     </div>
-
     <div class="row">
         <h3 class="col-md-2  col-md-offset-5">Destaques</h3>
     </div>
     <div class="row">
-        <div class="col-md-4" ng-repeat="destaque in destaques track by $index">
-            <div class="card text-center">
-                <img src="{{destaque.imagem}}" height="200" width="100%" alt="Imagem Produto">
+        <div class="col-md-6">
+            <div class="main-card">
+                <img src="{{destaques[0].imagem}}"/>
                 <div class="conteudo">
-                    <h3>{{destaque.nome}}</h3>
-                    <h4>{{destaque.preco | currency}}</h4>
+                    <p>{{destaques[0].nome}}</p>
+                    <h4>{{destaques[0].preco | currency}}</h4>
                 </div>
-                <button>Adicionar a ocarrinho</button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6" ng-repeat="destaque in destaques track by $index">
+                    <div class="card text-center">
+                        <img src="{{destaque.imagem}}" height="200" width="100%" alt="Imagem Produto">
+                        <div class="conteudo">
+                            <p>{{destaque.nome}}</p>
+                            <h4>{{destaque.preco | currency}}</h4>
+                        </div>
+                        <button>Adicionar a ocarrinho</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -1,24 +1,20 @@
-﻿angular.module('Diamond').factory('UtilService', function ($http) {
+﻿angular.module('Diamond').service('UtilService', function ($http, $cookies) {
 
+    return {
+        adicionarAoCarrinho: function (produto) {
+            var TmpCarrinho = [];
+            if ($cookies.Carrinho) {
+                TmpCarrinho = JSON.parse($cookies.Carrinho);
 
+                if (Array.isArray(TmpCarrinho)) {
+                    TmpCarrinho.push(produto);
+                }
 
-    var chamarApi = function (endpoint, params, sucess, error) {
-
-        //var url = link + "/" + endpoint + (params ? "?JsonChamada=" + JSON.stringify(params) : "");
-        var uri = url.replace(/#/g, '%23');
-        uri = uri.replace(/&/g, '%26');
-
-        $http.get(uri)
-        .then(function (response) {
-            if (response.data.MensagemErro) {
-                console.log('erro do backend');
-                console.log(response.data);
-                tratarErro(response.data.MensagemErro);
+                $cookies.Carrinho = JSON.stringify(TmpCarrinho);
             } else {
-                sucess(response);
+                TmpCarrinho.push(produto);
+                $cookies.Carrinho = JSON.stringify(TmpCarrinho);
             }
-        }, function () {
-            error();
-        });
+        }
     };
-})
+});

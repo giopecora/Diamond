@@ -24,6 +24,7 @@ namespace Diamond
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                 "~/Scripts/angular.min.js",
+                "~/Scripts/angular-cookies.min.js",
                 "~/Scripts/angular-route.min.js",
                 "~/Scripts/ui-bootstrap-tpls-2.2.0.min.js"));
 
@@ -39,6 +40,7 @@ namespace Diamond
 
             bundles.Add(new ScriptBundle("~/bundles/SPA").Include(
                 "~/SPA/App.js",
+                "~/SPA/Services/Util.js",
                 "~/SPA/Produtos/Controllers/produtoDetalhe.js",
                 "~/SPA/Produtos/Controllers/produtoCadastro.js",
                 "~/SPA/Home/Controllers/HomeController.js",
