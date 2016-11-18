@@ -15,60 +15,44 @@ namespace Diamond.Business.Business
     {
         private UsuarioRepository _repository = new UsuarioRepository();
 
-        public Result<List<UsuarioDTO>> GetAll()
+        public List<UsuarioDTO> GetAll()
         {
-            Result<List<UsuarioDTO>> result = new Result<List<UsuarioDTO>>();
-            List<UsuarioDTO> usuarios = _repository.GetAll().ToDTO<Usuario, UsuarioDTO>();
-
-            return result.SetData(usuarios);
+            return _repository.GetAll().ToDTO<Usuario, UsuarioDTO>();
         }
 
-        public Result<UsuarioDTO> GetById(int id)
+        public UsuarioDTO GetById(int id)
         {
-            Result<UsuarioDTO> result = new Result<UsuarioDTO>();
             Usuario entity = _repository.GetById(id);
 
             if (entity == null)
-                return result.SetFailure("Este Usuario nao existe!");
+                throw new Exception("Este Usuario nao existe!");
 
-            return result.SetData(Mapper.Map<UsuarioDTO>(entity));
+            return Mapper.Map<UsuarioDTO>(entity);
         }
 
-        public Result<UsuarioDTO> Insert(UsuarioDTO usuario)
+        public UsuarioDTO Insert(UsuarioDTO usuario)
         {
-            Result<UsuarioDTO> result = new Result<UsuarioDTO>();
             Usuario entity = _repository.Insert(usuario);
 
-            usuario = Mapper.Map<UsuarioDTO>(entity); ;
+            usuario.Id = entity.Id;
 
-            return result.SetData(usuario);
+            return usuario;
         }
 
-        public Result<bool> Update(int id, UsuarioDTO usuario)
+        public void Update(int id, UsuarioDTO usuario)
         {
-            Result<bool> result = new Result<bool>();
+            bool result = _repository.Update(id, usuario);
 
-            result = _repository.Update(id, usuario);
-
-            if (!result.Success)
-                result.SetFailure("Nao foi possivel atualizar este Usuario.");
-
-            return result;
+            if (!result)
+                throw new Exception("Nao foi possivel atualizar este Usuario.");
         }
 
-        public Result<bool> Delete(int id)
+        public void Delete(int id)
         {
-            Result<bool> result = new Result<bool>();
-
-            UsuarioDTO usuario = GetById(id).Data;
+            UsuarioDTO usuario = GetById(id);
             usuario.Ativo = false;
 
-            result = Update(id, usuario);
-
-            if (!result.Success)
-                result.SetFailure("Nao foi possivel excluir este usuario");
-
-            return result;
+            Update(id, usuario);
         }
     }
 }

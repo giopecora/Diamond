@@ -23,12 +23,12 @@ namespace Diamond.Repository
         public virtual DbSet<Estoque_Saida> EstoqueSaidas { get; set; }
         public virtual DbSet<Marca> Marcas { get; set; }
         public virtual DbSet<Pedido> Pedidos { get; set; }
-        public virtual DbSet<Pedido_Item> PedidosItens { get; set; }
+        public virtual DbSet<Pedido_Item> PedidoItens { get; set; }
         public virtual DbSet<Perfil> Perfis { get; set; }
         public virtual DbSet<Produto> Produtos { get; set; }
         public virtual DbSet<Produto_Imagens> ProdutoImagens { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
-        public virtual DbSet<Usuario_Perfil> UsuariosPerfis { get; set; }
+        public virtual DbSet<Usuario_Perfil> UsuarioPerfis { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -117,6 +117,10 @@ namespace Diamond.Repository
 
             modelBuilder.Entity<Produto>()
                 .Property(e => e.Descricao)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Produto>()
+                .Property(e => e.ImagemPrincipal)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Produto>()

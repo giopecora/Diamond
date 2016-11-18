@@ -32,10 +32,8 @@ namespace Diamond.Repository.Repository
             return entity;
         }
 
-        public Result<bool> Update(int id, Usuario entity)
+        public bool Update(int id, Usuario entity)
         {
-            Result<bool> result = new Result<bool>();
-
             _context.Entry(entity).State = EntityState.Modified;
 
             try
@@ -44,17 +42,10 @@ namespace Diamond.Repository.Repository
             }
             catch (DbUpdateConcurrencyException ex)
             {
-                if (!UsuarioExists(id))
-                {
-                    return result.SetError(ex);
-                }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
-            return result.SetData(true);
+            return true;
         }
 
         public bool Delete(int id)

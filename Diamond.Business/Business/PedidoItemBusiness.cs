@@ -15,57 +15,44 @@ namespace Diamond.Business.Business
     {
         private PedidoItemRepository _repository = new PedidoItemRepository();
 
-        public Result<List<PedidoItemDTO>> GetAllFromPedido(int pedidoId)
+        public List<PedidoItemDTO> GetAllFromPedido(int pedidoId)
         {
-            Result<List<PedidoItemDTO>> result = new Result<List<PedidoItemDTO>>();
-            List<PedidoItemDTO> itens = _repository.GetAllFromPedido(pedidoId).ToDTO<Pedido_Item, PedidoItemDTO>();
-
-            return result.SetData(itens);
+            return _repository.GetAllFromPedido(pedidoId).ToDTO<Pedido_Item, PedidoItemDTO>();
         }
 
-        public Result<PedidoItemDTO> GetById(int id)
+        public PedidoItemDTO GetById(int id)
         {
-            Result<PedidoItemDTO> result = new Result<PedidoItemDTO>();
             Pedido_Item entity = _repository.GetById(id);
 
             if (entity == null)
-                return result.SetFailure("Este Item de Pedido nao existe!");
+                throw new Exception("Este Item de Pedido nao existe!");
 
-            return result.SetData(Mapper.Map<PedidoItemDTO>(entity));
+            return Mapper.Map<PedidoItemDTO>(entity);
         }
 
-        public Result<PedidoItemDTO> Insert(PedidoItemDTO item)
+        public PedidoItemDTO Insert(PedidoItemDTO item)
         {
-            Result<PedidoItemDTO> result = new Result<PedidoItemDTO>();
             Pedido_Item entity = _repository.Insert(Mapper.Map<Pedido_Item>(item));
 
             item.Id = entity.Id;
 
-            return result.SetData(item);
+            return item;
         }
 
-        public Result<bool> Update(int id, PedidoItemDTO item)
+        public void Update(int id, PedidoItemDTO item)
         {
-            Result<bool> result = new Result<bool>();
+            bool result = _repository.Update(id, Mapper.Map<Pedido_Item>(item));
 
-            result = _repository.Update(id, Mapper.Map<Pedido_Item>(item));
-
-            if (!result.Success)
-                result.SetFailure("Nao foi possivel atualizar este Item.");
-
-            return result;
+            if (!result)
+                throw new Exception("Nao foi possivel atualizar este Item.");
         }
 
-        public Result<bool> Delete(int id)
+        public void Delete(int id)
         {
-            Result<bool> result = new Result<bool>();
+            bool success = _repository.Delete(id);
 
-            result.Success = _repository.Delete(id);
-
-            if (!result.Success)
-                result.SetFailure("Nao foi possivel excluir este item");
-
-            return result;
+            if (!success)
+                throw new Exception("Nao foi possivel excluir este item");
         }
     }
 }

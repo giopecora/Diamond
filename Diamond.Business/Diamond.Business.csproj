@@ -49,6 +49,7 @@
     <Compile Include="Business\PedidoBusiness.cs" />
     <Compile Include="Business\PedidoItemBusiness.cs" />
     <Compile Include="Business\ProdutoBusiness.cs" />
+    <Compile Include="Business\ProdutoImagemBusiness.cs" />
     <Compile Include="Business\UsuarioBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

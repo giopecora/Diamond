@@ -12,7 +12,7 @@ namespace Diamond.Domain.DTO
     {
         public ProdutoDTO()
         {
-            Imagens = new List<Produto_Imagens>();
+            Imagens = new List<ProdutoImagemDTO>();
         }
 
         public int Id { get; set; }
@@ -24,6 +24,17 @@ namespace Diamond.Domain.DTO
         public int? Quantidade { get; set; }
         public bool? Ativo { get; set; }
 
-        public List<Produto_Imagens> Imagens { get; set; }
+        public string ImagemPrincipal { get; set; }
+
+        public string Action
+        {
+            get
+            {
+                string action = $"Home/AbrirImagem?produtoId={Id}&nome={ImagemPrincipal}";
+                return $"http://localhost:59783/" + action;
+            }
+        }
+
+        public List<ProdutoImagemDTO> Imagens { get; set; }
     }
 }

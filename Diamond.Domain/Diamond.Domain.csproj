@@ -48,6 +48,7 @@
     <Compile Include="AutoMapper\EnderecoProfile.cs" />
     <Compile Include="AutoMapper\PedidoItemProfile.cs" />
     <Compile Include="AutoMapper\PedidoProfile.cs" />
+    <Compile Include="AutoMapper\ProdutoImagemProfile.cs" />
     <Compile Include="AutoMapper\ProdutoProfile.cs" />
     <Compile Include="AutoMapper\UsuarioProfile.cs" />
     <Compile Include="DTO\EnderecoDTO.cs" />
@@ -55,7 +56,7 @@
     <Compile Include="DTO\PedidoItemDTO.cs" />
     <Compile Include="DTO\ProdutoDestaqueDTO.cs" />
     <Compile Include="DTO\ProdutoDTO.cs" />
-    <Compile Include="DTO\ProdutoImagensDTO.cs" />
+    <Compile Include="DTO\ProdutoImagemDTO.cs" />
     <Compile Include="DTO\Result\Result.cs" />
     <Compile Include="DTO\UsuarioDTO.cs" />
     <Compile Include="Entities\Bandeira.cs" />

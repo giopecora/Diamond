@@ -15,94 +15,88 @@ namespace Diamond.Controllers.Api
     {
         private PedidoItemBusiness _business = new PedidoItemBusiness();
 
-        [ResponseType(typeof(Result<List<PedidoItemDTO>>))]
+        [ResponseType(typeof(List<PedidoItemDTO>))]
         [Route("api/PedidoItem/GetAllFromPedido/{pedidoId:int}")]
         // GET: api/Produtos
         public IHttpActionResult GetAllFromPedido(int pedidoId)
         {
-            Result<List<PedidoItemDTO>> result = new Result<List<PedidoItemDTO>>();
+            List<PedidoItemDTO> itens = new List<PedidoItemDTO>();
 
             try
             {
-                result = _business.GetAllFromPedido(pedidoId);
+                itens = _business.GetAllFromPedido(pedidoId);
             }
             catch (Exception ex)
             {
-                result.SetError(ex);
+                return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok(itens);
         }
 
-        [ResponseType(typeof(Result<PedidoItemDTO>))]
+        [ResponseType(typeof(PedidoItemDTO))]
         public IHttpActionResult Get(int id)
         {
-            Result<PedidoItemDTO> result = new Result<PedidoItemDTO>();
+            PedidoItemDTO item = new PedidoItemDTO();
 
             try
             {
-                result = _business.GetById(id);
+                item = _business.GetById(id);
             }
             catch (Exception ex)
             {
-                result.SetError(ex);
+                return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok(item);
         }
 
         // PUT: api/Produtos/5
-        [ResponseType(typeof(Result<bool>))]
+        [ResponseType(typeof(IHttpActionResult))]
         public IHttpActionResult Put(int id, [FromBody]PedidoItemDTO pedidoItem)
         {
-            Result<bool> result = new Result<bool>();
-
             try
             {
-                result = _business.Update(id, pedidoItem);
+                _business.Update(id, pedidoItem);
             }
             catch (Exception ex)
             {
-                result.SetError(ex);
+                return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok();
         }
 
         // POST: api/Produtos
-        [ResponseType(typeof(Result<PedidoItemDTO>))]
+        [ResponseType(typeof(PedidoItemDTO))]
         public IHttpActionResult Post([FromBody]PedidoItemDTO pedidoItem)
         {
-            Result<PedidoItemDTO> result = new Result<PedidoItemDTO>();
-
             try
             {
-                result = _business.Insert(pedidoItem);
+                pedidoItem = _business.Insert(pedidoItem);
             }
             catch (Exception ex)
             {
-                result.SetError(ex);
+                return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok(pedidoItem);
         }
 
         // DELETE: api/Produtos/5
-        [ResponseType(typeof(Result<bool>))]
+        [ResponseType(typeof(IHttpActionResult))]
         public IHttpActionResult Delete(int id)
         {
-            Result<bool> result = new Result<bool>();
-
             try
             {
-                result = _business.Delete(id);
+                _business.Delete(id);
             }
             catch (Exception ex)
             {
-                result.SetError(ex);
+                return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok();
         }
     }
 }

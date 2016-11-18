@@ -18,18 +18,18 @@ namespace Diamond.Controllers.Api
         [ResponseType(typeof(Result<EnderecoDTO>))]
         public IHttpActionResult Get(int id)
         {
-            Result<EnderecoDTO> result = new Result<EnderecoDTO>();
+            EnderecoDTO endereco = new EnderecoDTO();
 
             try
             {
-                result = _business.GetById(id);
+                endereco = _business.GetById(id);
             }
             catch (Exception ex)
             {
-                result.SetError(ex);
+                return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok(endereco);
         }
 
         [ResponseType(typeof(Result<bool>))]
@@ -39,7 +39,7 @@ namespace Diamond.Controllers.Api
 
             try
             {
-                result = _business.Update(id, endereco);
+                _business.Update(id, endereco);
             }
             catch (Exception ex)
             {
@@ -53,7 +53,7 @@ namespace Diamond.Controllers.Api
         [ResponseType(typeof(Result<EnderecoDTO>))]
         public IHttpActionResult Post([FromBody]EnderecoDTO endereco)
         {
-            Result<EnderecoDTO> result = new Result<EnderecoDTO>();
+            EnderecoDTO result = new EnderecoDTO();
 
             try
             {
@@ -61,7 +61,7 @@ namespace Diamond.Controllers.Api
             }
             catch (Exception ex)
             {
-                result.SetError(ex);
+                return InternalServerError(ex);
             }
 
             return Ok(result);
@@ -75,7 +75,7 @@ namespace Diamond.Controllers.Api
 
             try
             {
-                result = _business.Delete(id);
+                _business.Delete(id);
             }
             catch (Exception ex)
             {

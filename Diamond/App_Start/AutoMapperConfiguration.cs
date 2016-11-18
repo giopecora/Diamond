@@ -17,6 +17,7 @@ namespace Diamond.App_Start
                 cfg.AddProfile(new PedidoItemProfile());
                 cfg.AddProfile(new PedidoProfile());
                 cfg.AddProfile(new ProdutoProfile());
+                cfg.AddProfile(new ProdutoImagemProfile());
                 cfg.AddProfile(new UsuarioProfile());
             });
         }

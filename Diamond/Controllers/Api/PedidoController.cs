@@ -15,77 +15,73 @@ namespace Diamond.Controllers.Api
     {
         private PedidoBusiness _business = new PedidoBusiness();
 
-        [ResponseType(typeof(Result<List<PedidoDTO>>))]
+        [ResponseType(typeof(List<PedidoDTO>))]
         [Route("api/Pedido/GetAllFromUser/{userId:int}")]
         // GET: api/Produtos
         public IHttpActionResult GetAllFromUser(int userId)
         {
-            Result<List<PedidoDTO>> result = new Result<List<PedidoDTO>>();
+            List<PedidoDTO> pedidos = new List<PedidoDTO>();
 
             try
             {
-                result = _business.GetAllFromUser(userId);
+                pedidos = _business.GetAllFromUser(userId);
             }
             catch (Exception ex)
             {
-                result.SetError(ex);
+                return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok(pedidos);
         }
 
-        [ResponseType(typeof(Result<PedidoDTO>))]
+        [ResponseType(typeof(PedidoDTO))]
         // GET: api/Produtos
         public IHttpActionResult GetById(int id)
         {
-            Result<PedidoDTO> result = new Result<PedidoDTO>();
+            PedidoDTO pedido = new PedidoDTO();
 
             try
             {
-                result = _business.GetById(id);
+                pedido = _business.GetById(id);
             }
             catch (Exception ex)
             {
-                result.SetError(ex);
+                return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok(pedido);
         }
 
         // POST: api/Produtos
-        [ResponseType(typeof(Result<PedidoDTO>))]
+        [ResponseType(typeof(PedidoDTO))]
         public IHttpActionResult Post([FromBody]PedidoDTO pedido)
         {
-            Result<PedidoDTO> result = new Result<PedidoDTO>();
-
             try
             {
-                result = _business.Insert(pedido);
+                pedido = _business.Insert(pedido);
             }
             catch (Exception ex)
             {
-                result.SetError(ex);
+                return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok(pedido);
         }
 
         // DELETE: api/Produtos/5
-        [ResponseType(typeof(Result<bool>))]
+        [ResponseType(typeof(IHttpActionResult))]
         public IHttpActionResult Delete(int id)
         {
-            Result<bool> result = new Result<bool>();
-
             try
             {
-                result = _business.Delete(id);
+                _business.Delete(id);
             }
             catch (Exception ex)
             {
-                result.SetError(ex);
+                return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok();
         }
     }
 }

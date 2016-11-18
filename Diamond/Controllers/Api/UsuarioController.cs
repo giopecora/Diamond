@@ -15,93 +15,87 @@ namespace Diamond.Controllers.Api
     {
         private UsuarioBusiness _business = new UsuarioBusiness();
 
-        [ResponseType(typeof(Result<List<UsuarioDTO>>))]
+        [ResponseType(typeof(List<UsuarioDTO>))]
         // GET: api/Produtos
         public IHttpActionResult GetAll()
         {
-            Result<List<UsuarioDTO>> result = new Result<List<UsuarioDTO>>();
+            List<UsuarioDTO> usuarios = new List<UsuarioDTO>();
 
             try
             {
-                result = _business.GetAll();
+                usuarios = _business.GetAll();
             }
             catch (Exception ex)
             {
-                result.SetError(ex);
+                return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok(usuarios);
         }
 
-        [ResponseType(typeof(Result<UsuarioDTO>))]
+        [ResponseType(typeof(UsuarioDTO))]
         public IHttpActionResult Get(int id)
         {
-            Result<UsuarioDTO> result = new Result<UsuarioDTO>();
+            UsuarioDTO usuario = new UsuarioDTO();
 
             try
             {
-                result = _business.GetById(id);
+                usuario = _business.GetById(id);
             }
             catch (Exception ex)
             {
-                result.SetError(ex);
+                return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok(usuario);
         }
 
         // PUT: api/Produtos/5
-        [ResponseType(typeof(Result<bool>))]
+        [ResponseType(typeof(IHttpActionResult))]
         public IHttpActionResult Put(int id, [FromBody]UsuarioDTO usuario)
         {
-            Result<bool> result = new Result<bool>();
-
             try
             {
-                result = _business.Update(id, usuario);
+                _business.Update(id, usuario);
             }
             catch (Exception ex)
             {
-                result.SetError(ex);
+                return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok();
         }
 
         // POST: api/Produtos
-        [ResponseType(typeof(Result<UsuarioDTO>))]
+        [ResponseType(typeof(UsuarioDTO))]
         public IHttpActionResult Post([FromBody]UsuarioDTO usuario)
         {
-            Result<UsuarioDTO> result = new Result<UsuarioDTO>();
-
             try
             {
-                result = _business.Insert(usuario);
+                usuario = _business.Insert(usuario);
             }
             catch (Exception ex)
             {
-                result.SetError(ex);
+                return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok(usuario);
         }
 
         // DELETE: api/Produtos/5
-        [ResponseType(typeof(Result<bool>))]
+        [ResponseType(typeof(IHttpActionResult))]
         public IHttpActionResult Delete(int id)
         {
-            Result<bool> result = new Result<bool>();
-
             try
             {
-                result = _business.Delete(id);
+                _business.Delete(id);
             }
             catch (Exception ex)
             {
-                result.SetError(ex);
+                return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok();
         }
     }
 }

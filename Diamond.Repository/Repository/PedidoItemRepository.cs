@@ -16,26 +16,24 @@ namespace Diamond.Repository.Repository
 
         public IEnumerable<Pedido_Item> GetAllFromPedido(int pedidoId)
         {
-            return _context.PedidosItens.Where(pi => pi.Id == pedidoId);
+            return _context.PedidoItens.Where(pi => pi.Id == pedidoId);
         }
 
         public Pedido_Item GetById(int id)
         {
-            return _context.PedidosItens.Find(id);
+            return _context.PedidoItens.Find(id);
         }
 
         public Pedido_Item Insert(Pedido_Item entity)
         {
-            _context.PedidosItens.Add(entity);
+            _context.PedidoItens.Add(entity);
             _context.SaveChanges();
 
             return entity;
         }
 
-        public Result<bool> Update(int id, Pedido_Item entity)
+        public bool Update(int id, Pedido_Item entity)
         {
-            Result<bool> result = new Result<bool>();
-
             _context.Entry(entity).State = EntityState.Modified;
 
             try
@@ -44,30 +42,18 @@ namespace Diamond.Repository.Repository
             }
             catch (DbUpdateConcurrencyException ex)
             {
-                if (!PedidoItemExists(id))
-                {
-                    return result.SetError(ex);
-                }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
-            return result.SetData(true);
+            return true;
         }
 
         public bool Delete(int id)
         {
             Pedido_Item entity = GetById(id);
 
-            _context.PedidosItens.Remove(entity);
+            _context.PedidoItens.Remove(entity);
             return _context.SaveChanges() > 0;
-        }
-
-        private bool PedidoItemExists(int id)
-        {
-            return _context.PedidosItens.Count(e => e.Id == id) > 0;
         }
     }
 }

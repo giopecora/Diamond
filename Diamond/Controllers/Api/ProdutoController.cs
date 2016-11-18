@@ -20,166 +20,160 @@ namespace Diamond.Controllers.Api
     {
         private ProdutoBusiness _business = new ProdutoBusiness();
 
-        [ResponseType(typeof(Result<List<ProdutoDestaqueDTO>>))]
+        [ResponseType(typeof(List<ProdutoDestaqueDTO>))]
         [Route("api/Produto/GetTop5")]
         public IHttpActionResult GetTop5()
         {
-            Result<List<ProdutoDestaqueDTO>> result = new Result<List<ProdutoDestaqueDTO>>();
+            List<ProdutoDestaqueDTO> destaques = new List<ProdutoDestaqueDTO>();
 
             try
             {
-                result = _business.GetTop5();
+                destaques = _business.GetTop5();
             }
             catch(Exception ex)
             {
-                result.SetError(ex);
+                return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok(destaques);
         }
 
-        [ResponseType(typeof(Result<List<ProdutoDestaqueDTO>>))]
+        [ResponseType(typeof(List<ProdutoDestaqueDTO>))]
         [Route("api/Produto/GetTop4OfAllCategories")]
         public IHttpActionResult GetTop4OfAllCategories()
         {
-            Result<List<ProdutoDestaqueDTO>> result = new Result<List<ProdutoDestaqueDTO>>();
+            List<ProdutoDestaqueDTO> destaques = new List<ProdutoDestaqueDTO>();
 
             try
             {
-                result = _business.GetTop4OfAllCategories();
+                destaques = _business.GetTop4OfAllCategories();
             }
             catch (Exception ex)
             {
-                result.SetError(ex);
+                return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok(destaques);
         }
 
-        [ResponseType(typeof(Result<List<ProdutoDTO>>))]
+        [ResponseType(typeof(List<ProdutoDTO>))]
         [Route("api/Produto/GetTop3CheaperByCategory/{categoryId:int}")]
         public IHttpActionResult GetTop3CheaperByCategory(int categoryId)
         {
-            Result<List<ProdutoDTO>> result = new Result<List<ProdutoDTO>>();
+            List<ProdutoDTO> produtos = new List<ProdutoDTO>();
 
             try
             {
-                result = _business.GetTop3CheaperByCategory(categoryId);
+                produtos = _business.GetTop3CheaperByCategory(categoryId);
             }
             catch (Exception ex)
             {
-                result.SetError(ex);
+                return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok(produtos);
         }
 
         [ResponseType(typeof(Result<List<ProdutoDTO>>))]
         // GET: api/Produtos
         public IHttpActionResult GetAll()
         {
-            Result<List<ProdutoDTO>> result = new Result<List<ProdutoDTO>>();
+            List<ProdutoDTO> produtos = new List<ProdutoDTO>();
 
             try
             {
-                result = _business.GetAll();
+                produtos = _business.GetAll();
             }
             catch(Exception ex)
             {
-                result.SetError(ex);
+                return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok(produtos);
         }
 
-        [ResponseType(typeof(Result<List<ProdutoDTO>>))]
+        [ResponseType(typeof(List<ProdutoDTO>))]
         [Route("api/Produto/GetAllFromCategory/{categoryId:int}")]
         public IHttpActionResult GetAllFromCategory(int categoryId)
         {
-            Result<List<ProdutoDTO>> result = new Result<List<ProdutoDTO>>();
+            List<ProdutoDTO> produtos = new List<ProdutoDTO>();
 
             try
             {
-                result = _business.GetAllByCategoryId(categoryId);
+                produtos = _business.GetAllByCategoryId(categoryId);
             }
             catch (Exception ex)
             {
-                result.SetError(ex);
+                return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok(produtos);
         }
 
         // GET: api/Produtos/5
-        [ResponseType(typeof(Result<ProdutoDTO>))]
+        [ResponseType(typeof(ProdutoDTO))]
         public IHttpActionResult Get(int id)
         {
-            Result<ProdutoDTO> result = new Result<ProdutoDTO>();
+            ProdutoDTO produto = new ProdutoDTO();
 
             try
             {
-                result = _business.GetById(id);
+                produto = _business.GetById(id);
             }
             catch (Exception ex)
             {
-                result.SetError(ex);
+                return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok(produto);
         }
 
         // PUT: api/Produtos/5
-        [ResponseType(typeof(Result<bool>))]
+        [ResponseType(typeof(IHttpActionResult))]
         public IHttpActionResult Put(int id, [FromBody]ProdutoDTO produto)
         {
-            Result<bool> result = new Result<bool>();
-
             try
             {
-                result = _business.Update(id, produto);
+                _business.Update(id, produto);
             }
             catch (Exception ex)
             {
-                result.SetError(ex);
+                return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok();
         }
 
         // POST: api/Produtos
-        [ResponseType(typeof(Result<ProdutoDTO>))]
+        [ResponseType(typeof(ProdutoDTO))]
         public IHttpActionResult Post([FromBody]ProdutoDTO produto)
         {
-            Result<ProdutoDTO> result = new Result<ProdutoDTO>();
-
             try
             {
-                result = _business.Insert(produto);
+                produto = _business.Insert(produto);
             }
             catch (Exception ex)
             {
-                result.SetError(ex);
+                return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok(produto);
         }
 
         // DELETE: api/Produtos/5
-        [ResponseType(typeof(Result<bool>))]
+        [ResponseType(typeof(IHttpActionResult))]
         public IHttpActionResult Delete(int id)
         {
-            Result<bool> result = new Result<bool>();
-
             try
             {
-                result = _business.Delete(id);
+                 _business.Delete(id);
             }
             catch (Exception ex)
             {
-                result.SetError(ex);
+                return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok();
         }
     }
 }

@@ -31,6 +31,9 @@ namespace Diamond.Domain.Entities
 
         public int? Quantidade { get; set; }
 
+        [StringLength(100)]
+        public string ImagemPrincipal { get; set; }
+
         public bool? Ativo { get; set; }
 
         public virtual Categoria Categoria { get; set; }

@@ -27,10 +27,8 @@ namespace Diamond.Repository.Repository
             return entity;
         }
 
-        public Result<bool> Update(int id, Endereco entity)
+        public bool Update(int id, Endereco entity)
         {
-            Result<bool> result = new Result<bool>();
-
             _context.Entry(entity).State = EntityState.Modified;
 
             try
@@ -39,17 +37,10 @@ namespace Diamond.Repository.Repository
             }
             catch (DbUpdateConcurrencyException ex)
             {
-                if (!EnderecoExists(id))
-                {
-                    return result.SetError(ex);
-                }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
-            return result.SetData(true);
+            return true;
         }
 
         public bool Delete(int id)
@@ -58,11 +49,6 @@ namespace Diamond.Repository.Repository
 
             _context.Enderecos.Remove(entity);
             return _context.SaveChanges() > 0;
-        }
-
-        private bool EnderecoExists(int id)
-        {
-            return _context.Enderecos.Count(e => e.Id == id) > 0;
         }
     }
 }

@@ -15,28 +15,23 @@ namespace Diamond.Business.Business
     {
         private PedidoRepository _repository = new PedidoRepository();
 
-        public Result<List<PedidoDTO>> GetAllFromUser(int userId)
+        public List<PedidoDTO> GetAllFromUser(int userId)
         {
-            Result<List<PedidoDTO>> result = new Result<List<PedidoDTO>>();
-            List<PedidoDTO> pedidos = _repository.GetAllFromUser(userId).ToDTO<Pedido, PedidoDTO>();
-
-            return result.SetData(pedidos);
+            return _repository.GetAllFromUser(userId).ToDTO<Pedido, PedidoDTO>(); ;
         }
 
-        public Result<PedidoDTO> GetById(int id)
+        public PedidoDTO GetById(int id)
         {
-            Result<PedidoDTO> result = new Result<PedidoDTO>();
             Pedido entity = _repository.GetById(id);
 
             if (entity == null)
-                return result.SetFailure("Este Pedido nao existe!");
+                throw new Exception("Este Pedido nao existe!");
 
-            return result.SetData(Mapper.Map<PedidoDTO>(entity));
+            return Mapper.Map<PedidoDTO>(entity);
         }
 
-        public Result<PedidoDTO> Insert(PedidoDTO pedido)
+        public PedidoDTO Insert(PedidoDTO pedido)
         {
-            Result<PedidoDTO> result = new Result<PedidoDTO>();
             Pedido entity = Mapper.Map<Pedido>(pedido);
 
             foreach(PedidoItemDTO item in pedido.Itens)
@@ -48,19 +43,15 @@ namespace Diamond.Business.Business
 
             pedido.Id = entity.Id;
 
-            return result.SetData(pedido);
+            return pedido;
         }
 
-        public Result<bool> Delete(int id)
+        public void Delete(int id)
         {
-            Result<bool> result = new Result<bool>();
+            bool success = _repository.Delete(id);
 
-            result.Success = _repository.Delete(id);
-
-            if (!result.Success)
-                result.SetFailure("Nao foi possivel excluir este pedido");
-
-            return result;
+            if (!success)
+                throw new Exception("Nao foi possivel excluir este pedido");
         }
     }
 }

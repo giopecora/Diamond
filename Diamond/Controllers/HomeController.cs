@@ -15,6 +15,11 @@ namespace Diamond.Controllers
             return View();
         }
 
+        public ActionResult AbrirImagem(int produtoId, string nome)
+        {
+            return File($@"C:/Produtos/Produto_{produtoId}/{nome}", "image/jpg");
+        }
+
         public ActionResult CarrinhoCompra()
         {
             List<CarrinhoCompra> lista = new List<CarrinhoCompra>();

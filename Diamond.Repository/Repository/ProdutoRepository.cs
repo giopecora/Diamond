@@ -53,10 +53,8 @@ namespace Diamond.Repository
             return entity;
         }
 
-        public Result<bool> Update(int id, Produto entity)
+        public bool Update(int id, Produto entity)
         {
-            Result<bool> result = new Result<bool>();
-
             _context.Entry(entity).State = EntityState.Modified;
 
             try
@@ -65,22 +63,10 @@ namespace Diamond.Repository
             }
             catch (DbUpdateConcurrencyException ex)
             {
-                if (!ProdutoExists(id))
-                {
-                    return result.SetError(ex);
-                }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
-            return result.SetData(true);
-        }
-
-        private bool ProdutoExists(int id)
-        {
-            return _context.Produtos.Count(e => e.Id == id) > 0;
+            return true;
         }
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Diamond.Domain.DTO
 {
-    public class ProdutoImagensDTO
+    public class ProdutoImagemDTO
     {
-        public ProdutoImagensDTO()
+        public ProdutoImagemDTO()
         {
 
         }
@@ -16,5 +16,14 @@ namespace Diamond.Domain.DTO
         public int ProdutoId { get; set; }
         public bool? Principal { get; set; }
         public string Imagem { get; set; }
+
+        public string Action
+        {
+            get
+            {
+                string action = $"Home/AbrirImagem?produtoId={ProdutoId}&nome={Imagem}";
+                return $"http://localhost:59783/" + action;
+            }
+        }
     }
 }

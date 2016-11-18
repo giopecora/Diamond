@@ -57,6 +57,7 @@
     <Compile Include="Repository\EnderecoRepository.cs" />
     <Compile Include="Repository\PedidoItemRepository.cs" />
     <Compile Include="Repository\PedidoRepository.cs" />
+    <Compile Include="Repository\ProdutoImagemRepository.cs" />
     <Compile Include="Repository\ProdutoRepository.cs" />
     <Compile Include="Repository\UsuarioRepository.cs" />
   </ItemGroup>

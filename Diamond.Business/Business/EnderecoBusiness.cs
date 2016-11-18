@@ -15,49 +15,39 @@ namespace Diamond.Business.Business
     {
         private EnderecoRepository _repository = new EnderecoRepository();
 
-        public Result<EnderecoDTO> GetById(int id)
+        public EnderecoDTO GetById(int id)
         {
-            Result<EnderecoDTO> result = new Result<EnderecoDTO>();
             Endereco entity = _repository.GetById(id);
 
             if (entity == null)
-                result.SetFailure("Nao foi possivel encontrar este endereco");
+                throw new Exception("Nao foi possivel encontrar este endereco");
 
-            return result.SetData(Mapper.Map<EnderecoDTO>(entity));
+            return Mapper.Map<EnderecoDTO>(entity);
         }
 
-        public Result<EnderecoDTO> Insert(EnderecoDTO endereco)
+        public EnderecoDTO Insert(EnderecoDTO endereco)
         {
-            Result<EnderecoDTO> result = new Result<EnderecoDTO>();
             Endereco entity = _repository.Insert(endereco);
 
-            endereco = Mapper.Map<EnderecoDTO>(entity);
+            endereco.Id = entity.Id;
 
-            return result.SetData(endereco);
+            return Mapper.Map<EnderecoDTO>(entity);
         }
 
-        public Result<bool> Update(int id, EnderecoDTO endereco)
+        public void Update(int id, EnderecoDTO endereco)
         {
-            Result<bool> result = new Result<bool>();
+            bool result = _repository.Update(id, endereco);
 
-            result = _repository.Update(id, endereco);
-
-            if (!result.Success)
-                result.SetFailure("Nao foi possivel atualizar este Endereco.");
-
-            return result;
+            if (!result)
+                throw new Exception("Nao foi possivel atualizar este Endereco.");
         }
 
-        public Result<bool> Delete(int id)
+        public void Delete(int id)
         {
-            Result<bool> result = new Result<bool>();
+            bool success = _repository.Delete(id);
 
-            result.Success = _repository.Delete(id);
-
-            if (!result.Success)
-                result.SetFailure("Nao foi possivel excluir este endereco");
-
-            return result;
+            if (!success)
+                throw new Exception("Nao foi possivel excluir este endereco");
         }
     }
 }
