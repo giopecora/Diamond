@@ -1078,7 +1078,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\sammy-0.7.4.js" />
     <Content Include="Scripts\sammy-0.7.4.min.js" />
-    <Content Include="Scripts\ui-bootstrap-2.2.0.js" />
+    <Content Include="Scripts\ui-bootstrap-tpls-2.2.0.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="SPA\App.js" />
     <Content Include="SPA\Carrinho\Controllers\mainCarrinho.js" />
@@ -1092,7 +1092,6 @@
     <Content Include="SPA\Produtos\Views\produtoDetalhe.html" />
     <Content Include="SPA\Services\Util.js" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
@@ -1111,6 +1110,7 @@
     </Content>
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Home\CarrinhoCompra.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

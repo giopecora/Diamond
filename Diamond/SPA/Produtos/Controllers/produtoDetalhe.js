@@ -9,6 +9,12 @@
         })
     };
 
+    ProdutoService.inserir().then(function () {
+        window.alert("Deu certo!")
+    }).catch(function () {
+        console.log("Deu ruim")
+    });
+
     $scope.load();
 
 })
@@ -18,6 +24,35 @@
             return $http({
                 method: 'GET',
                 url: 'http://localhost:59783/api/Produto/Get/'+prodID
+            });
+        },
+
+        inserir: function () {
+            return $http({
+                method: 'POST',
+                url: 'http://localhost:59783/api/Pedido/Post',
+                data: {
+                    UsuarioId: 1,
+                    DataPedido: "2016-11-17 03:00:00",
+                    ValorTotal: 870.00,
+                    Itens: [
+                     {
+                         ProdutoId: 1,
+                         Quantidade: 2,
+                         ValorUnitarioTotal: 200.00
+                     },
+                     {
+                         ProdutoId: 3,
+                         Quantidade: 4,
+                         ValorUnitarioTotal: 450.00
+                     },
+                     {
+                         ProdutoId: 5,
+                         Quantidade: 2,
+                         ValorUnitarioTotal: 200.00
+                     }
+                    ]
+                }
             });
         }
     };

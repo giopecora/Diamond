@@ -1,36 +1,29 @@
 ﻿angular.module('Diamond').controller('HomeController', function ($scope, HomeService) {
-    $scope.destaques = [
-        {
-            nome: 'Sabre de luz',
-            descricao: 'Sabre de luz do Darth Maulgus',
-            preco: 20,
-            imagem: '/Content/img/8ooCUho.jpg'
-        },
-        {
-            nome: 'Sabre de luz',
-            descricao: 'Sabre de luz do Darth Maulgus',
-            preco: 20,
-            imagem: '/Content/img/8ooCUho.jpg'
-        },
-        {
-            nome: 'Sabre de luz',
-            descricao: 'Sabre de luz do Darth Maulgus',
-            preco: 20,
-            imagem: '/Content/img/8ooCUho.jpg'
-        }
-    ];
 
     $scope.load = function () {
         HomeService.listTopFive().then(function (retorno) {
-            $scope.Produtos = retorno.data.data;
+            $scope.destaques = retorno.data.data;
         }).catch(function () {
             console.log("deu ruim");
         });
     };
 
-    $scope.adicionarAoCarrinho = function () {
+    $scope.slides = [
+        {
+            id: 1,
+            image: '/Content/img/liquidificador.jpg'
+        },
+        {
+            id: 2,
+            image: '/Content/img/microondas.jpg'
+        },
+        {
+            id: 3,
+            image: '/Content/img/relescopio.jpg'
+        }
+    ];
 
-    }
+    
 
     $scope.load();
 })
