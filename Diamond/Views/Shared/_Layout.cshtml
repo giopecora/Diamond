@@ -4,39 +4,61 @@
     <meta charset="utf-8" />
     <title>@ViewBag.Title - Diamond E-Comerce</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+    <nav class="navbar navbar-default main-nav" role="navigation">
+        <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Diamond", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a class="navbar-brand" href="#/home">Diamond</a>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="#/Produtos/3">Detalhe produto</a></li>
-                    <li><a href="#/CarrinhoCompra"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></a></li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-
+            <div class="collapse navbar-collapse">
+                <div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#/CarrinhoCompra"><i class="fa fa-shopping-cart fa-2x"></i><span class="badge">0 Itens</span></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href=""><i class="fa fa-user fa-2x"></i><span class="badge">Logn</span></a></li>
+                    </ul>
+                    <form class="navbar-form navbar-right" role="search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Pesquisar" name="srch-term" id="srch-term" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+                <div>
+                    <ul class="nav nav-tabs col-md-10 col-md-offset-1 pull-right">
+                        <li class="active" role="presentation"><a href="/topic/good-reads/"><span>Livros</span></a></li>
+                        <li role="presentation"><a href="/topic/good-reads/">DVDs e Blu-ray</a></li>
+                        <li role="presentation"><a href="/topic/good-reads/">Games</a></li>
+                        <li role="presentation"><a href="/topic/good-reads/">Celulares e Telefonia Fixa</a></li>
+                        <li role="presentation"><a href="/topic/good-reads/">Informática e Tablets</a></li>
+                        <li role="presentation"><a href="/topic/good-reads/">Tv, Aúdio e Home Theater</a></li>
+                    </ul>
+                </div>
             </div>
+            
         </div>
-    </div>
-    <div class="container">
-        @RenderBody()
-        @RenderSection("SPAViews", required: false)
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Diamond Application</p>
-        </footer>
-    </div>
+    </nav>
+    
+    @RenderBody()
+    @RenderSection("SPAViews", required: false)
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Diamond Application</p>
+    </footer>
+    
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

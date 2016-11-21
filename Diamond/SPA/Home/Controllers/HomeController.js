@@ -2,7 +2,7 @@
 
     $scope.load = function () {
         HomeService.listTopFive().then(function (retorno) {
-            $scope.destaques = retorno.data.data;
+            $scope.destaques = retorno.data;
         }).catch(function () {
             swal();
         });

@@ -18,9 +18,14 @@ App.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'SPA/Produtos/Views/produtoDetalhe.html',
             controller: 'ProdutoDetalheCtrl'
         })
+        .when('/Categoria', {
+            templateUrl: 'SPA/Produtos/Views/produtoListCateg',
+            controller: ''
+        })
         .when('/CarrinhoCompra', {
             templateUrl: 'SPA/Carrinho/Views/mainCarrinho.html',
             controller: 'MainCarrinhoCtrl'
         })
+        
     .otherwise({ redirectTo: '/Home' })
 }])
