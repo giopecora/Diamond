@@ -3,8 +3,6 @@ body {
     height: 100%;
 }
 
-
-
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
@@ -32,6 +30,10 @@ textarea {
 }
 .navbar, main-nav{
     margin-bottom: 0px;
+}
+
+.content{
+    height: inherit;
 }
 .carousel,
 .item,
