@@ -1,13 +1,9 @@
 ﻿using Diamond.Domain.DTO;
-using Diamond.Domain.DTO.Result;
 using Diamond.Domain.Entities;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Diamond.Repository
 {
@@ -18,11 +14,6 @@ namespace Diamond.Repository
         public List<ProdutoDestaqueDTO> GetTop5()
         {
             return _context.Database.SqlQuery<ProdutoDestaqueDTO>("EXEC sp_list_top_5_sells").ToList();
-        }
-
-        public List<ProdutoDestaqueDTO> GetTop4OfAllCategories()
-        {
-            return _context.Database.SqlQuery<ProdutoDestaqueDTO>("EXEC sp_list_top_4_sells_of_every_category").ToList();
         }
 
         public List<Produto> GetTop3CheaperByCategory(int categoryId)
@@ -53,7 +44,7 @@ namespace Diamond.Repository
             return entity;
         }
 
-        public bool Update(int id, Produto entity)
+        public bool Update(Produto entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
 
@@ -63,7 +54,7 @@ namespace Diamond.Repository
             }
             catch (DbUpdateConcurrencyException ex)
             {
-                throw;
+                throw ex;
             }
 
             return true;

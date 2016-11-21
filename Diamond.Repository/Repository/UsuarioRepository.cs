@@ -1,12 +1,8 @@
-﻿using Diamond.Domain.DTO.Result;
-using Diamond.Domain.Entities;
-using System;
+﻿using Diamond.Domain.Entities;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Diamond.Repository.Repository
 {
@@ -32,7 +28,7 @@ namespace Diamond.Repository.Repository
             return entity;
         }
 
-        public bool Update(int id, Usuario entity)
+        public bool Update(Usuario entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
 
@@ -42,7 +38,7 @@ namespace Diamond.Repository.Repository
             }
             catch (DbUpdateConcurrencyException ex)
             {
-                throw;
+                throw ex;
             }
 
             return true;
@@ -54,11 +50,6 @@ namespace Diamond.Repository.Repository
 
             _context.Usuarios.Remove(entity);
             return _context.SaveChanges() > 0;
-        }
-
-        private bool UsuarioExists(int id)
-        {
-            return _context.Usuarios.Count(e => e.Id == id) > 0;
         }
     }
 }

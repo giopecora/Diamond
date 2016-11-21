@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Diamond.Repository;
-using Diamond.Domain.DTO.Result;
 using Diamond.Domain.Entities;
 using Diamond.Domain.DTO;
 using AutoMapper;
@@ -19,11 +15,6 @@ namespace Diamond.Business
         public List<ProdutoDestaqueDTO> GetTop5()
         {
             return _repository.GetTop5();
-        }
-
-        public List<ProdutoDestaqueDTO> GetTop4OfAllCategories()
-        {
-            return _repository.GetTop4OfAllCategories();
         }
 
         public List<ProdutoDTO> GetTop3CheaperByCategory(int categoryId)
@@ -66,9 +57,9 @@ namespace Diamond.Business
             return produto;
         }
 
-        public void Update(int id, ProdutoDTO produto)
+        public void Update(ProdutoDTO produto)
         {
-            bool result = _repository.Update(id, Mapper.Map<Produto>(produto));
+            bool result = _repository.Update(Mapper.Map<Produto>(produto));
 
             if (!result)
                 throw new Exception("Nao foi possivel atualizar este Produto.");
@@ -79,7 +70,7 @@ namespace Diamond.Business
             ProdutoDTO produto = GetById(id);
             produto.Ativo = false;
 
-            Update(id, produto);
+            Update(produto);
         }
     }
 }

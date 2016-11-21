@@ -1,13 +1,8 @@
 ﻿using AutoMapper;
 using Diamond.Domain.DTO;
-using Diamond.Domain.DTO.Result;
 using Diamond.Domain.Entities;
 using Diamond.Repository.Repository;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Diamond.Business.Business
 {
@@ -15,22 +10,22 @@ namespace Diamond.Business.Business
     {
         private AuthenticationRepository _repository = new AuthenticationRepository();
 
-        public Result<UsuarioDTO> FindUser(string username, string password)
+        public UsuarioDTO FindUser(string username, string password)
         {
-            Result<UsuarioDTO> result = new Result<UsuarioDTO>();
+            UsuarioDTO usuario;
 
             try
             {
-                Usuario user = _repository.FindUser(username, password);
+                Usuario entity = _repository.FindUser(username, password);
 
-                return result.SetData(Mapper.Map<UsuarioDTO>(user));
+                usuario = Mapper.Map<UsuarioDTO>(entity);
             }
             catch(Exception ex)
             {
-                result.SetError(ex);
+                return null;
             }
 
-            return result;
+            return usuario;
         }
     }
 }

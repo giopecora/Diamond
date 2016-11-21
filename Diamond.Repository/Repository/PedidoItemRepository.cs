@@ -1,12 +1,9 @@
-﻿using Diamond.Domain.DTO.Result;
-using Diamond.Domain.Entities;
+﻿using Diamond.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Diamond.Repository.Repository
 {
@@ -32,7 +29,7 @@ namespace Diamond.Repository.Repository
             return entity;
         }
 
-        public bool Update(int id, Pedido_Item entity)
+        public bool Update(Pedido_Item entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
 
@@ -42,7 +39,7 @@ namespace Diamond.Repository.Repository
             }
             catch (DbUpdateConcurrencyException ex)
             {
-                throw;
+                throw ex;
             }
 
             return true;

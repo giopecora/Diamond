@@ -12,6 +12,8 @@ namespace Diamond.Domain.DTO
     {
         public int Id { get; set; }
         public int UsuarioId { get; set; }
+        public int CartaoId { get; set; }
+        public int EnderecoId { get; set; }
         public DateTime? DataPedido { get; set; }
         public double? ValorTotal { get; set; }
         public List<PedidoItemDTO> Itens { get; set; }

@@ -1,18 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Diamond.Domain.Entities;
-using Diamond.Models;
 using Diamond.Business;
 using Diamond.Domain.DTO;
-using Diamond.Domain.DTO.Result;
 
 namespace Diamond.Controllers.Api
 {
@@ -38,24 +29,6 @@ namespace Diamond.Controllers.Api
             return Ok(destaques);
         }
 
-        [ResponseType(typeof(List<ProdutoDestaqueDTO>))]
-        [Route("api/Produto/GetTop4OfAllCategories")]
-        public IHttpActionResult GetTop4OfAllCategories()
-        {
-            List<ProdutoDestaqueDTO> destaques = new List<ProdutoDestaqueDTO>();
-
-            try
-            {
-                destaques = _business.GetTop4OfAllCategories();
-            }
-            catch (Exception ex)
-            {
-                return InternalServerError(ex);
-            }
-
-            return Ok(destaques);
-        }
-
         [ResponseType(typeof(List<ProdutoDTO>))]
         [Route("api/Produto/GetTop3CheaperByCategory/{categoryId:int}")]
         public IHttpActionResult GetTop3CheaperByCategory(int categoryId)
@@ -74,7 +47,7 @@ namespace Diamond.Controllers.Api
             return Ok(produtos);
         }
 
-        [ResponseType(typeof(Result<List<ProdutoDTO>>))]
+        [ResponseType(typeof(List<ProdutoDTO>))]
         // GET: api/Produtos
         public IHttpActionResult GetAll()
         {
@@ -130,11 +103,11 @@ namespace Diamond.Controllers.Api
 
         // PUT: api/Produtos/5
         [ResponseType(typeof(IHttpActionResult))]
-        public IHttpActionResult Put(int id, [FromBody]ProdutoDTO produto)
+        public IHttpActionResult Put([FromBody]ProdutoDTO produto)
         {
             try
             {
-                _business.Update(id, produto);
+                _business.Update(produto);
             }
             catch (Exception ex)
             {

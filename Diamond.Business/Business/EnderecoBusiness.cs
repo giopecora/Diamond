@@ -1,13 +1,8 @@
 ﻿using AutoMapper;
 using Diamond.Domain.DTO;
-using Diamond.Domain.DTO.Result;
 using Diamond.Domain.Entities;
 using Diamond.Repository.Repository;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Diamond.Business.Business
 {
@@ -34,9 +29,9 @@ namespace Diamond.Business.Business
             return Mapper.Map<EnderecoDTO>(entity);
         }
 
-        public void Update(int id, EnderecoDTO endereco)
+        public void Update(EnderecoDTO endereco)
         {
-            bool result = _repository.Update(id, endereco);
+            bool result = _repository.Update(endereco);
 
             if (!result)
                 throw new Exception("Nao foi possivel atualizar este Endereco.");

@@ -1,13 +1,9 @@
 ﻿using AutoMapper;
 using Diamond.Domain.DTO;
-using Diamond.Domain.DTO.Result;
 using Diamond.Domain.Entities;
 using Diamond.Repository.Repository;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Diamond.Business.Business
 {
@@ -32,16 +28,16 @@ namespace Diamond.Business.Business
 
         public UsuarioDTO Insert(UsuarioDTO usuario)
         {
-            Usuario entity = _repository.Insert(usuario);
+            Usuario entity = _repository.Insert(Mapper.Map<Usuario>(usuario));
 
             usuario.Id = entity.Id;
 
             return usuario;
         }
 
-        public void Update(int id, UsuarioDTO usuario)
+        public void Update(UsuarioDTO usuario)
         {
-            bool result = _repository.Update(id, usuario);
+            bool result = _repository.Update(Mapper.Map<Usuario>(usuario));
 
             if (!result)
                 throw new Exception("Nao foi possivel atualizar este Usuario.");
@@ -52,7 +48,7 @@ namespace Diamond.Business.Business
             UsuarioDTO usuario = GetById(id);
             usuario.Ativo = false;
 
-            Update(id, usuario);
+            Update(usuario);
         }
     }
 }

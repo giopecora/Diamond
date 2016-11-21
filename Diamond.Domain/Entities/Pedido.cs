@@ -18,9 +18,17 @@ namespace Diamond.Domain.Entities
 
         public int UsuarioId { get; set; }
 
+        public int CartaoId { get; set; }
+
+        public int EnderecoId { get; set; }
+
         public DateTime? DataPedido { get; set; }
 
         public double? ValorTotal { get; set; }
+
+        public virtual Cartao Cartao { get; set; }
+
+        public virtual Endereco Endereco { get; set; }
 
         public virtual Usuario Usuario { get; set; }
 

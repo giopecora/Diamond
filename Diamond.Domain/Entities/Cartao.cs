@@ -8,6 +8,12 @@ namespace Diamond.Domain.Entities
     [Table("Cartao")]
     public partial class Cartao
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Cartao()
+        {
+            Pedidoes = new HashSet<Pedido>();
+        }
+
         public int Id { get; set; }
 
         public int? UsuarioId { get; set; }
@@ -29,5 +35,8 @@ namespace Diamond.Domain.Entities
         public virtual Bandeira Bandeira { get; set; }
 
         public virtual Usuario Usuario { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Pedido> Pedidoes { get; set; }
     }
 }

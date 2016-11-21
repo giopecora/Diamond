@@ -1,13 +1,8 @@
 ﻿using Diamond.Business.Business;
 using Diamond.Domain.DTO;
-using Diamond.Domain.DTO.Result;
 using Microsoft.Owin.Security.OAuth;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace Diamond.Providers
 {
@@ -24,9 +19,9 @@ namespace Diamond.Providers
 
             AuthenticationBusiness auth = new AuthenticationBusiness();
 
-            Result<UsuarioDTO> userResult = auth.FindUser(context.UserName, context.Password);
+            UsuarioDTO user = auth.FindUser(context.UserName, context.Password);
 
-            if (!userResult.Success)
+            if (user == null)
             {
                 context.SetError("invalid_grant", "The user name or password is incorrect.");
                 return; 

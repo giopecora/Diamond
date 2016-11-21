@@ -1,12 +1,6 @@
-﻿using Diamond.Domain.DTO.Result;
-using Diamond.Domain.Entities;
-using System;
-using System.Collections.Generic;
+﻿using Diamond.Domain.Entities;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Diamond.Repository.Repository
 {
@@ -27,7 +21,7 @@ namespace Diamond.Repository.Repository
             return entity;
         }
 
-        public bool Update(int id, Endereco entity)
+        public bool Update(Endereco entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
 
@@ -37,7 +31,7 @@ namespace Diamond.Repository.Repository
             }
             catch (DbUpdateConcurrencyException ex)
             {
-                throw;
+                throw ex;
             }
 
             return true;
