@@ -12,15 +12,15 @@ namespace Diamond.Controllers.Api
         private PedidoBusiness _business = new PedidoBusiness();
 
         [ResponseType(typeof(List<PedidoDTO>))]
-        [Route("api/Pedido/GetAllFromUser/{userId:int}")]
+        [Route("api/Pedido/GetAllFromUser/{userId:int}/{page:int}")]
         // GET: api/Produtos
-        public IHttpActionResult GetAllFromUser(int userId)
+        public IHttpActionResult GetAllFromUser(int userId, int page)
         {
             List<PedidoDTO> pedidos = new List<PedidoDTO>();
 
             try
             {
-                pedidos = _business.GetAllFromUser(userId);
+                pedidos = _business.GetAllFromUser(userId, page);
             }
             catch (Exception ex)
             {

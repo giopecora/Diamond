@@ -66,14 +66,14 @@ namespace Diamond.Controllers.Api
         }
 
         [ResponseType(typeof(List<ProdutoDTO>))]
-        [Route("api/Produto/GetAllFromCategory/{categoryId:int}")]
-        public IHttpActionResult GetAllFromCategory(int categoryId)
+        [Route("api/Produto/GetAllFromCategory/{categoryId:int}/{page:int}")]
+        public IHttpActionResult GetAllFromCategory(int categoryId, int page = 1)
         {
             List<ProdutoDTO> produtos = new List<ProdutoDTO>();
 
             try
             {
-                produtos = _business.GetAllByCategoryId(categoryId);
+                produtos = _business.GetAllByCategoryId(categoryId, page);
             }
             catch (Exception ex)
             {

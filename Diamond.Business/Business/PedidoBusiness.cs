@@ -11,9 +11,9 @@ namespace Diamond.Business.Business
     {
         private PedidoRepository _repository = new PedidoRepository();
 
-        public List<PedidoDTO> GetAllFromUser(int userId)
+        public List<PedidoDTO> GetAllFromUser(int userId, int page)
         {
-            return _repository.GetAllFromUser(userId).ToDTO<Pedido, PedidoDTO>(); ;
+            return _repository.GetAllFromUser(userId, page).ToDTO<Pedido, PedidoDTO>(); ;
         }
 
         public PedidoDTO GetById(int id)

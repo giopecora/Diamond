@@ -30,9 +30,9 @@ namespace Diamond.Business
             return _repository.GetAll().ToDTO<Produto, ProdutoDTO>();
         }
 
-        public List<ProdutoDTO> GetAllByCategoryId(int categoryId)
+        public List<ProdutoDTO> GetAllByCategoryId(int categoryId, int page)
         {
-            return _repository.GetAllByCategoryId(categoryId).ToDTO<Produto, ProdutoDTO>();
+            return _repository.GetAllByCategoryId(categoryId, page).ToDTO<Produto, ProdutoDTO>();
         }
 
         public ProdutoDTO GetById(int id)
