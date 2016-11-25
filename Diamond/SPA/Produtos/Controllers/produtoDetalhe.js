@@ -1,13 +1,17 @@
-﻿angular.module('Diamond').controller('ProdutoDetalheCtrl', function ($scope, ProdutoService, $routeParams) {
+﻿angular.module('Diamond').controller('ProdutoDetalheCtrl', function ($scope, ProdutoService, $routeParams, UtilService) {
     $scope.prodID = $routeParams.prodID;
 
     $scope.load = function () {
         ProdutoService.productDetails($scope.prodID).then(function (retorno) {
-            $scope.produto = retorno.data.data;
+            $scope.produto = retorno.data;
         }).catch(function () {
             //Tratar erro aqui
         })
     };
+
+    $scope.adicionarCarrinho = function (produto) {
+        UtilService.adicionarAoCarrinho(produto);
+    }
 
     ProdutoService.inserir().then(function () {
         window.alert("Deu certo!")

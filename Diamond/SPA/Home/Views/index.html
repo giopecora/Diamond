@@ -1,41 +1,4 @@
-﻿<!--<style>
-    .item img{
-        height: 500px;
-        width: 500px
-}
-    .main-card {
-    /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-}
-
-/* On mouse-over, add a deeper shadow */
-.main-card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-/* Add some padding inside the card container */
-.conteudo {
-    padding: 2px 16px;
-    background: gray;
-}
-
-.conteudo p{
-    font-size: 15px;
-}
-
-.cards{
-	padding: 0 !important;
-}
-
-button{
-	width: 100%;
-	border: none;
-	background: #4CAF50;
-	padding: 5px;
-}
-</style>-->
-<div id="myCarousel" class="carousel slide">
+﻿<div id="myCarousel" class="carousel slide">
     <!-- Indicators -->
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -79,28 +42,45 @@ button{
 </div>
 <div class="container">
     <div class="row">
-        <h3 class="col-md-2  col-md-offset-5">Destaques</h3>
+        <div class="row">
+            <div class="col-md-5 col-xs-5 left-line"></div>
+            <div class="col-md-2 col-xs-2 text-center">Destques</div>
+            <div class="col-md-5 col-xs-5 right-line"></div>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <div class="main-card">
-                <img src="{{destaques[0].action}}"/>
-                <div class="conteudo">
-                    <p>{{destaques[0].nome}}</p>
-                    <h4>{{destaques[0].preco | currency}}</h4>
+            <div class="container-card">
+                <img class="img-responsive" src="http://compass.microsoft.com/assets/3d/4e/3d4ec411-f906-45c5-a676-9e5015104b2c.jpg?n=WMM3500_composite.jpg" />
+                <div class="text-center descricao">
+                    <h1>{{destaquePrincipal.nome}}</h1>
+                    <h4>{{destaquePrincipal.preco | currency}}</h4>
+                    <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="exibirDetalhes(destaquePrincipal)">Detalhes</button>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="row">
-                <div class="col-md-6" ng-repeat="destaque in destaques track by $index">
-                    <div class="card text-center">
-                        <img src="{{destaque.action}}" height="200" width="100%" alt="Imagem Produto">
-                        <div class="conteudo">
+                <div ng-repeat="destaque in destaquePrimeiraLinha" class="col-md-6">
+                    <div class="container-card">
+                        <img class="img-responsive" src="{{destaque.action}}"/>
+                        <div class="text-center descricao">
                             <p>{{destaque.nome}}</p>
-                            <h4>{{destaque.preco | currency}}</h4>
+                            <p>{{destaque.preco |currency}}</p>
+                            <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="exibirDetalhes(destaque)">Detalhes</button>
                         </div>
-                        <button>Adicionar a ocarrinho</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div ng-repeat="destaque in destaqueSegundaLinha" class="col-md-6">
+                    <div class="container-card">
+                        <img class="img-responsive" src="{{destaque.action}}" />
+                        <div class="text-center descricao">
+                            <p>{{destaque.nome}}</p>
+                            <p>{{destaque.preco |currency}}</p>
+                            <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="exibirDetalhes(destaque)">Detalhes</button>
+                        </div>
                     </div>
                 </div>
             </div>

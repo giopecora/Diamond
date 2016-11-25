@@ -2,7 +2,9 @@
 
     $scope.load = function () {
         HomeService.listTopFive().then(function (retorno) {
-            $scope.destaques = retorno.data;
+            $scope.destaquePrincipal = retorno.data[0];
+            $scope.destaquePrimeiraLinha = retorno.data.slice(1, 3);
+            $scope.destaqueSegundaLinha = retorno.data.slice(3, 5);
         }).catch(function () {
             swal();
         });
@@ -14,7 +16,12 @@
         })
     };
 
-    UtilService.adicionarAoCarrinho({id: 1, image: 'efasd/asdfsd', preco: 2342.34, quantidade:2});
+    UtilService.adicionarAoCarrinho({ id: 1, image: 'efasd/asdfsd', preco: 2342.34, quantidade: 2 });
+
+    $scope.exibirDetalhes = function (produto) {
+        window.location = "#/Produtos/" + produto.id;
+        
+    }
 
     $scope.slides = [
         {
@@ -47,7 +54,7 @@
         gettopFourofAllCategories: function () {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Produto/GetTop4OfAllCategories'
+                url: 'http://localhost:59783/api/Categoria/ListTop4ProductsOfAllCategories/'
             });
         }
     }

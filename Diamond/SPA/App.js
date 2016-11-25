@@ -18,9 +18,9 @@ App.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'SPA/Produtos/Views/produtoDetalhe.html',
             controller: 'ProdutoDetalheCtrl'
         })
-        .when('/Categoria', {
+        .when('/Categoria/:categoriaID', {
             templateUrl: 'SPA/Produtos/Views/produtoListCateg',
-            controller: ''
+            controller: 'ProdutoCategoria'
         })
         .when('/CarrinhoCompra', {
             templateUrl: 'SPA/Carrinho/Views/mainCarrinho.html',

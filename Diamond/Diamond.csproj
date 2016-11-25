@@ -1085,6 +1085,7 @@
     <Content Include="SPA\Carrinho\Views\enderecoCarrinho.html" />
     <Content Include="SPA\Carrinho\Views\mainCarrinho.html" />
     <Content Include="SPA\Home\Controllers\HomeController.js" />
+    <Content Include="SPA\Home\Style\HomeStyle.css" />
     <Content Include="SPA\Home\Views\index.html" />
     <Content Include="SPA\Produtos\Controllers\produtoCadastro.js" />
     <Content Include="SPA\Produtos\Controllers\produtoDetalhe.js" />

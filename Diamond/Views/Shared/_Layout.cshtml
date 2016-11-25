@@ -39,12 +39,12 @@
                 </div>
                 <div>
                     <ul class="nav nav-tabs col-md-10 col-md-offset-1 pull-right">
-                        <li class="active" role="presentation"><a href="/topic/good-reads/"><span>Livros</span></a></li>
-                        <li role="presentation"><a href="/topic/good-reads/">DVDs e Blu-ray</a></li>
-                        <li role="presentation"><a href="/topic/good-reads/">Games</a></li>
-                        <li role="presentation"><a href="/topic/good-reads/">Celulares e Telefonia Fixa</a></li>
-                        <li role="presentation"><a href="/topic/good-reads/">Informática e Tablets</a></li>
-                        <li role="presentation"><a href="/topic/good-reads/">Tv, Aúdio e Home Theater</a></li>
+                        <li role="presentation"><a href="#/produtos/listagem/:1"><span>Livros</span></a></li>
+                        <li role="presentation"><a href="#/produtos/listagem/:2">DVDs e Blu-ray</a></li>
+                        <li role="presentation"><a href="#/produtos/listagem/:3">Games</a></li>
+                        <li role="presentation"><a href="#/produtos/listagem/:4">Celulares e Telefonia Fixa</a></li>
+                        <li role="presentation"><a href="#/produtos/listagem/:5">Informática e Tablets</a></li>
+                        <li role="presentation"><a href="#/produtos/listagem/:6">Tv, Aúdio e Home Theater</a></li>
                     </ul>
                 </div>
             </div>
@@ -54,10 +54,7 @@
     
     @RenderBody()
     @RenderSection("SPAViews", required: false)
-    <hr />
-    <footer>
-        <p>&copy; @DateTime.Now.Year - Diamond Application</p>
-    </footer>
+    
     
 
     @Scripts.Render("~/bundles/jquery")

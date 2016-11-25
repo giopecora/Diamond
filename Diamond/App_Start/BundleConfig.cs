@@ -50,7 +50,8 @@ namespace Diamond
             bundles.Add(new StyleBundle("~/Content/css").Include(
                  "~/Content/bootstrap.css",
                  "~/Content/Site.css",
-                 "~/Content/font-awesome.min.css"));
+                 "~/Content/font-awesome.min.css",
+                 "~/SPA/Home/Style/HomeStyle.css"));
         }
     }
 }

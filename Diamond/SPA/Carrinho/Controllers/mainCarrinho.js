@@ -46,7 +46,9 @@ app.controller('MainCarrinhoCtrl', function ($scope) {
 
 app.service('CarrinhoService', function ($http) {
     return {
-        inserirProduto
+        inserirProduto: function (produto) {
+            
+        }
     }
 });
 
