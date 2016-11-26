@@ -37,6 +37,8 @@
                 url: 'http://localhost:59783/api/Pedido/Post',
                 data: {
                     UsuarioId: 1,
+                    CartaoId: 1,
+                    EnderecoId: 1,
                     DataPedido: "2016-11-17 03:00:00",
                     ValorTotal: 870.00,
                     Itens: [

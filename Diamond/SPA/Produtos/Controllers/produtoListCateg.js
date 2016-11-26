@@ -2,7 +2,9 @@
     $scope.categoriaID = $routeParams.categoriaID;
 
     $scope.load - function () {
-
+        ProdutoService.getProdutos($scope.categoriaID).then(function (retorno) {
+            $scope.Produtos = retorno.data
+        }).catch(function () { });
     }
 })
 .service('ProdutoCategoriaService', function ($http) {
@@ -10,7 +12,7 @@
         getProdutos: function (idCategoria) {
             return $http({
                 method: 'GET',
-                url: ''
+                url: "http://localhost:59783/api/Produto/GetAllFromCategory/"+idCategoria/1
             });
         }
     }

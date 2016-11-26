@@ -16,8 +16,6 @@
         })
     };
 
-    UtilService.adicionarAoCarrinho({ id: 1, image: 'efasd/asdfsd', preco: 2342.34, quantidade: 2 });
-
     $scope.exibirDetalhes = function (produto) {
         window.location = "#/Produtos/" + produto.id;
         
