@@ -26,9 +26,14 @@ namespace Diamond.Repository
             return _context.Produtos;
         }
 
-        public IEnumerable<Produto> GetAllByCategoryId(int categoryId)
+        public IEnumerable<Produto> GetAllByCategoryId(int categoryId, int page)
         {
-            return _context.Produtos.Where(p => p.Id == categoryId);
+            int take = 10;
+            int skip = (page - 1) * take;
+            return _context.Produtos.Where(p => p.CategoriaId == categoryId)
+                .OrderBy(p => p.Id)
+                .Skip(skip)
+                .Take(take);
         }
 
         public Produto GetById(int id)

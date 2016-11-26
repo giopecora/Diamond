@@ -12,7 +12,7 @@ namespace Diamond.Repository.Repository
     {
         private DiamondContext _context = new DiamondContext();
 
-        public List<ProdutoCategoria> ListTop4ProductsOfAllCategories()
+        public List<ProdutoCategoria> ListTop8ProductsOfAllCategories()
         {
             return _context.Database.SqlQuery<ProdutoCategoria>("EXEC [dbo].[sp_list_top_4_sells_of_every_category]").ToList();
         }

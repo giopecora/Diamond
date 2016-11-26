@@ -14,10 +14,10 @@ namespace Diamond.Business.Business
     {
         private CategoriaRepository _repository = new CategoriaRepository();
 
-        public List<CategoriaDTO> ListTop4ProductsOfAllCategories()
+        public List<CategoriaDTO> ListTop8ProductsOfAllCategories()
         {
             List<CategoriaDTO> categorias = new List<CategoriaDTO>();
-            List<ProdutoCategoria> entities = _repository.ListTop4ProductsOfAllCategories();
+            List<ProdutoCategoria> entities = _repository.ListTop8ProductsOfAllCategories();
             IEnumerable<int> ids = from e in entities
                             group e by e.Id into i
                             select i.Key;

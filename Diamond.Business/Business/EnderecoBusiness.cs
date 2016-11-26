@@ -22,7 +22,7 @@ namespace Diamond.Business.Business
 
         public EnderecoDTO Insert(EnderecoDTO endereco)
         {
-            Endereco entity = _repository.Insert(endereco);
+            Endereco entity = _repository.Insert(Mapper.Map<Endereco>(endereco));
 
             endereco.Id = entity.Id;
 
@@ -31,7 +31,7 @@ namespace Diamond.Business.Business
 
         public void Update(EnderecoDTO endereco)
         {
-            bool result = _repository.Update(endereco);
+            bool result = _repository.Update(Mapper.Map<Endereco>(endereco));
 
             if (!result)
                 throw new Exception("Nao foi possivel atualizar este Endereco.");
