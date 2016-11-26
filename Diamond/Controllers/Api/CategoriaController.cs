@@ -16,13 +16,13 @@ namespace Diamond.Controllers.Api
 
         [ResponseType(typeof(List<CategoriaDTO>))]
         [HttpGet]
-        public IHttpActionResult ListTop4ProductsOfAllCategories()
+        public IHttpActionResult ListTop8ProductsOfAllCategories()
         {
             List<CategoriaDTO> categorias = new List<CategoriaDTO>();
 
             try
             {
-                categorias = _business.ListTop4ProductsOfAllCategories();
+                categorias = _business.ListTop8ProductsOfAllCategories();
             }
             catch(Exception ex)
             {

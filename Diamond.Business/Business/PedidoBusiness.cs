@@ -30,7 +30,7 @@ namespace Diamond.Business.Business
         {
             Pedido entity = Mapper.Map<Pedido>(pedido);
 
-            foreach(PedidoItemDTO item in pedido.Itens)
+            foreach(PedidoItemDTO item in pedido.Pedido_Item)
             {
                 entity.Pedido_Item.Add(Mapper.Map<Pedido_Item>(item));
             }

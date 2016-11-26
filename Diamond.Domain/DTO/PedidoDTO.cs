@@ -1,4 +1,5 @@
 ﻿using Diamond.Domain.Entities;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -16,6 +17,8 @@ namespace Diamond.Domain.DTO
         public int EnderecoId { get; set; }
         public DateTime? DataPedido { get; set; }
         public double? ValorTotal { get; set; }
-        public List<PedidoItemDTO> Itens { get; set; }
+
+        [JsonProperty("itens")]
+        public List<PedidoItemDTO> Pedido_Item { get; set; }
     }
 }
