@@ -19,12 +19,16 @@ App.config(['$routeProvider', function ($routeProvider) {
             controller: 'ProdutoDetalheCtrl'
         })
         .when('/Categoria/:categoriaID', {
-            templateUrl: 'SPA/Produtos/Views/produtoListCateg',
+            templateUrl: 'SPA/Produtos/Views/produtoListCateg.html',
             controller: 'ProdutoCategoria'
         })
         .when('/CarrinhoCompra', {
             templateUrl: 'SPA/Carrinho/Views/mainCarrinho.html',
             controller: 'MainCarrinhoCtrl'
+        })
+        .when('/Produtos/listagem/:categoriaID', {
+            templateUrl: 'SPA/Produtos/Views/produtoListCateg.html',
+            controller: 'ProdutoCategoria'
         })
         
     .otherwise({ redirectTo: '/Home' })

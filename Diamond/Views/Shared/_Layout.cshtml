@@ -12,7 +12,7 @@
     <nav class="navbar navbar-default main-nav" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-main" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -20,30 +20,28 @@
                 </button>
                 <a class="navbar-brand" href="#/home">Diamond</a>
             </div>
-            <div class="collapse navbar-collapse">
-                <div>
+            <div class="collapse navbar-collapse" id="nav-main">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#/CarrinhoCompra"><i class="fa fa-shopping-cart fa-2x"></i><span class="badge">0</span></a></li>
+                        <li class="pull-right"><a href="#/CarrinhoCompra"><i class="fa fa-shopping-cart fa-2x"></i><span class="badge">0</span></a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href=""><i class="fa fa-user fa-2x"></i><span class="badge">Login</span></a></li>
+                        <li class="pull-right"><a href=""><i class="fa fa-user fa-2x"></i><span class="badge">Login</span></a></li>
                     </ul>
                     <form class="navbar-form navbar-right" role="search">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Pesquisar" name="srch-term" id="srch-term" />
+                            <input type="text" class="form-control pull-right" placeholder="Pesquisar" name="srch-term" id="srch-term" />
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
                             </span>
                         </div>
                     </form>
-                </div>
                 <div>
                     <ul class="nav nav-tabs col-md-10 col-md-offset-1 pull-right">
-                        <li role="presentation"><a href="#/produtos/listagem/:2">DVDs e Blu-ray</a></li>
-                        <li role="presentation"><a href="#/produtos/listagem/:3">Games</a></li>
-                        <li role="presentation"><a href="#/produtos/listagem/:4">Celulares e Telefonia Fixa</a></li>
-                        <li role="presentation"><a href="#/produtos/listagem/:5">Informática e Tablets</a></li>
-                        <li role="presentation"><a href="#/produtos/listagem/:6">Tv, Aúdio e Home Theater</a></li>
+                        <li role="presentation"><a href="#/Categoria/2">DVDs e Blu-ray</a></li>
+                        <li role="presentation"><a href="#/Categoria/3">Games</a></li>
+                        <li role="presentation"><a href="#/Categoria/4">Celulares e Telefonia Fixa</a></li>
+                        <li role="presentation"><a href="#/Categoria/5">Informática e Tablets</a></li>
+                        <li role="presentation"><a href="#/Categoria/6">Tv, Aúdio e Home Theater</a></li>
                     </ul>
                 </div>
             </div>
@@ -59,5 +57,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("Scripts", required: false)
+
+
 </body>
 </html>

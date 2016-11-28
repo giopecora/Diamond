@@ -18,7 +18,6 @@
 
     $scope.exibirDetalhes = function (produto) {
         window.location = "#/Produtos/" + produto.id;
-        
     }
 
     $scope.slides = [
