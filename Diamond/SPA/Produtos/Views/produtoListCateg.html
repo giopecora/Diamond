@@ -4,12 +4,12 @@
     </div>
     <div class="row">
         <div class="col-md-4" ng-repeat="produto in Produtos track by $index">
-            <div class="container-card">
+            <div class="thumbnail">
                 <img class="img-responsive" src="{{produto.action}}" />
-                <div class="text-center descricao">
-                    <p>{{produto.nome}}</p>
-                    <p>{{produto.preco |currency}}</p>
-                    <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="exibirDetalhes(destaque)">Detalhes</button>
+                <div class="caption">
+                    <h3>{{produto.nome | truncate}}</h3>
+                    <h2>{{produto.preco |currency}}</h2>
+                    <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="exibirDetalhes(produto)">Detalhes</button>
                 </div>
             </div>
         </div>

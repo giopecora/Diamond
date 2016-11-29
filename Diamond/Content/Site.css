@@ -10,16 +10,7 @@ body {
     white-space: normal;
 }
 
-#jumbo-title{
-	padding-top: 20px;
-	padding-bottom: 15px;
-	/*padding-left: 0px;*/
-	/*padding-right: 0px;*/
 
-	margin-left: -20px;
-	margin-right: -15px;
-	border-radius: 0px;
-}
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
@@ -68,6 +59,12 @@ textarea {
     -o-background-size: cover;
 }
 
-footer {
-    margin: 50px 0;
+.bottom-column {
+    float: none !important;
+    display: table-cell !important;
+    vertical-align: bottom !important;
+}
+
+.imagem-prod{
+    max-height: 150px;
 }

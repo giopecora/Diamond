@@ -14,9 +14,8 @@
     }
 
     ProdutoService.inserir().then(function () {
-        window.alert("Deu certo!")
     }).catch(function () {
-        console.log("Deu ruim")
+        
     });
 
     $scope.load();

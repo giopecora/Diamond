@@ -1,8 +1,5 @@
 ﻿<style>
-    img-responsive, prod-image{
-        max-height: 150px;
-        max-width: 150px;
-    }
+    
 </style>
 <div class="container-fluid">
     <div class="row">
@@ -36,34 +33,34 @@
                         </tr>
                         <tbody>
                             <!-- line 1 -->
-                            <tr>
+                            <tr ng-repeat="produto in produtos">
                                 <td class="col-md-5 text-left">
-                                    <img class="img-responsive prod-image" 
-                                         src="https://http2.mlstatic.com/caneca-personalizada-league-of-legends-jinx-lol-D_NQ_NP_19567-MLB20174006111_102014-O.webp">
-                                    <p>Caneca  asdasdas hakdhkajshdashdkhasjkhdkjah kjahsd</p>
+                                    <img class="img-responsive text-center imagem-prod" 
+                                         src="{{produto.action}}">
+                                    <h4>{{produto.nome | truncate}}</h4>
                                 </td>
-                                <td class="col-md-3">
+                                <td class="col-md-3 bottom-column">
                                     <div class="row">
                                         <div class="col-md-4 col-md-offset-4">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" value="0" disabled="true" />
+                                                <input type="text" class="form-control" value="{{produto.quantidade}}" disabled/>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                                                <a type="button" class="btn btn-default ">-</a>
+                                                <a type="button" class="btn btn-default">-</a>
                                                 <a type="button" class="btn btn-default">+</a>
                                             </div>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="col-md-2 ">
-                                    <strong>R$ 2000,00</strong>
+                                <td class="col-md-2 bottom-column">
+                                    <h3>{{produto.preco | currency}}</h3>
                                 </td>
-                                <td class="col-md-2">
-                                    <strong>R$ 2000,00</strong>
+                                <td class="col-md-2 bottom-column">
+                                    <h3>{{produto.totalUnitario | currency}}</h3>
                                 </td>
                             </tr>
                         </tbody>
@@ -71,8 +68,9 @@
                     <hr />
                     <div class="row">
                         <div class="col-md-3 col-md-offset-7">
-                            <h2>Subtotal <small>R$ 4,000</small></h2>
+                            <h2>Subtotal <small>{{subTotal | currency}}</small></h2>
                         </div>
+                        <button class="btn" ng-click="finalizarCompra()">finalizar</button>
                     </div>
                 </div>
             </div>

@@ -1,28 +1,23 @@
-﻿<style>
-    #ImagemProduto{
-        width: 300px;
-        height: 300px;
-    }
-
-    #preco{
-        font-size: 20px;
-    }
-
-</style>
-
-<div class="container">
+﻿<div class="container">
     <div class="row">
         <div class="col-md-3">
-            <img src="{{produto.action}}" id="ImagemProduto" alt="Imagem Produto"/>
+            <img class="img-responsive" src="{{produto.action}}" id="ImagemProduto" alt="Imagem Produto"/>
         </div>
         <div class="col-md-offset-1 col-md-8">
             <div class="row">
-                <div class="col-md-12"><h1>{{produto.nome}}</h1></div>
+                <div class="col-md-12"><h3>{{produto.nome}}</h3></div>
             </div>
             <div class="row">
-                <div class="col-md-12 col-sm-12"><p id="preco">{{produto.preco | currency}}</p></div>
-                <div class="col-md-12 col-sm-12"><button class="btn btn-success btn-fixed" ng-click="adicionarCarrinho(produto)">Adicionar ao carrinho</button></div>
+                <div class="col-md-12 col-sm-12"><h2>{{produto.preco | currency}}</h2></div>
+                <div class="col-md-4 col-sm-12">
+                    <button class="btn btn-success btn-block btn-lg" ng-click="adicionarCarrinho(produto)">Adicionar ao carrinho</button>
+                </div>
             </div>
         </div>
+    </div>
+    <hr />
+    <div class="panel panel-default">
+        <div class="panel-heading"><h2>Descrição</h2></div>
+        <div class="panel-body">{{produto.descricao}}</div>
     </div>
 </div>

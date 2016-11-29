@@ -30,6 +30,10 @@ App.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'SPA/Produtos/Views/produtoListCateg.html',
             controller: 'ProdutoCategoria'
         })
+        .when('/CadastroUsuario', {
+            templateUrl: 'SPA/Pessoas/Views/cadastroUsuario.html',
+            controller: ''
+        })
         
     .otherwise({ redirectTo: '/Home' })
 }])

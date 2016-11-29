@@ -50,11 +50,11 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <div class="container-card">
-                <img class="img-responsive" src="http://compass.microsoft.com/assets/3d/4e/3d4ec411-f906-45c5-a676-9e5015104b2c.jpg?n=WMM3500_composite.jpg" />
-                <div class="text-center descricao">
-                    <h1>{{destaquePrincipal.nome}}</h1>
-                    <h4>{{destaquePrincipal.preco | currency}}</h4>
+            <div class="thumbnail">
+                <img class="img-responsive" src="{{destaquePrincipal.action}}" />
+                <div class="caption">
+                    <h3>{{destaquePrincipal.nome | truncate}}</h3>
+                    <h2>{{destaquePrincipal.preco |currency}}</h2>
                     <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="exibirDetalhes(destaquePrincipal)">Detalhes</button>
                 </div>
             </div>
@@ -62,11 +62,11 @@
         <div class="col-md-6">
             <div class="row">
                 <div ng-repeat="destaque in destaquePrimeiraLinha" class="col-md-6">
-                    <div class="container-card">
-                        <img class="img-responsive" src="{{destaque.action}}"/>
-                        <div class="text-center descricao">
-                            <p>{{destaque.nome}}</p>
-                            <p>{{destaque.preco |currency}}</p>
+                    <div class="thumbnail">
+                        <img class="img-responsive" src="{{destaque.action}}" />
+                        <div class="caption">
+                            <h3>{{destaque.nome | truncate}}</h3>
+                            <h2>{{destaque.preco |currency}}</h2>
                             <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="exibirDetalhes(destaque)">Detalhes</button>
                         </div>
                     </div>
@@ -74,11 +74,11 @@
             </div>
             <div class="row">
                 <div ng-repeat="destaque in destaqueSegundaLinha" class="col-md-6">
-                    <div class="container-card">
+                    <div class="thumbnail">
                         <img class="img-responsive" src="{{destaque.action}}" />
-                        <div class="text-center descricao">
-                            <p>{{destaque.nome}}</p>
-                            <p>{{destaque.preco |currency}}</p>
+                        <div class="caption">
+                            <h3>{{destaque.nome | truncate}}</h3>
+                            <h2>{{destaque.preco |currency}}</h2>
                             <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="exibirDetalhes(destaque)">Detalhes</button>
                         </div>
                     </div>

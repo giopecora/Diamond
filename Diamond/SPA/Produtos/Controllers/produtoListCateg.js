@@ -1,4 +1,4 @@
-﻿angular.module('Diamond').controller('ProdutoCategoria', function ($scope, ProdutoCategoriaService, $routeParams) {
+﻿angular.module('Diamond').controller('ProdutoCategoria', function ($scope, ProdutoCategoriaService, $routeParams, $location) {
     $scope.categoriaID = $routeParams.categoriaID;
     $scope.Produtos = [];
     $scope.categoria = "";
@@ -28,7 +28,7 @@
     }
 
     $scope.exibirDetalhes = function (produto) {
-        window.location = "#/Produtos/" + produto.id;
+        $location.path("/Produtos/"+produto.id);
     }
 
     $scope.load();
