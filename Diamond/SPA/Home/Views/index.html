@@ -40,15 +40,13 @@
     </span>
 
 </div>
-<div class="container">
-    <div class="row">
+<div>
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-5 col-xs-5 left-line"></div>
             <div class="col-md-2 col-xs-2 text-center">Destques</div>
             <div class="col-md-5 col-xs-5 right-line"></div>
         </div>
-    </div>
-    <div class="row">
         <div class="col-md-6">
             <div class="thumbnail">
                 <img class="img-responsive" src="{{destaquePrincipal.action}}" />
@@ -59,7 +57,19 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div ng-repeat="destaque in destaques">
+            <div class="col-md-3">
+                <div class="thumbnail">
+                    <img class="img-responsive destaque-image" src="{{destaque.action}}" />
+                    <div class="caption">
+                        <h4>{{destaque.nome | truncateHome}}</h4>
+                        <h2>{{destaque.preco |currency}}</h2>
+                        <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="exibirDetalhes(destaque)">Detalhes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="col-md-6">
             <div class="row">
                 <div ng-repeat="destaque in destaques" class="col-md-6">
                     <div class="thumbnail">
@@ -72,7 +82,7 @@
                     </div>
                 </div>
             </div>
-            <!--<div class="row">
+            <div class="row">
                 <div ng-repeat="destaque in destaqueSegundaLinha" class="col-md-6">
                     <div class="thumbnail">
                         <img class="img-responsive" src="{{destaque.action}}" />
@@ -83,7 +93,8 @@
                         </div>
                     </div>
                 </div>
-            </div>-->
-        </div>
+            </div>
+        </div>-->
     </div>
+
 </div>
