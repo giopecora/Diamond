@@ -78,4 +78,15 @@
             }
         }
     };
+})
+.filter('truncateHome', function () {
+    return function (text) {
+        if (text) {
+            if (text.length > 18) {
+                return String(text).substring(0, 18) + "...";
+            } else {
+                return text;
+            }
+        }
+    };
 });

@@ -3,8 +3,7 @@
     $scope.load = function () {
         HomeService.listTopFive().then(function (retorno) {
             $scope.destaquePrincipal = retorno.data[0];
-            $scope.destaquePrimeiraLinha = retorno.data.slice(1, 3);
-            $scope.destaqueSegundaLinha = retorno.data.slice(3, 5);
+            $scope.destaques = retorno.data.slice(1, 5);            
         }).catch(function () {
             swal();
         });
@@ -51,7 +50,7 @@
         gettopFourofAllCategories: function () {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Categoria/ListTop4ProductsOfAllCategories/'
+                url: 'http://localhost:59783/api/Categoria/ListTop8ProductsOfAllCategories/'
             });
         }
     }

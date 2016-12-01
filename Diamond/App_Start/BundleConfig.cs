@@ -45,7 +45,9 @@ namespace Diamond
                 "~/SPA/Produtos/Controllers/produtoCadastro.js",
                 "~/SPA/Produtos/Controllers/produtoListCateg.js",
                 "~/SPA/Home/Controllers/HomeController.js",
-                "~/SPA/Carrinho/Controllers/mainCarrinho.js"));
+                "~/SPA/Carrinho/Controllers/mainCarrinho.js",
+                "~/SPA/Pessoas/Controllers/cadastroUsuario.js",
+                "~/SPA/Pessoas/Controllers/login.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                  "~/Content/bootstrap.css",

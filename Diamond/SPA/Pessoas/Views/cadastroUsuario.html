@@ -2,41 +2,60 @@
     <div class="page-header">
         <h2 class="text-center">Identificação</h2>
     </div>
-    <form>
-        <div class="row">
-            <h3 class="text-center">Dados Cadastrais</h3>
+    <div class="panel panel-default">
+        <div class="panel-heading">            
+            <h3>Dados Cadastrais</h3>            
         </div>
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
-                    <input class="form-control" type="text" id="nomeProduto" placeholder="Ex: fulano@zmail.com" />
-                </div> 
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
-                    <input class="form-control" type="password" id="nomeProduto" placeholder="Senha" />
+        <div class="panel-body">
+            <form ng-submit="validaUsuario()" ng-show="{{passo == 1}}">
+                <div class="row form-group">
+                    <div class="col-md-4 col-md-offset-4">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                            <input class="form-control" ng-model="usuario.login" type="email" placeholder="Email" required />
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                    <input class="form-control" type="text" id="nomeProduto" placeholder="Ex: José dos Santos" />
+                <div class="row form-group">
+                    <div class="col-md-4 col-md-offset-4">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
+                            <input class="form-control" ng-model="usuario.senha" type="password" placeholder="Senha" required />
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa" aria-hidden="true"></i></span>
-                    <input class="form-control" type="text" id="nomeProduto" placeholder="Ex: José dos Santos" />
+                <div class="row form-group">
+                    <div class="col-md-4 col-md-offset-4">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                            <input class="form-control" ng-model="usuario.nome" type="text" placeholder="Nome" required />
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </form>
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">CPF</span>
+                            <input ng-model="usuario.cpf" class="form-control" type="text" placeholder="" required />
+                        </div>
+                    </div>
+                </div>                
+                <button type="submit" class="btn btn-primary btn-lg pull-right">Proximo</button>                
+            </form>
+            <form ng-submit="" ng-show="{{passo == 2}}">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">CPF</span>
+                        <input ng-model="endereco.logradouro" class="form-control" type="text" placeholder="" required />
+                    </div>
+                </div>
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">CPF</span>
+                        <input ng-model="endereco.numero" class="form-control" type="text" placeholder="" required />
+                    </div>
+                </div>
+            </form>
+        </div>        
+    </div>    
 </div>

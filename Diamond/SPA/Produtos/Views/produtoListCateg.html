@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-4" ng-repeat="produto in Produtos track by $index">
             <div class="thumbnail">
-                <img class="img-responsive" src="{{produto.action}}" />
+                <img class="img-responsive  destaque-image" src="{{produto.action}}" />
                 <div class="caption">
                     <h3>{{produto.nome | truncate}}</h3>
                     <h2>{{produto.preco |currency}}</h2>

@@ -1088,7 +1088,10 @@
     <Content Include="SPA\Home\Controllers\HomeController.js" />
     <Content Include="SPA\Home\Style\HomeStyle.css" />
     <Content Include="SPA\Home\Views\index.html" />
+    <Content Include="SPA\Pessoas\Controllers\cadastroUsuario.js" />
+    <Content Include="SPA\Pessoas\Controllers\login.js" />
     <Content Include="SPA\Pessoas\Views\cadastroUsuario.html" />
+    <Content Include="SPA\Pessoas\Views\login.html" />
     <Content Include="SPA\Produtos\Controllers\produtoCadastro.js" />
     <Content Include="SPA\Produtos\Controllers\produtoDetalhe.js" />
     <Content Include="SPA\Produtos\Controllers\produtoListCateg.js" />
@@ -1120,7 +1123,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\app\" />
-    <Folder Include="SPA\Pessoas\Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
