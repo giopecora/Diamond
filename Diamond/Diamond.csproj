@@ -1095,6 +1095,9 @@
     <Content Include="SPA\Produtos\Controllers\produtoCadastro.js" />
     <Content Include="SPA\Produtos\Controllers\produtoDetalhe.js" />
     <Content Include="SPA\Produtos\Controllers\produtoListCateg.js" />
+    <Content Include="SPA\Produtos\Modals\Views\adicionar-produto.html" />
+    <Content Include="SPA\Produtos\Modals\Views\visualizar-produto.html" />
+    <Content Include="SPA\Produtos\Views\manter-produto.html" />
     <Content Include="SPA\Produtos\Views\produtoCadastro.html" />
     <Content Include="SPA\Produtos\Views\produtoDetalhe.html" />
     <Content Include="SPA\Produtos\Views\produtoListCateg.html" />
@@ -1123,6 +1126,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\app\" />
+    <Folder Include="SPA\Produtos\Modals\Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -22,7 +22,7 @@
 
         parceirosService.consultaCEP(cep).
           then(function (retorno) {
-              $scope.floricultura.endereco = retorno.data;
+              $scope.endereco = retorno.data;
           }).catch(function () {
               alert(retorno.message || "Houve um erro desconhecido");
               return;
@@ -36,12 +36,26 @@
             Object.keys($scope.usuario).forEach(function (prop) {
                 $scope.usuario[prop] = '';
             });
+            $scope.passo = 2;
         }).catch(function () { });
 
     }
 
     $scope.validaEndereco = function () {
+        var tmpEndereco = JSON.stringify($scope.endereco);
 
+        UsuarioService.cadastrarEndereco(tmpEndereco).then(function () {
+            Object.keys($scope.endereco).forEach(function (prop) {
+                $scope.endereco[prop] = '';
+            });
+
+            //redirecionar o cara para home ou para o carrinho? e.e
+            $location.path = '';
+
+            //NÃO ESQUECER DE MOSTRAR MSG DE SUCESSO!
+        }).catch(function () {
+            //msg de erro
+        })
     }
 })
 .service('UsuarioService', function ($http) {
