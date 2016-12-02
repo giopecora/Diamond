@@ -11,6 +11,24 @@ namespace Diamond.Controllers.Api
     {
         private ProdutoBusiness _business = new ProdutoBusiness();
 
+        [ResponseType(typeof(List<ProdutoDTO>))]
+        [Route("api/Produto/SearchForProducts/{search}")]
+        public IHttpActionResult SearchForProducts(string search)
+        {
+            List<ProdutoDTO> produtos = new List<ProdutoDTO>();
+
+            try
+            {
+                produtos = _business.SearchForProducts(search);
+            }
+            catch(Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+
+            return Ok(produtos);
+        }
+
         [ResponseType(typeof(List<ProdutoDestaqueDTO>))]
         [Route("api/Produto/GetTop5")]
         public IHttpActionResult GetTop5()

@@ -12,6 +12,11 @@ namespace Diamond.Business
     {
         private ProdutoRepository _repository = new ProdutoRepository();
 
+        public List<ProdutoDTO> SearchForProducts(string search)
+        {
+            return _repository.SearchForProducts(search).ToDTO<Produto, ProdutoDTO>();
+        }
+
         public List<ProdutoDestaqueDTO> GetTop5()
         {
             return _repository.GetTop5();

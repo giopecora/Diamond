@@ -11,6 +11,11 @@ namespace Diamond.Repository
     {
         private DiamondContext _context = new DiamondContext();
 
+        public List<Produto> SearchForProducts(string search)
+        {
+            return _context.Database.SqlQuery<Produto>($"EXEC [dbo].[sp_list_products_by_search] {search}").ToList();
+        }
+
         public List<ProdutoDestaqueDTO> GetTop5()
         {
             return _context.Database.SqlQuery<ProdutoDestaqueDTO>("EXEC sp_list_top_5_sells").ToList();
