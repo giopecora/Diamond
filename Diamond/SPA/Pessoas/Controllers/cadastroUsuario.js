@@ -8,11 +8,12 @@
     }
     $scope.endereco = {
         logradouro: '',
-        numero: '',
+        numero: '',        
         complemento: '',
         cep: '',
         cidade: '',
-        UF: ''
+        bairro: '',
+        uf: ''
     }
     $scope.passo = 1;
     
@@ -20,9 +21,10 @@
         if (cep.length < 8)
             return;
 
-        parceirosService.consultaCEP(cep).
+        UsuarioService.consultaCEP(cep).
           then(function (retorno) {
               $scope.endereco = retorno.data;
+              $scope.endereco.cidade = retorno.data.localidade;
           }).catch(function () {
               alert(retorno.message || "Houve um erro desconhecido");
               return;
@@ -93,6 +95,12 @@
                 url: '',
                 data: cartao
             })
+        },
+        consultaCEP: function (cep) {
+            return $http({
+                method: 'GET',
+                url: 'http://viacep.com.br/ws/' + cep + '/json/'
+            });
         }
     }
 });

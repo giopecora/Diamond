@@ -1,4 +1,4 @@
-﻿var App = angular.module('Diamond', ['ngRoute', 'ui.bootstrap', 'ngCookies']);
+﻿var App = angular.module('Diamond', ['ngRoute', 'ui.bootstrap', 'ngCookies', 'ui.utils.masks']);
 
 App.config(['$routeProvider', function ($routeProvider) {
     $routeProvider

@@ -9,19 +9,19 @@
         }).catch(function () { });
 
         switch ($scope.categoriaID) {
-            case '2':
+            case '1':
                 $scope.categoria = "DVDs e Blu-ray";
                 break;
-            case '3':
+            case '2':
                 $scope.categoria = "Games";
                 break;
-            case '4':
+            case '3':
                 $scope.categoria = "Celulares e Telefonia Fixa";
                 break;
-            case '5':
+            case '4':
                 $scope.categoria = "Informática e Tablets";
                 break;
-            case '6':
+            case '5':
                 $scope.categoria = "Tv, Aúdio e Home Theater";
                 break;
         }

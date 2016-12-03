@@ -34,9 +34,12 @@ textarea {
     margin-bottom: 0px;
 }
 
-.content{
-    height: inherit;
+.content-wrapper{
+    position: relative; 
+    padding-bottom: 40px;
+    height: calc(100% - 100px);
 }
+
 .carousel,
 .item,
 .active {
@@ -81,4 +84,5 @@ textarea {
  .footer-layout{
      position: absolute;
      bottom: 0;
+     left: 100px;
  }

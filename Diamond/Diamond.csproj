@@ -263,6 +263,7 @@
     <Content Include="Scripts\angular-cookies.js" />
     <Content Include="Scripts\angular-cookies.min.js" />
     <Content Include="Scripts\angular-csp.css" />
+    <Content Include="Scripts\angular-input-masks-standalone.js" />
     <Content Include="Scripts\angular-loader.js" />
     <Content Include="Scripts\angular-loader.min.js" />
     <Content Include="Scripts\angular-message-format.js" />
@@ -1079,6 +1080,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\sammy-0.7.4.js" />
     <Content Include="Scripts\sammy-0.7.4.min.js" />
+    <Content Include="Scripts\tmhDynamicLocale.min.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-2.2.0.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="SPA\App.js" />
