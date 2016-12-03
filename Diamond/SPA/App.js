@@ -34,6 +34,10 @@ App.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'SPA/Pessoas/Views/cadastroUsuario.html',
             controller: 'PessoasCadastro'
         })
+        .when('/backoffice/produtos', {
+            templateUrl: 'SPA/Produtos/Views/manter-produto.html',
+            controller: ''
+        })
         .when('/Login', {
             templateUrl: 'SPA/Pessoas/Views/login.html'
         })

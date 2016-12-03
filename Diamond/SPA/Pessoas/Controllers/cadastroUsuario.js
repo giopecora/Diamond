@@ -37,7 +37,9 @@
                 $scope.usuario[prop] = '';
             });
             $scope.passo = 2;
-        }).catch(function () { });
+        }).catch(function (error) {
+            console.log();
+        });
 
     }
 
@@ -53,10 +55,21 @@
             $location.path = '';
 
             //NÃO ESQUECER DE MOSTRAR MSG DE SUCESSO!
-        }).catch(function () {
+        }).catch(function (error) {
             //msg de erro
+            
         })
     }
+
+
+
+    //////////////////////////////////////////////////////////////////////////// MASCARAS INPUT  -- //////////////////////////////
+
+    
+
+
+    ////////////////////////////////////////////////////////////////////////////  END MASCARAS INPUT  --/////////////////////////////
+
 })
 .service('UsuarioService', function ($http) {
     return {

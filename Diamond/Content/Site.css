@@ -1,6 +1,6 @@
 ﻿html,
 body {
-    height: 100%;
+   height: 100%;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -68,3 +68,17 @@ textarea {
 .imagem-prod{
     max-height: 150px;
 }
+
+/*footer*/
+/*.footer{
+    height: 100px;
+    background: #e7e7e7;
+}*/
+ .adicionar{
+  margin-top: 30px;
+ }
+
+ .footer-layout{
+     position: absolute;
+     bottom: 0;
+ }

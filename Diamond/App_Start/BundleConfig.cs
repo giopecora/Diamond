@@ -42,7 +42,7 @@ namespace Diamond
                 "~/SPA/App.js",
                 "~/SPA/Services/Util.js",
                 "~/SPA/Produtos/Controllers/produtoDetalhe.js",
-                "~/SPA/Produtos/Controllers/produtoCadastro.js",
+                "~/SPA/Produtos/Controllers/manter-produto.js",
                 "~/SPA/Produtos/Controllers/produtoListCateg.js",
                 "~/SPA/Home/Controllers/HomeController.js",
                 "~/SPA/Carrinho/Controllers/mainCarrinho.js",

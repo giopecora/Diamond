@@ -57,10 +57,11 @@
     </nav>
     
     @RenderBody()
-    @RenderSection("SPAViews", required: false)
-    
-    <footer>ALO</footer>
-
+    @RenderSection("SPAViews", required: false)    
+    <hr />
+    <footer class="footer-layout">
+        <p>&copy; @DateTime.Now.Year - Diamond Application</p>
+    </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("Scripts", required: false)
