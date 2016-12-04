@@ -4,12 +4,17 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Diamond.Business;
 using Diamond.Domain.DTO;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web;
+using Diamond.Business.Business;
 
 namespace Diamond.Controllers.Api
 {
     public class ProdutoController : ApiController
     {
         private ProdutoBusiness _business = new ProdutoBusiness();
+        private ProdutoImagemBusiness _imagemBusiness = new ProdutoImagemBusiness();
 
         [ResponseType(typeof(List<ProdutoDTO>))]
         [Route("api/Produto/SearchForProducts/{search}")]
@@ -149,6 +154,21 @@ namespace Diamond.Controllers.Api
             }
 
             return Ok(produto);
+        }
+
+        [HttpPost]
+        public IHttpActionResult Upload(int produtoId)
+        {
+            try
+            {
+                _imagemBusiness.Upload(produtoId, HttpContext.Current);
+            }
+            catch(Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+
+            return Ok();
         }
 
         // DELETE: api/Produtos/5
