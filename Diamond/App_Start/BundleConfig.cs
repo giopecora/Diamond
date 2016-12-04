@@ -26,7 +26,9 @@ namespace Diamond
                 "~/Scripts/angular.min.js",
                 "~/Scripts/angular-cookies.min.js",
                 "~/Scripts/angular-route.min.js",
-                "~/Scripts/ui-bootstrap-tpls-2.2.0.min.js"));
+                "~/Scripts/ui-bootstrap-tpls-2.2.0.min.js",
+                "~/Scripts/tmhDynamicLocale.min.js",
+                "~/Scripts/angular-input-masks-standalone.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -42,7 +44,7 @@ namespace Diamond
                 "~/SPA/App.js",
                 "~/SPA/Services/Util.js",
                 "~/SPA/Produtos/Controllers/produtoDetalhe.js",
-                "~/SPA/Produtos/Controllers/produtoCadastro.js",
+                "~/SPA/Produtos/Controllers/manter-produto.js",
                 "~/SPA/Produtos/Controllers/produtoListCateg.js",
                 "~/SPA/Home/Controllers/HomeController.js",
                 "~/SPA/Carrinho/Controllers/mainCarrinho.js",

@@ -1,6 +1,8 @@
 ﻿angular.module('Diamond').service('UtilService', function ($http, $cookies, $location) {
 
     return {
+
+        //MANIPULAÇAO DO CARRINHO
         adicionarAoCarrinho: function (produto) {
             var TmpCarrinho = [];
             var TmpProduto = 
@@ -65,7 +67,18 @@
         },
         limparCarrinho: function () {
             $cookies.remove('Produtos');
+        },
+        // END MANIOULAÇÃO CARRINHO
+
+        // BUSCA PELO SEARCH NAVBAR
+
+        procurarProduto: function (params) {
+            return $http({
+                method: 'GET',
+                url: 'http://localhost:59783/api/Produto/SearchForProducts/' + params                
+            });
         }
+
 
     };
 }).filter('truncate', function () {

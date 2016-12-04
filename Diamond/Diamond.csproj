@@ -264,6 +264,7 @@
     <Content Include="Scripts\angular-cookies.js" />
     <Content Include="Scripts\angular-cookies.min.js" />
     <Content Include="Scripts\angular-csp.css" />
+    <Content Include="Scripts\angular-input-masks-standalone.js" />
     <Content Include="Scripts\angular-loader.js" />
     <Content Include="Scripts\angular-loader.min.js" />
     <Content Include="Scripts\angular-message-format.js" />
@@ -1080,6 +1081,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\sammy-0.7.4.js" />
     <Content Include="Scripts\sammy-0.7.4.min.js" />
+    <Content Include="Scripts\tmhDynamicLocale.min.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-2.2.0.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="SPA\App.js" />
@@ -1093,7 +1095,7 @@
     <Content Include="SPA\Pessoas\Controllers\login.js" />
     <Content Include="SPA\Pessoas\Views\cadastroUsuario.html" />
     <Content Include="SPA\Pessoas\Views\login.html" />
-    <Content Include="SPA\Produtos\Controllers\produtoCadastro.js" />
+    <Content Include="SPA\Produtos\Controllers\manter-produto.js" />
     <Content Include="SPA\Produtos\Controllers\produtoDetalhe.js" />
     <Content Include="SPA\Produtos\Controllers\produtoListCateg.js" />
     <Content Include="SPA\Produtos\Modals\Views\adicionar-produto.html" />

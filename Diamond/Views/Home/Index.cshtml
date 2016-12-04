@@ -1,8 +1,10 @@
-﻿<div class="content" ng-view>
+﻿<div class="content-wrapper">
+    <div class="content" ng-view>
+    </div>
+    @*<footer class="footer-layout">
+        <p>&copy; @DateTime.Now.Year - Diamond Application</p>
+    </footer>*@
 </div>
-@*<footer class="footer">
-    <p>&copy; @DateTime.Now.Year - Diamond Application</p>
-</footer>*@
 
 @section Scripts{
     @Scripts.Render("~/bundles/knockout")

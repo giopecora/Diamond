@@ -1,4 +1,4 @@
-﻿var App = angular.module('Diamond', ['ngRoute', 'ui.bootstrap', 'ngCookies']);
+﻿var App = angular.module('Diamond', ['ngRoute', 'ui.bootstrap', 'ngCookies', 'ui.utils.masks']);
 
 App.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
@@ -33,6 +33,10 @@ App.config(['$routeProvider', function ($routeProvider) {
         .when('/CadastroUsuario', {
             templateUrl: 'SPA/Pessoas/Views/cadastroUsuario.html',
             controller: 'PessoasCadastro'
+        })
+        .when('/backoffice/produtos', {
+            templateUrl: 'SPA/Produtos/Views/manter-produto.html',
+            controller: ''
         })
         .when('/Login', {
             templateUrl: 'SPA/Pessoas/Views/login.html'

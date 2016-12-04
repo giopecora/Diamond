@@ -1,3 +1,15 @@
 ﻿.destaque-image{
     max-height: 180px;
 }
+.caption-description{
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    width: 100%;
+    white-space: nowrap;
+}
+#myCarousel{
+    height: 100%
+}
+.content{
+    height: 100%
+}
