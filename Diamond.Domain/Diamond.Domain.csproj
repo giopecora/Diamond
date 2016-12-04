@@ -63,6 +63,7 @@
     <Compile Include="DTO\ProdutoDestaqueDTO.cs" />
     <Compile Include="DTO\ProdutoDTO.cs" />
     <Compile Include="DTO\ProdutoImagemDTO.cs" />
+    <Compile Include="DTO\RelatorioDTO.cs" />
     <Compile Include="DTO\UsuarioDTO.cs" />
     <Compile Include="Entities\Bandeira.cs" />
     <Compile Include="Entities\Cartao.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Entities\Produto_Imagens.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Entities\Usuario_Perfil.cs" />
+    <Compile Include="Models\Filtro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

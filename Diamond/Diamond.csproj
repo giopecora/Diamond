@@ -231,6 +231,7 @@
     <Compile Include="Controllers\Api\PedidoController.cs" />
     <Compile Include="Controllers\Api\PedidoItemController.cs" />
     <Compile Include="Controllers\Api\ProdutoController.cs" />
+    <Compile Include="Controllers\Api\ReportController.cs" />
     <Compile Include="Controllers\Api\UsuarioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Models\CarrinhoCompra.cs" />
