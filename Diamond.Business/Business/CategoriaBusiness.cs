@@ -17,7 +17,7 @@ namespace Diamond.Business.Business
         public List<CategoriaDTO> ListTop8ProductsOfAllCategories()
         {
             List<CategoriaDTO> categorias = new List<CategoriaDTO>();
-            List<ProdutoCategoria> entities = _repository.ListTop8ProductsOfAllCategories();
+            List<ProdutoCategoria> entities = _repository.ListTopSellsProductsOfAllCategories();
             IEnumerable<int> ids = from e in entities
                             group e by e.Id into i
                             select i.Key;

@@ -43,6 +43,8 @@ namespace Diamond
             bundles.Add(new ScriptBundle("~/bundles/SPA").Include(
                 "~/SPA/App.js",
                 "~/SPA/Services/Util.js",
+                "~/SPA/Services/authInterceptorService.js",
+                "~/SPA/Services/authService.js",
                 "~/SPA/Produtos/Controllers/produtoDetalhe.js",
                 "~/SPA/Produtos/Controllers/manter-produto.js",
                 "~/SPA/Produtos/Controllers/produtoListCateg.js",

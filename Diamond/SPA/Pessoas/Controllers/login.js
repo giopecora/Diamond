@@ -1,19 +1,19 @@
-﻿angular.module('Diamond').controller('LoginCtrl', function ($scope, HomeService, UtilService, $cookies) {
-    $scope.email = "";
-    $scope.senha = "";
-
-    $scope.logar = function () {
-
+﻿'use strict';
+angular.module('Diamond').controller('LoginCtrl', ["$scope", "$location", 'authService', function ($scope, $location, authService) {
+    console.log('aee');
+    $scope.message = "";
+    $scope.loginData = {
+        userName: "",
+        password: ""
     };
-})
-.service('loginService', function ($htpp) {
-    return {
-        logar: function (params) {
-            return $http({
-                method: 'POST',
-                url: '',
-                data: params
-            })
-        }
-    }
-});
+
+    $scope.login = function () {
+        console.log('AHOOO');
+        authService.login($scope.loginData).then(function (response) {
+            $location.path('/Home');
+        },
+        function (err) {
+            $scope.message = err.error_description;
+        });
+    };
+}]);

@@ -1,5 +1,9 @@
 ﻿var App = angular.module('Diamond', ['ngRoute', 'ui.bootstrap', 'ngCookies', 'ui.utils.masks']);
 
+App.config(function ($httpProvider) {
+    $httpProvider.interceptors.push('authInterceptorService');
+});
+
 App.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
         .when('/Home', {
@@ -39,7 +43,8 @@ App.config(['$routeProvider', function ($routeProvider) {
             controller: ''
         })
         .when('/Login', {
-            templateUrl: 'SPA/Pessoas/Views/login.html'
+            templateUrl: 'SPA/Pessoas/Views/login.html',
+            controller: 'LoginCtrl'
         })
         
     .otherwise({ redirectTo: '/Home' })
