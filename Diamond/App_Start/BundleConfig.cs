@@ -47,6 +47,7 @@ namespace Diamond
                 "~/SPA/Produtos/Controllers/produtoDetalhe.js",
                 "~/SPA/Produtos/Controllers/manter-produto.js",
                 "~/SPA/Produtos/Controllers/produtoListCateg.js",
+                "~/SPA/Produtos/Controllers/relatorioAnalitico.js",
                 "~/SPA/Home/Controllers/HomeController.js",
                 "~/SPA/Carrinho/Controllers/mainCarrinho.js",
                 "~/SPA/Pessoas/Controllers/cadastroUsuario.js",
