@@ -6,9 +6,8 @@
         <div class="col-md-8 col-md-offset-2">
             <h1 class="text-center">Minha Sacola</h1>
             <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                <a class="btn btn-default">Continuar Comprando</a>
-                <a class="btn btn-default">Finalizar Compra</a>
-                <a class="btn btn-default">Cancelar</a> 
+                <a class="btn btn-default" href="/Home">Continuar Comprando</a>
+                <a class="btn btn-default">Finalizar Compra</a>                
             </div>            
         </div>
     </div>
@@ -18,7 +17,7 @@
         </div>
     </div>
     <br>
-    <div class="row text-center">
+    <div class="row text-center" ng-show="produtos!=0">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Detalhe do(s) Produto(s)</div>
@@ -30,6 +29,7 @@
                             <th class="text-center">Quantidade</th>
                             <th class="text-center">Valor Unitário</th>
                             <th class="text-center">Valor Total</th>
+                            <th class="text-center">Ações</th>
                         </tr>
                         <tbody>
                             <!-- line 1 -->
@@ -42,11 +42,11 @@
                                 <td class="col-xs-2 col-xs-offset-5 bottom-column">
                                     <div class="input-group">
                                         <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button"><i class="fa fa-minus"></i></button>
+                                            <button class="btn btn-default" type="button" ng-click="diminuirQtdProduto(produto)"><i class="fa fa-minus"></i></button>
                                         </span>
                                         <input type="number" class="form-control" disabled ng-model="produto.quantidade">
                                         <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button"><i class="fa fa-plus"></i></button>
+                                            <button class="btn btn-default" type="button" ng-click="aumentarQtdproduto(produto)"><i class="fa fa-plus"></i></button>
                                         </span>
                                     </div>                                   
                                     
@@ -57,18 +57,30 @@
                                 <td class="col-md-2 bottom-column">
                                     <h3>{{produto.totalUnitario | currency}}</h3>
                                 </td>
+                                <td class="bottom-column">                                    
+                                    <button type="button" class="btn btn-danger" ng-click="remover(produto)"><i class="fa fa-times" uib-tooltip="Remover"></i></button>                                    
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                     <hr />
-                    <div class="row">
-                        <div class="col-md-3 col-md-offset-7">
-                            <h2>Subtotal <small>{{subTotal | currency}}</small></h2>
+                    <div class="row">                        
+                        <div class="col-md-4 pull-right">
+                            <div class="btn-group btn-group-justified">
+                                <div class="btn-group">
+                                    <button class="btn btn-success btn-lg" ng-click="finalizarCompra()">FINALIZAR</button>
+                                </div>
+                            </div>
                         </div>
-                        <button class="btn" ng-click="finalizarCompra()">finalizar</button>
+                        <div class="col-md-3 pull-right">
+                            <h2>Subtotal <small ng-bind="subTotal | currency"></small></h2>
+                        </div>                 
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row text-center" ng-hide="produtos!=0">
+        <h3>Sem produtos no carrinho</h3>
     </div>
 </div>

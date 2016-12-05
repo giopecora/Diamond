@@ -11,11 +11,28 @@ app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, Carr
         })
     }
 
+    $scope.aumentarQtdproduto = function (produto) {
+        produto.quantidade++;
+        UtilService.atualizarQuantidade(produto);
+    }
+    
+    $scope.diminuirQtdProduto = function (produto) {        
+        if (produto.quantidade == 1) {            
+            return
+        }            
+        produto.quantidade--;
+        UtilService.atualizarQuantidade(produto);
+    }
+
+    $scope.remover = function (produto) {
+        UtilService.removerDoCarrinho(produto);
+        $scope.load();
+    }
+
     $scope.finalizarCompra = function () {
 
-        var params = {
-
-        }
+        //verifica se o usuário está logado
+        //caso, sim prossegue, se nao redireciona para pagina de cadastro
 
 
         UtilService.limparCarrinho();
