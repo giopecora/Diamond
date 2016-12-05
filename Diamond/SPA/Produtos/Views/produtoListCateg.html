@@ -6,7 +6,7 @@
         <div class="col-md-4" ng-repeat="produto in Produtos track by $index">
             <div class="thumbnail">
                 <img class="img-responsive  destaque-image" src="{{produto.action}}" />
-                <div class="caption">
+                <div class="caption caption-description">
                     <h3>{{produto.nome | truncate}}</h3>
                     <h2>{{produto.preco |currency}}</h2>
                     <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="exibirDetalhes(produto)">Detalhes</button>

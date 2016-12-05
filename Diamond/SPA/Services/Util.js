@@ -12,7 +12,7 @@
                     id: produto.id,
                     imagemPrincipal: produto.imagemPrincipal,
                     nome: produto.nome,
-                    quantidade: produto.quantidade, 
+                    quantidade: 1, 
                     preco: produto.preco,
                     totalUnitario: eval("produto.quantidade * produto.preco")
                 };
@@ -51,19 +51,26 @@
         },
 
         atualizarQuantidade: function (produto) {
-            var TmpProdutos = JSON.parse($cookies.get('Produtos'));
+            var TmpCarrinho = JSON.parse($cookies.get('Produtos'));
 
             var index = TmpCarrinho.findIndex(function (itemCarrinho) { return produto.id == itemCarrinho.id });
 
             if (index != -1) {
-                TmpProdutos[index].quantidade = produto.quantidade;
-                $cookies.put('Produtos', TmpCarrinho);
+                var TmpProduto = TmpCarrinho[index];
+
+                TmpProduto.quantidade = produto.quantidade;
+
+                TmpCarrinho[index] = TmpProduto;
+                $cookies.put('Produtos', JSON.stringify(TmpCarrinho));
             }
 
         },
 
         obterProdutos: function () {
-            return JSON.parse($cookies.get('Produtos'));
+            if ($cookies.get('Produtos')) {
+                return JSON.parse($cookies.get('Produtos'));
+            }
+            return [];
         },
         limparCarrinho: function () {
             $cookies.remove('Produtos');

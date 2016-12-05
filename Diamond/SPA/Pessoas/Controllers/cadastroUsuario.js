@@ -40,7 +40,7 @@
             });
             $scope.passo = 2;
         }).catch(function (error) {
-            console.log();
+            window.alert("Não foi possível cadastrar usuário, tente novamente!")
         });
 
     }

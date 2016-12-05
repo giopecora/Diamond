@@ -1,4 +1,4 @@
-﻿var App = angular.module('Diamond', ['ngRoute', 'ui.bootstrap', 'ngCookies', 'ui.utils.masks', 'LocalStorageModule']);
+﻿var App = angular.module('Diamond', ['ngRoute', 'ui.bootstrap', 'ngCookies', 'ui.utils.masks', 'LocalStorageModule', 'tmh.dynamicLocale']);
 
 
 App.config(['$routeProvider', function ($routeProvider) {
@@ -52,3 +52,7 @@ App.config(['$routeProvider', function ($routeProvider) {
 App.run(['authService', function (authService) {
     authService.fillAuthData();
 }]);
+
+App.controller('MainCtrl', function (tmhDynamicLocale) {
+    tmhDynamicLocale.set('pt-BR');
+});
