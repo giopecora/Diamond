@@ -11,6 +11,7 @@ using System.Web.Http.Description;
 
 namespace Diamond.Controllers.Api
 {
+    [Authorize]
     public class ReportController : ApiController
     {
         private ReportBusiness _business = new ReportBusiness();

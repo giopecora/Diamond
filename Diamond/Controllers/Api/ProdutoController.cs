@@ -125,6 +125,7 @@ namespace Diamond.Controllers.Api
         }
 
         // PUT: api/Produtos/5
+        [Authorize]
         [ResponseType(typeof(IHttpActionResult))]
         public IHttpActionResult Put([FromBody]ProdutoDTO produto)
         {
@@ -141,6 +142,7 @@ namespace Diamond.Controllers.Api
         }
 
         // POST: api/Produtos
+        [Authorize]
         [ResponseType(typeof(ProdutoDTO))]
         public IHttpActionResult Post([FromBody]ProdutoDTO produto)
         {
@@ -156,6 +158,7 @@ namespace Diamond.Controllers.Api
             return Ok(produto);
         }
 
+        [Authorize]
         [HttpPost]
         public IHttpActionResult Upload(int produtoId)
         {
@@ -172,6 +175,7 @@ namespace Diamond.Controllers.Api
         }
 
         // DELETE: api/Produtos/5
+        [Authorize]
         [ResponseType(typeof(IHttpActionResult))]
         public IHttpActionResult Delete(int id)
         {

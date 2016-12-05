@@ -7,6 +7,7 @@ using System.Web.Http.Description;
 
 namespace Diamond.Controllers.Api
 {
+    [Authorize]
     public class UsuarioController : ApiController
     {
         private UsuarioBusiness _business = new UsuarioBusiness();
