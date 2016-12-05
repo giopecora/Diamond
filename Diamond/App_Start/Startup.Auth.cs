@@ -19,7 +19,7 @@ namespace Diamond
         {
             OAuthAuthorizationServerOptions OAuthOptions = new OAuthAuthorizationServerOptions
             {
-                TokenEndpointPath = new PathString("/Token"),
+                TokenEndpointPath = new PathString("/token"),
                 //AuthorizeEndpointPath = new PathString("/Account/Authorize"),
                 Provider = new SimpleAuthorizationServerProvider(),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),

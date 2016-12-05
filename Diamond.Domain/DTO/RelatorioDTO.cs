@@ -10,6 +10,7 @@ namespace Diamond.Domain.DTO
     {
         public int MovimentacaoId { get; set; }
         public string Produto { get; set; }
+        public string Categoria { get; set; }
         public int ProdutoId { get; set; }
         public int Quantidade { get; set; }
         public double ValorUnitario { get; set; }

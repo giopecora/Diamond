@@ -9,6 +9,7 @@ namespace Diamond.Domain.Entities
     {
         [Key]
         [Column(Order = 0)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int UsuarioId { get; set; }
 
         [Key]
@@ -17,5 +18,9 @@ namespace Diamond.Domain.Entities
         public int PerfilId { get; set; }
 
         public bool? Ativo { get; set; }
+
+        public virtual Perfil Perfil { get; set; }
+
+        public virtual Usuario Usuario { get; set; }
     }
 }

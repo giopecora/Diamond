@@ -41,6 +41,10 @@ App.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'SPA/Produtos/Views/manter-produto.html',
             controller: ''
         })
+        .when('/backoffice/relatorio-analitico-produtos', {
+            templateUrl: 'SPA/Produtos/Views/relatorioAnalitico.html',
+            controller: 'RelatorioAnaliticoCtrl'
+        })
         .when('/Login', {
             templateUrl: 'SPA/Pessoas/Views/login.html',
             controller: 'LoginCtrl'
@@ -48,6 +52,10 @@ App.config(['$routeProvider', function ($routeProvider) {
 
     .otherwise({ redirectTo: '/Home' })
 }]);
+
+App.config(function ($httpProvider) {
+    $httpProvider.interceptors.push('authInterceptorService');
+});
 
 App.run(['authService', function (authService) {
     authService.fillAuthData();

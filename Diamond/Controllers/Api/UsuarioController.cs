@@ -7,13 +7,12 @@ using System.Web.Http.Description;
 
 namespace Diamond.Controllers.Api
 {
-    [Authorize]
     public class UsuarioController : ApiController
     {
         private UsuarioBusiness _business = new UsuarioBusiness();
 
+        [Authorize]
         [ResponseType(typeof(List<UsuarioDTO>))]
-        // GET: api/Produtos
         public IHttpActionResult GetAll()
         {
             List<UsuarioDTO> usuarios = new List<UsuarioDTO>();
@@ -30,6 +29,7 @@ namespace Diamond.Controllers.Api
             return Ok(usuarios);
         }
 
+        [Authorize]
         [ResponseType(typeof(UsuarioDTO))]
         public IHttpActionResult Get(int id)
         {
@@ -47,7 +47,7 @@ namespace Diamond.Controllers.Api
             return Ok(usuario);
         }
 
-        // PUT: api/Produtos/5
+        [Authorize]
         [ResponseType(typeof(IHttpActionResult))]
         public IHttpActionResult Put([FromBody]UsuarioDTO usuario)
         {
@@ -79,7 +79,7 @@ namespace Diamond.Controllers.Api
             return Ok(usuario);
         }
 
-        // DELETE: api/Produtos/5
+        [Authorize]
         [ResponseType(typeof(IHttpActionResult))]
         public IHttpActionResult Delete(int id)
         {

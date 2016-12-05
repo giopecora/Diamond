@@ -1108,12 +1108,14 @@
     <Content Include="SPA\Produtos\Controllers\manter-produto.js" />
     <Content Include="SPA\Produtos\Controllers\produtoDetalhe.js" />
     <Content Include="SPA\Produtos\Controllers\produtoListCateg.js" />
+    <Content Include="SPA\Produtos\Controllers\relatorioAnalitico.js" />
     <Content Include="SPA\Produtos\Modals\Views\adicionar-produto.html" />
     <Content Include="SPA\Produtos\Modals\Views\visualizar-produto.html" />
     <Content Include="SPA\Produtos\Views\manter-produto.html" />
     <Content Include="SPA\Produtos\Views\produtoCadastro.html" />
     <Content Include="SPA\Produtos\Views\produtoDetalhe.html" />
     <Content Include="SPA\Produtos\Views\produtoListCateg.html" />
+    <Content Include="SPA\Produtos\Views\relatorioAnalitico.html" />
     <Content Include="SPA\Services\authInterceptorService.js" />
     <Content Include="SPA\Services\authService.js" />
     <Content Include="SPA\Services\Util.js" />
