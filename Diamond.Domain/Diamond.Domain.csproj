@@ -65,6 +65,7 @@
     <Compile Include="DTO\ProdutoImagemDTO.cs" />
     <Compile Include="DTO\RelatorioDTO.cs" />
     <Compile Include="DTO\UsuarioDTO.cs" />
+    <Compile Include="DTO\UsuarioPerfilDTO.cs" />
     <Compile Include="Entities\Bandeira.cs" />
     <Compile Include="Entities\Cartao.cs" />
     <Compile Include="Entities\Categoria.cs" />

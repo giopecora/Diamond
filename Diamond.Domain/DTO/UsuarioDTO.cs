@@ -1,4 +1,5 @@
 ﻿using Diamond.Domain.Entities;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -26,5 +27,20 @@ namespace Diamond.Domain.DTO
         public string CPF { get; set; }
 
         public bool? Ativo { get; set; }
+
+        [JsonProperty("perfis")]
+        public List<UsuarioPerfilDTO> Usuario_Perfil { get; set; }
+
+        public string PerfisToJson()
+        {
+            List<int> lista = new List<int>();
+
+            foreach(UsuarioPerfilDTO perfil in Usuario_Perfil)
+            {
+                lista.Add(perfil.PerfilId);
+            }
+
+            return JsonConvert.SerializeObject(lista);
+        }
     }
 }

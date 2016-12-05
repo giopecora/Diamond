@@ -1,6 +1,7 @@
 ﻿using Diamond.Business.Business;
 using Diamond.Domain.DTO;
 using Microsoft.Owin.Security.OAuth;
+using Newtonsoft.Json;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -30,6 +31,7 @@ namespace Diamond.Providers
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
 
             identity.AddClaim(new Claim("sub", context.UserName));
+            identity.AddClaim(new Claim("perfis", user.PerfisToJson()));
 
             context.Validated(identity);
         }

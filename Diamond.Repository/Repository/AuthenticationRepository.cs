@@ -19,6 +19,7 @@ namespace Diamond.Repository.Repository
         public Usuario FindUser(string username, string password)
         {
             Usuario user = _context.Usuarios
+                .Include("Usuario_Perfil")
                 .Where(u => u.Login == username && u.Senha == password)
                 .FirstOrDefault();
 
