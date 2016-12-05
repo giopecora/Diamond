@@ -54,6 +54,7 @@
     <Compile Include="AutoMapper\PedidoProfile.cs" />
     <Compile Include="AutoMapper\ProdutoImagemProfile.cs" />
     <Compile Include="AutoMapper\ProdutoProfile.cs" />
+    <Compile Include="AutoMapper\UsuarioPerfilProfile.cs" />
     <Compile Include="AutoMapper\UsuarioProfile.cs" />
     <Compile Include="DTO\Categoria\CategoriaDTO.cs" />
     <Compile Include="DTO\Categoria\ProdutoCategoria.cs" />
