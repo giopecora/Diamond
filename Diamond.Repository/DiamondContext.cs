@@ -4,6 +4,7 @@ namespace Diamond.Repository
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using Domain.DTO;
     using Domain.Entities;
 
     public partial class DiamondContext : DbContext
@@ -66,10 +67,6 @@ namespace Diamond.Repository
                 .IsUnicode(false);
 
             modelBuilder.Entity<Endereco>()
-                .Property(e => e.Nome)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Endereco>()
                 .Property(e => e.Complemento)
                 .IsUnicode(false);
 
@@ -121,6 +118,11 @@ namespace Diamond.Repository
                 .Property(e => e.Nome)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<Perfil>()
+                .HasMany(e => e.Usuario_Perfil)
+                .WithRequired(e => e.Perfil)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<Produto>()
                 .Property(e => e.Nome)
                 .IsUnicode(false);
@@ -170,6 +172,11 @@ namespace Diamond.Repository
 
             modelBuilder.Entity<Usuario>()
                 .HasMany(e => e.Pedidoes)
+                .WithRequired(e => e.Usuario)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Usuario>()
+                .HasMany(e => e.Usuario_Perfil)
                 .WithRequired(e => e.Usuario)
                 .WillCascadeOnDelete(false);
         }
