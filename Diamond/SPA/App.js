@@ -1,10 +1,9 @@
-﻿var App = angular.module('Diamond', ['ngRoute', 'ui.bootstrap', 'ngCookies', 'ui.utils.masks']);
+﻿var App = angular.module('Diamond', ['ngRoute', 'ui.bootstrap', 'ngCookies', 'ui.utils.masks', 'LocalStorageModule']);
 
-App.config(function ($httpProvider) {
-    $httpProvider.interceptors.push('authInterceptorService');
-});
 
 App.config(['$routeProvider', function ($routeProvider) {
+
+
     $routeProvider
         .when('/Home', {
             templateUrl: 'SPA/Home/Views/index.html',
@@ -46,6 +45,10 @@ App.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'SPA/Pessoas/Views/login.html',
             controller: 'LoginCtrl'
         })
-        
+
     .otherwise({ redirectTo: '/Home' })
-}])
+}]);
+
+App.run(['authService', function (authService) {
+    authService.fillAuthData();
+}]);

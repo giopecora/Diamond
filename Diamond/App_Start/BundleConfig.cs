@@ -28,7 +28,8 @@ namespace Diamond
                 "~/Scripts/angular-route.min.js",
                 "~/Scripts/ui-bootstrap-tpls-2.2.0.min.js",
                 "~/Scripts/tmhDynamicLocale.min.js",
-                "~/Scripts/angular-input-masks-standalone.js"));
+                "~/Scripts/angular-input-masks-standalone.js",
+                "~/Scripts/angular-local-storage.min.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -40,18 +41,18 @@ namespace Diamond
                 "~/Scripts/respond.js",
                 "~/Scripts/ui-bootstrap-2.2.0.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/SPA").Include(
+            bundles.Add(new ScriptBundle("~/bundles/SPA").Include(               
                 "~/SPA/App.js",
                 "~/SPA/Services/Util.js",
-                "~/SPA/Services/authInterceptorService.js",
-                "~/SPA/Services/authService.js",
                 "~/SPA/Produtos/Controllers/produtoDetalhe.js",
                 "~/SPA/Produtos/Controllers/manter-produto.js",
                 "~/SPA/Produtos/Controllers/produtoListCateg.js",
                 "~/SPA/Home/Controllers/HomeController.js",
                 "~/SPA/Carrinho/Controllers/mainCarrinho.js",
                 "~/SPA/Pessoas/Controllers/cadastroUsuario.js",
-                "~/SPA/Pessoas/Controllers/login.js"));
+                "~/SPA/Pessoas/Controllers/login.js",
+                "~/SPA/Services/authInterceptorService.js",
+                "~/SPA/Services/authService.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                  "~/Content/bootstrap.css",
