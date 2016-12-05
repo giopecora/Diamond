@@ -3,7 +3,6 @@
     $scope.load = function () {
         RelatorioAnaliticoService.listProductSellsAnalytics().then(function (retorno) {
             $scope.produtos = retorno.data;
-            console.log(retorno.data);
         }).catch(function () {
             //swal();
         });

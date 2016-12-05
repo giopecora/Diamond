@@ -45,6 +45,10 @@ App.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'SPA/Produtos/Views/relatorioAnalitico.html',
             controller: 'RelatorioAnaliticoCtrl'
         })
+        .when('/backoffice/relatorio-sintetico-produtos', {
+            templateUrl: 'SPA/Produtos/Views/relatorioSintetico.html',
+            controller: 'RelatorioSinteticoCtrl'
+        })
         .when('/Login', {
             templateUrl: 'SPA/Pessoas/Views/login.html',
             controller: 'LoginCtrl'

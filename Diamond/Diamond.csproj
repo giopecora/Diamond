@@ -1109,6 +1109,7 @@
     <Content Include="SPA\Produtos\Controllers\produtoDetalhe.js" />
     <Content Include="SPA\Produtos\Controllers\produtoListCateg.js" />
     <Content Include="SPA\Produtos\Controllers\relatorioAnalitico.js" />
+    <Content Include="SPA\Produtos\Controllers\relatorioSintetico.js" />
     <Content Include="SPA\Produtos\Modals\Views\adicionar-produto.html" />
     <Content Include="SPA\Produtos\Modals\Views\visualizar-produto.html" />
     <Content Include="SPA\Produtos\Views\manter-produto.html" />
@@ -1116,6 +1117,7 @@
     <Content Include="SPA\Produtos\Views\produtoDetalhe.html" />
     <Content Include="SPA\Produtos\Views\produtoListCateg.html" />
     <Content Include="SPA\Produtos\Views\relatorioAnalitico.html" />
+    <Content Include="SPA\Produtos\Views\relatorioSintetico.html" />
     <Content Include="SPA\Services\authInterceptorService.js" />
     <Content Include="SPA\Services\authService.js" />
     <Content Include="SPA\Services\Util.js" />
@@ -1161,6 +1163,10 @@
     <ProjectReference Include="..\Diamond.Domain\Diamond.Domain.csproj">
       <Project>{47229a99-91db-47bc-b801-894a7a0cea59}</Project>
       <Name>Diamond.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Diamond.Utils\Diamond.Utils.csproj">
+      <Project>{fd522a84-ef7f-4dc4-be24-6352166403b0}</Project>
+      <Name>Diamond.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

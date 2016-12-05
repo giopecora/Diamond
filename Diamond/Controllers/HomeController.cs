@@ -17,7 +17,15 @@ namespace Diamond.Controllers
 
         public ActionResult AbrirImagem(int produtoId, string nome)
         {
-            return File($@"C:/Produtos/Produto_{produtoId}/{nome}", "image/jpg");
+            string mimeType = "";
+
+            switch(nome.GetFileExtension())
+            {
+                case ".jpg": mimeType = "image/jpg"; break;
+                case ".png": mimeType = "image/png"; break;
+            }
+
+            return File($@"C:/Produtos/Produto_{produtoId}/{nome}", mimeType);
         }
 
         public ActionResult CarrinhoCompra()

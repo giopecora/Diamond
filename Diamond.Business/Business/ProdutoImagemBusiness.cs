@@ -63,8 +63,7 @@ namespace Diamond.Business.Business
                 {
                     IList<string> allowedFileExtensions = new List<string> { ".jpg", ".gif", ".png" };
 
-                    var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
-                    var extension = ext.ToLower();
+                    var extension = postedFile.FileName.GetFileExtension();
 
                     if (!allowedFileExtensions.Contains(extension))
                     {
@@ -72,12 +71,12 @@ namespace Diamond.Business.Business
                     }
                     else
                     {
-                        var filePath = HttpContext.Current.Server.MapPath($@"C://Produtos/Produto_{produtoId}/{postedFile.FileName}{extension}");
+                        var filePath = HttpContext.Current.Server.MapPath($@"C://Produtos/Produto_{produtoId}/{postedFile.FileName}");
                         postedFile.SaveAs(filePath);
 
                         ProdutoImagemDTO imagem = new ProdutoImagemDTO()
                         {
-                            Imagem = $"{postedFile.FileName}{extension}",
+                            Imagem = postedFile.FileName,
                             ProdutoId = produtoId
                         };
 
