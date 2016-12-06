@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using Diamond.Business.Business;
+using Diamond.Domain.Models.Produto;
 
 namespace Diamond.Controllers.Api
 {
@@ -70,15 +71,15 @@ namespace Diamond.Controllers.Api
             return Ok(produtos);
         }
 
+        [Authorize]
         [ResponseType(typeof(List<ProdutoDTO>))]
-        // GET: api/Produtos
-        public IHttpActionResult GetAll()
+        public IHttpActionResult GetAll([FromUri]Filtro filtro, int page)
         {
             List<ProdutoDTO> produtos = new List<ProdutoDTO>();
 
             try
             {
-                produtos = _business.GetAll();
+                produtos = _business.GetAll(filtro, page);
             }
             catch(Exception ex)
             {

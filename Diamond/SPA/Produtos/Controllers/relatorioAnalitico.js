@@ -17,7 +17,7 @@
     $scope.filtrar = function () {
 
         Object.keys($scope.filtro).forEach(function (prop) {
-            if ($scope.filtro[prop] == undefined) {
+            if ($scope.filtro[prop] === undefined) {
                 $scope.filtro[prop] = '';
             }
         });
@@ -25,7 +25,7 @@
         var qs = "DataInicio=" + $scope.filtro.DataInicio + "&DataTermino=" + $scope.filtro.DataTermino +
                           "&Produto=" + $scope.filtro.Produto + "&CategoriaId=" + $scope.filtro.CategoriaId + "&page=1";
 
-        if ($scope.tipoRelatorio != "compras") {
+        if ($scope.tipoRelatorio !== "compras") {
             $scope.titulo = "Vendas";
             RelatorioAnaliticoService.listProductSellsAnalytics(qs).then(function (retorno) {
                 $scope.produtos = retorno.data;

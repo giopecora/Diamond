@@ -61,10 +61,10 @@
     <Compile Include="DTO\EnderecoDTO.cs" />
     <Compile Include="DTO\PedidoDTO.cs" />
     <Compile Include="DTO\PedidoItemDTO.cs" />
-    <Compile Include="DTO\ProdutoDestaqueDTO.cs" />
-    <Compile Include="DTO\ProdutoDTO.cs" />
-    <Compile Include="DTO\ProdutoImagemDTO.cs" />
-    <Compile Include="DTO\RelatorioDTO.cs" />
+    <Compile Include="DTO\Produto\ProdutoDestaqueDTO.cs" />
+    <Compile Include="DTO\Produto\ProdutoDTO.cs" />
+    <Compile Include="DTO\Produto\ProdutoImagemDTO.cs" />
+    <Compile Include="DTO\Relatorio\RelatorioDTO.cs" />
     <Compile Include="DTO\UsuarioDTO.cs" />
     <Compile Include="DTO\UsuarioPerfilDTO.cs" />
     <Compile Include="Entities\Bandeira.cs" />
@@ -81,7 +81,8 @@
     <Compile Include="Entities\Produto_Imagens.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Entities\Usuario_Perfil.cs" />
-    <Compile Include="Models\Filtro.cs" />
+    <Compile Include="Models\Produto\Filtro.cs" />
+    <Compile Include="Models\Relatorio\Filtro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
