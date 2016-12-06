@@ -1,7 +1,62 @@
 ﻿<div class="container-fluid" ng-controller="RelatorioSinteticoCtrl">
+    <div class="panel-body">
+        <div class="row form-group">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                    <input class="form-control" ng-model="filtro.Produto" type="text" placeholder="Produto" required />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                    <select class="form-control" ng-model="filtro.CategoriaId">
+                        <option value="" selected="selected">Selecione</option>
+                        <option value="1">DVDs e Blu-Ray</option>
+                        <option value="2">Games</option>
+                        <option value="3">Celulares e Telefonia Fixa</option>
+                        <option value="4">Informática e Tablets</option>
+                        <option value="5">TV, Áudio e Home Theater</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                    <input class="form-control" ng-model="filtro.DataInicio" type="date" placeholder="Data Inicial" required />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                    <input class="form-control" ng-model="filtro.DataTermino" type="date" placeholder="Data de Término" required />
+                </div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                    <select class="form-control" ng-model="tipoRelatorio">
+                        <option value="" selected="selected">Vendas</option>
+                        <option value="compras">Compras</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <button type="button" class="btn btn-primary btn-lg pull-right" ng-click="filtrar()">Filtrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-10">
-            <h1>Relatório Sintético de Vendas de Produtos</h1>
+            <h1>Relatório Sintético de {{titulo}} de Produtos</h1>
         </div>
         <div class="col-md-2">
             <div class="btn-group btn-group-justified">
