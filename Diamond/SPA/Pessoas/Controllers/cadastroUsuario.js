@@ -18,7 +18,7 @@
     $scope.passo = 1;
     
     $scope.consultaCEP = function (cep) {
-        if (cep.length < 8)
+        if (cep && cep.length < 8)
             return;
 
         UsuarioService.consultaCEP(cep).
@@ -62,15 +62,6 @@
             
         })
     }
-
-
-
-    //////////////////////////////////////////////////////////////////////////// MASCARAS INPUT  -- //////////////////////////////
-
-    
-
-
-    ////////////////////////////////////////////////////////////////////////////  END MASCARAS INPUT  --/////////////////////////////
 
 })
 .service('UsuarioService', function ($http) {

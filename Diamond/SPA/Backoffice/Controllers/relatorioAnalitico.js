@@ -1,6 +1,7 @@
 ﻿angular.module('Diamond').controller('RelatorioAnaliticoCtrl', function ($scope, $routeParams, RelatorioAnaliticoService) {
 
     $scope.tipoRelatorio = "vendas";
+    $scope.paginaAtual = 1;
     $scope.titulo = "Vendas";
     $scope.filtro = {
         DataInicio: '',
@@ -10,34 +11,36 @@
     };
 
     $scope.load = function () {
-        $scope.tipoRelatorio = $routeParams.tipoRelatorio;
+
+        $scope.tipoRelatorio  = $routeParams.tipoRelatorio ? $routeParams.tipoRelatorio : "vendas";
         $scope.filtrar();
     };
 
-    $scope.filtrar = function () {
+    $scope.filtrar = function () {        
 
-        Object.keys($scope.filtro).forEach(function (prop) {
-            if ($scope.filtro[prop] === undefined) {
-                $scope.filtro[prop] = '';
-            }
-        });
+        var params = $scope.filtro;
+        params.paginaAtual = $scope.paginaAtual;
 
-        var qs = "DataInicio=" + $scope.filtro.DataInicio + "&DataTermino=" + $scope.filtro.DataTermino +
-                          "&Produto=" + $scope.filtro.Produto + "&CategoriaId=" + $scope.filtro.CategoriaId + "&page=1";
-
-        if ($scope.tipoRelatorio !== "compras") {
+        if ($scope.tipoRelatorio != "compras") {
             $scope.titulo = "Vendas";
-            RelatorioAnaliticoService.listProductSellsAnalytics(qs).then(function (retorno) {
+            RelatorioAnaliticoService.listProductSellsAnalytics(params).then(function (retorno) {
                 $scope.produtos = retorno.data;
-            }).catch(function () {
+                //Object.keys($scope.filtro).forEach(function (prop) {
+                //    if ($scope.filtro[prop] === undefined) {
+                //        $scope.filtro[prop] = '';
+                //    }
+                //});
+            }).catch(function (retorno) {
                 //swal();
+                console.log();
             });
         } else {
             $scope.titulo = "Compras";
-            RelatorioAnaliticoService.listProductBuyssAnalytics(qs).then(function (retorno) {
+            RelatorioAnaliticoService.listProductBuyssAnalytics(params).then(function (retorno) {
                 $scope.produtos = retorno.data;
-            }).catch(function () {
+            }).catch(function (retorno) {
                 //swal();
+                console.log();
             });
         }
     };
@@ -46,16 +49,17 @@
 })
 .service('RelatorioAnaliticoService', function ($http) {
     return {
-        listProductSellsAnalytics: function (qs) {
+        listProductSellsAnalytics: function (params) {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Report/ProductSellsAnalytics?' + qs
+                url: 'http://localhost:59783/api/Report/ProductSellsAnalytics',
+                params: params
             });
         },
-        listProductBuyssAnalytics: function (qs) {
+        listProductBuyssAnalytics: function (params) {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Report/ProductBuysAnalytics?' + qs
+                url: 'http://localhost:59783/api/Report/ProductBuysAnalytics' + qs
             });
         }
     }

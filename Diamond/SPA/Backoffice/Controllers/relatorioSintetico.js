@@ -1,6 +1,7 @@
 ﻿angular.module('Diamond').controller('RelatorioSinteticoCtrl', function ($scope, RelatorioSinteticoService) {
 
     $scope.tipoRelatorio = "vendas";
+    $scope.produtos = []
     $scope.titulo = "Vendas";
     $scope.filtro = {
         DataInicio: '',
@@ -27,14 +28,14 @@
 
         if ($scope.tipoRelatorio !== "compras") {
             $scope.titulo = "Vendas";
-            RelatorioAnaliticoService.listProductSellsAnalytics(qs).then(function (retorno) {
+            RelatorioSinteticoService.listProductSellsSintetics(qs).then(function (retorno) {
                 $scope.produtos = retorno.data;
             }).catch(function () {
                 //swal();
             });
         } else {
             $scope.titulo = "Compras";
-            RelatorioAnaliticoService.listProductBuysSintetics(qs).then(function (retorno) {
+            RelatorioSinteticoService.listProductBuysSintetics(qs).then(function (retorno) {
                 $scope.produtos = retorno.data;
             }).catch(function () {
                 //swal();

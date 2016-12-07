@@ -1108,9 +1108,11 @@
     <Content Include="SPA\locale.run.js" />
     <Content Include="SPA\Pessoas\Controllers\cadastroUsuario.js" />
     <Content Include="SPA\Pessoas\Controllers\login.js" />
+    <Content Include="SPA\Pessoas\Controllers\perfilUsuario.js" />
     <Content Include="SPA\Pessoas\Views\cadastroUsuario.html" />
     <Content Include="SPA\Pessoas\Views\login.html" />
     <Content Include="SPA\Backoffice\Controllers\manter-produto.js" />
+    <Content Include="SPA\Pessoas\Views\perfilUsuario.html" />
     <Content Include="SPA\Produtos\Controllers\produtoDetalhe.js" />
     <Content Include="SPA\Produtos\Controllers\produtoListCateg.js" />
     <Content Include="SPA\Backoffice\Controllers\relatorioAnalitico.js" />
