@@ -4,7 +4,6 @@
 
 App.config(['$routeProvider', function ($routeProvider) {
 
-
     $routeProvider
         .when('/Home', {
             templateUrl: 'SPA/Home/Views/index.html',
@@ -34,16 +33,20 @@ App.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'SPA/Pessoas/Views/cadastroUsuario.html',
             controller: 'PessoasCadastro'
         })
+        .when('/backoffice', {
+            templateUrl: 'SPA/Backoffice/Views/back-office.html',
+            controller: 'BackOfficeCtrl'
+        })
         .when('/backoffice/produtos', {
-            templateUrl: 'SPA/Produtos/Views/manter-produto.html',
+            templateUrl: 'SPA/Backoffice/Views/manter-produto.html',
             controller: ''
         })
         .when('/backoffice/relatorio-analitico-produtos', {
-            templateUrl: 'SPA/Produtos/Views/relatorioAnalitico.html',
+            templateUrl: 'SPA/Backoffice/Views/relatorioAnalitico.html',
             controller: 'RelatorioAnaliticoCtrl'
         })
         .when('/backoffice/relatorio-sintetico-produtos', {
-            templateUrl: 'SPA/Produtos/Views/relatorioSintetico.html',
+            templateUrl: 'SPA/Backoffice/Views/relatorioSintetico.html',
             controller: 'RelatorioSinteticoCtrl'
         })
         .when('/Login', {

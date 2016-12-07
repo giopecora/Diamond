@@ -1,9 +1,15 @@
-﻿angular.module('Diamond').controller('ProdutoCadastroCtrl', function ($scope, $routeParams, $location, Upload, ManterProdutoService) {
+﻿angular.module('Diamond').controller('ProdutoCadastroCtrl', function ($scope, $routeParams, $uibModalInstance, $location, Upload, ManterProdutoService) {
 
-    $scope.novoProduto = {}
+    $scope.novoProduto = {
+        Categoria: '',
+        Nome: '',
+        Descricao: '',
+        preco: '',
+        Ativo: false
+    }
 
     $scope.fechar = function () {
-        modalInstance.dismiss('cancel');
+        $uibModalInstance.dismiss('cancel');
     };
 
     
