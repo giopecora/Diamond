@@ -6,6 +6,7 @@ using Diamond.Domain.DTO;
 using AutoMapper;
 using Diamond.Business.Business;
 using System.Web;
+using Diamond.Domain.Models.Produto;
 
 namespace Diamond.Business
 {
@@ -31,9 +32,9 @@ namespace Diamond.Business
             return produtos;
         }
 
-        public List<ProdutoDTO> GetAll()
+        public List<ProdutoDTO> GetAll(Filtro filtro, int page)
         {
-            return _repository.GetAll().ToDTO<Produto, ProdutoDTO>();
+            return _repository.GetAll(filtro.MontarQuery(), page).ToDTO<Produto, ProdutoDTO>();
         }
 
         public List<ProdutoDTO> GetAllByCategoryId(int categoryId, int page)

@@ -18,13 +18,13 @@ namespace Diamond.Controllers.Api
 
         [HttpGet]
         [ResponseType(typeof(RelatorioDTO))]
-        public IHttpActionResult ProductSellsAnalytics([FromUri]Filtro filtro)
+        public IHttpActionResult ProductSellsAnalytics([FromUri]Filtro filtro, int page)
         {
             List<RelatorioDTO> relatorio = new List<RelatorioDTO>();
 
             try
             {
-                relatorio = _business.ListSellsProductReportAnalytics(filtro);
+                relatorio = _business.ListSellsProductReportAnalytics(filtro, page);
             }
             catch (Exception ex)
             {
@@ -36,13 +36,13 @@ namespace Diamond.Controllers.Api
 
         [HttpGet]
         [ResponseType(typeof(RelatorioDTO))]
-        public IHttpActionResult ProductSellsSintetics([FromUri]Filtro filtro)
+        public IHttpActionResult ProductSellsSintetics([FromUri]Filtro filtro, int page)
         {
             List<RelatorioDTO> relatorio = new List<RelatorioDTO>();
 
             try
             {
-                relatorio = _business.ListSellsProductReportSintetics(filtro);
+                relatorio = _business.ListSellsProductReportSintetics(filtro, page);
             }
             catch (Exception ex)
             {
@@ -54,13 +54,13 @@ namespace Diamond.Controllers.Api
 
         [HttpGet]
         [ResponseType(typeof(RelatorioDTO))]
-        public IHttpActionResult ProductBuysAnalytics([FromUri]Filtro filtro)
+        public IHttpActionResult ProductBuysAnalytics([FromUri]Filtro filtro, int page)
         {
             List<RelatorioDTO> relatorio = new List<RelatorioDTO>();
 
             try
             {
-                relatorio = _business.ListBuysProductReportAnalytics(filtro);
+                relatorio = _business.ListBuysProductReportAnalytics(filtro, page);
             }
             catch (Exception ex)
             {
@@ -72,13 +72,13 @@ namespace Diamond.Controllers.Api
 
         [HttpGet]
         [ResponseType(typeof(RelatorioDTO))]
-        public IHttpActionResult ProductBuysSintetics([FromUri]Filtro filtro)
+        public IHttpActionResult ProductBuysSintetics([FromUri]Filtro filtro, int page)
         {
             List<RelatorioDTO> relatorio = new List<RelatorioDTO>();
 
             try
             {
-                relatorio = _business.ListBuysProductReportSintetics(filtro);
+                relatorio = _business.ListBuysProductReportSintetics(filtro, page);
             }
             catch (Exception ex)
             {

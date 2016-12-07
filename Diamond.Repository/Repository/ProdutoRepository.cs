@@ -26,9 +26,14 @@ namespace Diamond.Repository
             return _context.Database.SqlQuery<Produto>($"EXEC sp_list_most_cheaper_product_by_category {categoryId}").ToList();
         }
 
-        public IEnumerable<Produto> GetAll()
+        public IEnumerable<Produto> GetAll(string query, int page)
         {
-            return _context.Produtos;
+            int take = 100;
+            int skip = (page - 1) * take;
+            return _context.Produtos
+                .OrderBy(p => p.Id)
+                .Skip(skip)
+                .Take(take);
         }
 
         public IEnumerable<Produto> GetAllByCategoryId(int categoryId, int page)

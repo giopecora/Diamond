@@ -13,24 +13,24 @@ namespace Diamond.Business.Business
     {
         private ReportRepository _repository = new ReportRepository();
 
-        public List<RelatorioDTO> ListSellsProductReportAnalytics(Filtro filtro)
+        public List<RelatorioDTO> ListSellsProductReportAnalytics(Filtro filtro, int page)
         {
-            return _repository.ListSellsProductReportAnalytics(filtro.MontarQuery());
+            return _repository.ListSellsProductReportAnalytics(filtro.MontarQuery(), page);
         }
 
-        public List<RelatorioDTO> ListSellsProductReportSintetics(Filtro filtro)
+        public List<RelatorioDTO> ListSellsProductReportSintetics(Filtro filtro, int page)
         {
-            return _repository.ListSellsProductReportSintetics(filtro.MontarQuery());
+            return _repository.ListSellsProductReportSintetics(filtro.MontarQuery(), page);
         }
 
-        public List<RelatorioDTO> ListBuysProductReportAnalytics(Filtro filtro)
+        public List<RelatorioDTO> ListBuysProductReportAnalytics(Filtro filtro, int page)
         {
-            return _repository.ListBuysProductReportAnalytics(filtro.MontarQuery());
+            return _repository.ListBuysProductReportAnalytics(filtro.MontarQuery(), page);
         }
 
-        public List<RelatorioDTO> ListBuysProductReportSintetics(Filtro filtro)
+        public List<RelatorioDTO> ListBuysProductReportSintetics(Filtro filtro, int page)
         {
-            return _repository.ListBuysProductReportSintetics(filtro.MontarQuery());
+            return _repository.ListBuysProductReportSintetics(filtro.MontarQuery(), page);
         }
     }
 }
