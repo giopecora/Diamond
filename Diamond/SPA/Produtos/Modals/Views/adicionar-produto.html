@@ -1,47 +1,53 @@
-﻿<div id="adicionar" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Adicionar Produto</h4>
+﻿<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="fechar()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3>
+            Cadastro de Produtos
+        </h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            
+            <div class="col-md-4 form-group">
+                <label for="nomeproduto">Nome do Produto</label>
+                <input type="text" class="form-control" id="nomeProduto" placeholder="Nome do Produto" required>
             </div>
-            <form>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="nomeproduto">Nome do Produto</label>
-                        <input type="text" class="form-control" id="nomeProduto" placeholder="Nome do Produto">
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-3">
-                            <label for="categoria">Categoria</label>
-                            <select class="form-control" id="categoria">
-                                <option></option>
-                                <option>Games</option>
-                                <option>Celulares</option>
-                                <option>Informática</option>
-                                <option>Eletronicos</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label for="preco">Preço</label>
-                            <input type="number" class="form-control" id="preco" placeholder="produto.preco">
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label for="quantidade">Quantidade</label>
-                            <input type="number" class="form-control" id="Qtd" placeholder="quantidade">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputFile">File input</label>
-                        <input type="file" id="exampleInputFile" multiple="multiple">
-                        <p class="help-block">Example block-level help text here.</p>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Voltar</button>
-                    <input type="submit" class="btn btn-primary" value="Salvar">
-                </div>
-            </form>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+            <div class="col-md-4 form-group">
+                <label for="categoria">Categoria</label>
+                <select class="form-control" id="categoria" required>
+                    <option>Selecione...</option>
+                    <option value="1">DVDs e Blu-ray</option>
+                    <option value="2">Games</option>
+                    <option value="3">Celulares</option>
+                    <option value="4">Informática</option>
+                    <option value="5">Tv, Aúdio e Home Theater</option>
+                </select>
+            </div>
+            <div class="col-md-4 form-group">
+                <label for="preco">Preço</label>
+                <input type="text" class="form-control" id="preco" placeholder="Preço produto" min="0" required ui-money-mask>
+            </div>            
+            <div class="col-md-12 form-group">
+                <label>Descrição do produto</label>
+                <textarea class="form-control" rows="6" cols="5000"></textarea>
+            </div>
+            <div class="col-md-4 form-group">
+                <input id="ativo" name="ativo" type="checkbox" />
+                <label for="ativo">Ativo</label>
+            </div>
+        </div>
+        <div class="row">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputFile">File input</label>
+            <button class="btn btn-default" ngf-select="uploadFiles($files)">Selecionar arquivos</button>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group btn-group-justified">
+            <div class="btn-group">
+                <button ng-click="salvar()" class="btn btn-success">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>

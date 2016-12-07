@@ -1,4 +1,5 @@
-﻿var App = angular.module('Diamond', ['ngRoute', 'ui.bootstrap', 'ngCookies', 'ui.utils.masks', 'LocalStorageModule', 'tmh.dynamicLocale']);
+﻿var App = angular.module('Diamond', ['ngRoute', 'ui.bootstrap', 'ngCookies', 'ui.utils.masks',
+    'LocalStorageModule', 'tmh.dynamicLocale', 'ngFileUpload']);
 
 
 App.config(['$routeProvider', function ($routeProvider) {
@@ -12,11 +13,7 @@ App.config(['$routeProvider', function ($routeProvider) {
         .when('/Produtos', {
             templateUrl: 'SPA/Produtos/Views/produto.html',
             controller: 'ProdutoController'
-        })
-        .when('/Produtos/Cadastrar', {
-            templateUrl: 'SPA/Produtos/Views/produtoCadastro.html',
-            controller: 'ProdutoCadastroCtrl'
-        })
+        })       
         .when('/Produtos/:prodID', {
             templateUrl: 'SPA/Produtos/Views/produtoDetalhe.html',
             controller: 'ProdutoDetalheCtrl'
