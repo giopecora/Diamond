@@ -1,5 +1,5 @@
 ﻿var app = angular.module('Diamond');
-app.controller('PerfilUsuarioCtrl', function ($scope, UtilService, PerfilUsuarioService, $routeParams) {
+app.controller('PerfilUsuarioCtrl', function ($scope, UtilService, PerfilUsuarioService, $routeParams, $uibModal) {
     
     $scope.usuarioID = $routeParams.usuarioID;
     $scope.usuario = {};
@@ -18,8 +18,25 @@ app.controller('PerfilUsuarioCtrl', function ($scope, UtilService, PerfilUsuario
 
 
     $scope.abrirEnderecos = function () {
+        var modalInstance = $uibModal.open({
+            templateUrl: './SPA/Pessoas/Modals/Views/usuarioEndereco.html',
+            controller: 'UsuarioEnderecoCtrl',
+            backdrop: 'static',
+            size: 'lg',
+            resolve: {
 
-    }
+            }
+        })
+    };
+
+    $scope.abrirAlterarSenha = function () {
+        var modalInstance = $uibModal.open({
+            templateUrl: './SPA/Pessoas/Modals/Views/usuarioAlterarSenha.html',
+            controller: 'UsuarioEnderecoCtrl',
+            backdrop: 'static',
+            size: 'sm',
+        });
+    };
 
     $scope.load();
 
