@@ -63,6 +63,7 @@ App.config(['$routeProvider', function ($routeProvider) {
 
 App.config(function ($httpProvider) {
     $httpProvider.interceptors.push('authInterceptorService');
+    //$httpProvider.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
 });
 
 App.run(['authService', function (authService) {

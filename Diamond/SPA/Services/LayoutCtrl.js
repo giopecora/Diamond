@@ -4,6 +4,9 @@ app.controller('LayoutCtrl', function ($scope, $cookies, UtilService, CarrinhoSe
     $scope.searchDebounce = null;
     $scope.search = null;
 
+    //trazer perfil deusuario aqui
+    $scope.perfilUsuario;
+
     $scope.actions = {
         search: function () {
             if ($scope.searchDebounce) {
@@ -11,9 +14,18 @@ app.controller('LayoutCtrl', function ($scope, $cookies, UtilService, CarrinhoSe
             }
 
             $scope.searchDebounce = $timeout(function () {
-                if($scope.search)
+                if ($scope.search)
                     $location.url('/Categoria?search=' + $scope.search);
             }, 300);
+        }
+    };
+
+
+    $scope.abrirMinhaConta = function () {
+        if ($scope.perfilUsuario) {
+            $location.path("/usuario/"+$scope.perfilUsuario.UsuarioID);
+        } else {
+            $location.path("/CadastroUsuario");
         }
     }
     

@@ -24,7 +24,9 @@ app.controller('PerfilUsuarioCtrl', function ($scope, UtilService, PerfilUsuario
             backdrop: 'static',
             size: 'lg',
             resolve: {
-
+                getUsuario: function () {
+                    return $scope.usuario;
+                }
             }
         })
     };

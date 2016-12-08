@@ -1098,6 +1098,7 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="SPA\App.js" />
     <Content Include="SPA\Backoffice\Controllers\back-office.js" />
+    <Content Include="SPA\Backoffice\Modals\Controllers\vizualizar-produto.js" />
     <Content Include="SPA\Backoffice\Views\back-office.html" />
     <Content Include="SPA\Carrinho\Controllers\mainCarrinho.js" />
     <Content Include="SPA\Carrinho\Views\enderecoCarrinho.html" />
@@ -1123,9 +1124,9 @@
     <Content Include="SPA\Produtos\Controllers\produtoListCateg.js" />
     <Content Include="SPA\Backoffice\Controllers\relatorioAnalitico.js" />
     <Content Include="SPA\Backoffice\Controllers\relatorioSintetico.js" />
-    <Content Include="SPA\Produtos\Modals\Controllers\adicionar-produto.js" />
-    <Content Include="SPA\Produtos\Modals\Views\adicionar-produto.html" />
-    <Content Include="SPA\Produtos\Modals\Views\visualizar-produto.html" />
+    <Content Include="SPA\Backoffice\Modals\Controllers\adicionar-produto.js" />
+    <Content Include="SPA\Backoffice\Modals\Views\adicionar-produto.html" />
+    <Content Include="SPA\Backoffice\Modals\Views\visualizar-produto.html" />
     <Content Include="SPA\Backoffice\Views\manter-produto.html" />
     <Content Include="SPA\Produtos\Views\produtoCadastro.html" />
     <Content Include="SPA\Produtos\Views\produtoDetalhe.html" />
