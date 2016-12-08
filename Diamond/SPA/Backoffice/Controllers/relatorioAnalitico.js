@@ -18,12 +18,12 @@
 
     $scope.filtrar = function () {        
 
-        var params = $scope.filtro;
-        params.paginaAtual = $scope.paginaAtual;
+        var qs = "DataInicio=" + $scope.filtro.DataInicio + "&DataTermino=" + $scope.filtro.DataTermino +
+                          "&Produto=" + $scope.filtro.Produto + "&CategoriaId=" + $scope.filtro.CategoriaId + "&page=1";
 
         if ($scope.tipoRelatorio != "compras") {
             $scope.titulo = "Vendas";
-            RelatorioAnaliticoService.listProductSellsAnalytics(params).then(function (retorno) {
+            RelatorioAnaliticoService.listProductSellsAnalytics(qs).then(function (retorno) {
                 $scope.produtos = retorno.data;
                 //Object.keys($scope.filtro).forEach(function (prop) {
                 //    if ($scope.filtro[prop] === undefined) {
@@ -36,7 +36,7 @@
             });
         } else {
             $scope.titulo = "Compras";
-            RelatorioAnaliticoService.listProductBuyssAnalytics(params).then(function (retorno) {
+            RelatorioAnaliticoService.listProductBuyssAnalytics(qs).then(function (retorno) {
                 $scope.produtos = retorno.data;
             }).catch(function (retorno) {
                 //swal();
@@ -49,17 +49,16 @@
 })
 .service('RelatorioAnaliticoService', function ($http) {
     return {
-        listProductSellsAnalytics: function (params) {
+        listProductSellsAnalytics: function (qs) {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Report/ProductSellsAnalytics',
-                params: params
+                url: 'http://localhost:59783/api/Report/ProductSellsAnalytics?' + qs
             });
         },
-        listProductBuyssAnalytics: function (params) {
+        listProductBuyssAnalytics: function (qs) {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Report/ProductBuysAnalytics' + qs
+                url: 'http://localhost:59783/api/Report/ProductBuysAnalytics?' + qs
             });
         }
     }

@@ -1,15 +1,20 @@
 ﻿<div class="container-fluid">
+
+    <div class="panel-heading">
+        <h1>Relatório Analítico de {{titulo}} de Produtos</h1>
+    </div>
+
     <div class="panel-body">
-        <div class="row form-group">
-            <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4 form-group">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                    <span class="input-group-addon"><i class="fa fa-cube" aria-hidden="true"></i></span>
                     <input class="form-control" ng-model="filtro.Produto" type="text" placeholder="Produto" required />
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4 form-group">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                    <span class="input-group-addon"><i class="fa fa-bars" aria-hidden="true"></i></span>
                     <select class="form-control" ng-model="filtro.CategoriaId">
                         <option value="" selected="selected">Selecione</option>
                         <option value="1">DVDs e Blu-Ray</option>
@@ -20,49 +25,37 @@
                     </select>
                 </div>
             </div>
-        </div>
-        <div class="row form-group">
-            <div class="col-md-6">
+            <div class="col-md-4 form-group">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
-                    <input class="form-control" ng-model="filtro.DataInicio" type="date" placeholder="Data Inicial" required />
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
-                    <input class="form-control" ng-model="filtro.DataTermino" type="date" placeholder="Data de Término" required />
-                </div>
-            </div>
-        </div>
-        <div class="row form-group">
-            <div class="col-md-6">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                    <span class="input-group-addon"><i class="fa fa-filter" aria-hidden="true"></i></span>
                     <select class="form-control" ng-model="tipoRelatorio">
-                        <option value="" selected="selected">Vendas</option>
+                        <option value="vendas" selected>Vendas</option>
                         <option value="compras">Compras</option>
                     </select>
                 </div>
             </div>
         </div>
-        <div class="row form-group">
-            <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-4 form-group">
                 <div class="input-group">
-                    <button type="button" class="btn btn-primary btn-lg pull-right" ng-click="filtrar()">Filtrar</button>
+                    <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                    <input class="form-control" ng-model="filtro.DataInicio" type="date" placeholder="Data Inicial" required />
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-10">
-            <h1>Relatório Analítico de {{titulo}} de Produtos</h1>
-        </div>
-        <div class="col-md-2">
-            <div class="btn-group btn-group-justified">
-                <div class="btn-group"></div>
+            <div class="col-md-4 form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                    <input class="form-control" ng-model="filtro.DataTermino" type="date" placeholder="Data de Término" required />
+                </div>
             </div>
-        </div>
+            <div class="col-md-3 form-group">
+                <div class="btn-group btn-group-justified">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary btn-lg" ng-click="filtrar()">Filtrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>        
     </div>
     <hr />
     <div class="table-responsive">
