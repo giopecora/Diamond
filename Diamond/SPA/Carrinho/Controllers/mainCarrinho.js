@@ -6,21 +6,31 @@ app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, Carr
 
     $scope.load = function () {
         $scope.produtos = UtilService.obterProdutos();
-        $scope.produtos.map(function (produto) {
-            $scope.subTotal += produto.totalUnitario;
+        //$scope.produtos.map(function (produto) {
+        //    $scope.subTotal += produto.totalUnitario;
+        //})
+    }
+
+    $scope.atualizarSubtotal = function () {
+        var soma = 0;
+        $scope.produtos.forEach(function (produto) {
+            soma += (produto.preco * produto.quantidade);
         })
+        return soma;
     }
 
     $scope.aumentarQtdproduto = function (produto) {
         produto.quantidade++;
+        produto.totalUnitario = produto.preco * produto.quantidade;
         UtilService.atualizarQuantidade(produto);
     }
     
-    $scope.diminuirQtdProduto = function (produto) {        
+    $scope.diminuirQtdProduto = function (produto) {
         if (produto.quantidade == 1) {            
             return
         }            
         produto.quantidade--;
+        produto.totalUnitario = produto.preco * produto.quantidade;
         UtilService.atualizarQuantidade(produto);
     }
 

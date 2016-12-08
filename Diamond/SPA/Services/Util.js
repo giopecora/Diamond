@@ -45,7 +45,7 @@
             var index = TmpCarrinho.findIndex(function (itemCarrinho) { return produto.id == itemCarrinho.id });
             if (index != -1) {
                 TmpCarrinho.splice(index, 1);
-                $cookies.put('Produtos', TmpCarrinho);
+                $cookies.put('Produtos', JSON.stringify(TmpCarrinho));
             }
 
         },

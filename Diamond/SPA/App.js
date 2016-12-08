@@ -17,7 +17,7 @@ App.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'SPA/Produtos/Views/produtoDetalhe.html',
             controller: 'ProdutoDetalheCtrl'
         })
-        .when('/Categoria/:categoriaID', {
+        .when('/Categoria/:categoriaID?:search?', {
             templateUrl: 'SPA/Produtos/Views/produtoListCateg.html',
             controller: 'ProdutoCategoria'
         })
@@ -28,7 +28,7 @@ App.config(['$routeProvider', function ($routeProvider) {
         .when('/Produtos/listagem/:categoriaID', {
             templateUrl: 'SPA/Produtos/Views/produtoListCateg.html',
             controller: 'ProdutoCategoria'
-        })
+        })       
         .when('/CadastroUsuario', {
             templateUrl: 'SPA/Pessoas/Views/cadastroUsuario.html',
             controller: 'PessoasCadastro'

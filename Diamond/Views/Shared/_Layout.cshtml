@@ -9,7 +9,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <nav class="navbar navbar-default main-nav" role="navigation">
+    <nav class="navbar navbar-default main-nav" role="navigation" ng-controller="LayoutCtrl">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-main" aria-expanded="false">
@@ -36,7 +36,7 @@
                     </ul>
                     <form class="navbar-form navbar-right" role="search">
                         <div class="input-group">
-                            <input type="text" class="form-control pull-right" placeholder="Pesquisar" name="srch-term" id="srch-term" />
+                            <input type="text" class="form-control pull-right" placeholder="Pesquisar" name="srch-term" id="srch-term" ng-model="search" ng-change="actions.search()" />
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
                             </span>

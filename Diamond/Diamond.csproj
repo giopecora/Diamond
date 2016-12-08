@@ -1128,7 +1128,7 @@
     <Content Include="SPA\Backoffice\Views\relatorioSintetico.html" />
     <Content Include="SPA\Services\authInterceptorService.js" />
     <Content Include="SPA\Services\authService.js" />
-    <Content Include="SPA\Services\auxiliar.js" />
+    <Content Include="SPA\Services\LayoutCtrl.js" />
     <Content Include="SPA\Services\Util.js" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

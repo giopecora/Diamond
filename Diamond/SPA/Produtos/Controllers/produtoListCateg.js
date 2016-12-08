@@ -1,5 +1,6 @@
-﻿angular.module('Diamond').controller('ProdutoCategoria', function ($scope, ProdutoCategoriaService, $routeParams, $location) {
+﻿angular.module('Diamond').controller('ProdutoCategoria', function ($scope, ProdutoCategoriaService, $routeParams, $location, SearchService) {
     $scope.categoriaID = $routeParams.categoriaID;
+
     $scope.Produtos = [];
     $scope.categoria = "";   
 
@@ -25,7 +26,7 @@
                     break;
                 case '5':
                     $scope.categoria = "Tv, Aúdio e Home Theater";
-                    break;
+                    break;                
             }
         }
 
@@ -37,7 +38,27 @@
         $location.path("/Produtos/"+produto.id);
     }
 
+    $scope.actions = {
+        updateProducts: function (newProducts) {
+            $scope.Produtos = newProducts;
+        },
+
+
+        search: function(search){
+            SearchService.search(search)
+                .then(function(response){
+                    $scope.Produtos = response.data;
+                });
+        }
+    }
+
     $scope.load();
+
+    // Initialize
+    $scope.$on('produto-categoria:update-products', $scope.actions.updateProducts);
+    if ($routeParams.search) {
+        $scope.actions.search($routeParams.search);
+    }
 })
 .service('ProdutoCategoriaService', function ($http) {
     return {
