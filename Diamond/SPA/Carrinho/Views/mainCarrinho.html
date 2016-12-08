@@ -55,7 +55,7 @@
                                     <h3>{{produto.preco | currency}}</h3>
                                 </td>
                                 <td class="col-md-2 bottom-column">
-                                    <h3>{{produto.totalUnitario | currency}}</h3>
+                                    <h3>{{produto.preco * produto.quantidade | currency}}</h3>
                                 </td>
                                 <td class="bottom-column">                                    
                                     <button type="button" class="btn btn-danger" ng-click="remover(produto)"><i class="fa fa-times" uib-tooltip="Remover"></i></button>                                    

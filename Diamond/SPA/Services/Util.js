@@ -13,8 +13,7 @@
                     imagemPrincipal: produto.imagemPrincipal,
                     nome: produto.nome,
                     quantidade: 1, 
-                    preco: produto.preco,
-                    totalUnitario: eval("produto.quantidade * produto.preco")
+                    preco: produto.preco
                 };
             if ($cookies.get('Produtos')) {
                 TmpCarrinho = JSON.parse($cookies.get('Produtos'));

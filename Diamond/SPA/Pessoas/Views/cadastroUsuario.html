@@ -42,65 +42,6 @@
                 </div>                
                 <button type="submit" class="btn btn-primary btn-lg pull-right">Proximo</button>                
             </form>
-            <form ng-submit="validaEndereco()">
-                <div class="row form-group">
-                    <div class="col-md-4 col-md-offset-4">
-                        <div class="input-group">
-                            <span class="input-group-addon">Logradouro</span>
-                            <input ng-model="endereco.logradouro" class="form-control" type="text" placeholder="" required />
-                        </div>
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col-md-4 col-md-offset-4">
-                        <div class="input-group">
-                            <span class="input-group-addon">Número</span>
-                            <input ng-model="endereco.numero" class="form-control" type="text" placeholder="" required />
-                        </div>
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col-md-4 col-md-offset-4">
-                        <div class="input-group">
-                            <span class="input-group-addon">Complemento</span>
-                            <input ng-model="endereco.complemento" class="form-control" type="text" placeholder="" />
-                        </div>
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col-md-4 col-md-offset-4">
-                        <div class="input-group">
-                            <span class="input-group-addon">CEP</span>
-                            <input ng-model="endereco.cep" class="form-control" type="text" ui-br-cep-mask required ng-change="consultaCEP(endereco.cep)" />
-                        </div>
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col-md-4 col-md-offset-4">
-                        <div class="input-group">
-                            <span class="input-group-addon">Cidade</span>
-                            <input ng-model="endereco.cidade" class="form-control" type="text" placeholder="" required />
-                        </div>
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col-md-4 col-md-offset-4">
-                        <div class="input-group">
-                            <span class="input-group-addon">Cidade</span>
-                            <input ng-model="endereco.bairro" class="form-control" type="text" placeholder="" required />
-                        </div>
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <div class="col-md-4 col-md-offset-4">
-                        <div class="input-group">
-                            <span class="input-group-addon">UF</span>
-                            <input ng-model="endereco.uf" class="form-control" type="text" placeholder="" required />
-                        </div>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-success btn-lg">CONCLUIR</button>
-            </form>
         </div>
     </div>    
 </div>

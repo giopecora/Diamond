@@ -49,7 +49,10 @@
             })
         },
         bucarProdutos: function () {
-
+            return $http({
+                method: 'GET',
+                url: ''
+            })
         },
         getProduto: function (ProdutoID) {
             return $http({
