@@ -34,7 +34,7 @@ app.controller('PerfilUsuarioCtrl', function ($scope, UtilService, PerfilUsuario
     $scope.abrirAlterarSenha = function () {
         var modalInstance = $uibModal.open({
             templateUrl: './SPA/Pessoas/Modals/Views/usuarioAlterarSenha.html',
-            controller: 'UsuarioEnderecoCtrl',
+            controller: '',
             backdrop: 'static',
             size: 'sm',
         });

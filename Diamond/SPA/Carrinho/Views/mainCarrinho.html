@@ -23,58 +23,61 @@
                 <div class="panel-heading">Detalhe do(s) Produto(s)</div>
                 <div class="panel-body">
                     <!-- Table -->
-                    <table class="table table-responsive">
-                        <tr>
-                            <th class="text-center">Produto(s)</th>
-                            <th class="text-center">Quantidade</th>
-                            <th class="text-center">Valor Unitário</th>
-                            <th class="text-center">Valor Total</th>
-                            <th class="text-center">Ações</th>
-                        </tr>
-                        <tbody>
-                            <!-- line 1 -->
-                            <tr ng-repeat="produto in produtos">
-                                <td class="col-md-5 text-left">
-                                    <img class="img-responsive text-center imagem-prod" 
-                                         src="{{produto.action}}">
-                                    <h4>{{produto.nome | truncate}}</h4>
-                                </td>
-                                <td class="col-xs-2 col-xs-offset-5 bottom-column">
-                                    <div class="input-group">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button" ng-click="diminuirQtdProduto(produto)"><i class="fa fa-minus"></i></button>
-                                        </span>
-                                        <input type="number" class="form-control" disabled ng-model="produto.quantidade">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button" ng-click="aumentarQtdproduto(produto)"><i class="fa fa-plus"></i></button>
-                                        </span>
-                                    </div>                                   
-                                    
-                                </td>
-                                <td class="col-md-2 bottom-column">
-                                    <h3>{{produto.preco | currency}}</h3>
-                                </td>
-                                <td class="col-md-2 bottom-column">
-                                    <h3>{{produto.preco * produto.quantidade | currency}}</h3>
-                                </td>
-                                <td class="bottom-column">                                    
-                                    <button type="button" class="btn btn-danger" ng-click="remover(produto)"><i class="fa fa-times" uib-tooltip="Remover"></i></button>                                    
-                                </td>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tr>
+                                <th class="text-center">Produto(s)</th>
+                                <th class="text-center">Quantidade</th>
+                                <th class="text-center">Valor Unitário</th>
+                                <th class="text-center">Valor Total</th>
+                                <th class="text-center">Ações</th>
                             </tr>
-                        </tbody>
-                    </table>
+                            <tbody>
+                                <!-- line 1 -->
+                                <tr ng-repeat="produto in produtos">
+                                    <td class="col-md-5 text-left">
+                                        <img class="img-responsive text-center imagem-prod"
+                                             src="{{produto.action}}">
+                                        <h4>{{produto.nome | truncate}}</h4>
+                                    </td>
+                                    <td class="col-xs-2 col-xs-offset-5 bottom-column">
+                                        <div class="input-group">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button" ng-click="diminuirQtdProduto(produto)"><i class="fa fa-minus"></i></button>
+                                            </span>
+                                            <input type="number" style="min-width: 50px;" class="form-control" disabled ng-model="produto.quantidade">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button" ng-click="aumentarQtdproduto(produto)"><i class="fa fa-plus"></i></button>
+                                            </span>
+                                        </div>
+
+                                    </td>
+                                    <td class="col-md-2 bottom-column">
+                                        <h3>{{produto.preco | currency}}</h3>
+                                    </td>
+                                    <td class="col-md-2 bottom-column">
+                                        <h3>{{produto.preco * produto.quantidade | currency}}</h3>
+                                    </td>
+                                    <td class="bottom-column">
+                                        <button type="button" class="btn btn-danger" ng-click="remover(produto)"><i class="fa fa-times" uib-tooltip="Remover"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>                    
                     <hr />
-                    <div class="row">                        
-                        <div class="col-md-4 pull-right">
+                    <div class="row">
+                        
+                        <div class="col-md-3">
+                            <h2>Subtotal <small ng-bind="atualizarSubtotal() | currency"></small></h2>
+                        </div>
+                        <div class="col-md-4 col-md-offset-5">
                             <div class="btn-group btn-group-justified">
                                 <div class="btn-group">
                                     <button class="btn btn-success btn-lg" ng-click="finalizarCompra()">FINALIZAR</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 pull-right">
-                            <h2>Subtotal <small ng-bind="atualizarSubtotal() | currency"></small></h2>
-                        </div>                 
                     </div>
                 </div>
             </div>
