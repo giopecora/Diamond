@@ -17,6 +17,10 @@ App.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'SPA/Produtos/Views/produtoDetalhe.html',
             controller: 'ProdutoDetalheCtrl'
         })
+        .when('/Produtos/listagem/:categoriaID', {
+            templateUrl: 'SPA/Produtos/Views/produtoListCateg.html',
+            controller: 'ProdutoCategoria'
+        })
         .when('/Categoria/:categoriaID?:search?', {
             templateUrl: 'SPA/Produtos/Views/produtoListCateg.html',
             controller: 'ProdutoCategoria'
@@ -25,10 +29,6 @@ App.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'SPA/Carrinho/Views/mainCarrinho.html',
             controller: 'MainCarrinhoCtrl'
         })
-        .when('/Produtos/listagem/:categoriaID', {
-            templateUrl: 'SPA/Produtos/Views/produtoListCateg.html',
-            controller: 'ProdutoCategoria'
-        })       
         .when('/CadastroUsuario', {
             templateUrl: 'SPA/Pessoas/Views/cadastroUsuario.html',
             controller: 'PessoasCadastro'
@@ -52,6 +52,10 @@ App.config(['$routeProvider', function ($routeProvider) {
         .when('/Login', {
             templateUrl: 'SPA/Pessoas/Views/login.html',
             controller: 'LoginCtrl'
+        })
+        .when('/Usuarios/:usuarioID', {
+            templateUrl: 'SPA/Pessoas/Views/perfilUsuario.html',
+            controller: 'PerfilUsuarioCtrl'
         })
 
     .otherwise({ redirectTo: '/Home' })

@@ -59,6 +59,10 @@ namespace Diamond
                 "~/SPA/Carrinho/Controllers/mainCarrinho.js",
                 "~/SPA/Pessoas/Controllers/cadastroUsuario.js",
                 "~/SPA/Pessoas/Controllers/login.js",
+                "~/SPA/Pessoas/Modals/Controllers/usuarioAlterarSenha.js",
+                "~/SPA/Pessoas/Modals/Controllers/usuarioCartoes.js",
+                "~/SPA/Pessoas/Modals/Controllers/usuarioEndereco.js",
+                "~/SPA/Pessoas/Controllers/perfilUsuario.js",
                 "~/SPA/Services/authInterceptorService.js",
                 "~/SPA/Services/authService.js"));
 
