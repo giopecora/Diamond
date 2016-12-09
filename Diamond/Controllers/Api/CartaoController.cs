@@ -11,23 +11,12 @@ namespace Diamond.Controllers.Api
 {
     public class CartaoController : BaseApiController
     {
-        private CartaoBusiness _business;
-
-        public CartaoController()
-        {
-            _business = new CartaoBusiness();
-
-            if (UserId.HasValue)
-                _business.UserId = UserId.Value;
-        }
+        private CartaoBusiness _business = new CartaoBusiness();
 
         [ResponseType(typeof(CartaoDTO))]
         public IHttpActionResult Get(int id)
         {
             CartaoDTO cartao = new CartaoDTO();
-
-            if (!UserId.HasValue)
-                return Unauthorized();
 
             try
             {
@@ -41,18 +30,15 @@ namespace Diamond.Controllers.Api
             return Ok(cartao);
         }
 
-        [Route("api/Cartao/GetAllFromUser")]
+        [Route("api/Cartao/GetAllFromUser/{userId:int}")]
         [ResponseType(typeof(List<CartaoDTO>))]
-        public IHttpActionResult GetAllFromUser()
+        public IHttpActionResult GetAllFromUser(int userId)
         {
             List<CartaoDTO> cartoes = new List<CartaoDTO>();
 
-            if (!UserId.HasValue)
-                return Unauthorized();
-
             try
             {
-                cartoes = _business.GetAllFromUser();
+                cartoes = _business.GetAllFromUser(userId);
             }
             catch (Exception ex)
             {
@@ -65,11 +51,6 @@ namespace Diamond.Controllers.Api
         [ResponseType(typeof(IHttpActionResult))]
         public IHttpActionResult Put([FromBody]CartaoDTO cartao)
         {
-            if (!UserId.HasValue)
-                return Unauthorized();
-
-            cartao.UsuarioId = UserId.Value;
-
             try
             {
                 _business.Update(cartao);
@@ -86,11 +67,6 @@ namespace Diamond.Controllers.Api
         [ResponseType(typeof(EnderecoDTO))]
         public IHttpActionResult Post([FromBody]CartaoDTO cartao)
         {
-            if (!UserId.HasValue)
-                return Unauthorized();
-
-            cartao.UsuarioId = UserId.Value;
-
             try
             {
                 cartao = _business.Insert(cartao);
@@ -107,9 +83,6 @@ namespace Diamond.Controllers.Api
         [ResponseType(typeof(IHttpActionResult))]
         public IHttpActionResult Delete(int id)
         {
-            if (!UserId.HasValue)
-                return Unauthorized();
-
             try
             {
                 _business.Delete(id);

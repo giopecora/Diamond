@@ -19,9 +19,6 @@ namespace Diamond.Controllers.Api
         {
             List<PedidoItemDTO> itens = new List<PedidoItemDTO>();
 
-            if (!UserId.HasValue)
-                return Unauthorized();
-
             try
             {
                 itens = _business.GetAllFromPedido(pedidoId);
@@ -38,9 +35,6 @@ namespace Diamond.Controllers.Api
         public IHttpActionResult Get(int id)
         {
             PedidoItemDTO item = new PedidoItemDTO();
-
-            if (!UserId.HasValue)
-                return Unauthorized();
 
             try
             {

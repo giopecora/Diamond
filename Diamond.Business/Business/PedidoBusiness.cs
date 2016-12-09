@@ -7,19 +7,18 @@ using System.Collections.Generic;
 
 namespace Diamond.Business.Business
 {
-    public class PedidoBusiness : BaseBusiness
+    public class PedidoBusiness
     {
         private PedidoRepository _repository;
 
         public PedidoBusiness()
         {
             _repository = new PedidoRepository();
-            _repository.UserId = UserId;
         }
 
-        public List<PedidoDTO> GetAllFromUser(int page)
+        public List<PedidoDTO> GetAllFromUser(int userId, int page)
         {
-            return _repository.GetAllFromUser(page).ToDTO<Pedido, PedidoDTO>(); ;
+            return _repository.GetAllFromUser(userId, page).ToDTO<Pedido, PedidoDTO>(); ;
         }
 
         public PedidoDTO GetById(int id)

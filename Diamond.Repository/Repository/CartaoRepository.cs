@@ -9,18 +9,18 @@ using System.Threading.Tasks;
 
 namespace Diamond.Repository.Repository
 {
-    public class CartaoRepository : BaseRepository
+    public class CartaoRepository
     {
         private DiamondContext _context = new DiamondContext();
 
         public Cartao GetById(int id)
         {
-            return _context.Cartoes.Where(c => c.Id == id && c.UsuarioId == UserId).FirstOrDefault();
+            return _context.Cartoes.Find(id);
         }
 
-        public List<Cartao> GetAllFromUser()
+        public List<Cartao> GetAllFromUser(int userId)
         {
-            return _context.Cartoes.Where(u => u.UsuarioId == UserId).ToList();
+            return _context.Cartoes.Where(u => u.UsuarioId == userId).ToList();
         }
 
         public Cartao Insert(Cartao entity)

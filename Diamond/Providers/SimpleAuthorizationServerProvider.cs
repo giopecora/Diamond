@@ -43,9 +43,8 @@ namespace Diamond.Providers
             }
 
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
-
-            identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
-            identity.AddClaim(new Claim("sub", user.Id.ToString()));
+            identity.AddClaim(new Claim("sub", context.UserName));
+            identity.AddClaim(new Claim("userId", user.Id.ToString()));
             identity.AddClaim(new Claim("perfis", user.PerfisToJson()));
             identity.AddClaim(new Claim("userId", user.Id.ToString()));
 
