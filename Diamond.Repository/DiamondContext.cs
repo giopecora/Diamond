@@ -86,11 +86,6 @@ namespace Diamond.Repository
                 .WithRequired(e => e.Endereco)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Endereco>()
-                .HasMany(e => e.Usuarios)
-                .WithMany(e => e.Enderecoes)
-                .Map(m => m.ToTable("Usuario_Enderecos").MapLeftKey("EnderecoId").MapRightKey("UsuarioId"));
-
             modelBuilder.Entity<Marca>()
                 .Property(e => e.Nome)
                 .IsUnicode(false);
@@ -168,6 +163,11 @@ namespace Diamond.Repository
             modelBuilder.Entity<Usuario>()
                 .Property(e => e.CPF)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Usuario>()
+                .HasMany(e => e.Enderecoes)
+                .WithRequired(e => e.Usuario)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Usuario>()
                 .HasMany(e => e.Pedidoes)
