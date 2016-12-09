@@ -145,6 +145,17 @@
                 url: 'http://localhost:59783/api/Produto/Put',
                 data: produto
             })
-        }
+        },
+        uploadProduto: function(idProduto, file){
+            return $http({
+                method: 'POST',
+                url: 'http://localhost:59783/api/Produto/Post/' + idProduto,
+                data: {
+                    file: file
+                }, headers:{
+
+                }
+            })
+    }
     }
 });

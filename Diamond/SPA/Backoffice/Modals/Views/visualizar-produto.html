@@ -5,37 +5,38 @@
     </div>
     <div class="modal-body">
         <div class="row">
-
-            <div class="col-md-6">
-                <div class="thumbnail">
-                    <img class="img-responsive" src="{{produto.action}}"/>
-                </div>
-                <button class="btn btn-default" ngf-select ng-model="produto.file" ng-show="editando">Nova Imagem</button>
-            </div>
-            <div class="col-md-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h2 ng-hide="editando" ng-bind="produto.nome"></h2>
-                        <input class="form-control" ng-show="editando" ng-model="produto.nome" />
+            <form ng-submit="salvar()">
+                <div class="col-md-6">
+                    <div class="thumbnail">
+                        <img class="img-responsive" src="{{produto.action}}" />
                     </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label>Preço</label>
-                                <h4 ng-hide="editando">{{produto.preco | currency}}</h4>
-                                <input class="form-control" type="text" ng-show="editando" ng-model="produto.preco" min="0" required ui-money-mask/>
+                    <button class="btn btn-default" ngf-select ng-model="produto.file" ng-show="editando">Nova Imagem</button>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2 ng-hide="editando" ng-bind="produto.nome"></h2>
+                            <input class="form-control" ng-show="editando" ng-model="produto.nome" />
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Preço</label>
+                                    <h4 ng-hide="editando">{{produto.preco | currency}}</h4>
+                                    <input class="form-control" type="text" ng-show="editando" ng-model="produto.preco" min="0" required ui-money-mask />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label>Descrição Produto</label>
+                                <textarea style="width: 100%" rows="6" cols="5000" ng-model="produto.descricao"></textarea>
                             </div>
                         </div>
-                        <div class="row">
-                            <label>Descrição Produto</label>
-                            <textarea style="width: 100%" rows="6" cols="5000" ng-model="produto.descricao"></textarea>
-                        </div>
                     </div>
+
+                    <button type="button" class="btn btn-primary" ng-hide="editando" ng-click="editar()">Editar</button>
+                    <button type="submit" class="btn btn-success" ng-show="editando">Salvar</button>
                 </div>
-                
-                <button type="button" class="btn btn-primary" ng-hide="editando" ng-click="editar()">Editar</button>
-                <button type="button" class="btn btn-success" ng-show="editando" ng-click="salvar()">Salvar</button>
-            </div>
+            </form>            
         </div>
         
     </div>
