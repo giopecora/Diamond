@@ -27,7 +27,7 @@ namespace Diamond.Controllers.Api
             {
                 produtos = _business.SearchForProducts(search);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return InternalServerError(ex);
             }
@@ -45,7 +45,7 @@ namespace Diamond.Controllers.Api
             {
                 destaques = _business.GetTop5();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return InternalServerError(ex);
             }
@@ -81,7 +81,7 @@ namespace Diamond.Controllers.Api
             {
                 produtos = _business.GetAll(filtro, page);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return InternalServerError(ex);
             }
@@ -89,9 +89,62 @@ namespace Diamond.Controllers.Api
             return Ok(produtos);
         }
 
+        [HttpGet]
+        [ResponseType(typeof(List<ProdutoDTO>))]
+        [Route("api/Produto/ListAll/{page}")]
+        public IHttpActionResult ListAll(int page)
+        {
+            List<ProdutoDTO> produtos = new List<ProdutoDTO>();
+
+            try
+            {
+                produtos = _business.ListAll(page);
+
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+
+            return Ok(produtos);
+        }
+
+        [HttpGet]
+        [ResponseType(typeof(List<ProdutoDTO>))]
+        [Route("api/Produto/ListAllByName/{page}/{name}")]
+        public IHttpActionResult ListAllByName(int page, string name)
+        {
+            List<ProdutoDTO> produtos = new List<ProdutoDTO>();
+
+            try
+            {
+                produtos = _business.ListAllByName(page, name);
+
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+
+            return Ok(produtos);
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetCount()
+        {
+            return Ok(_business.GetCount());
+        }
+
+        [HttpGet]
+        [Route("api/Produto/GetCountByName/{name}")]
+        public IHttpActionResult GetCountByName(string name)
+        {
+            return Ok(_business.GetCountByName(name));
+        }
+
         [ResponseType(typeof(List<ProdutoDTO>))]
         [Route("api/Produto/GetAllFromCategory/{categoryId:int}/{page:int}")]
-        public IHttpActionResult GetAllFromCategory(int categoryId, int page = 1)
+        public IHttpActionResult GetAllFromCategory(int categoryId, int page = 0)
         {
             List<ProdutoDTO> produtos = new List<ProdutoDTO>();
 
@@ -167,7 +220,7 @@ namespace Diamond.Controllers.Api
             {
                 _imagemBusiness.Upload(produtoId, HttpContext.Current);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return InternalServerError(ex);
             }
@@ -182,7 +235,7 @@ namespace Diamond.Controllers.Api
         {
             try
             {
-                 _business.Delete(id);
+                _business.Delete(id);
             }
             catch (Exception ex)
             {

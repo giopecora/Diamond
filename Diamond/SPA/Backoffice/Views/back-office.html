@@ -1,0 +1,47 @@
+﻿<style>
+    .back-office-quadrados{
+        min-height: 100px;
+        background-color: #3333EA;
+        color: white;
+        cursor: pointer;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Administrativo</h2>
+        </div>
+    </div>
+    <hr />
+    <h3>Produtos</h3>
+    <div class="row">        
+        <div class="col-md-4">
+            <div class="well well-lg back-office-quadrados" ng-click="AbrirProdutos()">
+                <h3><i class="fa fa-cubes"></i><span>&nbsp;&nbsp;Produtos</span></h3>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <h3>Relatorios</h3>
+    <div class="row">        
+        <div class="col-md-4">
+            <div class="well well-lg back-office-quadrados" ng-click="AbrirRelatorioAnalitico()">
+                <h3><i class="fa fa-bar-chart"></i><span>&nbsp;&nbsp;Analítico</span></h3>
+            </div>            
+        </div>
+        <div class="col-md-4">
+            <div class="well well-lg back-office-quadrados" ng-click="AbrirRelatorioSintetico()">
+                <h3><i class="fa fa-line-chart"></i><span>&nbsp;&nbsp;Sintetico</span></h3>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <h3>Compras</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="well well-lg back-office-quadrados" ng-click="">
+                <h3><i class="fa fa-cart-plus"></i><span>&nbsp;&nbsp;Compras</span></h3>
+            </div>
+        </div>
+    </div>
+</div>

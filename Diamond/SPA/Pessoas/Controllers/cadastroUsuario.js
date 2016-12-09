@@ -15,21 +15,7 @@
         bairro: '',
         uf: ''
     }
-    $scope.passo = 1;
     
-    $scope.consultaCEP = function (cep) {
-        if (cep.length < 8)
-            return;
-
-        UsuarioService.consultaCEP(cep).
-          then(function (retorno) {
-              $scope.endereco = retorno.data;
-              $scope.endereco.cidade = retorno.data.localidade;
-          }).catch(function () {
-              alert(retorno.message || "Houve um erro desconhecido");
-              return;
-          });
-    };
 
     $scope.validaUsuario = function () {
 
@@ -38,12 +24,26 @@
             Object.keys($scope.usuario).forEach(function (prop) {
                 $scope.usuario[prop] = '';
             });
-            $scope.passo = 2;
+            $location.path("Usuarios/" + retorno.data.id);
         }).catch(function (error) {
             window.alert("Não foi possível cadastrar usuário, tente novamente!")
         });
 
     }
+
+    $scope.consultaCEP = function (cep) {
+        if ((cep && cep.length < 8) || !cep)
+            return;
+
+        UsuarioService.consultaCEP(cep).
+          then(function (retorno) {
+              $scope.formEndereco = retorno.data;
+              $scope.formEndereco.cidade = retorno.data.localidade;
+          }).catch(function (retorno) {
+              if (retorno)
+                  return;
+          });
+    };
 
     $scope.validaEndereco = function () {
         var tmpEndereco = JSON.stringify($scope.endereco);
@@ -62,15 +62,6 @@
             
         })
     }
-
-
-
-    //////////////////////////////////////////////////////////////////////////// MASCARAS INPUT  -- //////////////////////////////
-
-    
-
-
-    ////////////////////////////////////////////////////////////////////////////  END MASCARAS INPUT  --/////////////////////////////
 
 })
 .service('UsuarioService', function ($http) {

@@ -1,0 +1,51 @@
+﻿<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="fechar()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3>
+            Cadastro de Produtos
+        </h3>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    <label for="nomeproduto">Nome do Produto</label>
+                    <input type="text" class="form-control" id="nomeProduto" placeholder="Nome do Produto" ng-model="novoProduto.Nome" required>
+                </div>
+                <div class="col-md-4 form-group">
+                    <label for="categoria">Categoria</label>
+                    <select class="form-control" id="categoria" required ng-model="novoProduto.CategoriaID">
+                        <option value="1">DVDs e Blu-ray</option>
+                        <option value="2">Games</option>
+                        <option value="3">Celulares</option>
+                        <option value="4">Informática</option>
+                        <option value="5">Tv, Aúdio e Home Theater</option>
+                    </select>
+                </div>
+                <div class="col-md-4 form-group">
+                    <label for="preco">Preço</label>
+                    <input type="text" class="form-control" id="preco" ng-model="novoProduto.preco" placeholder="Preço produto" min="0" required ui-money-mask>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10">
+                    <label>Descrição do produto</label>
+                    <textarea class="form-control" style="width: 100%" rows="6" cols="5000" ng-model="novoProduto.Descricao"></textarea>
+                </div>
+                <div class="col-md-2">
+                    <input name="ativo" id="ativo" type="checkbox" />
+                    <label for="ativo" ng-model="novoProduto.Ativo">Ativo</label>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group btn-group-justified">
+            <div class="btn-group">
+                <button ng-click="salvar()" class="btn btn-success">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>

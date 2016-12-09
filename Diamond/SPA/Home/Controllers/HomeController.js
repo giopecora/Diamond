@@ -1,4 +1,7 @@
-﻿angular.module('Diamond').controller('HomeController', function ($scope, HomeService, UtilService, $cookies) {
+﻿angular.module('Diamond').controller('HomeController', function ($scope, HomeService, UtilService, $cookies, $location) {
+
+    $scope.produtos = [];
+
 
     $scope.load = function () {
         HomeService.listTopFive().then(function (retorno) {
@@ -8,31 +11,16 @@
             swal();
         });
 
-        HomeService.gettopFourofAllCategories().then(function (retorno) {
-            console.log("funfou")
+        HomeService.gettopEightofAllCategories().then(function (retorno) {
+            console.log();
         }).catch(function () {
 
         })
     };
 
     $scope.exibirDetalhes = function (produto) {
-        window.location = "#/Produtos/" + produto.id;
+        $location.path("/Produtos/" + produto.id);
     }
-
-    $scope.slides = [
-        {
-            id: 1,
-            image: '/Content/img/liquidificador.jpg'
-        },
-        {
-            id: 2,
-            image: '/Content/img/microondas.jpg'
-        },
-        {
-            id: 3,
-            image: '/Content/img/relescopio.jpg'
-        }
-    ];
 
     
 
@@ -44,10 +32,10 @@
         listTopFive: function () {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Produto/GetTop5'                
+                url: 'http://localhost:59783/api/Produto/GetTop5'
             });
         },
-        gettopFourofAllCategories: function () {
+        gettopEightofAllCategories: function () {
             return $http({
                 method: 'GET',
                 url: 'http://localhost:59783/api/Categoria/ListTop8ProductsOfAllCategories/'

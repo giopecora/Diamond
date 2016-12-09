@@ -14,8 +14,7 @@ body {
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
-select,
-textarea {
+select {
     max-width: 280px;
 }
 
@@ -37,49 +36,7 @@ textarea {
 .content-wrapper{
     position: relative; 
     padding-bottom: 40px;
-    height: calc(100% - 100px);
 }
-
-.carousel,
-.item,
-.active {
-    height: 100%;
-}
-
-.carousel-inner {
-    height: 100%;
-}
-
-/* Background images are set within the HTML using inline CSS, not here */
-
-.fill {
-    width: 100%;
-    height: 100%;
-    background-position: center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-}
-
-.bottom-column {
-    float: none !important;
-    display: table-cell !important;
-    vertical-align: bottom !important;
-}
-
-.imagem-prod{
-    max-height: 150px;
-}
-
-/*footer*/
-/*.footer{
-    height: 100px;
-    background: #e7e7e7;
-}*/
- .adicionar{
-  margin-top: 30px;
- }
 
  .footer-layout{
      position: absolute;

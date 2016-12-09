@@ -37,9 +37,35 @@ namespace Diamond.Business
             return _repository.GetAll(filtro.MontarQuery(), page).ToDTO<Produto, ProdutoDTO>();
         }
 
+        public List<ProdutoDTO> ListAll(int page)
+        {
+            return _repository.ListAll(page).ToDTO<Produto, ProdutoDTO>();
+        }
+
+        public List<ProdutoDTO> ListAllByName(int page, string name)
+        {
+            return _repository.ListAllByName(page, name).ToDTO<Produto, ProdutoDTO>();
+        }
+
         public List<ProdutoDTO> GetAllByCategoryId(int categoryId, int page)
         {
             return _repository.GetAllByCategoryId(categoryId, page).ToDTO<Produto, ProdutoDTO>();
+        }
+
+        public List<int> GetCount()
+        {
+            var list = new List<int>();
+            list.Add(_repository.GetCount());
+
+            return list;
+        }
+
+        public List<int> GetCountByName(string name)
+        {
+            var list = new List<int>();
+            list.Add(_repository.GetCountByName(name));
+
+            return list;
         }
 
         public ProdutoDTO GetById(int id)

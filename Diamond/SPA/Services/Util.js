@@ -13,8 +13,7 @@
                     imagemPrincipal: produto.imagemPrincipal,
                     nome: produto.nome,
                     quantidade: 1, 
-                    preco: produto.preco,
-                    totalUnitario: eval("produto.quantidade * produto.preco")
+                    preco: produto.preco
                 };
             if ($cookies.get('Produtos')) {
                 TmpCarrinho = JSON.parse($cookies.get('Produtos'));
@@ -45,7 +44,7 @@
             var index = TmpCarrinho.findIndex(function (itemCarrinho) { return produto.id == itemCarrinho.id });
             if (index != -1) {
                 TmpCarrinho.splice(index, 1);
-                $cookies.put('Produtos', TmpCarrinho);
+                $cookies.put('Produtos', JSON.stringify(TmpCarrinho));
             }
 
         },

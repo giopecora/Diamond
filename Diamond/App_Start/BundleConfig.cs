@@ -29,7 +29,9 @@ namespace Diamond
                 "~/Scripts/ui-bootstrap-tpls-2.2.0.min.js",
                 "~/Scripts/tmhDynamicLocale.min.js",
                 "~/Scripts/angular-input-masks-standalone.js",
-                "~/Scripts/angular-local-storage.min.js"));
+                "~/Scripts/angular-local-storage.min.js",
+                "~/Scripts/ng-file-upload.min.js",
+                "~/Scripts/angular-locale_pt-br.env.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -43,16 +45,25 @@ namespace Diamond
 
             bundles.Add(new ScriptBundle("~/bundles/SPA").Include(               
                 "~/SPA/App.js",
+                "~/SPA/locale.run.js",
                 "~/SPA/Services/Util.js",
+                "~/SPA/Services/LayoutCtrl.js",                
                 "~/SPA/Produtos/Controllers/produtoDetalhe.js",
-                "~/SPA/Produtos/Controllers/manter-produto.js",
                 "~/SPA/Produtos/Controllers/produtoListCateg.js",
-                "~/SPA/Produtos/Controllers/relatorioAnalitico.js",
-                "~/SPA/Produtos/Controllers/relatorioSintetico.js",
+                "~/SPA/Backoffice/Modals/Controllers/adicionar-produto.js",
+                "~/SPA/Backoffice/Modals/Controllers/vizualizar-produto.js",
+                "~/SPA/BackOffice/Controllers/back-office.js",
+                "~/SPA/Backoffice/Controllers/manter-produto.js",                
+                "~/SPA/Backoffice/Controllers/relatorioAnalitico.js",
+                "~/SPA/Backoffice/Controllers/relatorioSintetico.js",
                 "~/SPA/Home/Controllers/HomeController.js",
                 "~/SPA/Carrinho/Controllers/mainCarrinho.js",
                 "~/SPA/Pessoas/Controllers/cadastroUsuario.js",
                 "~/SPA/Pessoas/Controllers/login.js",
+                "~/SPA/Pessoas/Modals/Controllers/usuarioAlterarSenha.js",
+                "~/SPA/Pessoas/Modals/Controllers/usuarioCartoes.js",
+                "~/SPA/Pessoas/Modals/Controllers/usuarioEndereco.js",
+                "~/SPA/Pessoas/Controllers/perfilUsuario.js",
                 "~/SPA/Services/authInterceptorService.js",
                 "~/SPA/Services/authService.js"));
 
