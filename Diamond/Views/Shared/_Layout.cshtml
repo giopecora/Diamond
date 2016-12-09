@@ -38,7 +38,7 @@
                         <div class="input-group">
                             <input type="text" class="form-control pull-right" placeholder="Pesquisar" name="srch-term" id="srch-term" ng-model="search" ng-change="actions.search()" />
                             <span class="input-group-btn">
-                                <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                                <button ng-click="actions.search()" class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
                             </span>
                         </div>
                     </form>
