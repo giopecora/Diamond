@@ -78,7 +78,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr ng-repeat="e in enderecos">
+                        <td>{{e.logradouro}}</td>
+                        <td>{{e.numero}}</td>
+                        <td>{{e.complemento}}</td>
+                        <td>{{e.cep}}</td>
+                        <td>{{e.cidade}}</td>
+                        <td>{{e.sigla}}</td>
                         <td></td>
                     </tr>
                 </tbody>

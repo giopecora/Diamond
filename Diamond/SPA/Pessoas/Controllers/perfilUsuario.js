@@ -1,5 +1,5 @@
 ﻿var app = angular.module('Diamond');
-app.controller('PerfilUsuarioCtrl', function ($scope, UtilService, PerfilUsuarioService, $routeParams, $uibModal) {
+app.controller('PerfilUsuarioCtrl', function ($scope, UtilService, PerfilUsuarioService, $routeParams, $uibModal, authService) {
     
     $scope.usuarioID = $routeParams.usuarioID;
     $scope.usuario = {};
@@ -60,19 +60,19 @@ app.controller('PerfilUsuarioCtrl', function ($scope, UtilService, PerfilUsuario
     $scope.load();
 
 })
-.service('PerfilUsuarioService', function ($http) {
+.service('PerfilUsuarioService', function ($http, authService) {
     return {
         buscarPerfilUsuario: function (UsuarioID) {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Usuario/Get/'
+                url: 'http://localhost:59783/api/Usuario/Get/' + authService.authentication.userId
             })
         },
 
         listarPedidosUsuario: function (usuarioID, paginaAtual) {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Pedido/GetAllFromUser/' + paginaAtual
+                url: 'http://localhost:59783/api/Pedido/GetAllFromUser/' + authService.authentication.userId  + '/' + paginaAtual
             })
         }
     }

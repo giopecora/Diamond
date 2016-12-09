@@ -18,7 +18,7 @@
     };
 
     $scope.load = function () {
-        UsuarioEnderecoService.listarEnderecos($scope.usuario.id).then(function (retorno) {
+        UsuarioEnderecoService.listarEnderecos().then(function (retorno) {
             $scope.enderecos = retorno.data
         })
     };
@@ -73,13 +73,14 @@
 
     };
 
+    $scope.load();
 })
-.service('UsuarioEnderecoService', function ($http) {
+.service('UsuarioEnderecoService', function ($http, authService) {
     return {
         listarEnderecos: function () {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Endereco/GetAllFromUser/'
+                url: 'http://localhost:59783/api/Endereco/GetAllFromUser/' + authService.authentication.userId
             })
         },
         excluirEndereco: function (enderecoID) {
@@ -91,7 +92,7 @@
         salvarNovoEndereco: function (novoEndereco) {
             return $http({
                 method: 'POST',
-                url: 'http://localhost:59783/api/Endereco/Post/',
+                url: 'http://localhost:59783/api/Endereco/Post/' + authService.authentication.userId,
                 data: novoEndereco
             })
         },
