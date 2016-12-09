@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\AuthenticationBusiness.cs" />
+    <Compile Include="Business\CartaoBusiness.cs" />
     <Compile Include="Business\CategoriaBusiness.cs" />
     <Compile Include="Business\EnderecoBusiness.cs" />
     <Compile Include="Business\PedidoBusiness.cs" />

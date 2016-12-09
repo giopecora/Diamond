@@ -3,6 +3,7 @@ using Diamond.Domain.DTO;
 using Diamond.Domain.Entities;
 using Diamond.Repository.Repository;
 using System;
+using System.Collections.Generic;
 
 namespace Diamond.Business.Business
 {
@@ -18,6 +19,11 @@ namespace Diamond.Business.Business
                 throw new Exception("Nao foi possivel encontrar este endereco");
 
             return Mapper.Map<EnderecoDTO>(entity);
+        }
+
+        public List<EnderecoDTO> GetAllFromUser(int userId)
+        {
+            return Mapper.Map<List<EnderecoDTO>>(_repository.GetAllFromUser(userId));
         }
 
         public EnderecoDTO Insert(EnderecoDTO endereco)

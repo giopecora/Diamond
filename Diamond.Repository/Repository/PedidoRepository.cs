@@ -15,7 +15,7 @@ namespace Diamond.Repository.Repository
         {
             int take = 10;
             int skip = (page - 1) * take;
-            return _context.Pedidos.Include("Pedido_Item").Where(p => p.UsuarioId == userId)
+            return _context.Pedidos.Include("Pedido_Itens").Where(p => p.UsuarioId == userId)
                 .OrderBy(p => p.Id)
                 .Skip(skip)
                 .Take(take);
@@ -23,7 +23,7 @@ namespace Diamond.Repository.Repository
 
         public Pedido GetById(int id)
         {
-            return _context.Pedidos.Include("Pedido_Item").Where(p => p.Id == id).FirstOrDefault();
+            return _context.Pedidos.Include("Pedido_Itens").Where(p => p.Id == id).FirstOrDefault();
         }
 
         public Pedido Insert(Pedido entity)

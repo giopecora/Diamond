@@ -11,25 +11,25 @@ namespace Diamond.Repository.Repository
     {
         private DiamondContext _context = new DiamondContext();
 
-        public IEnumerable<Pedido_Item> GetAllFromPedido(int pedidoId)
+        public IEnumerable<Pedido_Itens> GetAllFromPedido(int pedidoId)
         {
-            return _context.PedidoItens.Where(pi => pi.Id == pedidoId);
+            return _context.Pedido_Itens.Where(pi => pi.Id == pedidoId);
         }
 
-        public Pedido_Item GetById(int id)
+        public Pedido_Itens GetById(int id)
         {
-            return _context.PedidoItens.Find(id);
+            return _context.Pedido_Itens.Find(id);
         }
 
-        public Pedido_Item Insert(Pedido_Item entity)
+        public Pedido_Itens Insert(Pedido_Itens entity)
         {
-            _context.PedidoItens.Add(entity);
+            _context.Pedido_Itens.Add(entity);
             _context.SaveChanges();
 
             return entity;
         }
 
-        public bool Update(Pedido_Item entity)
+        public bool Update(Pedido_Itens entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
 
@@ -47,9 +47,9 @@ namespace Diamond.Repository.Repository
 
         public bool Delete(int id)
         {
-            Pedido_Item entity = GetById(id);
+            Pedido_Itens entity = GetById(id);
 
-            _context.PedidoItens.Remove(entity);
+            _context.Pedido_Itens.Remove(entity);
             return _context.SaveChanges() > 0;
         }
     }

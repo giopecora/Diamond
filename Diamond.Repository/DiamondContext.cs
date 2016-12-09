@@ -4,7 +4,6 @@ namespace Diamond.Repository
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
-    using Domain.DTO;
     using Domain.Entities;
 
     public partial class DiamondContext : DbContext
@@ -20,16 +19,16 @@ namespace Diamond.Repository
         public virtual DbSet<Cartao> Cartoes { get; set; }
         public virtual DbSet<Categoria> Categorias { get; set; }
         public virtual DbSet<Endereco> Enderecos { get; set; }
-        public virtual DbSet<Estoque_Entrada> EstoqueEntradas { get; set; }
-        public virtual DbSet<Estoque_Saida> EstoqueSaidas { get; set; }
+        public virtual DbSet<Estoque_Entrada> Estoque_Entrada { get; set; }
+        public virtual DbSet<Estoque_Saida> Estoque_Saida { get; set; }
         public virtual DbSet<Marca> Marcas { get; set; }
         public virtual DbSet<Pedido> Pedidos { get; set; }
-        public virtual DbSet<Pedido_Item> PedidoItens { get; set; }
+        public virtual DbSet<Pedido_Itens> Pedido_Itens { get; set; }
         public virtual DbSet<Perfil> Perfis { get; set; }
         public virtual DbSet<Produto> Produtos { get; set; }
-        public virtual DbSet<Produto_Imagens> ProdutoImagens { get; set; }
+        public virtual DbSet<Produto_Imagens> Produto_Imagens { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
-        public virtual DbSet<Usuario_Perfil> UsuarioPerfis { get; set; }
+        public virtual DbSet<Usuario_Perfis> Usuario_Perfis { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -90,7 +89,7 @@ namespace Diamond.Repository
             modelBuilder.Entity<Endereco>()
                 .HasMany(e => e.Usuarios)
                 .WithMany(e => e.Enderecoes)
-                .Map(m => m.ToTable("Usuario_Endereco").MapLeftKey("EnderecoId").MapRightKey("UsuarioId"));
+                .Map(m => m.ToTable("Usuario_Enderecos").MapLeftKey("EnderecoId").MapRightKey("UsuarioId"));
 
             modelBuilder.Entity<Marca>()
                 .Property(e => e.Nome)
@@ -105,13 +104,13 @@ namespace Diamond.Repository
                 .IsUnicode(false);
 
             modelBuilder.Entity<Pedido>()
-                .HasMany(e => e.Pedido_Item)
+                .HasMany(e => e.Pedido_Itens)
                 .WithRequired(e => e.Pedido)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Pedido_Item>()
+            modelBuilder.Entity<Pedido_Itens>()
                 .HasMany(e => e.Estoque_Saida)
-                .WithOptional(e => e.Pedido_Item)
+                .WithOptional(e => e.Pedido_Itens)
                 .HasForeignKey(e => e.PedidoItemId);
 
             modelBuilder.Entity<Perfil>()
@@ -119,7 +118,7 @@ namespace Diamond.Repository
                 .IsUnicode(false);
 
             modelBuilder.Entity<Perfil>()
-                .HasMany(e => e.Usuario_Perfil)
+                .HasMany(e => e.Usuario_Perfis)
                 .WithRequired(e => e.Perfil)
                 .WillCascadeOnDelete(false);
 
@@ -146,7 +145,7 @@ namespace Diamond.Repository
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Produto>()
-                .HasMany(e => e.Pedido_Item)
+                .HasMany(e => e.Pedido_Itens)
                 .WithRequired(e => e.Produto)
                 .WillCascadeOnDelete(false);
 
@@ -176,7 +175,7 @@ namespace Diamond.Repository
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Usuario>()
-                .HasMany(e => e.Usuario_Perfil)
+                .HasMany(e => e.Usuario_Perfis)
                 .WithRequired(e => e.Usuario)
                 .WillCascadeOnDelete(false);
         }

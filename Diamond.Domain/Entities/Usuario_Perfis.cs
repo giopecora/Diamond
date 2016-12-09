@@ -5,7 +5,7 @@ namespace Diamond.Domain.Entities
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public partial class Usuario_Perfil
+    public partial class Usuario_Perfis
     {
         [Key]
         [Column(Order = 0)]

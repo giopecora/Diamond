@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Diamond.Domain.AutoMapper
 {
-    public class UsuarioPerfilProfile : Profile
+    public class CartaoProfile : Profile
     {
-        public UsuarioPerfilProfile()
+        public CartaoProfile()
         {
-            CreateMap<UsuarioPerfilDTO, Usuario_Perfis>().ReverseMap();
+            CreateMap<CartaoDTO, Cartao>().ReverseMap();
         }
     }
 }

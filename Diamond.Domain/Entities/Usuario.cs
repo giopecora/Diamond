@@ -13,7 +13,7 @@ namespace Diamond.Domain.Entities
         {
             Cartaos = new HashSet<Cartao>();
             Pedidoes = new HashSet<Pedido>();
-            Usuario_Perfil = new HashSet<Usuario_Perfil>();
+            Usuario_Perfis = new HashSet<Usuario_Perfis>();
             Enderecoes = new HashSet<Endereco>();
         }
 
@@ -40,7 +40,7 @@ namespace Diamond.Domain.Entities
         public virtual ICollection<Pedido> Pedidoes { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Usuario_Perfil> Usuario_Perfil { get; set; }
+        public virtual ICollection<Usuario_Perfis> Usuario_Perfis { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Endereco> Enderecoes { get; set; }

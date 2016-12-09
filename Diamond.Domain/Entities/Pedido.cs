@@ -11,7 +11,7 @@ namespace Diamond.Domain.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Pedido()
         {
-            Pedido_Item = new HashSet<Pedido_Item>();
+            Pedido_Itens = new HashSet<Pedido_Itens>();
         }
 
         public int Id { get; set; }
@@ -33,6 +33,6 @@ namespace Diamond.Domain.Entities
         public virtual Usuario Usuario { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pedido_Item> Pedido_Item { get; set; }
+        public virtual ICollection<Pedido_Itens> Pedido_Itens { get; set; }
     }
 }

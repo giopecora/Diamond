@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoMapper\CartaoProfile.cs" />
     <Compile Include="AutoMapper\EnderecoProfile.cs" />
     <Compile Include="AutoMapper\PedidoItemProfile.cs" />
     <Compile Include="AutoMapper\PedidoProfile.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="AutoMapper\ProdutoProfile.cs" />
     <Compile Include="AutoMapper\UsuarioPerfilProfile.cs" />
     <Compile Include="AutoMapper\UsuarioProfile.cs" />
+    <Compile Include="DTO\CartaoDTO.cs" />
     <Compile Include="DTO\Categoria\CategoriaDTO.cs" />
     <Compile Include="DTO\Categoria\ProdutoCategoria.cs" />
     <Compile Include="DTO\EnderecoDTO.cs" />
@@ -75,12 +77,12 @@
     <Compile Include="Entities\Estoque_Saida.cs" />
     <Compile Include="Entities\Marca.cs" />
     <Compile Include="Entities\Pedido.cs" />
-    <Compile Include="Entities\Pedido_Item.cs" />
+    <Compile Include="Entities\Pedido_Itens.cs" />
     <Compile Include="Entities\Perfil.cs" />
     <Compile Include="Entities\Produto.cs" />
     <Compile Include="Entities\Produto_Imagens.cs" />
     <Compile Include="Entities\Usuario.cs" />
-    <Compile Include="Entities\Usuario_Perfil.cs" />
+    <Compile Include="Entities\Usuario_Perfis.cs" />
     <Compile Include="Models\Produto\Filtro.cs" />
     <Compile Include="Models\Relatorio\Filtro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

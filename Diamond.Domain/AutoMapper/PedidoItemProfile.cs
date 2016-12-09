@@ -13,7 +13,8 @@ namespace Diamond.Domain.AutoMapper
     {
         public PedidoItemProfile()
         {
-            CreateMap<PedidoItemDTO, Pedido_Item>().ReverseMap();
+            CreateMap<PedidoItemDTO, Pedido_Itens>().ReverseMap();
+            CreateMap<List<PedidoItemDTO>, List<Pedido_Itens>>().ReverseMap();
         }
     }
 }

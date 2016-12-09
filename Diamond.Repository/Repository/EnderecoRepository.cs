@@ -1,6 +1,8 @@
 ﻿using Diamond.Domain.Entities;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Linq;
 
 namespace Diamond.Repository.Repository
 {
@@ -11,6 +13,11 @@ namespace Diamond.Repository.Repository
         public Endereco GetById(int id)
         {
             return _context.Enderecos.Find(id);
+        }
+
+        public List<Endereco> GetAllFromUser(int userId)
+        {
+            return _context.Database.SqlQuery<Endereco>($"EXEC [dbo].[sp_get_enderecos_from_user] {userId}").ToList();
         }
 
         public Endereco Insert(Endereco entity)

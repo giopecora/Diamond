@@ -11,7 +11,7 @@ namespace Diamond.Domain.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Perfil()
         {
-            Usuario_Perfil = new HashSet<Usuario_Perfil>();
+            Usuario_Perfis = new HashSet<Usuario_Perfis>();
         }
 
         public int Id { get; set; }
@@ -20,6 +20,6 @@ namespace Diamond.Domain.Entities
         public string Nome { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Usuario_Perfil> Usuario_Perfil { get; set; }
+        public virtual ICollection<Usuario_Perfis> Usuario_Perfis { get; set; }
     }
 }

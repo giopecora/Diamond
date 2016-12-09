@@ -29,13 +29,13 @@ namespace Diamond.Domain.DTO
         public bool? Ativo { get; set; }
 
         [JsonProperty("perfis")]
-        public List<UsuarioPerfilDTO> Usuario_Perfil { get; set; }
+        public List<UsuarioPerfilDTO> Usuario_Perfis { get; set; }
 
         public string PerfisToJson()
         {
             List<int> lista = new List<int>();
 
-            foreach(UsuarioPerfilDTO perfil in Usuario_Perfil)
+            foreach(UsuarioPerfilDTO perfil in Usuario_Perfis)
             {
                 lista.Add(perfil.PerfilId);
             }

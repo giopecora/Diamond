@@ -13,12 +13,12 @@ namespace Diamond.Business.Business
 
         public List<PedidoItemDTO> GetAllFromPedido(int pedidoId)
         {
-            return _repository.GetAllFromPedido(pedidoId).ToDTO<Pedido_Item, PedidoItemDTO>();
+            return _repository.GetAllFromPedido(pedidoId).ToDTO<Pedido_Itens, PedidoItemDTO>();
         }
 
         public PedidoItemDTO GetById(int id)
         {
-            Pedido_Item entity = _repository.GetById(id);
+            Pedido_Itens entity = _repository.GetById(id);
 
             if (entity == null)
                 throw new Exception("Este Item de Pedido nao existe!");
@@ -28,7 +28,7 @@ namespace Diamond.Business.Business
 
         public PedidoItemDTO Insert(PedidoItemDTO item)
         {
-            Pedido_Item entity = _repository.Insert(Mapper.Map<Pedido_Item>(item));
+            Pedido_Itens entity = _repository.Insert(Mapper.Map<Pedido_Itens>(item));
 
             item.Id = entity.Id;
 
@@ -37,7 +37,7 @@ namespace Diamond.Business.Business
 
         public void Update(PedidoItemDTO item)
         {
-            bool result = _repository.Update(Mapper.Map<Pedido_Item>(item));
+            bool result = _repository.Update(Mapper.Map<Pedido_Itens>(item));
 
             if (!result)
                 throw new Exception("Nao foi possivel atualizar este Item.");

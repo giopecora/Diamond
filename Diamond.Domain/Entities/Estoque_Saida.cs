@@ -21,7 +21,7 @@ namespace Diamond.Domain.Entities
 
         public DateTime? DataSaida { get; set; }
 
-        public virtual Pedido_Item Pedido_Item { get; set; }
+        public virtual Pedido_Itens Pedido_Itens { get; set; }
 
         public virtual Produto Produto { get; set; }
     }

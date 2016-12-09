@@ -19,6 +19,6 @@ namespace Diamond.Domain.DTO
         public double? ValorTotal { get; set; }
 
         [JsonProperty("itens")]
-        public List<PedidoItemDTO> Pedido_Item { get; set; }
+        public List<PedidoItemDTO> Pedido_Itens { get; set; }
     }
 }

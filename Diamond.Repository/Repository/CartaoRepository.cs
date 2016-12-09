@@ -9,21 +9,29 @@ using System.Threading.Tasks;
 
 namespace Diamond.Repository.Repository
 {
-    public class ProdutoImagemRepository
+    public class CartaoRepository
     {
         private DiamondContext _context = new DiamondContext();
 
-        public List<Produto_Imagens> ListImagesByProductId(int productId)
+        public Cartao GetById(int id)
         {
-            return _context.Produto_Imagens.Where(pi => pi.ProdutoId == productId).ToList();
+            return _context.Cartoes.Find(id);
         }
 
-        public Produto_Imagens GetByProductIdAndName(int produtoId, string name)
+        public List<Cartao> GetAllFromUser(int userId)
         {
-            return _context.Produto_Imagens.Where(pi => pi.ProdutoId == produtoId && pi.Imagem == name).FirstOrDefault();
+            return _context.Cartoes.Where(u => u.UsuarioId == userId).ToList();
         }
 
-        public bool Update(Produto_Imagens entity)
+        public Cartao Insert(Cartao entity)
+        {
+            _context.Cartoes.Add(entity);
+            _context.SaveChanges();
+
+            return entity;
+        }
+
+        public bool Update(Cartao entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
 
@@ -39,9 +47,11 @@ namespace Diamond.Repository.Repository
             return true;
         }
 
-        public bool Delete(Produto_Imagens entity)
+        public bool Delete(int id)
         {
-            _context.Produto_Imagens.Remove(entity);
+            Cartao entity = GetById(id);
+
+            _context.Cartoes.Remove(entity);
             return _context.SaveChanges() > 0;
         }
     }

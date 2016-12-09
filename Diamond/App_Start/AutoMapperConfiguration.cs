@@ -20,6 +20,7 @@ namespace Diamond.App_Start
                 cfg.AddProfile(new ProdutoImagemProfile());
                 cfg.AddProfile(new UsuarioProfile());
                 cfg.AddProfile(new UsuarioPerfilProfile());
+                cfg.AddProfile(new CartaoProfile());
             });
         }
     }

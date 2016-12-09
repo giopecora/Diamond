@@ -2,57 +2,58 @@
 using Diamond.Domain.DTO;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 
 namespace Diamond.Controllers.Api
 {
-    [Authorize]
-    public class EnderecoController : ApiController
+    public class CartaoController : ApiController
     {
-        private EnderecoBusiness _business = new EnderecoBusiness();
+        private CartaoBusiness _business = new CartaoBusiness();
 
-        [ResponseType(typeof(EnderecoDTO))]
+        [ResponseType(typeof(CartaoDTO))]
         public IHttpActionResult Get(int id)
         {
-            EnderecoDTO endereco = new EnderecoDTO();
+            CartaoDTO cartao = new CartaoDTO();
 
             try
             {
-                endereco = _business.GetById(id);
+                cartao = _business.GetById(id);
             }
             catch (Exception ex)
             {
                 return InternalServerError(ex);
             }
 
-            return Ok(endereco);
+            return Ok(cartao);
         }
 
-        [Route("api/Endereco/GetAllFromUser/{userId:int}")]
-        [ResponseType(typeof(List<EnderecoDTO>))]
+        [Route("api/Cartao/GetAllFromUser/{userId:int}")]
+        [ResponseType(typeof(List<CartaoDTO>))]
         public IHttpActionResult GetAllFromUser(int userId)
         {
-            List<EnderecoDTO> enderecos = new List<EnderecoDTO>();
+            List<CartaoDTO> cartoes = new List<CartaoDTO>();
 
             try
             {
-                enderecos = _business.GetAllFromUser(userId);
+                cartoes = _business.GetAllFromUser(userId);
             }
             catch (Exception ex)
             {
                 return InternalServerError(ex);
             }
 
-            return Ok(enderecos);
+            return Ok(cartoes);
         }
 
         [ResponseType(typeof(IHttpActionResult))]
-        public IHttpActionResult Put([FromBody]EnderecoDTO endereco)
+        public IHttpActionResult Put([FromBody]CartaoDTO cartao)
         {
             try
             {
-                _business.Update(endereco);
+                _business.Update(cartao);
             }
             catch (Exception ex)
             {
@@ -64,20 +65,18 @@ namespace Diamond.Controllers.Api
 
         // POST: api/Produtos
         [ResponseType(typeof(EnderecoDTO))]
-        public IHttpActionResult Post([FromBody]EnderecoDTO endereco)
+        public IHttpActionResult Post([FromBody]CartaoDTO cartao)
         {
-            EnderecoDTO result = new EnderecoDTO();
-
             try
             {
-                result = _business.Insert(endereco);
+                cartao = _business.Insert(cartao);
             }
             catch (Exception ex)
             {
                 return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok(cartao);
         }
 
         // DELETE: api/Produtos/5
