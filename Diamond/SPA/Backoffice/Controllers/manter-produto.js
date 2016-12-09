@@ -149,7 +149,7 @@
         uploadProduto: function(idProduto, file){
             return $http({
                 method: 'POST',
-                url: 'http://localhost:59783/api/Produto/Post/' + idProduto,
+                url: 'http://localhost:59783/api/Produto/Upload/' + idProduto,
                 data: {
                     file: file
                 }, headers:{
