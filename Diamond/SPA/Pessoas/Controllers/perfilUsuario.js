@@ -29,7 +29,24 @@ app.controller('PerfilUsuarioCtrl', function ($scope, UtilService, PerfilUsuario
                 }
             }
         })
+     
     };
+
+
+    $scope.abrirCartoes = function () {
+        var modalInstante = $uibModal.open({
+            templateUrl: './SPA/Pessoas/Modals/Views/usuarioCartoes.html',
+            controller: 'UsuarioCartoesCtrl',
+            backdrop: 'static',
+            size: 'lg',
+            resolve: {
+                getUsuario: function () {
+                    return $scope.usuario;
+                }
+            }
+        });
+    }
+
 
     $scope.abrirAlterarSenha = function () {
         var modalInstance = $uibModal.open({

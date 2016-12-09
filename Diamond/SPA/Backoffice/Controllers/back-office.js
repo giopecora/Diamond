@@ -1,7 +1,11 @@
 ﻿angular.module('Diamond').controller('BackOfficeCtrl', function ($scope, ProdutoCategoriaService, $routeParams, $location) {
     
-    $scope.load = function () {
+    //voce pode pegar o id do usuario pelo $routeParams
 
+
+
+    $scope.load = function () {
+        // Listar aqui os pedidos para o usuario
     }
 
     $scope.AbrirProdutos = function () {
@@ -16,4 +20,9 @@
         $location.path("/backoffice/relatorio-sintetico-produtos");
     }
 
+})
+.service('backofficeService', function ($http) {
+    return {
+        //metodos aqui
+    }
 });

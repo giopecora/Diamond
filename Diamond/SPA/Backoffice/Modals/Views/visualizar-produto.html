@@ -1,38 +1,27 @@
 ﻿<!-- modal para Visualizar Produto -->
-
 <div class="modal-content">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Gerenciar Produto</h4>
     </div>
     <div class="modal-body">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3 col-xs-12">
-                <div class="container-card ">
-                    <div class="row">
-                        <div class="col-md-12">s
-                            <img id="img" src="banner.jpg" />
-                        </div>
-                    </div><!-- image Card-->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="descricao">
-                                <p>Subtitulo</p>
-                                <p>Preço:</p>
-                            </div>
-                        </div>
-                    </div><!-- body card-->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <button type="button" class="btn btn-primary btn-lg btn-block">Adicionar ao Carrinho</button>
-                        </div>
-                    </div><!-- card button-->
-                </div><!-- Container Card-->
-            </div><!-- col -->
-        </div><!-- row-->
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Voltar</button>
+        
+        <div class="col-md-6">
+            <div class="thumbnail">
+                <img class="img-responsive" src="{{produto.action}}"/>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 ng-bind="produto.titulo"></h2>
+                </div>
+                <div class="panel-body">
+
+                </div>
+            </div>
+        </div>
+        
     </div>
 </div><!-- /.modal-content -->
     
