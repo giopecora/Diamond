@@ -6,9 +6,6 @@ app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, Carr
 
     $scope.load = function () {
         $scope.produtos = UtilService.obterProdutos();
-        //$scope.produtos.map(function (produto) {
-        //    $scope.subTotal += produto.totalUnitario;
-        //})
     }
 
     $scope.atualizarSubtotal = function () {
@@ -42,7 +39,7 @@ app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, Carr
     $scope.finalizarCompra = function () {
 
         //verifica se o usuário está logado
-        //caso, sim prossegue, se nao redireciona para pagina de cadastro
+        //caso, sim prossegue, se nao redireciona para pagina de cadastro/login
 
 
         UtilService.limparCarrinho();

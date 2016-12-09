@@ -46,6 +46,7 @@ namespace Diamond.Providers
             identity.AddClaim(new Claim("sub", context.UserName));
             identity.AddClaim(new Claim("userId", user.Id.ToString()));
             identity.AddClaim(new Claim("perfis", user.PerfisToJson()));
+            identity.AddClaim(new Claim("userId", user.Id.ToString()));
 
             var props = new AuthenticationProperties(new Dictionary<string, string>
             {

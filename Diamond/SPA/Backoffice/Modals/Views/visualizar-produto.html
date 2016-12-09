@@ -1,27 +1,33 @@
-﻿<!-- modal para Visualizar Produto -->
-<div class="modal-content">
+﻿<div class="modal-content">
     <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button ng-click="fechar()" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Gerenciar Produto</h4>
     </div>
     <div class="modal-body">
-        
-        <div class="col-md-6">
-            <div class="thumbnail">
-                <img class="img-responsive" src="{{produto.action}}"/>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h2 ng-bind="produto.titulo"></h2>
-                </div>
-                <div class="panel-body">
+        <div class="row">
 
+            <div class="col-md-6">
+                <div class="thumbnail">
+                    <img class="img-responsive" src="http://c.mlcdn.com.br/1500x1500/computador-all-in-one-dell-inspiron-ione-3052-a10intel-dual-core-4gb-500gb-led-19-5-34-windows-10-216275600.jpg"/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 ng-hide="editando" ng-bind="produto.titulo"></h2>
+                        <input class="form-control" ng-show="editando" ng-model="produto.titulo" />
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         
     </div>
-</div><!-- /.modal-content -->
+</div>
     
