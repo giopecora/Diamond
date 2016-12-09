@@ -31,5 +31,6 @@ namespace Diamond.Domain.DTO
         public string Sigla { get; set; }
 
         public int? TipoEndereco { get; set; }
+        public int UsuarioId { get; set; }
     }
 }

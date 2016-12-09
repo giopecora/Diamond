@@ -64,13 +64,13 @@ namespace Diamond.Controllers.Api
 
         // POST: api/Produtos
         [ResponseType(typeof(EnderecoDTO))]
-        public IHttpActionResult Post([FromBody]EnderecoDTO endereco)
+        public IHttpActionResult Post(int userId, [FromBody]EnderecoDTO endereco)
         {
             EnderecoDTO result = new EnderecoDTO();
 
             try
             {
-                result = _business.Insert(endereco);
+                result = _business.Insert(userId, endereco);
             }
             catch (Exception ex)
             {
