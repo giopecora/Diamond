@@ -19,13 +19,18 @@ namespace Diamond.Controllers
         {
             string mimeType = "";
 
-            switch(nome.GetFileExtension())
+            if (!string.IsNullOrEmpty(nome))
             {
-                case ".jpg": mimeType = "image/jpg"; break;
-                case ".png": mimeType = "image/png"; break;
-            }
 
-            return File($@"C:/Produtos/Produto_{produtoId}/{nome}", mimeType);
+                switch (nome.GetFileExtension())
+                {
+                    case ".jpg": mimeType = "image/jpg"; break;
+                    case ".png": mimeType = "image/png"; break;
+                }
+            
+                return File($@"C:/Produtos/Produto_{produtoId}/{nome}", mimeType);
+            }
+            return Content("");
         }
 
         public ActionResult CarrinhoCompra()

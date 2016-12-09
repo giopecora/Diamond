@@ -30,7 +30,7 @@
         }
     }
 
-    $scope.abrirDetalhesProduto = function (idProduto) {
+    $scope.abrirDetalhesProduto = function (idProduto, novo) {
         var modalInstance = $uibModal.open({
             templateUrl: './SPA/Backoffice/Modals/Views/visualizar-produto.html',
             controller: 'ProdutoVisualizarCtrl',
@@ -39,13 +39,16 @@
             resolve: {
                 getIdProduto: function () {
                     return idProduto;
+                },
+                isNovo: function () {
+                    return novo;
                 }
             }
         });
 
 
-        modalInstance.result.then(function (salvar, produto) {
-            if (salvar) {
+        modalInstance.result.then(function (produto) {
+            if (produto) {
                 var tmpProduto = JSON.stringify(produto);
                 ManterProdutoService.salvarProduto(tmpProduto).then(function (retorno) {
                     alert("Produto Salvo com sucesso!");
@@ -67,8 +70,8 @@
             }
         });
 
-        modalInstance.result.then(function (produtoCadastrado) {
-            $scope.abrirDetalhesProduto(produtoCadastrado.id);
+        modalInstance.result.then(function (produto) {
+            $scope.abrirDetalhesProduto(produto.id, true);
         });
     };
 

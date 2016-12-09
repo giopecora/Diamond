@@ -10,7 +10,7 @@
                 <div class="thumbnail">
                     <img class="img-responsive" src="{{produto.action}}"/>
                 </div>
-                <button class="btn btn-default" ngf-select ng-show="editando"></button>
+                <button class="btn btn-default" ngf-select ng-model="produto.file" ng-show="editando">Nova Imagem</button>
             </div>
             <div class="col-md-6">
                 <div class="panel panel-default">
@@ -23,7 +23,7 @@
                             <div class="col-md-12">
                                 <label>Preço</label>
                                 <h4 ng-hide="editando">{{produto.preco | currency}}</h4>
-                                <input type="text" ng-show="editando" ng-model="produto.preco" min="0" required ui-money-mask/>
+                                <input class="form-control" type="text" ng-show="editando" ng-model="produto.preco" min="0" required ui-money-mask/>
                             </div>
                         </div>
                         <div class="row">

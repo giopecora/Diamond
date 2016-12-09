@@ -33,7 +33,7 @@
 
         ManterProdutoService.cadastrarProduto(tmpProduto).then(function (retorno) {
             alert("Produto cadastrado com sucesso!");
-            $scope.fechar(retorno.data);
+            $uibModalInstance.close(retorno.data);
         }, function () {
             alert("Erro ao cadastrar Produto!");
         }).catch(function (retorno) {

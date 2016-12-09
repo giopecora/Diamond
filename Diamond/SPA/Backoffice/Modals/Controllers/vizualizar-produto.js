@@ -1,8 +1,11 @@
-﻿angular.module('Diamond').controller('ProdutoVisualizarCtrl', function ($scope, $uibModalInstance, getIdProduto, Upload, ManterProdutoService) {
+﻿angular.module('Diamond').controller('ProdutoVisualizarCtrl', function ($scope, $uibModalInstance, getIdProduto, Upload, ManterProdutoService, isNovo) {
 
     $scope.produtoID = getIdProduto;
 
     $scope.editando = false;
+    if (isNovo)
+        $scope.editando = true;
+
     $scope.produto = {}
 
     $scope.fechar = function () {
@@ -17,7 +20,7 @@
     }
 
     $scope.salvar = function () {
-        $uibModalInstance.close(true, $scope.produto);
+        $uibModalInstance.close($scope.produto);
     }
 
 
@@ -31,5 +34,6 @@
 
 
     $scope.load();
+
 
 });
