@@ -12,7 +12,7 @@ using Diamond.Domain.Models.Produto;
 
 namespace Diamond.Controllers.Api
 {
-    public class ProdutoController : ApiController
+    public class ProdutoController : BaseApiController
     {
         private ProdutoBusiness _business = new ProdutoBusiness();
         private ProdutoImagemBusiness _imagemBusiness = new ProdutoImagemBusiness();

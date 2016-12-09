@@ -12,7 +12,7 @@ using System.Web.Http.Description;
 namespace Diamond.Controllers.Api
 {
     [Authorize]
-    public class ReportController : ApiController
+    public class ReportController : BaseApiController
     {
         private ReportBusiness _business = new ReportBusiness();
 

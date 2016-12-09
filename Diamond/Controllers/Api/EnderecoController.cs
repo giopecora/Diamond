@@ -8,7 +8,7 @@ using System.Web.Http.Description;
 namespace Diamond.Controllers.Api
 {
     [Authorize]
-    public class EnderecoController : ApiController
+    public class EnderecoController : BaseApiController
     {
         private EnderecoBusiness _business = new EnderecoBusiness();
 
@@ -16,6 +16,9 @@ namespace Diamond.Controllers.Api
         public IHttpActionResult Get(int id)
         {
             EnderecoDTO endereco = new EnderecoDTO();
+
+            if (!UserId.HasValue)
+                return Unauthorized();
 
             try
             {
@@ -31,13 +34,16 @@ namespace Diamond.Controllers.Api
 
         [Route("api/Endereco/GetAllFromUser/{userId:int}")]
         [ResponseType(typeof(List<EnderecoDTO>))]
-        public IHttpActionResult GetAllFromUser(int userId)
+        public IHttpActionResult GetAllFromUser()
         {
             List<EnderecoDTO> enderecos = new List<EnderecoDTO>();
 
+            if (!UserId.HasValue)
+                return Unauthorized();
+
             try
             {
-                enderecos = _business.GetAllFromUser(userId);
+                enderecos = _business.GetAllFromUser(UserId.Value);
             }
             catch (Exception ex)
             {
@@ -68,9 +74,12 @@ namespace Diamond.Controllers.Api
         {
             EnderecoDTO result = new EnderecoDTO();
 
+            if (!UserId.HasValue)
+                return Unauthorized();
+
             try
             {
-                result = _business.Insert(endereco);
+                result = _business.Insert(UserId.Value, endereco);
             }
             catch (Exception ex)
             {
@@ -84,6 +93,9 @@ namespace Diamond.Controllers.Api
         [ResponseType(typeof(IHttpActionResult))]
         public IHttpActionResult Delete(int id)
         {
+            if (!UserId.HasValue)
+                return Unauthorized();
+
             try
             {
                 _business.Delete(id);

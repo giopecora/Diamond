@@ -7,13 +7,19 @@ using System.Collections.Generic;
 
 namespace Diamond.Business.Business
 {
-    public class PedidoBusiness
+    public class PedidoBusiness : BaseBusiness
     {
-        private PedidoRepository _repository = new PedidoRepository();
+        private PedidoRepository _repository;
 
-        public List<PedidoDTO> GetAllFromUser(int userId, int page)
+        public PedidoBusiness()
         {
-            return _repository.GetAllFromUser(userId, page).ToDTO<Pedido, PedidoDTO>(); ;
+            _repository = new PedidoRepository();
+            _repository.UserId = UserId;
+        }
+
+        public List<PedidoDTO> GetAllFromUser(int page)
+        {
+            return _repository.GetAllFromUser(page).ToDTO<Pedido, PedidoDTO>(); ;
         }
 
         public PedidoDTO GetById(int id)
@@ -42,9 +48,9 @@ namespace Diamond.Business.Business
             return pedido;
         }
 
-        public void Delete(int id)
+        public void Delete(int pedidoId)
         {
-            bool success = _repository.Delete(id);
+            bool success = _repository.Delete(pedidoId);
 
             if (!success)
                 throw new Exception("Nao foi possivel excluir este pedido");

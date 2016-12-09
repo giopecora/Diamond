@@ -8,7 +8,7 @@ using System.Web.Http.Description;
 namespace Diamond.Controllers.Api
 {
     [Authorize]
-    public class PedidoItemController : ApiController
+    public class PedidoItemController : BaseApiController
     {
         private PedidoItemBusiness _business = new PedidoItemBusiness();
 
@@ -18,6 +18,9 @@ namespace Diamond.Controllers.Api
         public IHttpActionResult GetAllFromPedido(int pedidoId)
         {
             List<PedidoItemDTO> itens = new List<PedidoItemDTO>();
+
+            if (!UserId.HasValue)
+                return Unauthorized();
 
             try
             {
@@ -35,6 +38,9 @@ namespace Diamond.Controllers.Api
         public IHttpActionResult Get(int id)
         {
             PedidoItemDTO item = new PedidoItemDTO();
+
+            if (!UserId.HasValue)
+                return Unauthorized();
 
             try
             {
@@ -67,7 +73,7 @@ namespace Diamond.Controllers.Api
         // POST: api/Produtos
         [ResponseType(typeof(PedidoItemDTO))]
         public IHttpActionResult Post([FromBody]PedidoItemDTO pedidoItem)
-        {
+        {        
             try
             {
                 pedidoItem = _business.Insert(pedidoItem);

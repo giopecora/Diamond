@@ -53,7 +53,7 @@ App.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'SPA/Pessoas/Views/login.html',
             controller: 'LoginCtrl'
         })
-        .when('/Usuarios/:usuarioID', {
+        .when('/Usuario/:usuarioID', {
             templateUrl: 'SPA/Pessoas/Views/perfilUsuario.html',
             controller: 'PerfilUsuarioCtrl'
         })

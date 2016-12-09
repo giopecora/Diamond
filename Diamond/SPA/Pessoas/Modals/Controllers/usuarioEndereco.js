@@ -76,22 +76,22 @@
 })
 .service('UsuarioEnderecoService', function ($http) {
     return {
-        listarEnderecos: function (usuarioID) {
+        listarEnderecos: function () {
             return $http({
                 method: 'GET',
-                url: '' + usuarioID
+                url: 'http://localhost:59783/api/Endereco/GetAllFromUser/'
             })
         },
         excluirEndereco: function (enderecoID) {
             return $http({
-                method: 'GET',
-                url: ''
+                method: 'DELETE',
+                url: 'http://localhost:59783/api/Endereco/Delete/' + enderecoID
             })
         },
         salvarNovoEndereco: function (novoEndereco) {
             return $http({
                 method: 'POST',
-                url: '',
+                url: 'http://localhost:59783/api/Endereco/Post/',
                 data: novoEndereco
             })
         },

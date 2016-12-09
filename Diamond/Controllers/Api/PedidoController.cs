@@ -8,20 +8,31 @@ using System.Web.Http.Description;
 namespace Diamond.Controllers.Api
 {
     [Authorize]
-    public class PedidoController : ApiController
+    public class PedidoController : BaseApiController
     {
         private PedidoBusiness _business = new PedidoBusiness();
 
+        public PedidoController()
+        {
+            _business = new PedidoBusiness();
+
+            if (UserId.HasValue)
+                _business.UserId = UserId.Value;
+        }
+
         [ResponseType(typeof(List<PedidoDTO>))]
-        [Route("api/Pedido/GetAllFromUser/{userId:int}/{page:int}")]
+        [Route("api/Pedido/GetAllFromUser/{page:int}")]
         // GET: api/Produtos
-        public IHttpActionResult GetAllFromUser(int userId, int page)
+        public IHttpActionResult GetAllFromUser(int page)
         {
             List<PedidoDTO> pedidos = new List<PedidoDTO>();
 
+            if (!UserId.HasValue)
+                return Unauthorized();
+
             try
             {
-                pedidos = _business.GetAllFromUser(userId, page);
+                pedidos = _business.GetAllFromUser(page);
             }
             catch (Exception ex)
             {
@@ -36,6 +47,9 @@ namespace Diamond.Controllers.Api
         public IHttpActionResult GetById(int id)
         {
             PedidoDTO pedido = new PedidoDTO();
+
+            if (!UserId.HasValue)
+                return Unauthorized();
 
             try
             {
@@ -53,6 +67,11 @@ namespace Diamond.Controllers.Api
         [ResponseType(typeof(PedidoDTO))]
         public IHttpActionResult Post([FromBody]PedidoDTO pedido)
         {
+            if (!UserId.HasValue)
+                return Unauthorized();
+
+            pedido.UsuarioId = UserId.Value;
+
             try
             {
                 pedido = _business.Insert(pedido);
@@ -69,6 +88,9 @@ namespace Diamond.Controllers.Api
         [ResponseType(typeof(IHttpActionResult))]
         public IHttpActionResult Delete(int id)
         {
+            if (!UserId.HasValue)
+                return Unauthorized();
+
             try
             {
                 _business.Delete(id);

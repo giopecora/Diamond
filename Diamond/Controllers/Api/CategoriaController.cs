@@ -10,7 +10,7 @@ using System.Web.Http.Description;
 
 namespace Diamond.Controllers.Api
 {
-    public class CategoriaController : ApiController
+    public class CategoriaController : BaseApiController
     {
         private CategoriaBusiness _business = new CategoriaBusiness();
 

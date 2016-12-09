@@ -1,11 +1,8 @@
 ﻿var app = angular.module('Diamond');
-app.controller('LayoutCtrl', function ($scope, $cookies, UtilService, CarrinhoService, $timeout, SearchService, $location) {
+app.controller('LayoutCtrl', function ($scope, $cookies, UtilService, CarrinhoService, $timeout, SearchService, authService, $location) {
 
     $scope.searchDebounce = null;
     $scope.search = null;
-
-    //trazer perfil deusuario aqui
-    $scope.perfilUsuario;
 
     $scope.actions = {
         search: function () {
@@ -22,10 +19,10 @@ app.controller('LayoutCtrl', function ($scope, $cookies, UtilService, CarrinhoSe
 
 
     $scope.abrirMinhaConta = function () {
-        if ($scope.perfilUsuario) {
-            $location.path("/usuario/"+$scope.perfilUsuario.UsuarioID);
+        if (authService.authentication.isAuth) {
+            $location.path("/Usuario/" + authService.authentication.userId);
         } else {
-            $location.path("/CadastroUsuario");
+            $location.path("/Login");
         }
     }
     
