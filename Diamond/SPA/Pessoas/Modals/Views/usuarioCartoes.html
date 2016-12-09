@@ -3,11 +3,78 @@
         <button type="button" class="close" ng-click="fechar()" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <h3>Endereços</h3>
+        <h3>Cartoes</h3>
     </div>
 
     <div class="modal-body">
-
+        <form ng-submit="salvarNovoCartao()" ng-show="novoCartao" id="formCartao">
+            <div class="row form-group">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">Bandeira</span>
+                        <select ng-model="formCartao.bandeiraId">                            
+                            <option value="1">Mastercard</option>
+                            <option value="2">Visa</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">Número</span>
+                        <input ng-model="formEndereco.numero" class="form-control" type="text" placeholder="" required />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">Nome</span>
+                        <input ng-model="formCartao.nome" class="form-control" type="text" placeholder="" />
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">Vencimento</span>
+                        <input ng-model="formCartao.vencimento" class="form-control" type="text" required />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">CCR</span>
+                        <input ng-model="formCartao.ccr" class="form-control" type="text" placeholder="" required />
+                    </div>
+                </div>   
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-success pull-right">CONCLUIR</button>
+                </div>             
+            </div>
+        </form>
+        <div ng-hide="novoCartao">
+            <a ng-click="abrirAdicionarCartao()">Clique aqui para cadastrar um novo cartao!</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Bandeira</th>
+                        <th>Numero</th>
+                        <th>Nome</th>
+                        <th>Vencimento</th>
+                        <th>CCR</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="c in cartoes">
+                        <td>{{c.bandeira}}</td>
+                        <td>{{c.numero}}</td>
+                        <td>{{c.nome}}</td>
+                        <td>{{c.vencimento}}</td>
+                        <td>{{c.ccr}}</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-
 </div>
