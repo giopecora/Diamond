@@ -17,7 +17,7 @@ namespace Diamond.Repository.Repository
 
         public List<Endereco> GetAllFromUser(int userId)
         {
-            return _context.Database.SqlQuery<Endereco>($"EXEC [dbo].[sp_get_enderecos_from_user] {userId}").ToList();
+            return _context.Enderecos.Where(e => e.UsuarioId == userId).ToList();
         }
 
         public Endereco Insert(Endereco entity)

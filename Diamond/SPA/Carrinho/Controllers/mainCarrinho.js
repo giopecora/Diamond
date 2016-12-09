@@ -1,5 +1,5 @@
 ﻿var app = angular.module('Diamond');
-app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, CarrinhoService) {
+app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, CarrinhoService, authService) {
     
     $scope.produtos = [];
     $scope.subTotal = 0;
@@ -41,8 +41,14 @@ app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, Carr
         //verifica se o usuário está logado
         //caso, sim prossegue, se nao redireciona para pagina de cadastro/login
 
+        if (authService.authentication.isAuth) {
+            
+        } else {
+            $location.path("/Login");
+        }
 
-        UtilService.limparCarrinho();
+
+        //UtilService.limparCarrinho();
     };
     $scope.load();
 });
