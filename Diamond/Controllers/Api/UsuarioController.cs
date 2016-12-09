@@ -31,16 +31,13 @@ namespace Diamond.Controllers.Api
 
         [Authorize]
         [ResponseType(typeof(UsuarioDTO))]
-        public IHttpActionResult Get()
+        public IHttpActionResult Get(int userId)
         {
             UsuarioDTO usuario = new UsuarioDTO();
 
-            if (!UserId.HasValue)
-                return Unauthorized();
-
             try
             {
-                usuario = _business.GetById(UserId.Value);
+                usuario = _business.GetById(userId);
             }
             catch (Exception ex)
             {
@@ -54,11 +51,6 @@ namespace Diamond.Controllers.Api
         [ResponseType(typeof(IHttpActionResult))]
         public IHttpActionResult Put([FromBody]UsuarioDTO usuario)
         {
-            if (!UserId.HasValue)
-                return Unauthorized();
-
-            usuario.Id = UserId.Value;
-
             try
             {
                 _business.Update(usuario);
@@ -75,11 +67,6 @@ namespace Diamond.Controllers.Api
         [ResponseType(typeof(UsuarioDTO))]
         public IHttpActionResult Post([FromBody]UsuarioDTO usuario)
         {
-            if (!UserId.HasValue)
-                return Unauthorized();
-
-            usuario.Id = UserId.Value;
-
             try
             {
                 usuario = _business.Insert(usuario);
@@ -94,14 +81,11 @@ namespace Diamond.Controllers.Api
 
         [Authorize]
         [ResponseType(typeof(IHttpActionResult))]
-        public IHttpActionResult Delete()
+        public IHttpActionResult Delete(int userId)
         {
-            if (!UserId.HasValue)
-                return Unauthorized();
-
             try
             {
-                _business.Delete(UserId.Value);
+                _business.Delete(userId);
             }
             catch (Exception ex)
             {

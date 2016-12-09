@@ -26,7 +26,7 @@ namespace Diamond.Business.Business
             return Mapper.Map<List<EnderecoDTO>>(_repository.GetAllFromUser(userId));
         }
 
-        public EnderecoDTO Insert(int userId, EnderecoDTO endereco)
+        public EnderecoDTO Insert(EnderecoDTO endereco)
         {
             Endereco entity = _repository.Insert(Mapper.Map<Endereco>(endereco));
 

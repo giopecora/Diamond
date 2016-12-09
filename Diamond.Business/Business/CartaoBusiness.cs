@@ -10,14 +10,13 @@ using System.Threading.Tasks;
 
 namespace Diamond.Business.Business
 {
-    public class CartaoBusiness : BaseBusiness
+    public class CartaoBusiness
     {
         private CartaoRepository _repository;
 
         public CartaoBusiness()
         {
             _repository = new CartaoRepository();
-            _repository.UserId = UserId;
         }
 
         public CartaoDTO GetById(int id)
@@ -30,9 +29,9 @@ namespace Diamond.Business.Business
             return Mapper.Map<CartaoDTO>(entity);
         }
 
-        public List<CartaoDTO> GetAllFromUser()
+        public List<CartaoDTO> GetAllFromUser(int userId)
         {
-            return Mapper.Map<List<CartaoDTO>>(_repository.GetAllFromUser());
+            return Mapper.Map<List<CartaoDTO>>(_repository.GetAllFromUser(userId));
         }
 
         public CartaoDTO Insert(CartaoDTO cartao)

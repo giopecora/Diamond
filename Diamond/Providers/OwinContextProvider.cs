@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Threading;
 using System.Web;
 
 namespace Diamond.Providers
@@ -33,6 +34,7 @@ namespace Diamond.Providers
         {
             if (User != null && User.Claims != null)
             {
+                var claims = (ClaimsPrincipal)Thread.CurrentPrincipal;
                 return User.Claims.FirstOrDefault(c => c.Type.Equals(key));
             }
 

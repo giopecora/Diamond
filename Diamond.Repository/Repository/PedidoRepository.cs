@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace Diamond.Repository.Repository
 {
-    public class PedidoRepository : BaseRepository
+    public class PedidoRepository
     {
         private DiamondContext _context = new DiamondContext();
 
-        public IEnumerable<Pedido> GetAllFromUser(int page)
+        public IEnumerable<Pedido> GetAllFromUser(int userId, int page)
         {
             int take = 10;
             int skip = (page - 1) * take;
-            return _context.Pedidos.Include("Pedido_Itens").Where(p => p.UsuarioId == UserId)
+            return _context.Pedidos.Include("Pedido_Itens").Where(p => p.UsuarioId == userId)
                 .OrderBy(p => p.Id)
                 .Skip(skip)
                 .Take(take);
@@ -23,7 +23,7 @@ namespace Diamond.Repository.Repository
 
         public Pedido GetById(int id)
         {
-            return _context.Pedidos.Include("Pedido_Itens").Where(p => p.Id == id && p.UsuarioId == UserId).FirstOrDefault();
+            return _context.Pedidos.Include("Pedido_Itens").Where(p => p.Id == id).FirstOrDefault();
         }
 
         public Pedido Insert(Pedido entity)
