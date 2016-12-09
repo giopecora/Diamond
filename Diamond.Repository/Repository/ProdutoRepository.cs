@@ -28,9 +28,29 @@ namespace Diamond.Repository
 
         public IEnumerable<Produto> GetAll(string query, int page)
         {
-            int take = 100;
+            int take = 10;
             int skip = (page - 1) * take;
             return _context.Produtos
+                .OrderBy(p => p.Id)
+                .Skip(skip)
+                .Take(take);
+        }
+
+        public IEnumerable<Produto> ListAll(int page)
+        {
+            int take = 10;
+            int skip = page == 0 ? 0 : (page - 1) * take;
+            return _context.Produtos.Where(p => p.Ativo == true)
+                .OrderBy(p => p.Id)
+                .Skip(skip)
+                .Take(take);
+        }
+
+        public IEnumerable<Produto> ListAllByName(int page, string name)
+        {
+            int take = 10;
+            int skip = page == 0 ? 0 : (page - 1) * take;
+            return _context.Produtos.Where(p => p.Ativo == true && p.Nome.ToLower().Contains(name.ToLower()))
                 .OrderBy(p => p.Id)
                 .Skip(skip)
                 .Take(take);
@@ -44,6 +64,16 @@ namespace Diamond.Repository
                 .OrderBy(p => p.Id)
                 .Skip(skip)
                 .Take(take);
+        }
+
+        public int GetCount()
+        {
+            return _context.Produtos.Where(p => p.Ativo == true).Count();
+        }
+
+        public int GetCountByName(string name)
+        {
+            return _context.Produtos.Where(p => p.Ativo == true && p.Nome.ToLower().Contains(name.ToLower())).Count();
         }
 
         public Produto GetById(int id)
@@ -76,3 +106,4 @@ namespace Diamond.Repository
         }
     }
 }
+

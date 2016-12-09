@@ -12,7 +12,7 @@ App.config(['$routeProvider', function ($routeProvider) {
         .when('/Produtos', {
             templateUrl: 'SPA/Produtos/Views/produto.html',
             controller: 'ProdutoController'
-        })       
+        })
         .when('/Produtos/:prodID', {
             templateUrl: 'SPA/Produtos/Views/produtoDetalhe.html',
             controller: 'ProdutoDetalheCtrl'
@@ -39,7 +39,7 @@ App.config(['$routeProvider', function ($routeProvider) {
         })
         .when('/backoffice/produtos', {
             templateUrl: 'SPA/Backoffice/Views/manter-produto.html',
-            controller: ''
+            controller: 'ManterProdutoCtrl'
         })
         .when('/backoffice/relatorio-analitico-produtos', {
             templateUrl: 'SPA/Backoffice/Views/relatorioAnalitico.html',

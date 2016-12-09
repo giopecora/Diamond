@@ -7,16 +7,17 @@
             <div class="btn-group btn-group-justified">
                 <div class="btn-group">
                     <button class="btn adicionar btn-primary" ng-click="abrirAdicionarProduto()">Adicionar Produto</button>
-                </div>                
+                </div>
             </div>
         </div>
     </div>
     <hr />
+    <input type="text" ng-model="filterName" ng-change="findProducts(currentPage, filterName)" />
     <div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th>ID</th>
                     <th>Nome do Produto</th>
                     <th>Preço</th>
                     <th>Quantidade</th>
@@ -27,16 +28,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>{{$index}}</td>
-                    <td>{{p.nome}}</td>
-                    <td>{{p.preco}}</td>
-                    <td>{{p.quantidade}}</td>
-                    <td>{{p.categoria}}</td>
-                    <td>{{p.dataEntrada}}</td>
-                    <td>{{p.dataSaida}}</td>
-                    <td style="min-width: 100%">                        
-                        <div class="btn-group btn-group-justified">                            
+                <tr ng-repeat="produto in produtos">
+                    <td ng-click="abrirDetalhesProduto(produto.id)">{{produto.id}}</td>
+                    <td ng-click="abrirDetalhesProduto(produto.id)">{{produto.nome}}</td>
+                    <td ng-click="abrirDetalhesProduto(produto.id)">{{produto.preco}}</td>
+                    <td ng-click="abrirDetalhesProduto(produto.id)">{{produto.quantidade}}</td>
+                    <td ng-click="abrirDetalhesProduto(produto.id)">{{produto.categoria}}</td>
+                    <td ng-click="abrirDetalhesProduto(produto.id)">{{produto.dataEntrada}}</td>
+                    <td ng-click="abrirDetalhesProduto(produto.id)">{{produto.dataSaida}}</td>
+                    <td style="min-width: 100%">
+                        <div class="btn-group btn-group-justified">
                             <div class="btn-group">
                                 <button class="btn btn-default"><span><i class="fa fa-pencil"></i></span></button>
                             </div>
@@ -47,6 +48,11 @@
                     </td>
                 </tr>
             </tbody>
-        </table>        
-    </div>    
+        </table>
+
+        <ul class="pagination">
+            <li ng-repeat="pageNumber in pages track by $index"><a href="" ng-click="currentPage = pageNumber; findProducts(pageNumber, filterName)">{{pageNumber}}</a></li>
+
+        </ul>
+    </div>
 </div>
