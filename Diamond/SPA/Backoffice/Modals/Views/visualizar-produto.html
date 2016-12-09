@@ -1,30 +1,40 @@
 ﻿<div class="modal-content">
     <div class="modal-header">
         <button ng-click="fechar()" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Gerenciar Produto</h4>
+        <h2 class="modal-title">Gerenciar Produto</h2>
     </div>
     <div class="modal-body">
         <div class="row">
 
             <div class="col-md-6">
                 <div class="thumbnail">
-                    <img class="img-responsive" src="http://c.mlcdn.com.br/1500x1500/computador-all-in-one-dell-inspiron-ione-3052-a10intel-dual-core-4gb-500gb-led-19-5-34-windows-10-216275600.jpg"/>
+                    <img class="img-responsive" src="{{produto.action}}"/>
                 </div>
+                <button class="btn btn-default" ngf-select ng-show="editando"></button>
             </div>
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h2 ng-hide="editando" ng-bind="produto.titulo"></h2>
-                        <input class="form-control" ng-show="editando" ng-model="produto.titulo" />
+                        <h2 ng-hide="editando" ng-bind="produto.nome"></h2>
+                        <input class="form-control" ng-show="editando" ng-model="produto.nome" />
                     </div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12">
-                                
+                                <label>Preço</label>
+                                <h4 ng-hide="editando">{{produto.preco | currency}}</h4>
+                                <input type="text" ng-show="editando" ng-model="produto.preco" min="0" required ui-money-mask/>
                             </div>
+                        </div>
+                        <div class="row">
+                            <label>Descrição Produto</label>
+                            <textarea style="width: 100%" rows="6" cols="5000" ng-model="produto.descricao"></textarea>
                         </div>
                     </div>
                 </div>
+                
+                <button type="button" class="btn btn-primary" ng-hide="editando" ng-click="editar()">Editar</button>
+                <button type="button" class="btn btn-success" ng-show="editando" ng-click="salvar()">Salvar</button>
             </div>
         </div>
         

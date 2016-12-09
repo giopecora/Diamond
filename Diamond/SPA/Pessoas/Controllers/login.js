@@ -8,6 +8,7 @@ angular.module('Diamond').controller('LoginCtrl', ["$scope", "$location", 'authS
 
     $scope.logar = function () {
         authService.login($scope.loginData).then(function (response) {
+            alert("Usuário Logado!");
             $location.path('/Home');
         },
         function (err) {

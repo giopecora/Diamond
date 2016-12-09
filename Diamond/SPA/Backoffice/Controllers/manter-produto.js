@@ -42,6 +42,17 @@
                 }
             }
         });
+
+
+        modalInstance.result.then(function (salvar, produto) {
+            if (salvar) {
+                var tmpProduto = JSON.stringify(produto);
+                ManterProdutoService.salvarProduto(tmpProduto).then(function (retorno) {
+                    alert("Produto Salvo com sucesso!");
+                })
+            }
+        })
+
     }
 
     $scope.abrirAdicionarProduto = function () {
@@ -58,7 +69,7 @@
 
         modalInstance.result.then(function (produtoCadastrado) {
             $scope.abrirDetalhesProduto(produtoCadastrado.id);
-        })
+        });
     };
 
     function getPages(name) {
@@ -110,7 +121,7 @@
         getProduto: function (ProdutoID) {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Produto/Get' + ProdutoID
+                url: 'http://localhost:59783/api/Produto/Get/' + ProdutoID
             })
         },
         getCount: function () {
@@ -124,6 +135,13 @@
                 method: 'GET',
                 url: 'http://localhost:59783/api/Produto/GetCountByName/' + name
             });
+        },
+        salvarProduto: function (produto) {
+            return $http({
+                method : 'PUT',
+                url: 'http://localhost:59783/api/Produto/Put',
+                data: produto
+            })
         }
     }
 });
