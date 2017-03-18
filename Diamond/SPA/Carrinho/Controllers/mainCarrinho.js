@@ -3,9 +3,14 @@ app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, Carr
     
     $scope.produtos = [];
     $scope.subTotal = 0;
+    $scope.passo = 1;
 
     $scope.load = function () {
-        $scope.produtos = UtilService.obterProdutos();
+        if($scope.passo == 1)
+            $scope.produtos = UtilService.obterProdutos();
+        if ($scope.passo == 2) {
+            
+        }
     }
 
     $scope.atualizarSubtotal = function () {
@@ -14,6 +19,11 @@ app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, Carr
             soma += (produto.preco * produto.quantidade);
         })
         return soma;
+    }
+
+    $scope.SelecionarEndereco = function () {
+        $scope.passo = 2;
+        $scope.load();
     }
 
     $scope.aumentarQtdproduto = function (produto) {

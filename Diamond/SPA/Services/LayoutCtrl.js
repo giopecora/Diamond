@@ -1,5 +1,5 @@
 ﻿var app = angular.module('Diamond');
-app.controller('LayoutCtrl', function ($scope, $cookies, UtilService, CarrinhoService, $timeout, SearchService, authService, $location) {
+app.controller('LayoutCtrl', function ($scope, $cookies, UtilService, CarrinhoService, $timeout, SearchService, authService, $location, $window, $rootScope ) {
 
     $scope.searchDebounce = null;
     $scope.search = null;
@@ -16,6 +16,11 @@ app.controller('LayoutCtrl', function ($scope, $cookies, UtilService, CarrinhoSe
             }, 300);
         }
     };
+
+    $scope.deslogar = function () {
+        delete $window.localStorage.clear();
+        $rootScope.currentUser = undefined;
+    }
 
 
     $scope.abrirMinhaConta = function () {
