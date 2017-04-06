@@ -43,3 +43,7 @@ select {
      bottom: 0;
      left: 100px;
  }
+
+ a {
+     cursor:pointer;
+ }

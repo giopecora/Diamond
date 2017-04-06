@@ -30,14 +30,15 @@ namespace Diamond.Controllers.Api
             return Ok(cartao);
         }
 
-        [Route("api/Cartao/GetAllFromUser/{userId:int}")]
+        [Route("api/Cartao/GetAllFromUser")]
         [ResponseType(typeof(List<CartaoDTO>))]
-        public IHttpActionResult GetAllFromUser(int userId)
+        public IHttpActionResult GetAllFromUser()
         {
             List<CartaoDTO> cartoes = new List<CartaoDTO>();
 
             try
             {
+                int userId = Convert.ToInt32(OwinContextProvider.GetClaimValue("userId"));
                 cartoes = _business.GetAllFromUser(userId);
             }
             catch (Exception ex)
@@ -64,11 +65,12 @@ namespace Diamond.Controllers.Api
         }
 
         // POST: api/Produtos
-        [ResponseType(typeof(EnderecoDTO))]
+        [ResponseType(typeof(CartaoDTO))]
         public IHttpActionResult Post([FromBody]CartaoDTO cartao)
         {
             try
             {
+                cartao.UsuarioId = Convert.ToInt32(OwinContextProvider.GetClaimValue("userId"));
                 cartao = _business.Insert(cartao);
             }
             catch (Exception ex)

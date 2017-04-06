@@ -29,14 +29,15 @@ namespace Diamond.Controllers.Api
             return Ok(endereco);
         }
 
-        [Route("api/Endereco/GetAllFromUser/{userId:int}")]
+        [Route("api/Endereco/GetAllFromUser")]
         [ResponseType(typeof(List<EnderecoDTO>))]
-        public IHttpActionResult GetAllFromUser(int userId)
+        public IHttpActionResult GetAllFromUser()
         {
             List<EnderecoDTO> enderecos = new List<EnderecoDTO>();
 
             try
             {
+                int userId = Convert.ToInt32(OwinContextProvider.GetClaimValue("userId"));
                 enderecos = _business.GetAllFromUser(userId);
             }
             catch (Exception ex)
@@ -64,20 +65,19 @@ namespace Diamond.Controllers.Api
 
         // POST: api/Produtos
         [ResponseType(typeof(EnderecoDTO))]
-        public IHttpActionResult Post(int userId, [FromBody]EnderecoDTO endereco)
+        public IHttpActionResult Post([FromBody]EnderecoDTO endereco)
         {
-            EnderecoDTO result = new EnderecoDTO();
-
             try
             {
-                result = _business.Insert(userId, endereco);
+                endereco.UsuarioId = Convert.ToInt32(OwinContextProvider.GetClaimValue("userId"));
+                endereco = _business.Insert(endereco);
             }
             catch (Exception ex)
             {
                 return InternalServerError(ex);
             }
 
-            return Ok(result);
+            return Ok(endereco);
         }
 
         // DELETE: api/Produtos/5

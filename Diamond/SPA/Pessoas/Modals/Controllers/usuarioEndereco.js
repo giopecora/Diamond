@@ -9,7 +9,8 @@
         cep: '',
         cidade: '',
         bairro: '',
-        uf: ''
+        uf: '',
+        sigla: ''
     }
     $scope.novoEndereco = false;
 
@@ -54,10 +55,11 @@
         $scope.novoEndereco = true;
     }
 
-    $scope.salvarNovoEndereco = function (endereco) {
-        var tmpEndereco = JSON.stringify(endereco);
+    $scope.salvarNovoEndereco = function () {
+        var tmpEndereco = JSON.stringify($scope.formEndereco);
 
         UsuarioEnderecoService.salvarNovoEndereco(tmpEndereco).then(function (retorno) {
+
             var enderecoCadastrado = retorno.data
             $scope.enderecos.splice(0, 0, enderecoCadastrado);
             alert("Novo endereço cadastrado com sucesso!");
@@ -80,7 +82,7 @@
         listarEnderecos: function () {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Endereco/GetAllFromUser/' + authService.authentication.userId
+                url: 'http://localhost:59783/api/Endereco/GetAllFromUser'
             })
         },
         excluirEndereco: function (enderecoID) {
@@ -92,7 +94,7 @@
         salvarNovoEndereco: function (novoEndereco) {
             return $http({
                 method: 'POST',
-                url: 'http://localhost:59783/api/Endereco/Post/' + authService.authentication.userId,
+                url: 'http://localhost:59783/api/Endereco/Post',
                 data: novoEndereco
             })
         },

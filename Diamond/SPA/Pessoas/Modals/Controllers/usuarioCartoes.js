@@ -37,8 +37,8 @@
         $scope.novoCartao = true;
     }
 
-    $scope.salvarNovoCartao = function (cartao) {
-        var tmpCartao = JSON.stringify(cartao);
+    $scope.salvarNovoCartao = function () {
+        var tmpCartao = JSON.stringify($scope.formCartao);
 
         UsuarioCartaoService.salvarNovoCartao(tmpCartao).then(function (retorno) {
             var cartaoCadastrado = retorno.data
@@ -62,7 +62,7 @@
         listarCartoes: function () {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Cartao/GetAllFromUser/' + authService.authentication.userId
+                url: 'http://localhost:59783/api/Cartao/GetAllFromUser'
             })
         },
         excluirCartao: function (cartaoID) {
@@ -74,7 +74,7 @@
         salvarNovoCartao: function (novoCartao) {
             return $http({
                 method: 'POST',
-                url: 'http://localhost:59783/api/Cartao/Post/' + authService.authentication.userId,
+                url: 'http://localhost:59783/api/Cartao/Post',
                 data: novoCartao
             })
         }
