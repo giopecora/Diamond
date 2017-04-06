@@ -9,11 +9,11 @@ app.controller('PerfilUsuarioCtrl', function ($scope, UtilService, PerfilUsuario
     $scope.load = function () {
         PerfilUsuarioService.buscarPerfilUsuario($scope.usuarioID).then(function (retorno) {
             $scope.usuario = retorno.data;
-        })
+        });
 
         PerfilUsuarioService.listarPedidosUsuario($scope.usuarioID, $scope.paginaAtual).then(function (retorno) {
             $scope.pedidos = retorno.data
-        })
+        });
     };
 
 

@@ -51,6 +51,7 @@ namespace Diamond.Providers
             var props = new AuthenticationProperties(new Dictionary<string, string>
             {
                 { "perfis", user.PerfisToJson() },
+                { "userName", user.Nome },
                 { "userId", user.Id.ToString() }
             });
 

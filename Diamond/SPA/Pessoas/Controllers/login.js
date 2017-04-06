@@ -1,6 +1,12 @@
 ﻿'use strict';
-angular.module('Diamond').controller('LoginCtrl', ["$scope", "$location", 'authService', '$rootScope', function ($scope, $location, authService, $rootScope) {
-    $scope.message = "";
+angular.module('Diamond').controller('LoginCtrl', ["$scope", "$location", 'authService', '$rootScope', 'localStorageService', function ($scope, $location, authService, $rootScope, localStorageService) {
+    
+    if (!authService._isAuthenticated) {
+        //dar um jeito de impedir que o usuário acesse essa pagina
+        //a ideia é redirecionar o usuário caso ~já esteja autenticado
+        //$location.path('/Usuario/'+);
+    }
+    
     $scope.loginData = {
         userName: "",
         password: ""
@@ -9,11 +15,8 @@ angular.module('Diamond').controller('LoginCtrl', ["$scope", "$location", 'authS
     $scope.logar = function () {
         authService.login($scope.loginData).then(function (response) {
             
-            alert("Usuário Logado!");
             //preciso receber o nome do cara;
-            $rootScope.currentUser = {
-                token: response.access_token
-            };
+            
             $location.path('/Home');
         },
         function (err) {

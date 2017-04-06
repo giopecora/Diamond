@@ -1,5 +1,5 @@
 ﻿
-App.factory('authService', ['$http', '$q', 'localStorageService', function($http, $q, localStorageService) {
+App.factory('authService', ['$http', '$q', 'localStorageService', '$rootScope', function ($http, $q, localStorageService, $rootScope) {
     
     var serviceBase = 'http://localhost:59783/';
     var authServiceFactory = {};
@@ -26,7 +26,14 @@ App.factory('authService', ['$http', '$q', 'localStorageService', function($http
 
         $http.post(serviceBase + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
 
-            localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName, userId: response.userId });
+            localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName, userId: response.userId });
+
+            $rootScope.currentUser = {
+                token: response.access_token,
+                userName: response.userName,
+                userId: response.userId
+            };         
+
 
             _authentication.isAuth = true;
             _authentication.userName = loginData.userName;
@@ -42,9 +49,16 @@ App.factory('authService', ['$http', '$q', 'localStorageService', function($http
         return deferred.promise;
     };
 
+    var _isAuthenticated = function () {
+        var currentUser =  localStorageService.get('authorizationData');
+
+        return currentUser.isAuth;
+    }
+
     var _logOut = function () {
 
         localStorageService.remove('authorizationData');
+        $rootScope.currentUser = undefined;
 
         _authentication.isAuth = false;
         _authentication.userName = "";

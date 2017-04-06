@@ -1,5 +1,5 @@
 ﻿var app = angular.module('Diamond');
-app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, CarrinhoService, authService) {
+app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, CarrinhoService, authService, $rootScope) {
     
     $scope.produtos = [];
     $scope.subTotal = 0;
@@ -52,7 +52,7 @@ app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, Carr
         //caso, sim prossegue, se nao redireciona para pagina de cadastro/login
 
         if (authService.authentication.isAuth) {
-            
+            $scope.SelecionarEndereco();
         } else {
             $location.path("/Login");
         }

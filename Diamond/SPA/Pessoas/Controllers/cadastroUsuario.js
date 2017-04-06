@@ -20,12 +20,18 @@
     $scope.validaUsuario = function () {
 
         var tmpUsuario = JSON.stringify($scope.usuario);
-        UsuarioService.cadastrarUsuario(tmpUsuario).then(function (retorno) {
+
+        UsuarioService.cadastrarUsuario(tmpUsuario)
+        .then(function (retorno) {
             Object.keys($scope.usuario).forEach(function (prop) {
+                //limpa o objeto de usuário
                 $scope.usuario[prop] = '';
             });
+            console.log(retorno.data.id);
             $location.path("Usuarios/" + retorno.data.id);
-        }).catch(function (error) {
+        })
+
+        .catch(function (error) {
             window.alert("Não foi possível cadastrar usuário, tente novamente!")
         });
 
