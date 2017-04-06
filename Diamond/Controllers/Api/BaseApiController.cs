@@ -10,19 +10,19 @@ namespace Diamond.Controllers.Api
 {
     public class BaseApiController : ApiController
     {
-        //protected OwinContextProvider OwinContextProvider = new OwinContextProvider();
+        protected OwinContextProvider OwinContextProvider = new OwinContextProvider();
 
-        //protected int? UserId
-        //{
-        //    get
-        //    {
-        //        string value = OwinContextProvider.GetClaimValue("userId");
+        protected int? AuthenticatedUserId
+        {
+            get
+            {
+                string value = OwinContextProvider.GetClaimValue("userId");
 
-        //        if (string.IsNullOrEmpty(value))
-        //            return null;
+                if (string.IsNullOrEmpty(value))
+                    return null;
 
-        //        return Convert.ToInt32(value);
-        //    }
-        //}
+                return Convert.ToInt32(value);
+            }
+        }
     }
 }

@@ -38,7 +38,10 @@ namespace Diamond.Controllers.Api
 
             try
             {
-                usuario = _business.GetById(userId);
+                if (AuthenticatedUserId.HasValue)
+                {
+                    usuario = _business.GetById(AuthenticatedUserId.Value);
+                }
             }
             catch (Exception ex)
             {

@@ -19,11 +19,10 @@ namespace Diamond
         {
             OAuthAuthorizationServerOptions OAuthOptions = new OAuthAuthorizationServerOptions
             {
+                AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/token"),
-                //AuthorizeEndpointPath = new PathString("/Account/Authorize"),
-                Provider = new SimpleAuthorizationServerProvider(),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
-                AllowInsecureHttp = true
+                Provider = new SimpleAuthorizationServerProvider()
             };
 
             app.UseOAuthAuthorizationServer(OAuthOptions);
