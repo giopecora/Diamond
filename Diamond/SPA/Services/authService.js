@@ -1,7 +1,7 @@
 ﻿
 App.factory('authService', ['$http', '$q', 'localStorageService', '$rootScope', function ($http, $q, localStorageService, $rootScope) {
     
-    var serviceBase = 'http://localhost:59783/';
+    var serviceBase = document.location.origin + '/';
     var authServiceFactory = {};
 
     var _authentication = {

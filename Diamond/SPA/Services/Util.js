@@ -81,8 +81,12 @@
         procurarProduto: function (params) {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Produto/SearchForProducts/' + params                
+                url: montarUrl('Produto/SearchForProducts/' + params)              
             });
+        },
+
+        montarUrl: function (url) {
+            return document.location.origin + '/api/' + url;
         }
 
 

@@ -100,56 +100,56 @@
 
     $scope.load();
 })
-.service('ManterProdutoService', function ($http) {
+.service('ManterProdutoService', function ($http, UtilService) {
     return {
         cadastrarProduto: function (params) {
             return $http({
                 method: 'POST',
-                url: 'http://localhost:59783/api/Produto/Post',
+                url: UtilService.montarUrl('Produto/Post'),
                 data: params
             })
         },
         bucarProdutos: function (page) {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Produto/ListAll/' + page
+                url: UtilService.montarUrl('Produto/ListAll/' + page)
             })
         },
         bucarProdutosPorNome: function (page, name) {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Produto/ListAllByName/' + page + '/' + name
+                url: UtilService.montarUrl('Produto/ListAllByName/' + page + '/' + name)
             })
         },
         getProduto: function (ProdutoID) {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Produto/Get/' + ProdutoID
+                url: UtilService.montarUrl('Produto/Get/' + ProdutoID)
             })
         },
         getCount: function () {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Produto/GetCount'
+                url: UtilService.montarUrl('Produto/GetCount')
             });
         },
         getCountByName: function (name) {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Produto/GetCountByName/' + name
+                url: UtilService.montarUrl('GetCountByName/' + name)
             });
         },
         salvarProduto: function (produto) {
             return $http({
                 method : 'PUT',
-                url: 'http://localhost:59783/api/Produto/Put',
+                url: UtilService.montarUrl('Produto/Put'),
                 data: produto
             })
         },
         uploadProduto: function(idProduto, file){
             return $http({
                 method: 'POST',
-                url: 'http://localhost:59783/api/Produto/Upload/' + idProduto,
+                url: UtilService.montarUrl('Produto/Upload/' + idProduto),
                 data: {
                     file: file
                 }, headers:{

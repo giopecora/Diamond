@@ -37,7 +37,7 @@ app.controller('LayoutCtrl', function ($scope, $cookies, UtilService, CarrinhoSe
             search: function (search) {
                 return $http({
                     method: 'POST',
-                    url: 'http://localhost:59783/api/Produto/SearchForProducts/' + search
+                    url: UtilService.montarUrl('Produto/SearchForProducts/' + search)
                 });
             }
         }

@@ -82,19 +82,19 @@
         listarEnderecos: function () {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Endereco/GetAllFromUser'
+                url: UtilService.montarUrl('Endereco/GetAllFromUser')
             })
         },
         excluirEndereco: function (enderecoID) {
             return $http({
                 method: 'DELETE',
-                url: 'http://localhost:59783/api/Endereco/Delete/' + enderecoID
+                url: UtilService.montarUrl('Endereco/Delete/' + enderecoID)
             })
         },
         salvarNovoEndereco: function (novoEndereco) {
             return $http({
                 method: 'POST',
-                url: 'http://localhost:59783/api/Endereco/Post',
+                url: UtilService.montarUrl('Endereco/Post'),
                 data: novoEndereco
             })
         },

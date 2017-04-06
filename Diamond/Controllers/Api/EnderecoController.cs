@@ -53,6 +53,7 @@ namespace Diamond.Controllers.Api
         {
             try
             {
+                endereco.UsuarioId = Convert.ToInt32(OwinContextProvider.GetClaimValue("userId"));
                 _business.Update(endereco);
             }
             catch (Exception ex)

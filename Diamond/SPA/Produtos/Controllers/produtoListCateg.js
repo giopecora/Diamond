@@ -65,7 +65,7 @@
         getProdutos: function (idCategoria) {
             return $http({
                 method: 'GET',
-                url: "http://localhost:59783/api/Produto/GetAllFromCategory/"+idCategoria+"/1"
+                url: UtilService.montarUrl('Produto/GetAllFromCategory/' + idCategoria + '/1')
             });
         }
     }

@@ -62,19 +62,19 @@
         listarCartoes: function () {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Cartao/GetAllFromUser'
+                url: UtilService.montarUrl('Cartao/GetAllFromUser')
             })
         },
         excluirCartao: function (cartaoID) {
             return $http({
                 method: 'DELETE',
-                url: 'http://localhost:59783/api/Cartao/Delete/' + cartaoID
+                url: UtilService.montarUrl('Cartao/Delete/' + cartaoID)
             })
         },
         salvarNovoCartao: function (novoCartao) {
             return $http({
                 method: 'POST',
-                url: 'http://localhost:59783/api/Cartao/Post',
+                url: UtilService.montarUrl('Cartao/Post'),
                 data: novoCartao
             })
         }

@@ -13,14 +13,15 @@ namespace Diamond.Controllers.Api
         private PedidoBusiness _business = new PedidoBusiness();
 
         [ResponseType(typeof(List<PedidoDTO>))]
-        [Route("api/Pedido/GetAllFromUser/{userId:int}/{page:int}")]
+        [Route("api/Pedido/GetAllFromUser/{page:int}")]
         // GET: api/Produtos
-        public IHttpActionResult GetAllFromUser(int userId, int page)
+        public IHttpActionResult GetAllFromUser(int page)
         {
             List<PedidoDTO> pedidos = new List<PedidoDTO>();
 
             try
             {
+                int userId = Convert.ToInt32(OwinContextProvider.GetClaimValue("userId"));
                 pedidos = _business.GetAllFromUser(userId, page);
             }
             catch (Exception ex)
@@ -55,6 +56,7 @@ namespace Diamond.Controllers.Api
         {
             try
             {
+                pedido.UsuarioId = Convert.ToInt32(OwinContextProvider.GetClaimValue("userId"));
                 pedido = _business.Insert(pedido);
             }
             catch (Exception ex)

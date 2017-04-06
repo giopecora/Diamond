@@ -50,13 +50,13 @@
         listProductSellsSintetics: function (qs) {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Report/ProductSellsSintetics?' + qs
+                url: UtilService.montarUrl('Report/ProductSellsSintetics?' + qs)
             });
         },
         listProductBuysSintetics: function (qs) {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Report/ProductBuysSintetics?' + qs
+                url: UtilService.montarUrl('Report/ProductBuysSintetics?' + qs)
             });
         }
     }

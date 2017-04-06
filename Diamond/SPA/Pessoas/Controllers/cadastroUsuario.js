@@ -75,7 +75,7 @@
         cadastrarUsuario: function (usuario) {
             return $http({
                 method: 'POST',
-                url: 'http://localhost:59783/api/Usuario/Post',
+                url: UtilService.montarUrl('Usuario/Post'),
                 data: usuario
             });
         },

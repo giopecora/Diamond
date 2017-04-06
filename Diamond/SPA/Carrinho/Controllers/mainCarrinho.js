@@ -68,7 +68,7 @@ app.service('CarrinhoService', function ($http) {
         finalizarCompra: function (params) {
             return $http({
                 method: 'post',
-                url: 'http://localhost:59783/api/Pedido/Post',
+                url: UtilService.montarUrl('Pedido/Post'),
                 data: params
             })
         }

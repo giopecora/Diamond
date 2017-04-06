@@ -52,13 +52,13 @@
         listProductSellsAnalytics: function (qs) {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Report/ProductSellsAnalytics?' + qs
+                url: UtilService.montarUrl('Report/ProductSellsAnalytics?' + qs)
             });
         },
         listProductBuyssAnalytics: function (qs) {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Report/ProductBuysAnalytics?' + qs
+                url: UtilService.montarUrl('Report/ProductBuysAnalytics?' + qs)
             });
         }
     }

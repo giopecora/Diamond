@@ -65,14 +65,14 @@ app.controller('PerfilUsuarioCtrl', function ($scope, UtilService, PerfilUsuario
         buscarPerfilUsuario: function (UsuarioID) {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Usuario/Get/' + authService.authentication.userId
+                url: UtilService.montarUrl('Usuario/Get/')
             })
         },
 
         listarPedidosUsuario: function (usuarioID, paginaAtual) {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Pedido/GetAllFromUser/' + authService.authentication.userId  + '/' + paginaAtual
+                url: UtilService.montarUrl('Pedido/GetAllFromUser/' + paginaAtual)
             })
         }
     }

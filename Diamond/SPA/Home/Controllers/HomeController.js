@@ -32,13 +32,13 @@
         listTopFive: function () {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Produto/GetTop5'
+                url: UtilService.montarUrl('Produto/GetTop5')
             });
         },
         gettopEightofAllCategories: function () {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Categoria/ListTop8ProductsOfAllCategories/'
+                url: UtilService.montarUrl('Categoria/ListTop8ProductsOfAllCategories/')
             });
         }
     }

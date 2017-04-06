@@ -22,7 +22,7 @@
         productDetails: function(prodID) {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:59783/api/Produto/Get/'+prodID
+                url: UtilService.montarUrl('Produto/Get/' + prodID)
             });
         }
     };
