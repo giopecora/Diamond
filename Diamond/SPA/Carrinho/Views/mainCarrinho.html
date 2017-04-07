@@ -76,7 +76,7 @@
                             <div class="col-md-4 col-md-offset-5">
                                 <div class="btn-group btn-group-justified">
                                     <div class="btn-group">
-                                        <button class="btn btn-success btn-lg" ng-click="SelecionarEndereco()">Proximo</button>
+                                        <button class="btn btn-success btn-lg" ng-click="proximo()">Proximo</button>
                                     </div>
                                 </div>
                             </div>
@@ -86,23 +86,106 @@
             </div>
         </div>
     </div>
+
+    <!--endereços-->
     <div ng-show="passo==2">
         <div class="row">
-            <div ng-repeat="endereco in enderecosUsuario" class="col-md-4">
-                <div class="panel">
+            <div class="col-md-12">
+                <div class="panel panel-default" style="margin-top: 30px;">
                     <div class="panel-heading">
-                        <input type="radio" ng-model="indexEndereco" />
+                        <h3>Meus Endereços</h3>
                     </div>
-                    <h3 ng-bind="endereco.logradouro"></h3>
-                    <h3 ng-bind="endereco.numero"></h3>
-                    <h3 ng-bind="endereco.complemento"></h3>
-                    <h3 ng-bind="endereco.cep"></h3>
-                    <h3 ng-bind="endereco.cidade"></h3>
-                    <h3 ng-bind="endereco.sigla"></h3>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Logradouro</th>
+                                        <th>Número</th>
+                                        <th>Complemento</th>
+                                        <th>Cep</th>
+                                        <th>Cidade</th>
+                                        <th>UF</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="e in enderecos">
+                                        <td><input type="radio" name="selecionado" ng-model="e.selecionado"/></td>
+                                        <td>{{e.logradouro}}</td>
+                                        <td>{{e.numero}}</td>
+                                        <td>{{e.complemento}}</td>
+                                        <td>{{e.cep}}</td>
+                                        <td>{{e.cidade}}</td>
+                                        <td>{{e.sigla}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>        
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-default pull-left" ng-click="anterior()">Voltar</button>
+            </div>
+            <div class="col-md-offset-4 col-md-4">
+                <button class="btn btn-success pull-right" ng-click="proximo()">Próximo</button>
+            </div>
+        </div>
     </div>
+
+
+    <!--cartões-->
+    <div ng-show="passo==3">
+        <!--cartoes-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default" style="margin-top: 30px;">
+                    <div class="panel-heading">
+                        <h3>Escolha o cartão de crédito</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Bandeira</th>
+                                        <th>Número</th>
+                                        <th>Nome</th>
+                                        <th>Vencimento</th>
+                                        <th>ccr</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="c in cartoes">
+                                        <td><input type="radio" name="selecionado" ng-model="e.selecionado" /></td>
+                                        <td>{{c.bandeira}}</td>
+                                        <td>{{c.numero}}</td>
+                                        <td>{{c.nome}}</td>
+                                        <td>{{c.vencimento}}</td>
+                                        <td>{{c.ccr}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-default pull-left" ng-click="anterior()">Voltar</button>
+            </div>
+            <div class="col-md-offset-4 col-md-4">
+                <button class="btn btn-success pull-right" ng-click="finalizarCompra()">Finalizar</button>
+            </div>
+        </div>
+    </div>
+
+
     <div class="row text-center" ng-hide="produtos!=0">
         <h3>Sem produtos no carrinho</h3>
     </div>

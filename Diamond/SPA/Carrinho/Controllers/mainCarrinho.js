@@ -1,7 +1,9 @@
 ﻿var app = angular.module('Diamond');
-app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, CarrinhoService, authService, $rootScope) {
+app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, CarrinhoService, authService, $rootScope, UsuarioEnderecoService, UsuarioCartaoService) {
     
     $scope.produtos = [];
+    $scope.enderecos = [];
+    $scope.cartoes = [];
     $scope.subTotal = 0;
     $scope.passo = 1;
 
@@ -10,6 +12,16 @@ app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, Carr
             $scope.produtos = UtilService.obterProdutos();
         if ($scope.passo == 2) {
             
+            UsuarioEnderecoService.listarEnderecos().then(function (retorno) {
+                $scope.enderecos = retorno.data
+            });
+
+        }
+        if ($scope.passo == 3) {
+
+            UsuarioCartaoService.listarCartoes().then(function (retorno) {
+                $scope.cartoes = retorno.data
+            });
         }
     }
 
@@ -21,8 +33,13 @@ app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, Carr
         return soma;
     }
 
-    $scope.SelecionarEndereco = function () {
-        $scope.passo = 2;
+    $scope.proximo = function () {
+        $scope.passo++;
+        $scope.load();
+    }
+
+    $scope.anterior = function () {
+        $scope.passo--;
         $scope.load();
     }
 
