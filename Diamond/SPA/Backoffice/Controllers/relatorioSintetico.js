@@ -45,7 +45,7 @@
 
     $scope.load();
 })
-.service('RelatorioSinteticoService', function ($http) {
+.service('RelatorioSinteticoService', function ($http, UtilService) {
     return {
         listProductSellsSintetics: function (qs) {
             return $http({

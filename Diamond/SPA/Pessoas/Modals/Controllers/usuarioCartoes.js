@@ -57,7 +57,7 @@
     };
 
     $scope.load();
-}).service('UsuarioCartaoService', function ($http, authService) {
+}).service('UsuarioCartaoService', function ($http, authService, UtilService) {
     return {
         listarCartoes: function () {
             return $http({

@@ -60,7 +60,7 @@
         $scope.actions.search($routeParams.search);
     }
 })
-.service('ProdutoCategoriaService', function ($http) {
+.service('ProdutoCategoriaService', function ($http, UtilService) {
     return {
         getProdutos: function (idCategoria) {
             return $http({

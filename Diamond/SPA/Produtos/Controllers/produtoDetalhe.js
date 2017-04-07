@@ -17,7 +17,7 @@
     $scope.load();
 
 })
-.service('ProdutoService', function ($http) {
+.service('ProdutoService', function ($http, UtilService) {
     return {
         productDetails: function(prodID) {
             return $http({

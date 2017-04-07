@@ -60,7 +60,7 @@ app.controller('PerfilUsuarioCtrl', function ($scope, UtilService, PerfilUsuario
     $scope.load();
 
 })
-.service('PerfilUsuarioService', function ($http, authService) {
+.service('PerfilUsuarioService', function ($http, authService, UtilService) {
     return {
         buscarPerfilUsuario: function (UsuarioID) {
             return $http({

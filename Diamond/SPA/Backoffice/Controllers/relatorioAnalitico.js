@@ -47,7 +47,7 @@
 
     $scope.load();
 })
-.service('RelatorioAnaliticoService', function ($http) {
+.service('RelatorioAnaliticoService', function ($http, UtilService) {
     return {
         listProductSellsAnalytics: function (qs) {
             return $http({

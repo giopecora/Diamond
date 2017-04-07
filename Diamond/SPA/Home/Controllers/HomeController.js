@@ -27,7 +27,7 @@
     $scope.load();
 })
 
-.service('HomeService', function ($http) {
+.service('HomeService', function ($http, UtilService) {
     return {
         listTopFive: function () {
             return $http({

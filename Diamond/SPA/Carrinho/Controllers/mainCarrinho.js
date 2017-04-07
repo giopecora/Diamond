@@ -63,7 +63,7 @@ app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, Carr
     $scope.load();
 });
 
-app.service('CarrinhoService', function ($http) {
+app.service('CarrinhoService', function ($http, UtilService) {
     return {
         finalizarCompra: function (params) {
             return $http({

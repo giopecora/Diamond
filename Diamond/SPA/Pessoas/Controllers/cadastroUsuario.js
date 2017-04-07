@@ -70,7 +70,7 @@
     }
 
 })
-.service('UsuarioService', function ($http) {
+.service('UsuarioService', function ($http, UtilService) {
     return {
         cadastrarUsuario: function (usuario) {
             return $http({

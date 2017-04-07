@@ -32,7 +32,7 @@ app.controller('LayoutCtrl', function ($scope, $cookies, UtilService, CarrinhoSe
     }
     
 })
-    .service('SearchService', function ($http) {
+    .service('SearchService', function ($http, UtilService) {
         return {
             search: function (search) {
                 return $http({

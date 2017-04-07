@@ -77,7 +77,7 @@
 
     $scope.load();
 })
-.service('UsuarioEnderecoService', function ($http, authService) {
+.service('UsuarioEnderecoService', function ($http, authService, UtilService) {
     return {
         listarEnderecos: function () {
             return $http({
