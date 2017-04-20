@@ -110,8 +110,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="e in enderecos">
-                                        <td><input type="radio" name="selecionado" ng-model="e.selecionado"/></td>
+                                    <tr ng-repeat="e in enderecos track by $index">
+                                        <td><input type="radio" name="enderecoSelecionado" ng-model="$parent.enderecoSelecionado" ng-value="e"/></td>
                                         <td>{{e.logradouro}}</td>
                                         <td>{{e.numero}}</td>
                                         <td>{{e.complemento}}</td>
@@ -161,7 +161,7 @@
                                 </thead>
                                 <tbody>
                                     <tr ng-repeat="c in cartoes">
-                                        <td><input type="radio" name="selecionado" ng-model="e.selecionado" /></td>
+                                        <td><input type="radio" name="cartaoSelecionado" ng-model="$parent.cartaoSelecionado" ng-value="c"/></td>
                                         <td>{{c.bandeira}}</td>
                                         <td>{{c.numero}}</td>
                                         <td>{{c.nome}}</td>

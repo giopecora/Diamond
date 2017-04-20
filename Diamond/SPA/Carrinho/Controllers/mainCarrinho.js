@@ -8,21 +8,25 @@ app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, Carr
     $scope.passo = 1;
 
     $scope.load = function () {
-        if($scope.passo == 1)
-            $scope.produtos = UtilService.obterProdutos();
-        if ($scope.passo == 2) {
-            
-            UsuarioEnderecoService.listarEnderecos().then(function (retorno) {
-                $scope.enderecos = retorno.data
-            });
 
-        }
-        if ($scope.passo == 3) {
+        $scope.produtos = UtilService.obterProdutos();
 
-            UsuarioCartaoService.listarCartoes().then(function (retorno) {
-                $scope.cartoes = retorno.data
-            });
-        }
+        UsuarioEnderecoService.listarEnderecos().then(function (retorno) {
+            $scope.enderecos = retorno.data;
+
+            $scope.enderecos.forEach(function (e) {
+                e.selecionado = false;
+            })
+        });
+        
+        UsuarioCartaoService.listarCartoes().then(function (retorno) {
+            $scope.cartoes = retorno.data
+
+            $scope.cartoes.forEach(function (c) {
+                c.selecionado = false;
+            })
+        });
+        
     }
 
     $scope.atualizarSubtotal = function () {
@@ -35,12 +39,10 @@ app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, Carr
 
     $scope.proximo = function () {
         $scope.passo++;
-        $scope.load();
     }
 
     $scope.anterior = function () {
         $scope.passo--;
-        $scope.load();
     }
 
     $scope.aumentarQtdproduto = function (produto) {
@@ -69,7 +71,27 @@ app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, Carr
         //caso, sim prossegue, se nao redireciona para pagina de cadastro/login
 
         if (authService.authentication.isAuth) {
-            $scope.SelecionarEndereco();
+            
+            var itensPedido = $scope.produtos.map(function (p) {
+                return {
+                    ProdutoId: p.id,
+                    Quantidade: p.quantidade,
+                    ValorUnitarioTotal: p.quantidade * p.preco
+                }
+            })
+
+            var params = {
+                enderecoId: $scope.enderecoSelecionado.id,
+                cartaoId: $scope.cartaoSelecionado.id,
+                itens: itensPedido,
+                ValorTotal: $scope.atualizarSubtotal()
+            }
+
+            CarrinhoService.finalizarCompra(params).then(function () {
+                alert('compra finalizada');
+                load();
+            })
+            
         } else {
             $location.path("/Login");
         }
