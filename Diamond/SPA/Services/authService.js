@@ -28,13 +28,6 @@ App.factory('authService', ['$http', '$q', 'localStorageService', '$rootScope', 
 
             localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName, userId: response.userId });
 
-            $rootScope.currentUser = {
-                token: response.access_token,
-                userName: response.userName,
-                userId: response.userId
-            };         
-
-
             _authentication.isAuth = true;
             _authentication.userName = loginData.userName;
             _authentication.userId = response.userId;

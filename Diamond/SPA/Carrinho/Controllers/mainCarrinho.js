@@ -1,5 +1,6 @@
 ﻿var app = angular.module('Diamond');
-app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, CarrinhoService, authService, $rootScope, UsuarioEnderecoService, UsuarioCartaoService) {
+app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, CarrinhoService, authService,
+    $rootScope, UsuarioEnderecoService, UsuarioCartaoService, $location) {
     
     $scope.produtos = [];
     $scope.enderecos = [];
@@ -89,6 +90,10 @@ app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, Carr
 
             CarrinhoService.finalizarCompra(params).then(function () {
                 alert('compra finalizada');
+                UtilService.limparCarrinho();
+
+                $location.path("/Usuario/" + authService.authentication.userId);
+                
                 load();
             })
             
