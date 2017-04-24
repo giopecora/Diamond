@@ -3,6 +3,7 @@ app.controller('LayoutCtrl', function ($scope, $cookies, UtilService, CarrinhoSe
 
     $scope.searchDebounce = null;
     $scope.search = null;
+    $scope.authentication = authService.authentication;
 
     $scope.actions = {
         search: function () {
@@ -18,18 +19,22 @@ app.controller('LayoutCtrl', function ($scope, $cookies, UtilService, CarrinhoSe
     };
 
     $scope.deslogar = function () {
-        delete $window.localStorage.clear();
-        $rootScope.currentUser = undefined;
+        authService.logOut();
+        $location.path('/Home');
     }
 
 
     $scope.abrirMinhaConta = function () {
         if (authService.authentication.isAuth) {
             $location.path("/Usuario/" + authService.authentication.userId);
-        } else {
-            $location.path("/Login");
         }
     }
+
+    $scope.irLogin = function () {
+        $location.path("/Login");
+    }
+
+    
     
 })
     .service('SearchService', function ($http, UtilService) {

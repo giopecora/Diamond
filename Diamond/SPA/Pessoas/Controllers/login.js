@@ -1,10 +1,11 @@
 ﻿'use strict';
 angular.module('Diamond').controller('LoginCtrl', ["$scope", "$location", 'authService', '$rootScope', 'localStorageService', function ($scope, $location, authService, $rootScope, localStorageService) {
     
-    if (!authService._isAuthenticated) {
+    if (authService.authentication.isAuth) {
         //dar um jeito de impedir que o usuário acesse essa pagina
-        //a ideia é redirecionar o usuário caso ~já esteja autenticado
+        //a ideia é redirecionar o usuário caso já esteja autenticado
         //$location.path('/Usuario/'+);
+        $location.path('/Home');
     }
     
     $scope.loginData = {
@@ -21,6 +22,9 @@ angular.module('Diamond').controller('LoginCtrl', ["$scope", "$location", 'authS
         },
         function (err) {
             $scope.message = err.error_description;
+            alert($scope.message);
+            $scope.loginData.userName = "";
+            $scope.loginData.password = "";
         });
     };
 }]);
