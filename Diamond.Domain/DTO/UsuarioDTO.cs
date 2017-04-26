@@ -1,4 +1,5 @@
 ﻿using Diamond.Domain.Entities;
+using Diamond.Domain.Enums;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -31,16 +32,12 @@ namespace Diamond.Domain.DTO
         [JsonProperty("perfis")]
         public List<UsuarioPerfilDTO> Usuario_Perfis { get; set; }
 
-        public string PerfisToJson()
+        public bool IsAdmin
         {
-            List<int> lista = new List<int>();
-
-            foreach(UsuarioPerfilDTO perfil in Usuario_Perfis)
+            get
             {
-                lista.Add(perfil.PerfilId);
+                return Usuario_Perfis.Any(p => p.PerfilId == (int)PerfilEnum.Administrador || p.PerfilId == (int)PerfilEnum.Operador);
             }
-
-            return JsonConvert.SerializeObject(lista);
         }
     }
 }

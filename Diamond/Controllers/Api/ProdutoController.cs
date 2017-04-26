@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Web;
 using Diamond.Business.Business;
 using Diamond.Domain.Models.Produto;
+using Diamond.Filters;
 
 namespace Diamond.Controllers.Api
 {
@@ -72,6 +73,7 @@ namespace Diamond.Controllers.Api
         }
 
         [Authorize]
+        [ClaimsAuthorize("isAdmin", "1")]
         [ResponseType(typeof(List<ProdutoDTO>))]
         public IHttpActionResult GetAll([FromUri]Filtro filtro, int page)
         {
@@ -90,6 +92,7 @@ namespace Diamond.Controllers.Api
         }
 
         [HttpGet]
+        [ClaimsAuthorize("isAdmin", "1")]
         [ResponseType(typeof(List<ProdutoDTO>))]
         [Route("api/Produto/ListAll/{page}")]
         public IHttpActionResult ListAll(int page)
@@ -110,6 +113,7 @@ namespace Diamond.Controllers.Api
         }
 
         [HttpGet]
+        [ClaimsAuthorize("isAdmin", "1")]
         [ResponseType(typeof(List<ProdutoDTO>))]
         [Route("api/Produto/ListAllByName/{page}/{name}")]
         public IHttpActionResult ListAllByName(int page, string name)
@@ -136,6 +140,7 @@ namespace Diamond.Controllers.Api
         }
 
         [HttpGet]
+        [ClaimsAuthorize("isAdmin", "1")]
         [Route("api/Produto/GetCountByName/{name}")]
         public IHttpActionResult GetCountByName(string name)
         {
@@ -180,6 +185,7 @@ namespace Diamond.Controllers.Api
 
         // PUT: api/Produtos/5
         [Authorize]
+        [ClaimsAuthorize("isAdmin", "1")]
         [ResponseType(typeof(IHttpActionResult))]
         public IHttpActionResult Put([FromBody]ProdutoDTO produto)
         {
@@ -197,6 +203,7 @@ namespace Diamond.Controllers.Api
 
         // POST: api/Produtos
         [Authorize]
+        [ClaimsAuthorize("isAdmin", "1")]
         [ResponseType(typeof(ProdutoDTO))]
         public IHttpActionResult Post([FromBody]ProdutoDTO produto)
         {
@@ -213,6 +220,7 @@ namespace Diamond.Controllers.Api
         }
 
         [Authorize]
+        [ClaimsAuthorize("isAdmin", "1")]
         [HttpPost]
         public IHttpActionResult Upload(int produtoId)
         {
@@ -230,6 +238,7 @@ namespace Diamond.Controllers.Api
 
         // DELETE: api/Produtos/5
         [Authorize]
+        [ClaimsAuthorize("isAdmin", "1")]
         [ResponseType(typeof(IHttpActionResult))]
         public IHttpActionResult Delete(int id)
         {

@@ -1,6 +1,7 @@
 ﻿using Diamond.Business.Business;
 using Diamond.Domain.DTO;
 using Diamond.Domain.Models;
+using Diamond.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ using System.Web.Http.Description;
 namespace Diamond.Controllers.Api
 {
     [Authorize]
+    [ClaimsAuthorize("isAdmin", "1")]
     public class ReportController : BaseApiController
     {
         private ReportBusiness _business = new ReportBusiness();

@@ -7,7 +7,8 @@ App.factory('authService', ['$http', '$q', 'localStorageService', '$rootScope', 
     var _authentication = {
         isAuth: false,
         userName: "",
-        userId: 0
+        userId: 0,
+        isAdmin: false
     };
 
     var _saveRegistration = function (registration) {
@@ -29,8 +30,9 @@ App.factory('authService', ['$http', '$q', 'localStorageService', '$rootScope', 
             localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName, userId: response.userId });
 
             _authentication.isAuth = true;
-            _authentication.userName = loginData.userName;
+            _authentication.userName = response.userName;
             _authentication.userId = response.userId;
+            _authentication.isAdmin = response.isAdmin == "1" ? true : false;
 
             deferred.resolve(response);
 

@@ -3,6 +3,7 @@ using Diamond.Domain.DTO;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json;
+using System.Linq;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -43,16 +44,16 @@ namespace Diamond.Providers
             }
 
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
+
             identity.AddClaim(new Claim("sub", context.UserName));
             identity.AddClaim(new Claim("userId", user.Id.ToString()));
-            identity.AddClaim(new Claim("perfis", user.PerfisToJson()));
-            identity.AddClaim(new Claim("userId", user.Id.ToString()));
+            identity.AddClaim(new Claim("userName", user.Nome));
+            identity.AddClaim(new Claim("isAdmin", user.IsAdmin.ToString()));
 
             var props = new AuthenticationProperties(new Dictionary<string, string>
             {
-                { "perfis", user.PerfisToJson() },
                 { "userName", user.Nome },
-                { "userId", user.Id.ToString() }
+                { "isAdmin", user.Id.ToString() }
             });
 
             var ticket = new AuthenticationTicket(identity, props);

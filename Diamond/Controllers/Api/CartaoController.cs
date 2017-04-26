@@ -9,6 +9,7 @@ using System.Web.Http.Description;
 
 namespace Diamond.Controllers.Api
 {
+    [Authorize]
     public class CartaoController : BaseApiController
     {
         private CartaoBusiness _business = new CartaoBusiness();

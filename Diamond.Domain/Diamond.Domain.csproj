@@ -83,6 +83,7 @@
     <Compile Include="Entities\Produto_Imagens.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Entities\Usuario_Perfis.cs" />
+    <Compile Include="Enums\PerfilEnum.cs" />
     <Compile Include="Models\Produto\Filtro.cs" />
     <Compile Include="Models\Relatorio\Filtro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

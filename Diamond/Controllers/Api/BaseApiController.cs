@@ -24,5 +24,18 @@ namespace Diamond.Controllers.Api
                 return Convert.ToInt32(value);
             }
         }
+
+        private bool _isAdmin { get; set; }
+        public bool IsAdmin
+        {
+            get
+            {
+                string value = OwinContextProvider.GetClaimValue("isAdmin");
+                if (string.IsNullOrEmpty(value))
+                    return false;
+
+                return Convert.ToBoolean(value);
+            }
+        }
     }
 }
