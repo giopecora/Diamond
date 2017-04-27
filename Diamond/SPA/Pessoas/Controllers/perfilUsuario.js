@@ -57,6 +57,31 @@ app.controller('PerfilUsuarioCtrl', function ($scope, UtilService, PerfilUsuario
         });
     };
 
+    $scope.abrirDetalhePedido = function (idPedido) {
+        var modalInstance = $uibModal.open({
+            templateUrl: './SPA/Backoffice/Modals/Views/visualizar-produto.html',
+            controller: 'ProdutoVisualizarCtrl',
+            backdrop: 'static',
+            size: 'lg',
+            resolve: {
+                getIdPedido: function () {
+                    return idPedido;
+                }
+            }
+        });
+
+
+        modalInstance.result.then(function (produto) {
+            if (produto) {
+                var tmpProduto = JSON.stringify(produto);
+                ManterProdutoService.salvarProduto(tmpProduto).then(function (retorno) {
+                    alert("Produto Salvo com sucesso!");
+                })
+            }
+        })
+
+    }
+
     $scope.load();
 
 })

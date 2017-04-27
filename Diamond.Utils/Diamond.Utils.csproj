@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\DateTimeFormatEnum.cs" />
+    <Compile Include="Extensions\DatetimeExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtension.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
