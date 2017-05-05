@@ -1,0 +1,45 @@
+﻿<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="fechar()" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h3>Detalhes do Pedido</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-sm-6 col-md-6">
+                <label>Cartão: </label>
+                <label class="control-lavel">{{pedido.numeroCartao}}</label>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <label>Endereço: </label>
+                <label class="control-lavel">{{pedido.endereco}}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <h3>Itens</h3>
+            </div>
+        </div>       
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <table class="table table-hover table-responsive table-striped">
+                    <tr>
+                        <th class="col-md-4">Produto</th>
+                        <th class="col-md-4">Quantidade</th>
+                        <th class="col-md-4">Valor Total</th>
+                    </tr>
+                    <tr ng-repeat="item in pedido.itens">
+                        <td><a href="#">{{item.produto}}</a></td>
+                        <td>{{item.quantidade}}</td>
+                        <td>{{item.valorTotal | currency}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td>{{calcularValorTotal() | currency}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div> 
+    </div>
+</div>

@@ -24,6 +24,10 @@ namespace Diamond.Domain.DTO
         public DateTime? DataPedido { get; set; }
         public double? ValorTotal { get; set; }
 
+        public CartaoDTO Cartao { get; set; }
+
+        public EnderecoDTO Endereco { get; set; }
+
         [JsonProperty("itens")]
         public List<PedidoItemDTO> Pedido_Itens { get; set; }
 

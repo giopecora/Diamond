@@ -31,7 +31,7 @@ namespace Diamond.Controllers.Api
 
         [Authorize]
         [ResponseType(typeof(UsuarioDTO))]
-        [Route("api/Usuario/Get/{userId:int}")]
+        [Route("api/Usuario/Get")]
         public IHttpActionResult Get()
         {
             UsuarioDTO usuario = new UsuarioDTO();

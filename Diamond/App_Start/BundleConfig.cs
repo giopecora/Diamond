@@ -63,6 +63,7 @@ namespace Diamond
                 "~/SPA/Pessoas/Modals/Controllers/usuarioAlterarSenha.js",
                 "~/SPA/Pessoas/Modals/Controllers/usuarioCartoes.js",
                 "~/SPA/Pessoas/Modals/Controllers/usuarioEndereco.js",
+                "~/SPA/Pessoas/Modals/Controllers/pedidoDetalhes.js",
                 "~/SPA/Pessoas/Controllers/perfilUsuario.js",
                 "~/SPA/Services/authInterceptorService.js",
                 "~/SPA/Services/authService.js"));

@@ -59,8 +59,8 @@ app.controller('PerfilUsuarioCtrl', function ($scope, UtilService, PerfilUsuario
 
     $scope.abrirDetalhePedido = function (idPedido) {
         var modalInstance = $uibModal.open({
-            templateUrl: './SPA/Backoffice/Modals/Views/visualizar-produto.html',
-            controller: 'ProdutoVisualizarCtrl',
+            templateUrl: './SPA/Pessoas/Modals/Views/pedidoDetalhes.html',
+            controller: 'UsuarioPedidoDetalhesCtrl',
             backdrop: 'static',
             size: 'lg',
             resolve: {
@@ -71,16 +71,16 @@ app.controller('PerfilUsuarioCtrl', function ($scope, UtilService, PerfilUsuario
         });
 
 
-        modalInstance.result.then(function (produto) {
-            if (produto) {
-                var tmpProduto = JSON.stringify(produto);
-                ManterProdutoService.salvarProduto(tmpProduto).then(function (retorno) {
-                    alert("Produto Salvo com sucesso!");
-                })
-            }
-        })
+        //modalInstance.result.then(function (produto) {
+        //    if (produto) {
+        //        var tmpProduto = JSON.stringify(produto);
+        //        ManterProdutoService.salvarProduto(tmpProduto).then(function (retorno) {
+        //            alert("Produto Salvo com sucesso!");
+        //        })
+        //    }
+        //})
 
-    }
+    };
 
     $scope.load();
 

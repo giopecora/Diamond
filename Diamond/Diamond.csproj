@@ -1121,9 +1121,11 @@
     <Content Include="SPA\Pessoas\Controllers\cadastroUsuario.js" />
     <Content Include="SPA\Pessoas\Controllers\login.js" />
     <Content Include="SPA\Pessoas\Controllers\perfilUsuario.js" />
+    <Content Include="SPA\Pessoas\Modals\Controllers\pedidoDetalhes.js" />
     <Content Include="SPA\Pessoas\Modals\Controllers\usuarioAlterarSenha.js" />
     <Content Include="SPA\Pessoas\Modals\Controllers\usuarioCartoes.js" />
     <Content Include="SPA\Pessoas\Modals\Controllers\usuarioEndereco.js" />
+    <Content Include="SPA\Pessoas\Modals\Views\pedidoDetalhes.html" />
     <Content Include="SPA\Pessoas\Modals\Views\usuarioAlterarSenha.html" />
     <Content Include="SPA\Pessoas\Modals\Views\usuarioCartoes.html" />
     <Content Include="SPA\Pessoas\Modals\Views\usuarioEndereco.html" />
