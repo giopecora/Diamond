@@ -12,21 +12,26 @@ app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, Carr
 
         $scope.produtos = UtilService.obterProdutos();
 
-        UsuarioEnderecoService.listarEnderecos().then(function (retorno) {
-            $scope.enderecos = retorno.data;
+        if (authService.authentication.isAuth) {
 
-            $scope.enderecos.forEach(function (e) {
-                e.selecionado = false;
-            })
-        });
+            UsuarioEnderecoService.listarEnderecos().then(function (retorno) {
+                $scope.enderecos = retorno.data;
+
+                $scope.enderecos.forEach(function (e) {
+                    e.selecionado = false
+                })
+            });
         
-        UsuarioCartaoService.listarCartoes().then(function (retorno) {
-            $scope.cartoes = retorno.data
+            UsuarioCartaoService.listarCartoes().then(function (retorno) {
+                $scope.cartoes = retorno.data
 
-            $scope.cartoes.forEach(function (c) {
-                c.selecionado = false;
-            })
-        });
+                $scope.cartoes.forEach(function (c) {
+                    c.selecionado = false;
+                })
+            });
+
+        }
+
         
     }
 

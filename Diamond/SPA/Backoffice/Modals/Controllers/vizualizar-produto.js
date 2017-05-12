@@ -28,7 +28,10 @@
         $scope.editando = true;
     }
 
-    $scope.UploadImagem = function () {
+    $scope.UploadImagem = function (file) {
+        ManterProdutoService.uploadProduto($scope.produto.id, file).then(function (result) {
+            console.log('upload concluido' + result);
+        });
 
     }
 
