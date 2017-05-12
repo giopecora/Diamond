@@ -51,6 +51,8 @@
   <ItemGroup>
     <Compile Include="AutoMapper\CartaoProfile.cs" />
     <Compile Include="AutoMapper\EnderecoProfile.cs" />
+    <Compile Include="AutoMapper\EstoqueEntradaProfile.cs" />
+    <Compile Include="AutoMapper\EstoqueSaidaProfile.cs" />
     <Compile Include="AutoMapper\PedidoItemProfile.cs" />
     <Compile Include="AutoMapper\PedidoProfile.cs" />
     <Compile Include="AutoMapper\ProdutoImagemProfile.cs" />
@@ -61,6 +63,9 @@
     <Compile Include="DTO\Categoria\CategoriaDTO.cs" />
     <Compile Include="DTO\Categoria\ProdutoCategoria.cs" />
     <Compile Include="DTO\EnderecoDTO.cs" />
+    <Compile Include="DTO\EstoqueDTO.cs" />
+    <Compile Include="DTO\EstoqueEntradaDTO.cs" />
+    <Compile Include="DTO\EstoqueSaidaDTO.cs" />
     <Compile Include="DTO\PedidoDTO.cs" />
     <Compile Include="DTO\PedidoItemDTO.cs" />
     <Compile Include="DTO\Produto\ProdutoDestaqueDTO.cs" />

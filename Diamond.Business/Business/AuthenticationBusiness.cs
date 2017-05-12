@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using Diamond.Domain.DTO;
 using Diamond.Domain.Entities;
-using Diamond.Repository.Repository;
+using Diamond.Repository;
 using System;
 
-namespace Diamond.Business.Business
+namespace Diamond.Business
 {
     public class AuthenticationBusiness
     {

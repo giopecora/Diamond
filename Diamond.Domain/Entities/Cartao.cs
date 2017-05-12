@@ -16,19 +16,23 @@ namespace Diamond.Domain.Entities
 
         public int Id { get; set; }
 
-        public int? UsuarioId { get; set; }
+        public int UsuarioId { get; set; }
 
         public int? BandeiraId { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string Numero { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string Nome { get; set; }
 
+        [Required]
         [StringLength(20)]
         public string Vencimento { get; set; }
 
+        [Required]
         [StringLength(20)]
         public string CCR { get; set; }
 

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diamond.Repository.Repository
+namespace Diamond.Repository
 {
     public class ProdutoImagemRepository
     {

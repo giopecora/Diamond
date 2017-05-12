@@ -49,6 +49,8 @@
     <Compile Include="Business\CartaoBusiness.cs" />
     <Compile Include="Business\CategoriaBusiness.cs" />
     <Compile Include="Business\EnderecoBusiness.cs" />
+    <Compile Include="Business\EstoqueEntradaBusiness.cs" />
+    <Compile Include="Business\EstoqueSaidaBusiness.cs" />
     <Compile Include="Business\PedidoBusiness.cs" />
     <Compile Include="Business\PedidoItemBusiness.cs" />
     <Compile Include="Business\ProdutoBusiness.cs" />

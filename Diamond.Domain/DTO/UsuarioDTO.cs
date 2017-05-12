@@ -23,19 +23,23 @@ namespace Diamond.Domain.DTO
 
         public int Id { get; set; }
 
+        [Required]
         [StringLength(120)]
         public string Nome { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string Login { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string Senha { get; set; }
 
+        [Required]
         [StringLength(11)]
         public string CPF { get; set; }
 
-        public bool? Ativo { get; set; }
+        public bool Ativo { get; set; }
 
         [JsonProperty("perfis")]
         public List<UsuarioPerfilDTO> Usuario_Perfis { get; set; }

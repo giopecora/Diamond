@@ -8,9 +8,9 @@ namespace Diamond.Domain.Entities
     [Table("Marca")]
     public partial class Marca
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string Nome { get; set; }
 

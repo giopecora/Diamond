@@ -13,13 +13,13 @@ namespace Diamond.Domain.Entities
 
         public int? PedidoItemId { get; set; }
 
-        public int? Quantidade { get; set; }
+        public int Quantidade { get; set; }
 
-        public double? ValorUnitario { get; set; }
+        public double ValorUnitario { get; set; }
 
-        public double? ValorTotal { get; set; }
+        public double ValorTotal { get; set; }
 
-        public DateTime? DataSaida { get; set; }
+        public DateTime DataSaida { get; set; }
 
         public virtual Pedido_Itens Pedido_Itens { get; set; }
 

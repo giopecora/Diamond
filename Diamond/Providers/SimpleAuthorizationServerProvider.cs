@@ -1,4 +1,4 @@
-﻿using Diamond.Business.Business;
+﻿using Diamond.Business;
 using Diamond.Domain.DTO;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;

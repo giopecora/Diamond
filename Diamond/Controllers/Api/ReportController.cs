@@ -1,4 +1,4 @@
-﻿using Diamond.Business.Business;
+﻿using Diamond.Business;
 using Diamond.Domain.DTO;
 using Diamond.Domain.Models;
 using Diamond.Filters;

@@ -21,6 +21,8 @@ namespace Diamond.App_Start
                 cfg.AddProfile(new UsuarioProfile());
                 cfg.AddProfile(new UsuarioPerfilProfile());
                 cfg.AddProfile(new CartaoProfile());
+                cfg.AddProfile(new EstoqueEntradaProfile());
+                cfg.AddProfile(new EstoqueSaidaProfile());
             });
         }
     }

@@ -57,6 +57,8 @@
     <Compile Include="Repository\CartaoRepository.cs" />
     <Compile Include="Repository\CategoriaRepository.cs" />
     <Compile Include="Repository\EnderecoRepository.cs" />
+    <Compile Include="Repository\EstoqueEntradaRepository.cs" />
+    <Compile Include="Repository\EstoqueSaidaRepository.cs" />
     <Compile Include="Repository\PedidoItemRepository.cs" />
     <Compile Include="Repository\PedidoRepository.cs" />
     <Compile Include="Repository\ProdutoImagemRepository.cs" />

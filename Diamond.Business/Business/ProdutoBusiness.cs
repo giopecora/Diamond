@@ -4,7 +4,7 @@ using Diamond.Repository;
 using Diamond.Domain.Entities;
 using Diamond.Domain.DTO;
 using AutoMapper;
-using Diamond.Business.Business;
+using Diamond.Business;
 using System.Web;
 using Diamond.Domain.Models.Produto;
 

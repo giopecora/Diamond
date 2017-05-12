@@ -11,13 +11,13 @@ namespace Diamond.Domain.Entities
 
         public int ProdutoId { get; set; }
 
-        public int? Quantidade { get; set; }
+        public int Quantidade { get; set; }
 
-        public double? ValorUnitario { get; set; }
+        public double ValorUnitario { get; set; }
 
-        public double? ValorTotal { get; set; }
+        public double ValorTotal { get; set; }
 
-        public DateTime? DataEntrada { get; set; }
+        public DateTime DataEntrada { get; set; }
 
         public virtual Produto Produto { get; set; }
     }

@@ -18,20 +18,24 @@ namespace Diamond.Domain.Entities
 
         public int UsuarioId { get; set; }
 
+        [Required]
         [StringLength(100)]
         public string Logradouro { get; set; }
 
-        public int? Numero { get; set; }
+        public int Numero { get; set; }
 
         [StringLength(50)]
         public string Complemento { get; set; }
 
+        [Required]
         [StringLength(8)]
         public string CEP { get; set; }
 
+        [Required]
         [StringLength(40)]
         public string Cidade { get; set; }
 
+        [Required]
         [StringLength(2)]
         public string Sigla { get; set; }
 

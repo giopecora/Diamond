@@ -7,7 +7,6 @@ using Diamond.Domain.DTO;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
-using Diamond.Business.Business;
 using Diamond.Domain.Models.Produto;
 using Diamond.Filters;
 

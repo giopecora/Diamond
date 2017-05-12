@@ -19,9 +19,11 @@ namespace Diamond.Domain.Entities
 
         public int PedidoId { get; set; }
 
-        public int? Quantidade { get; set; }
+        public int Quantidade { get; set; }
 
-        public double? ValorUnitarioTotal { get; set; }
+        public double ValorUnitario { get; set; }
+
+        public double ValorTotal { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Estoque_Saida> Estoque_Saida { get; set; }

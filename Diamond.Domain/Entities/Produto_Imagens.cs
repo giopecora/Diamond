@@ -16,7 +16,5 @@ namespace Diamond.Domain.Entities
         [Column(Order = 1)]
         [StringLength(100)]
         public string Imagem { get; set; }
-
-        public bool? Principal { get; set; }
     }
 }

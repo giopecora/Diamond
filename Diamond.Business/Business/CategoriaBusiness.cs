@@ -1,14 +1,14 @@
 ﻿using Diamond.Domain.DTO;
 using Diamond.Domain.DTO.Categoria;
 using Diamond.Domain.Entities;
-using Diamond.Repository.Repository;
+using Diamond.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diamond.Business.Business
+namespace Diamond.Business
 {
     public class CategoriaBusiness
     {

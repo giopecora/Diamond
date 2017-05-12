@@ -61,6 +61,11 @@ namespace Diamond.Repository
                 .Property(e => e.Nome)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<Categoria>()
+                .HasMany(e => e.Produtoes)
+                .WithRequired(e => e.Categoria)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<Endereco>()
                 .Property(e => e.Logradouro)
                 .IsUnicode(false);
@@ -163,6 +168,11 @@ namespace Diamond.Repository
             modelBuilder.Entity<Usuario>()
                 .Property(e => e.CPF)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Usuario>()
+                .HasMany(e => e.Cartaos)
+                .WithRequired(e => e.Usuario)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Usuario>()
                 .HasMany(e => e.Enderecoes)

@@ -17,7 +17,7 @@ namespace Diamond.Domain.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int PerfilId { get; set; }
 
-        public bool? Ativo { get; set; }
+        public bool Ativo { get; set; }
 
         public virtual Perfil Perfil { get; set; }
 

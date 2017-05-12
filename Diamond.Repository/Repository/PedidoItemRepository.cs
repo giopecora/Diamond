@@ -5,7 +5,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 
-namespace Diamond.Repository.Repository
+namespace Diamond.Repository
 {
     public class PedidoItemRepository
     {

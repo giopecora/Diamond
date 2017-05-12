@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Diamond.Domain.DTO;
 using Diamond.Domain.Entities;
-using Diamond.Repository.Repository;
+using Diamond.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Diamond.Business.Business
+namespace Diamond.Business
 {
     public class ProdutoImagemBusiness
     {

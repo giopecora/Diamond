@@ -1,15 +1,16 @@
 ﻿using AutoMapper;
 using Diamond.Domain.DTO;
 using Diamond.Domain.Entities;
-using Diamond.Repository.Repository;
+using Diamond.Repository;
 using System;
 using System.Collections.Generic;
 
-namespace Diamond.Business.Business
+namespace Diamond.Business
 {
     public class PedidoBusiness
     {
         private PedidoRepository _repository;
+        private EstoqueSaidaBusiness _estoqueSaidaService = new EstoqueSaidaBusiness();
 
         public PedidoBusiness()
         {
@@ -41,6 +42,15 @@ namespace Diamond.Business.Business
             }
 
             entity = _repository.Insert(entity);
+
+            pedido.Pedido_Itens.ForEach(pi => _estoqueSaidaService.Insert(new EstoqueSaidaDTO()
+            {
+                PedidoItemId = pi.Id,
+                ProdutoId = pi.ProdutoId,
+                Quantidade = pi.Quantidade,
+                ValorUnitario = pi.ValorTotal / pi.Quantidade,
+                ValorTotal = pi.ValorTotal,
+            }));
 
             pedido.Id = entity.Id;
 

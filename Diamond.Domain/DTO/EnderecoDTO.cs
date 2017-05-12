@@ -13,20 +13,25 @@ namespace Diamond.Domain.DTO
     {
         public int Id { get; set; }
 
+        [Required]
         [StringLength(100)]
         public string Logradouro { get; set; }
 
         public int? Numero { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string Complemento { get; set; }
 
+        [Required]
         [StringLength(8)]
         public string CEP { get; set; }
 
+        [Required]
         [StringLength(40)]
         public string Cidade { get; set; }
 
+        [Required]
         [StringLength(2)]
         public string Sigla { get; set; }
 

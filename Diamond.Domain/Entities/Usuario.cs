@@ -19,19 +19,23 @@ namespace Diamond.Domain.Entities
 
         public int Id { get; set; }
 
+        [Required]
         [StringLength(120)]
         public string Nome { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string Login { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string Senha { get; set; }
 
+        [Required]
         [StringLength(11)]
         public string CPF { get; set; }
 
-        public bool? Ativo { get; set; }
+        public bool Ativo { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cartao> Cartaos { get; set; }

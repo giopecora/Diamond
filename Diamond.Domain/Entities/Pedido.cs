@@ -22,9 +22,9 @@ namespace Diamond.Domain.Entities
 
         public int EnderecoId { get; set; }
 
-        public DateTime? DataPedido { get; set; }
+        public DateTime DataPedido { get; set; }
 
-        public double? ValorTotal { get; set; }
+        public double ValorTotal { get; set; }
 
         public virtual Cartao Cartao { get; set; }
 

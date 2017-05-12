@@ -18,23 +18,26 @@ namespace Diamond.Domain.Entities
 
         public int Id { get; set; }
 
-        public int? CategoriaId { get; set; }
+        public int CategoriaId { get; set; }
 
-        public int MarcaId { get; set; }
+        public int? MarcaId { get; set; }
 
+        [Required]
         [StringLength(150)]
         public string Nome { get; set; }
 
+        [Required]
         public string Descricao { get; set; }
 
-        public double? Preco { get; set; }
+        public double Preco { get; set; }
 
-        public int? Quantidade { get; set; }
+        public int Quantidade { get; set; }
 
+        [Required]
         [StringLength(100)]
         public string ImagemPrincipal { get; set; }
 
-        public bool? Ativo { get; set; }
+        public bool Ativo { get; set; }
 
         public virtual Categoria Categoria { get; set; }
 
