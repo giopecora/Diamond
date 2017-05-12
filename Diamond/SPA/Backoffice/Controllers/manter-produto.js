@@ -50,6 +50,7 @@
         modalInstance.result.then(function (produto) {
             if (produto) {
                 var tmpProduto = JSON.stringify(produto);
+
                 ManterProdutoService.salvarProduto(tmpProduto).then(function (retorno) {
                     alert("Produto Salvo com sucesso!");
                 })
@@ -149,9 +150,9 @@
         uploadProduto: function(idProduto, file){
             return $http({
                 method: 'POST',
-                url: UtilService.montarUrl('Produto/Upload/' + idProduto),
+                url: UtilService.montarUrl('Produto/Upload?produtoId=' + idProduto),
                 data: {
-                    file: file
+                    Files: file
                 }, headers:{
 
                 }

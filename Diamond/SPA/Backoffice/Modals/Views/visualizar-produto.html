@@ -10,7 +10,7 @@
                     <div class="thumbnail">
                         <img class="img-responsive" src="{{produto.action}}" />
                     </div>
-                    <button class="btn btn-default" ngf-select ng-model="produto.file" ng-show="editando">Nova Imagem</button>
+                    <button class="btn btn-default" ngf-select="UploadImagem($file)" ng-model="produto.file" ng-show="editando">Nova Imagem</button>
                 </div>
                 <div class="col-md-6">
                     <div class="panel panel-default">

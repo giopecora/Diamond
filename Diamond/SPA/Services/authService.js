@@ -41,6 +41,7 @@ App.factory('authService', ['$http', '$q', 'localStorageService', '$rootScope', 
             deferred.reject(err);
         });
 
+
         return deferred.promise;
     };
 
