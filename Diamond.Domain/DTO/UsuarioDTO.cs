@@ -13,6 +13,11 @@ namespace Diamond.Domain.DTO
 {
     public class UsuarioDTO
     {
+        public UsuarioDTO()
+        {
+            Usuario_Perfis = new List<UsuarioPerfilDTO>();
+        }
+
         public int Id { get; set; }
 
         [StringLength(120)]
