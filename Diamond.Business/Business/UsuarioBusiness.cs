@@ -29,8 +29,9 @@ namespace Diamond.Business.Business
         public UsuarioDTO Insert(UsuarioDTO usuario)
         {
             Usuario entity = _repository.Insert(Mapper.Map<Usuario>(usuario));
-
             usuario.Id = entity.Id;
+
+
 
             return usuario;
         }

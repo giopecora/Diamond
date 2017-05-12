@@ -15,7 +15,10 @@ namespace Diamond.Domain.DTO
     {
         public UsuarioDTO()
         {
-            Usuario_Perfis = new List<UsuarioPerfilDTO>();
+            Usuario_Perfis = new List<UsuarioPerfilDTO>
+            {
+                new UsuarioPerfilDTO() { PerfilId = (int)PerfilEnum.Cliente, Ativo = true }
+            };
         }
 
         public int Id { get; set; }
