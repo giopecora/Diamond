@@ -36,19 +36,13 @@ namespace Diamond.Business
         {
             Pedido entity = Mapper.Map<Pedido>(pedido);
 
-            foreach(PedidoItemDTO item in pedido.Pedido_Itens)
-            {
-                entity.Pedido_Itens.Add(Mapper.Map<Pedido_Itens>(item));
-            }
-
-            entity = _repository.Insert(entity);
-
+            pedido = Mapper.Map<PedidoDTO>(_repository.Insert(entity));
             pedido.Pedido_Itens.ForEach(pi => _estoqueSaidaService.Insert(new EstoqueSaidaDTO()
             {
                 PedidoItemId = pi.Id,
                 ProdutoId = pi.ProdutoId,
                 Quantidade = pi.Quantidade,
-                ValorUnitario = pi.ValorTotal / pi.Quantidade,
+                ValorUnitario = pi.ValorUnitario,
                 ValorTotal = pi.ValorTotal,
             }));
 

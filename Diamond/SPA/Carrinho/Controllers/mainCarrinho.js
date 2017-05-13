@@ -82,7 +82,8 @@ app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, Carr
                 return {
                     ProdutoId: p.id,
                     Quantidade: p.quantidade,
-                    ValorUnitarioTotal: p.quantidade * p.preco
+                    ValorUnitario: p.preco,
+                    ValorTotal: p.quantidade * p.preco
                 }
             })
 
