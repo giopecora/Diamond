@@ -23,6 +23,18 @@ namespace Diamond.Repository
             return _context.Produto_Imagens.Where(pi => pi.ProdutoId == produtoId && pi.Imagem == name).FirstOrDefault();
         }
 
+        public bool Insert(Produto_Imagens entity)
+        {
+            _context.Produto_Imagens.Add(entity);
+            return _context.SaveChanges() > 0;
+        }
+
+        public bool InsertRange(List<Produto_Imagens> entities)
+        {
+            _context.Produto_Imagens.AddRange(entities);
+            return _context.SaveChanges() > 0;
+        }
+
         public bool Update(Produto_Imagens entity)
         {
             _context.Entry(entity).State = EntityState.Modified;

@@ -152,9 +152,9 @@
                 method: 'POST',
                 url: UtilService.montarUrl('Produto/Upload?produtoId=' + idProduto),
                 data: {
-                    Files: file
+                    file: file
                 }, headers:{
-
+                    contentType: "multipart/form-data"
                 }
             })
     }
