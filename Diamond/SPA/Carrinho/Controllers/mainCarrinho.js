@@ -7,12 +7,13 @@ app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, Carr
     $scope.cartoes = [];
     $scope.subTotal = 0;
     $scope.passo = 1;
+    $scope.authentication = authService.authentication;
 
     $scope.load = function () {
 
         $scope.produtos = UtilService.obterProdutos();
 
-        if (authService.authentication.isAuth) {
+        if ($scope.authentication.isAuth) {
 
             UsuarioEnderecoService.listarEnderecos().then(function (retorno) {
                 $scope.enderecos = retorno.data;
@@ -44,6 +45,11 @@ app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, Carr
     }
 
     $scope.proximo = function () {
+        if ($scope.passo == 1 && !$scope.authentication.isAuth) {
+            alert("Faça login antes de continuar!");
+            return;
+        }
+
         $scope.passo++;
     }
 
@@ -76,7 +82,7 @@ app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, Carr
         //verifica se o usuário está logado
         //caso, sim prossegue, se nao redireciona para pagina de cadastro/login
 
-        if (authService.authentication.isAuth) {
+        if ($scope.authentication.isAuth) {
             
             var itensPedido = $scope.produtos.map(function (p) {
                 return {
@@ -98,7 +104,7 @@ app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, Carr
                 alert('compra finalizada');
                 UtilService.limparCarrinho();
 
-                $location.path("/Usuario/" + authService.authentication.userId);
+                $location.path("/Usuario/" + $scope.authentication.userId);
                 
                 load();
             })
@@ -110,6 +116,7 @@ app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, Carr
 
         //UtilService.limparCarrinho();
     };
+
     $scope.load();
 });
 
