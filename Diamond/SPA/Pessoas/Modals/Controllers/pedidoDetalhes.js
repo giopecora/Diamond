@@ -1,4 +1,6 @@
-﻿angular.module('Diamond').controller('UsuarioPedidoDetalhesCtrl', function ($scope, $uibModalInstance, UsuarioCartaoService) {
+﻿angular.module('Diamond').controller('UsuarioPedidoDetalhesCtrl', function ($scope, $uibModalInstance, UsuarioPedidoDetalhesService, getIdPedido) {
+
+    $scope.idPedido = getIdPedido;
 
     $scope.pedido = {
         numeroCartao: 'XXXXXXXXXXX1255',
@@ -21,7 +23,7 @@
     };
 
     $scope.fechar = function () {
-        $uibModalInstance.dismiss('cancel');
+        $uibModalInstance.close();
     };
 
     $scope.load = function () {
@@ -31,12 +33,12 @@
     };
 
     $scope.load();
-}).service('UsuarioPedidoDetalhesService', function ($http, authService, UtilService) {
+}).service('UsuarioPedidoDetalhesService', function ($http, UtilService) {
     return {
-        buscarPedidoDetalhes: function () {
+        buscarPedidoDetalhes: function (idPedido) {
             return $http({
                 method: 'GET',
-                url: UtilService.montarUrl('Pedido/GetDetailed')
+                url: UtilService.montarUrl('PedidoItem/GetAllFromPedido/' + idPedido)
             })
         }        
     }

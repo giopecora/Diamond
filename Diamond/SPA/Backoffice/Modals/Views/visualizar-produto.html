@@ -5,12 +5,18 @@
     </div>
     <div class="modal-body">
         <div class="row">
-            <form ng-submit="salvar()">
+            <form>
                 <div class="col-md-6">
                     <div class="thumbnail">
                         <img class="img-responsive" src="{{produto.action}}" />
                     </div>
-                    <button class="btn btn-default" ngf-select="UploadImagem($file)" ng-model="produto.file" ng-show="editando">Nova Imagem</button>
+                    <input type="file"
+                           ngf-select 
+                           accept="image/*" 
+                           ngf-multiple="true" 
+                           ng-model="produto.file" 
+                           ng-show="editando"
+                           value="Nova Imagem"/>
                 </div>
                 <div class="col-md-6">
                     <div class="panel panel-default">
@@ -34,7 +40,10 @@
                     </div>
 
                     <button type="button" class="btn btn-primary" ng-hide="editando" ng-click="editar()">Editar</button>
-                    <button type="submit" class="btn btn-success" ng-show="editando">Salvar</button>
+                    <button type="button" ng-click="salvar()" class="btn btn-success" ng-show="editando">Salvar</button>
+                    <button class="btn btn-primary" 
+                            ng-show="editando && produto.file" 
+                            ng-click="UploadImagem(produto.file)">Upload</button>
                 </div>
             </form>            
         </div>

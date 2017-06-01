@@ -1,4 +1,4 @@
-﻿angular.module('Diamond').controller('ProdutoVisualizarCtrl', function ($scope, $uibModalInstance, getIdProduto, Upload, ManterProdutoService, isNovo) {
+﻿angular.module('Diamond').controller('ProdutoVisualizarCtrl', function ($scope, $uibModalInstance, getIdProduto, Upload, ManterProdutoService, isNovo, UtilService) {
 
     $scope.produtoID = getIdProduto;
 
@@ -29,9 +29,19 @@
     }
 
     $scope.UploadImagem = function (file) {
-        ManterProdutoService.uploadProduto($scope.produto.id, file).then(function (result) {
-            console.log('upload concluido' + result);
-        });
+
+        var params = {
+            url: UtilService.montarUrl('Produto/Upload?produtoId=' + $scope.produtoID),
+            data: { file: file }
+        }
+
+        window.setTimeout(function(){
+            Upload.upload(params).then(function () {
+                console.log('upload ok');
+            });
+        }, 500);
+
+        
 
     }
 
