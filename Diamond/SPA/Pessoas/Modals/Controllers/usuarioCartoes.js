@@ -12,7 +12,7 @@
     $scope.novoCartao = false;
 
     $scope.fechar = function () {
-        $uibModalInstance.dismiss('cancel');
+        $uibModalInstance.close();
     };
 
     $scope.load = function () {
@@ -47,8 +47,8 @@
 
 
             //limpa os campos
-            Object.keys($scope.usuario).forEach(function (prop) {
-                $scope.usuario[prop] = '';
+            Object.keys($scope.formCartao).forEach(function (prop) {
+                $scope.formCartao[prop] = '';
             });
 
             $scope.novoCartao = false;

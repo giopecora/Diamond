@@ -1,6 +1,6 @@
 ﻿var app = angular.module('Diamond');
 app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, CarrinhoService, authService,
-    $rootScope, UsuarioEnderecoService, UsuarioCartaoService, $location) {
+    $rootScope, UsuarioEnderecoService, UsuarioCartaoService, $location, $uibModal) {
     
     $scope.produtos = [];
     $scope.enderecos = [];
@@ -55,6 +55,42 @@ app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, Carr
 
     $scope.anterior = function () {
         $scope.passo--;
+    }
+
+    $scope.abrirCadastroEndereco = function () {
+        var modalInstance = $uibModal.open({
+            templateUrl: './SPA/Pessoas/Modals/Views/usuarioEndereco.html',
+            controller: 'UsuarioEnderecoCtrl',
+            backdrop: 'static',
+            size: 'lg',
+            resolve: {
+                getUsuario: function () {
+                    return $scope.usuario;
+                }
+            }
+        })
+
+        modalInstance.result.then(function () {
+            $scope.load();
+        });
+    };
+
+    $scope.abrirCadastroCartao = function () {
+        var modalInstante = $uibModal.open({
+            templateUrl: './SPA/Pessoas/Modals/Views/usuarioCartoes.html',
+            controller: 'UsuarioCartoesCtrl',
+            backdrop: 'static',
+            size: 'lg',
+            resolve: {
+                getUsuario: function () {
+                    return $scope.usuario;
+                }
+            }
+        });
+
+        modalInstance.result.then(function () {
+            $scope.load();
+        });
     }
 
     $scope.aumentarQtdproduto = function (produto) {

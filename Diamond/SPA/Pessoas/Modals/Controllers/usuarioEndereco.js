@@ -1,6 +1,6 @@
 ﻿angular.module('Diamond').controller('UsuarioEnderecoCtrl', function ($scope, $uibModalInstance, getUsuario, UsuarioEnderecoService) {
 
-    $scope.usuario = getUsuario;
+    $scope.usuario = getUsuario || {};
     $scope.enderecos = [];
     $scope.formEndereco = {
         logradouro: '',
@@ -15,7 +15,7 @@
     $scope.novoEndereco = false;
 
     $scope.fechar = function () {
-        $uibModalInstance.dismiss('cancel');
+        $uibModalInstance.close();
     };
 
     $scope.load = function () {
@@ -66,8 +66,8 @@
 
 
             //limpa os campos
-            Object.keys($scope.usuario).forEach(function (prop) {
-                $scope.usuario[prop] = '';
+            Object.keys($scope.formEndereco).forEach(function (prop) {
+                $scope.formEndereco[prop] = '';
             });
 
             $scope.novoEndereco = false;
