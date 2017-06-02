@@ -24,13 +24,13 @@
                 <div class="col-md-4">
                     <div class="input-group">
                         <span class="input-group-addon">Número</span>
-                        <input ng-model="formCartao.numero" class="form-control" type="text" placeholder="" required />
+                        <input ng-model="formCartao.numero" class="form-control" type="text" placeholder="" required ui-number-mask="0" ui-hide-group-sep required/>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="input-group">
                         <span class="input-group-addon">Nome</span>
-                        <input ng-model="formCartao.nome" class="form-control" type="text" placeholder="" />
+                        <input ng-model="formCartao.nome" class="form-control" type="text" placeholder="" required/>
                     </div>
                 </div>
             </div>
@@ -38,13 +38,13 @@
                 <div class="col-md-4">
                     <div class="input-group">
                         <span class="input-group-addon">Vencimento</span>
-                        <input ng-model="formCartao.vencimento" class="form-control" type="text" required />
+                        <input ng-model="formCartao.vencimento" class="form-control" type="text" required/>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="input-group">
                         <span class="input-group-addon">CCR</span>
-                        <input ng-model="formCartao.ccr" class="form-control" type="text" placeholder="" required />
+                        <input ng-model="formCartao.ccr" class="form-control" type="text" placeholder="" required ui-number-mask="0" max="999" ui-hide-group-sep/>
                     </div>
                 </div>   
                 <div class="col-md-4">
@@ -69,7 +69,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="c in cartoes">
-                        <td>{{c.bandeira}}</td>
+                        <td>{{c.bandeiraId == 1 ? 'MasterCard' : 'Visa'}}</td>
                         <td>{{c.numero}}</td>
                         <td>{{c.nome}}</td>
                         <td>{{c.vencimento}}</td>

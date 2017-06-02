@@ -173,7 +173,7 @@
                                 <tbody>
                                     <tr ng-repeat="c in cartoes">
                                         <td><input type="radio" name="cartaoSelecionado" ng-model="$parent.cartaoSelecionado" ng-value="c"/></td>
-                                        <td>{{c.bandeira}}</td>
+                                        <td>{{c.bandeiraId == 1 ? 'MasterCard' : 'Visa'}}</td>
                                         <td>{{c.numero}}</td>
                                         <td>{{c.nome}}</td>
                                         <td>{{c.vencimento}}</td>

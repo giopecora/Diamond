@@ -32,7 +32,6 @@ app.controller('PerfilUsuarioCtrl', function ($scope, UtilService, PerfilUsuario
      
     };
 
-
     $scope.abrirCartoes = function () {
         var modalInstante = $uibModal.open({
             templateUrl: './SPA/Pessoas/Modals/Views/usuarioCartoes.html',
@@ -46,7 +45,6 @@ app.controller('PerfilUsuarioCtrl', function ($scope, UtilService, PerfilUsuario
             }
         });
     }
-
 
     $scope.abrirAlterarSenha = function () {
         var modalInstance = $uibModal.open({
@@ -69,16 +67,6 @@ app.controller('PerfilUsuarioCtrl', function ($scope, UtilService, PerfilUsuario
                 }
             }
         });
-
-
-        //modalInstance.result.then(function (produto) {
-        //    if (produto) {
-        //        var tmpProduto = JSON.stringify(produto);
-        //        ManterProdutoService.salvarProduto(tmpProduto).then(function (retorno) {
-        //            alert("Produto Salvo com sucesso!");
-        //        })
-        //    }
-        //})
 
     };
 
