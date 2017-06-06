@@ -84,6 +84,7 @@ namespace Diamond.Business
         public ProdutoDTO Insert(ProdutoDTO produto)
         {
             produto.Ativo = true;
+            produto.Quantidade = 10;
             produto.SetImagemSemProduto();
             Produto entity = _repository.Insert(Mapper.Map<Produto>(produto));
 
