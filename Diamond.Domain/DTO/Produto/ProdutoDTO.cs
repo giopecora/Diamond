@@ -23,7 +23,7 @@ namespace Diamond.Domain.DTO
         public string Descricao { get; set; }
         public double? Preco { get; set; }
         public int? Quantidade { get; set; }
-        public bool? Ativo { get; set; }
+        public bool Ativo { get; set; }
 
         public string ImagemPrincipal { get; set; }
 
