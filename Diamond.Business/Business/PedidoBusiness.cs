@@ -25,7 +25,11 @@ namespace Diamond.Business
 
         public PedidoDetalheDTO GetDetail(int pedidoId)
         {
-            return _repository.GetDetail(pedidoId);
+            PedidoDetalheDTO detalhe = _repository.GetDetail(pedidoId);
+
+            detalhe.NumeroCartao = "XXXXXXXXXXXX" + detalhe.NumeroCartao.Substring(12, 4);
+
+            return detalhe;
         }
 
         public PedidoDTO GetById(int id)
