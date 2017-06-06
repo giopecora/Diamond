@@ -31,7 +31,7 @@
                                 <li><a ng-click="abrirMinhaConta()" ng-show="authentication.isAuth">Minha Conta</a></li>
                                 <li><a ng-click="irLogin()" ng-hide="authentication.isAuth">Login</a></li>
                                 <li><a href="#/CadastroUsuario" ng-hide="authentication.isAuth">Cadastre-se</a></li>
-                                <li><a href="#/backoffice">Back-office</a></li>
+                                <li><a href="#/backoffice" ng-show="authentication.isAuth && authentication.isAdmin">Back-office</a></li>
                                 <li><a ng-click="deslogar()" ng-show="authentication.isAuth">Deslogar</a></li>
                             </ul>
                         </li>

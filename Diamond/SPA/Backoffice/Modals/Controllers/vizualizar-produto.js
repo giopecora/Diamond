@@ -36,8 +36,8 @@
         }
 
         window.setTimeout(function(){
-            Upload.upload(params).then(function () {
-                console.log('upload ok');
+            Upload.upload(params).then(function (result) {
+                console.log(result);
             });
         }, 500);
 

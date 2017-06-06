@@ -27,7 +27,8 @@ namespace Diamond.Business
         {
             PedidoDetalheDTO detalhe = _repository.GetDetail(pedidoId);
 
-            detalhe.NumeroCartao = "XXXXXXXXXXXX" + detalhe.NumeroCartao.Substring(12, 4);
+            if (detalhe.NumeroCartao.Length == 16)
+                detalhe.NumeroCartao = "XXXXXXXXXXXX" + detalhe.NumeroCartao.Substring(12, 4);
 
             return detalhe;
         }

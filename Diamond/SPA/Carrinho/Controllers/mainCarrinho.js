@@ -129,6 +129,16 @@ app.controller('MainCarrinhoCtrl', function ($scope, $cookies, UtilService, Carr
                 }
             })
 
+            if (!$scope.enderecoSelecionado) {
+                alert('Selecione um endereço!');
+                return;
+            }
+
+            if (!$scope.cartaoSelecionado) {
+                alert('Selecione um cartão!');
+                return;
+            }
+
             var params = {
                 enderecoId: $scope.enderecoSelecionado.id,
                 cartaoId: $scope.cartaoSelecionado.id,
