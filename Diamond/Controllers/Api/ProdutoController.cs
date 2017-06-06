@@ -11,6 +11,7 @@ using Diamond.Domain.Models.Produto;
 using Diamond.Filters;
 using Diamond.Providers;
 using System.IO;
+using Diamond.Utils.Helpers;
 
 namespace Diamond.Controllers.Api
 {
@@ -225,37 +226,37 @@ namespace Diamond.Controllers.Api
         [HttpPost]
         public async Task<IHttpActionResult> Upload(int produtoId)
         {
-            if (Request.Content.IsMimeMultipartContent("form-data"))
-                return BadRequest("Unsupported media type");
-
-            bool success = false;
+            string uploadPath = "";
 
             try
             {
                 List<ProdutoImagemDTO> imagens = new List<ProdutoImagemDTO>();
-                var provider = new CustomMultipartFormDataStreamProvider(@"C:\Produtos\");
+                var provider = new CustomMultipartFormDataStreamProvider(DirectoryHelper.GetDirectory($@"C:\Produtos\Produto_{produtoId}\"));
 
                 await Task.Run(async () => await Request.Content.ReadAsMultipartAsync(provider));
 
                 foreach(var file in provider.FileData)
                 {
                     var fileInfo = new FileInfo(file.LocalFileName);
+                    var filePath = $@"Produto_{produtoId}\{fileInfo.Name}";
+
+                    uploadPath = $@"C:\Produtos\{filePath}";
 
                     imagens.Add(new ProdutoImagemDTO()
                     {
                         ProdutoId = produtoId,
-                        Imagem = $@"C:\Produtos\Produto_{produtoId}\{fileInfo.Name}"
+                        Imagem = uploadPath
                     });
-                }
 
-                success = _imagemBusiness.Upload(imagens);
+                    _business.UploadImagemPrincipal(produtoId, filePath);
+                }
             }
             catch (Exception ex)
             {
                 return InternalServerError(ex);
             }
 
-            return Ok(success);
+            return Ok(uploadPath);
         }
 
         // DELETE: api/Produtos/5

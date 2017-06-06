@@ -83,6 +83,7 @@ namespace Diamond.Business
 
         public ProdutoDTO Insert(ProdutoDTO produto)
         {
+            produto.SetImagemSemProduto();
             Produto entity = _repository.Insert(Mapper.Map<Produto>(produto));
 
             produto.Id = entity.Id;
@@ -96,6 +97,14 @@ namespace Diamond.Business
 
             if (!result)
                 throw new Exception("Nao foi possivel atualizar este Produto.");
+        }
+
+        public void UploadImagemPrincipal(int produtoID, string imageName)
+        {
+            ProdutoDTO produto = GetById(produtoID);
+            produto.ImagemPrincipal = imageName;
+
+            Update(produto);
         }
 
         public void Delete(int id)

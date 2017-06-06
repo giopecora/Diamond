@@ -14,7 +14,6 @@ namespace Diamond.Domain.DTO
         }
 
         public int ProdutoId { get; set; }
-        public bool? Principal { get; set; }
         public string Imagem { get; set; }
 
         public string Action

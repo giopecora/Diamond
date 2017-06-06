@@ -91,6 +91,10 @@ namespace Diamond.Repository
 
         public bool Update(Produto entity)
         {
+            var local = _context.Set<Produto>().Local.FirstOrDefault(e => e.Id == entity.Id);
+            if (local != null)            
+                _context.Entry(local).State = EntityState.Detached;
+            
             _context.Entry(entity).State = EntityState.Modified;
 
             try

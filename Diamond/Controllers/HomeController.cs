@@ -26,9 +26,10 @@ namespace Diamond.Controllers
                 {
                     case ".jpg": mimeType = "image/jpg"; break;
                     case ".png": mimeType = "image/png"; break;
+                    case ".gif": mimeType = "image/gif"; break;
                 }
             
-                return File($@"C:/Produtos/Produto_{produtoId}/{nome}", mimeType);
+                return File($@"C:/Produtos/{nome}", mimeType);
             }
             return Content("");
         }

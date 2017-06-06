@@ -48,6 +48,7 @@
     <Compile Include="Extensions\DatetimeExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtension.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
+    <Compile Include="Helpers\DirectoryHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
