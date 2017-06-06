@@ -1,4 +1,5 @@
-﻿using Diamond.Domain.Entities;
+﻿using Diamond.Domain.DTO.Pedido;
+using Diamond.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,32 @@ namespace Diamond.Repository
                 .OrderBy(p => p.Id)
                 .Skip(skip)
                 .Take(take);
+        }
+
+        public PedidoDetalheDTO GetDetail(int pedidoId)
+        {
+            PedidoDetalheDTO detalhe =
+                (from p in _context.Pedidos
+                 join c in _context.Cartoes on p.CartaoId equals c.Id
+                 join e in _context.Enderecos on p.EnderecoId equals e.Id
+                 where p.Id == pedidoId
+                 select new PedidoDetalheDTO()
+                 {
+                     NumeroCartao = c.Numero,
+                     Endereco = e.Logradouro,
+                     Itens = 
+                     (from pi in _context.Pedido_Itens
+                      join pr in _context.Produtos on pi.ProdutoId equals pr.Id
+                      where pi.PedidoId == pedidoId
+                      select new PedidoItemDetalheDTO()
+                      {
+                          Produto = pr.Nome,
+                          Quantidade = pi.Quantidade,
+                          ValorTotal = pi.ValorTotal
+                      })
+                 }).FirstOrDefault();
+
+            return detalhe;
         }
 
         public Pedido GetById(int id)

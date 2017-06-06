@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Diamond.Domain.DTO;
+using Diamond.Domain.DTO.Pedido;
 using Diamond.Domain.Entities;
 using Diamond.Repository;
 using System;
@@ -20,6 +21,11 @@ namespace Diamond.Business
         public List<PedidoDTO> GetAllFromUser(int userId, int page)
         {
             return _repository.GetAllFromUser(userId, page).ToDTO<Pedido, PedidoDTO>(); ;
+        }
+
+        public PedidoDetalheDTO GetDetail(int pedidoId)
+        {
+            return _repository.GetDetail(pedidoId);
         }
 
         public PedidoDTO GetById(int id)

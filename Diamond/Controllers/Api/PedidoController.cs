@@ -1,5 +1,6 @@
 ﻿using Diamond.Business;
 using Diamond.Domain.DTO;
+using Diamond.Domain.DTO.Pedido;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
@@ -30,6 +31,25 @@ namespace Diamond.Controllers.Api
             }
 
             return Ok(pedidos);
+        }
+
+        [ResponseType(typeof(PedidoDetalheDTO))]
+        [Route("api/Pedido/GetPedidoDetail/{pedidoId:int}")]
+        // GET: api/GetPedidoDetail
+        public IHttpActionResult GetPedidoDetail(int pedidoId)
+        {
+            PedidoDetalheDTO pedidoDetalhe = new PedidoDetalheDTO();
+
+            try
+            {
+                pedidoDetalhe = _business.GetDetail(pedidoId);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+
+            return Ok(pedidoDetalhe);
         }
 
         [ResponseType(typeof(PedidoDTO))]

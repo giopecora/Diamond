@@ -28,14 +28,7 @@
 
     $scope.load = function () {
         UsuarioPedidoDetalhesService.buscarPedidoDetalhes($scope.idPedido).then(function (result) { 
-            var tmpPedido = result.data;
-
-            // pegar numero do cartao pelo id
-
-            // pegar numero do endereco pelo id
-
-            // fazer loop para pegar todos os produtos com determinado id
-
+            $scope.pedido = result.data;
         })
     };
 
@@ -46,7 +39,7 @@
         buscarPedidoDetalhes: function (idPedido) {
             return $http({
                 method: 'GET',
-                url: UtilService.montarUrl('Pedido/GetById/' + idPedido)
+                url: UtilService.montarUrl('Pedido/GetPedidoDetail/' + idPedido)
             })
         },
 
