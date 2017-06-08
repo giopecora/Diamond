@@ -37,7 +37,7 @@
 
         window.setTimeout(function(){
             Upload.upload(params).then(function (result) {
-                console.log(result);
+                $('#imagem-produto').attr('src', result.data.action);
             });
         }, 500);
 

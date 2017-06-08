@@ -27,7 +27,13 @@ App.factory('authService', ['$http', '$q', 'localStorageService', '$rootScope', 
 
         $http.post(serviceBase + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
 
-            localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName, userId: response.userId });
+            localStorageService.set('authorizationData',
+                {
+                    token: response.access_token,
+                    userName: response.userName,
+                    userId: response.userId,
+                    isAdmin: response.isAdmin == "1" ? true : false
+                });
 
             _authentication.isAuth = true;
             _authentication.userName = response.userName;
@@ -68,6 +74,7 @@ App.factory('authService', ['$http', '$q', 'localStorageService', '$rootScope', 
             _authentication.isAuth = true;
             _authentication.userName = authData.userName;
             _authentication.userId = authData.userId;
+            _authentication.isAdmin = authData.isAdmin;
         }
     };
 

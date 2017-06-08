@@ -227,6 +227,7 @@ namespace Diamond.Controllers.Api
         public async Task<IHttpActionResult> Upload(int produtoId)
         {
             string uploadPath = "";
+            var retorno = new ProdutoImagemDTO();
 
             try
             {
@@ -248,6 +249,9 @@ namespace Diamond.Controllers.Api
                         Imagem = uploadPath
                     });
 
+                    retorno.ProdutoId = produtoId;
+                    retorno.Imagem = filePath;
+
                     _business.UploadImagemPrincipal(produtoId, filePath);
                 }
             }
@@ -256,7 +260,7 @@ namespace Diamond.Controllers.Api
                 return InternalServerError(ex);
             }
 
-            return Ok(uploadPath);
+            return Ok(retorno);
         }
 
         // DELETE: api/Produtos/5
